@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+
+\input{../notes_preamble.tex}
+
+\title{Microeconomics I Notes}
+\author{Gabe Sekeres}
+\course{ECON 6090}
+\term{Fall 2024}
+\begin{document}
+\maketitle
+
+\section*{Introduction}
+
+I am creating this set of unified notes for ECON 6090: Microeconomics I, as taught at Cornell University in the Fall 2024 semester. Due to unforseen departmental circumstances, this course was taught by six different professors (\href{https://easley.economics.cornell.edu/}{David Easley}, \href{https://philippkircher.com/}{Philipp Kircher}, \href{https://adamharris.phd/}{Adam Harris}, \href{https://sites.santafe.edu/~leb/}{Larry Blume}, \href{https://barseghyan.economics.cornell.edu/}{Levon Barseghyan}, and \href{https://www.mbattaglini.com/}{Marco Battaglini}). This structure necessarily created some confusion in notation and material, so these notes function as my attempt to create a universe of the material we learned.
+
+I rely heavily on the notes created from Prof. Easley's course, which were originally compiled by \href{https://julienneves.com/}{Julien Manuel Neves} and subsequently updated by \href{https://ruqing-xu.github.io/}{Ruqing Xu} and \href{https://economics.cornell.edu/patrick-ferguson}{Patrick Ferguson}. I additionally rely on notes and slides provided by Prof. Harris, slides provided by Prof. Blume, slides from \href{https://blogs.cornell.edu/odonoghue/}{Ted O'Donoghue} provided by Prof. Barseghyan, and notes provided by Prof. Battaglini. These notes are supplemented with the canonical \href{https://global.oup.com/academic/product/microeconomic-theory-9780195073409?cc=us&lang=en&}{Microeconomic Theory} textbook by \href{https://www.upf.edu/web/andreu-mas-colell}{Andreu Mas-Colell}, \href{https://mitsloan.mit.edu/faculty/directory/michael-whinston}{Michael Whinston}, and \href{https://www.hbs.edu/faculty/Pages/profile.aspx?facId=6466}{Jerry Green} (hereafter, MWG); my preferred analysis textbook, \href{https://store.doverpublications.com/products/9780486477664}{Foundations of Mathematical Analysis} by \href{https://condor.depaul.edu/~rjohnson/}{Richard Johnsonbaugh} and \href{https://www.mathgenealogy.org/id.php?id=12494}{W.E. Pfaffenberger}; and the excellent Mathematics notes provided by \href{https://www.takumahabu.com/Economics}{Takuma Habu}. All mistakes are my own.
+
+I will occasionally make reference to the Stanford ECON 202 notes, created by \href{https://www.gsb.stanford.edu/faculty-research/faculty/jonathan-levin}{Jonathan Levin}, \href{https://web.stanford.edu/~isegal/}{Ilya Segal}, \href{https://milgrom.people.stanford.edu/}{Paul Milgrom}, and \href{https://sites.google.com/site/ravijagadeesan/}{Ravi Jagadeesan}. This will mainly be if there exists intuition that I believe is helpful.
+
+\paragraph{Notation.} A large part of this project is an attempt to unify the notation used by our separate professors. I default to the notation used in the Easley notes, then to MWG, and then use my own judgement. New definitions will have a word highlighted in \blue{blue}, and theorems will be named in \red{red}. 
+
+\paragraph{Structure.} The course (and these notes) are organized as follows. Prof. Easley taught an introduction to choice theory, Section~\ref{sec:easley}. Prof. Kircher taught consumer theory, Section~\ref{sec:kircher}. Prof. Harris taught producer theory, and some concepts of market failures, Section~\ref{sec:harris}. Prof. Blume introduced the theory of choice under uncertainty, Section~\ref{sec:blume}, and Prof. Barseghyan continued with theoretical applications for uncertainty and expected utility maximization, Section~\ref{sec:barseghyan}. Finally, Prof. Battaglini taught on information theory, Section~\ref{sec:battaglini}.
+
+
+\newpage
+\section{Choice (Easley)}\label{sec:easley}
+
+\subsection{Preference Theory}
+
+\begin{assumption}
+	Let $X$ be a finite set of objects. 
+\end{assumption}
+
+\begin{definition}
+	Define $\succsim$, a \blue{preference relation} on $X$, as $x \succsim y \Longleftrightarrow x$ is \emph{at least as good as} $y$, for $x,y \in X$. $\succsim$ is a binary relation.
+\end{definition}
+
+\begin{definition}
+	$x$ is \blue{strictly preferred} to $y$, denoted as $x \succ y$, if $x \succsim y$ and $y \not\succsim x$.
+\end{definition}
+\begin{definition}
+	$x$ is \blue{indifferent} to $y$, denoted as $x \sim y$, if $x \succsim y$ and $y \succsim x$.
+\end{definition}
+
+\begin{definition}
+	A preference relation $\succsim$ is \blue{complete} if $\forall x,y \in X$, either $x\succsim y$, $y \succsim x$, or both.
+\end{definition}
+\begin{definition}
+	A preference relation $\succsim$ is \blue{transitive} if, $\forall x,y,z \in X$ where $x \succsim y$ and $y \succsim z$, $x \succsim z$.
+\end{definition}
+\begin{definition}
+	A preference relation $\succsim$ is \blue{rational} if it is complete and transitive.
+\end{definition}
+\begin{remark}
+	Prof. Easley takes some issues with this definition. The main issue is that there is an English word `rational' that has absolutely nothing to do with it. Hereafter, always read rational as `complete and transitive'.
+\end{remark}
+
+\begin{remark}
+	These are all of the abstract concepts in choice theory! From here, we will apply them, and see what we can get. 
+\end{remark}
+
+\begin{definition}
+	(Informal) Define a \blue{choice structure} $C\opt$ over subsets $B \subseteq X$ as $C\opt(B,\succsim) \coloneqq \{x \in B : x \succsim y \forall y \in B\}$.
+\end{definition}
+\begin{remark}
+	Some direct implications:
+	\begin{itemize}
+		\item[(i)] If $x \in C\opt(B,\succsim)$ and $y \in C\opt(B,\succsim)$, then $x \sim y$.
+		
+		\item[(ii)] Suppose that $x \in B$, $x \not\in C\opt(B,\succsim)$, and $C\opt(B,\succsim) \ne \emptyset$. Then there exists $y \in B$ such that $y \succ x$. 
+	\end{itemize}
+\end{remark}
+
+We will now formalize the above.
+
+\begin{definition}
+	Let the \blue{power set} of $X$, denoted $\mathcal{P}(X)$, be the set of all subsets of $X$. Note that since $X$ is finite, $\mathcal{P}(X)$ is finite.
+\end{definition}
+
+
+
+
+
+
+
+\newpage
+\section{Consumer Theory (Kircher)}\label{sec:kircher}
+
+\newpage
+\section{Producer Theory (Harris)}\label{sec:harris}
+
+\newpage
+\section{Uncertainty Theory (Blume)}\label{sec:blume}
+
+\newpage
+\section{Uncertainty Applications (Barseghyan)}\label{sec:barseghyan}
+
+\newpage
+\section{Information Theory (Battaglini)}\label{sec:battaglini}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
