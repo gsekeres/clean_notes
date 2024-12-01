@@ -14,8 +14,8 @@ Please let me know what section you would like to contribute to! I will deal wit
 
 - Section 1: Easley (choice): Gabe
     - Status: Done
-- Section 2: Kircher (consumer): __
-    - Status: Not started
+- Section 2: Kircher (consumer): Gabe
+    - Status: In progress
 - Section 3: Harris (producer): __
     - Status: Not started
 - Section 4: Blume (uncertainty): __

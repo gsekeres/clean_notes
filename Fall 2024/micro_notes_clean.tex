@@ -3,7 +3,7 @@
 \input{../notes_preamble.tex}
 
 \title{Microeconomics I Notes}
-\author{Gabe Sekeres}
+\author{Gabe Sekeres \& Omar Andujar}
 \course{ECON 6090}
 \term{Fall 2024}
 \begin{document}
@@ -11,13 +11,13 @@
 
 \section*{Introduction}
 
-I am creating this set of unified notes for ECON 6090: Microeconomics I, as taught at Cornell University in the Fall 2024 semester. Due to unforseen departmental circumstances, this course was taught by six different professors (\href{https://easley.economics.cornell.edu/}{David Easley}, \href{https://philippkircher.com/}{Philipp Kircher}, \href{https://adamharris.phd/}{Adam Harris}, \href{https://sites.santafe.edu/~leb/}{Larry Blume}, \href{https://barseghyan.economics.cornell.edu/}{Levon Barseghyan}, and \href{https://www.mbattaglini.com/}{Marco Battaglini}). This structure necessarily created some confusion in notation and material, so these notes function as my attempt to create a universe of the material we learned.
+We are creating this set of unified notes for ECON 6090: Microeconomics I, as taught at Cornell University in the Fall 2024 semester. Due to unforeseen departmental circumstances, this course was taught by six different professors (\href{https://easley.economics.cornell.edu/}{David Easley}, \href{https://philippkircher.com/}{Philipp Kircher}, \href{https://adamharris.phd/}{Adam Harris}, \href{https://sites.santafe.edu/~leb/}{Larry Blume}, \href{https://barseghyan.economics.cornell.edu/}{Levon Barseghyan}, and \href{https://www.mbattaglini.com/}{Marco Battaglini}). This structure necessarily created some confusion in notation and material, so these notes function as my attempt to create a universe of the material we learned.
 
-I rely heavily on the notes created from Prof. Easley's course, which were originally compiled by \href{https://julienneves.com/}{Julien Manuel Neves} and subsequently updated by \href{https://ruqing-xu.github.io/}{Ruqing Xu} and \href{https://economics.cornell.edu/patrick-ferguson}{Patrick Ferguson}. I additionally rely on notes and slides provided by Prof. Harris, slides provided by Prof. Blume, slides from \href{https://blogs.cornell.edu/odonoghue/}{Ted O'Donoghue} provided by Prof. Barseghyan, and notes provided by Prof. Battaglini. These notes are supplemented with the canonical \href{https://global.oup.com/academic/product/microeconomic-theory-9780195073409?cc=us&lang=en&}{Microeconomic Theory} textbook by \href{https://www.upf.edu/web/andreu-mas-colell}{Andreu Mas-Colell}, \href{https://mitsloan.mit.edu/faculty/directory/michael-whinston}{Michael Whinston}, and \href{https://www.hbs.edu/faculty/Pages/profile.aspx?facId=6466}{Jerry Green} (hereafter, MWG); my preferred analysis textbook, \href{https://store.doverpublications.com/products/9780486477664}{Foundations of Mathematical Analysis} by \href{https://condor.depaul.edu/~rjohnson/}{Richard Johnsonbaugh} and \href{https://www.mathgenealogy.org/id.php?id=12494}{W.E. Pfaffenberger}; and the excellent Mathematics notes provided by \href{https://www.takumahabu.com/Economics}{Takuma Habu}. All mistakes are my own.
+We rely heavily on the notes created from Prof. Easley's course, which were originally compiled by \href{https://julienneves.com/}{Julien Manuel Neves} and subsequently updated by \href{https://ruqing-xu.github.io/}{Ruqing Xu} and \href{https://economics.cornell.edu/patrick-ferguson}{Patrick Ferguson}, as well as the excellent TA Sections curated by \href{https://economics.cornell.edu/yuxuan-ma}{Yuxuan Ma} and \href{https://dyson.cornell.edu/programs/graduate/graduate-student-directory/}{Feiyu Wang}. We additionally rely on notes and slides provided by Prof. Harris, slides provided by Prof. Blume, slides from \href{https://blogs.cornell.edu/odonoghue/}{Ted O'Donoghue} provided by Prof. Barseghyan, and notes provided by Prof. Battaglini. These notes are supplemented with the canonical \href{https://global.oup.com/academic/product/microeconomic-theory-9780195073409?cc=us&lang=en&}{Microeconomic Theory} textbook by \href{https://www.upf.edu/web/andreu-mas-colell}{Andreu Mas-Colell}, \href{https://mitsloan.mit.edu/faculty/directory/michael-whinston}{Michael Whinston}, and \href{https://www.hbs.edu/faculty/Pages/profile.aspx?facId=6466}{Jerry Green} (hereafter, MWG); a classic analysis textbook, \href{https://store.doverpublications.com/products/9780486477664}{Foundations of Mathematical Analysis} by \href{https://condor.depaul.edu/~rjohnson/}{Richard Johnsonbaugh} and \href{https://www.mathgenealogy.org/id.php?id=12494}{W.E. Pfaffenberger}; and the excellent Mathematics notes provided by \href{https://www.takumahabu.com/Economics}{Takuma Habu}. All mistakes are our own.
 
-I will occasionally make reference to the Stanford ECON 202 notes, created by \href{https://www.gsb.stanford.edu/faculty-research/faculty/jonathan-levin}{Jonathan Levin}, \href{https://web.stanford.edu/~isegal/}{Ilya Segal}, \href{https://milgrom.people.stanford.edu/}{Paul Milgrom}, and \href{https://sites.google.com/site/ravijagadeesan/}{Ravi Jagadeesan}. This will mainly be if there exists intuition that I believe is helpful.
+We occasionally make reference to the Stanford ECON 202 notes, created by \href{https://www.gsb.stanford.edu/faculty-research/faculty/jonathan-levin}{Jonathan Levin}, \href{https://web.stanford.edu/~isegal/}{Ilya Segal}, \href{https://milgrom.people.stanford.edu/}{Paul Milgrom}, and \href{https://sites.google.com/site/ravijagadeesan/}{Ravi Jagadeesan}. This will mainly be if there exists intuition that we believe is helpful.
 
-\paragraph{Notation.} A large part of this project is an attempt to unify the notation used by our separate professors. I default to the notation used in the Easley notes, then to MWG, and then use my own judgement. New definitions will have a word highlighted in \blue{blue}, and theorems will be named in \red{red}. 
+\paragraph{Notation.} A large part of this project is an attempt to unify the notation used by our separate professors. We default to the notation used in the Easley notes, then to MWG, and then use our own judgement. New definitions will have a word highlighted in \blue{blue}, and certain (named) theorems will be denoted in \red{red}. 
 
 \paragraph{Structure.} The course (and these notes) are organized as follows. Prof. Easley taught an introduction to choice theory, Section~\ref{sec:easley}. Prof. Kircher taught consumer theory, Section~\ref{sec:kircher}. Prof. Harris taught producer theory, and some concepts of market failures, Section~\ref{sec:harris}. Prof. Blume introduced the theory of choice under uncertainty, Section~\ref{sec:blume}, and Prof. Barseghyan continued with theoretical applications for uncertainty and expected utility maximization, Section~\ref{sec:barseghyan}. Prof. Battaglini taught on information theory, Section~\ref{sec:battaglini}. We also include here exercises with solutions, divided into the various sections and sources. This is Section~\ref{sec:exercises}.
 
@@ -290,38 +290,201 @@ We will almost always make the following assumptions on $x$:
 	\]
 \end{proposition}
 \begin{proof}
-	Assume that $p$ changes solely in $p_j$, by $\Delta p_j$, and let $\Delta w$ be the compensating change in wealth, as above. Let $\Delta x \coloneqq x(p',w') - x(p,w)$. Then by the law of compensated demand,
+	Assume that $p$ changes solely in $p_j$, by $\Delta p_j > 0$, and let $\Delta w$ be the compensating change in wealth, as above. Let $\Delta x \coloneqq x(p',w') - x(p,w)$. Then by the Law of Compensated Demand, we have that
+	\[
+	\Delta p_j (x_j(p',w') - x_j(p,w)) \le 0 \Longrightarrow \frac{x_j(p',w') - x_j(p,w)}{\Delta p_j} \le 0
+	\]
+	Adding and subtracting $x_j(p',w)$, this becomes
+	\[
+	\frac{x_j(p',w) - x_j(p,w)}{\delta p_j} + \frac{x_j(p',w') - x_j(p',w)}{\Delta p_j} \le 0
+	\]
+	Using the fact that $\Delta w = \Delta p_j x_j(p,w)$, we get that
+	\[
+	\frac{x_j(p',w) - x_j(p,w)}{\delta p_j} + x_j(p,w)\frac{x_j(p',w') - x_j(p',w)}{\Delta w} \le 0
+	\]
+	Taking the limit as $\Delta p_j \searrow 0$, which implies that $\Delta w \searrow 0$ and $p' \to p$), and using the fact that $x$ is continuously differentiable, this becomes
+	\[
+	\frac{\partial x_j(p,w)}{\partial p_j} + x_j(p,w) \frac{\partial x_j(p,w)}{\partial w} \le 0
+	\]
+\end{proof}
+
+\begin{definition}
+	The \blue{Slutsky matrix} is the matrix of the partials defined above:
+	\begin{align*}
+		S(p,w) &\coloneqq D_p x(p,w) + D_w x(p,w) x(p,w)^T \\
+		&= \matrixc{\frac{\partial x_1}{\partial p_1} + x_1 \frac{\partial x_1}{\partial w} & \cdots & \frac{\partial x_1}{\partial p_L} + x_L \frac{\partial x_1}{\partial w} \\ \vdots && \vdots \\\frac{\partial x_L}{\partial p_1} + x_1 \frac{\partial x_L}{\partial w} & \cdots & \frac{\partial x_L}{\partial p_L} + x_L \frac{\partial x_L}{\partial w} }
+	\end{align*}
+\end{definition}
+
+\begin{proposition}\label{prop:slutsky_nsd}
+	$S(p,w)$ is negative semi-definite.
+\end{proposition}
+\begin{proof}
+	Let $dp \coloneqq (dp_1,\dots,dp_L)$ be an arbitrary element of $\reals^L$. Then for all $i$, we have that
+	\begin{align*}
+		dx_i &= \frac{\partial x_i}{\partial p_1}dp_1 + \cdots + \frac{\partial x_i}{\partial p_L}dp_L + \frac{\partial x_i}{\partial w}x_1(p,w)dp_1 + \cdots + \frac{\partial x_i}{\partial w}x_L(p,w)dp_L \\
+		\Longrightarrow dx &= (D_px(p,w) + D_wx(p,w) x(p,w)^T) dp
+	\end{align*}
+	By WARP, $dp \cdot dx \le 0$, meaning that
+	\[
+	dp^T (D_px(p,w) + D_wx(p,w) x(p,w)^T) dp \le 0
+	\]
+	Thus, $S(p,w)$ is negative semi-definite, since $dp$ is arbitrary.
 \end{proof}
 
 
+\subsection{Consumer Choice from $\succsim$}
 
+\begin{assumption}
+	As before, let $X \coloneqq \reals^L_+$. 
+\end{assumption}
+\begin{definition}
+	A \blue{utility function} representing $\succsim$ on $X$ is a function $u: X \to \reals$ such that for all $x,y \in X$:
+	\[
+	x \succsim y \Longleftrightarrow u(x) \ge u(y)
+	\]
+\end{definition}
 
+\begin{proposition}
+	If $u: X \to \reals$ represents $\succsim$ on $X$ and $f: \reals \to \reals$ is strictly increasing, then $f \circ u$ represents $\succsim$.
+\end{proposition}
+\begin{proof}
+	\[
+	x \succsim y \Longleftrightarrow u(x) \ge u(y) \Longleftrightarrow (f\circ u)(x) \ge (f\circ u)(y)
+	\]
+\end{proof}
 
+\begin{remark}
+	Lexicographic preferences, defined on $\reals^2$ by
+	\[
+	(x_1,x_2) \succsim (y_1,y_2) \Longleftrightarrow x_1 > y_1 \text{ or } x_1 = y_1 \text{ and } x_2 \ge y_2
+	\]
+	are rational but cannot be represented by a utility function. Why is that?
+\end{remark}
 
+\begin{definition}
+	The following mathematical concepts will be useful to us:
+	\begin{itemize}
+		\item[(i)] The \blue{upper contour set}, $R(x) \coloneqq \{y \in X : y \succsim x\}$, is the set of all bundles that are at least as good as $x$. Denote its complement by $P^{-1}(x)$.
+		
+		\item[(ii)] The \blue{lower contour set}, $R^{-1}(x) \coloneqq \{y \in X : x \succsim y\}$, is the set of all bundles that $x$ is at least as good as. Denote its complement by $P(x)$.
+	\end{itemize}
+\end{definition}
 
+\begin{definition}
+	The preference relation $\succsim$ on $X$ is \blue{continuous} if $R(x)$ and $R^{-1}(x)$ are closed subsets of $X$ for all $x \in X$.
+\end{definition}
 
+\begin{remark}
+	Lexicographic preferences are not continuous. Can you show why?
+\end{remark}
+\begin{proposition}\label{prop:debreu}
+	\red{(Debreu's Theorem)} Suppose a preference relation $\succsim$ on $X$ is rational and continuous. Then there is a continuous utility function representing $\succsim$.
+\end{proposition}
+\begin{proof}
+	(Sketch) We will sketch this proof assuming that $\succsim$ satisfy strong monotonicity (defined below), which is not necessary but makes the proof easier. Choose any $x \in X$. By strong monotonicity, $x \succsim 0$. Let $e = (1,1)$. By strong monotonicity, $\exists \alpha \in \reals_+$ such that $\alpha e \succ x$. By strong monotonicity, $\exists \alpha : X \to \reals_+$ such that $\alpha(x)e\sim x \forall x \in X$. 
+	
+	We claim that $\alpha(\cdot)$ represents $\succsim$. First, suppose that $\alpha(x) \ge \alpha(y)$. Then $\alpha(x)e \succsim \alpha(y)e$ by strict monotonicity, and by transitivity we have that $x \sim \alpha(x)e \succsim \alpha(y)e \sim y \Longrightarrow x \succsim y$. Conversely, assume that $x\succsim y$. Then $\alpha(x)e \sim x \succsim y \sim \alpha(y)e$, so $\alpha(x)e\succsim \alpha(y)e$ by transitivity, and $\alpha(x) \ge \alpha(y)$ by strict monotonicity.
+\end{proof}
 
+\begin{definition}
+	The preference relation $\succsim$ is \blue{monotone} if for all $x,y \in X$, $x \ge y \Longrightarrow x\succsim y$. It is \blue{strictly monotone} if $x \ge y$ and $x \ne y$ implies that $x \succ y$. Note that the latter implies the former.
+\end{definition}
 
+\begin{definition}
+	The preference relation $\succsim$ is \blue{locally non-satiated} if for every $x \in X$ and for every $\varepsilon > 0$, there exists $y \in X$ such that $\|x - y\| \le \varepsilon$ and $y \succ x$. Note that strict monotonicity implies local non-satiation.
+\end{definition}
+\begin{remark}
+	We assumed earlier that $X = \reals^L_+$. This concept can be extended to any metric space, replacing the norm with the space's distance function.  
+\end{remark}
+\begin{definition}
+	The preference relation $\succsim$ on $X$ is \blue{convex} if for all $x,y,z\in X$ and all $\alpha \in [0,1]$, $y \succsim x$ and $z \succsim x$ implies that $\alpha y + (1-\alpha)z \succsim x$.
+	
+	It is \blue{strictly convex} if for all $x,y,z \in X$ and all $\alpha \in (0,1)$, $y \ne z$, $y \succsim x$, and $z \succsim x$ imply that $\alpha y + (1-\alpha)z \succ x$.
+\end{definition}
 
+\begin{remark}
+	Preferences are convex if and only if $R(x)$ is convex for every $x \in X$. Can you prove this?
+\end{remark}
 
+\begin{definition}
+	The function $u: X \to \reals$ is \blue{quasiconcave} if for all $x,y \in X$ and any $\alpha \in [0,1]$,
+	\[
+	u(\alpha x + (1-\alpha)y) \ge \min\{u(x),u(y)\}
+	\]
+	The function $u: X \to \reals$ is \blue{concave} if for all $x,y \in X$ and any $\alpha \in [0,1]$,
+	\[
+	u(\alpha x + (1-\alpha)y) \ge \alpha u(x) + (1-\alpha)u(y)
+	\]
+	Strict quasiconcavity and strict concavity are defined analogously, restricting $\alpha$ to $(0,1)$, requiring that $x \ne y$, and replacing weak inequalities with strict ones.
+\end{definition}
+\begin{proposition}\label{prop:quasiconcave_convex}
+	$u$ representing $\succsim$ is quasiconcave if and only if $\succsim$ is convex.
+\end{proposition}
+\begin{proof}
+	Assuming quasiconcavity, $y,z \succsim z \Longrightarrow u(y),u(z) \ge u(x)$ implies that $u(\alpha y + (1-\alpha)z) \ge \min\{u(y),u(z)\} \ge u(x)$. Conversely, suppose WLOG that $y \succsim z$. Note also that $z \succsim z$. Thus by convexity of preferences, $\alpha y + (1-\alpha)z \succsim z$, meaning that $u(\alpha y + (1-\alpha)z) \ge u(z) = \min\{u(y),u(z)\}$.
+\end{proof}
 
+\subsection{Consumer Optimization}
 
+\begin{definition}
+	The \blue{consumer's problem} is the optimization problem
+	\[
+	\max_{x \in \reals^L_+} u(x) \st p \cdot x \le w
+	\]
+\end{definition}
 
+\begin{proposition}
+	\red{(Properties of Walrasian Demand Correspondence)} Let $u$ be a continuous utility function representing $\succsim$ on $\reals^L_+$.
+	\begin{itemize}
+		\item[(i)] If $p \in \reals^L_{++}$ and $w \in \reals_{++}$, then there exists an $x\opt \in \reals^L_{++}$ that solves the consumer's problem
+		\item[(ii)] If $\lambda > 0$, then $x\opt$ also solves the consumer's problem for $\lambda p$ and $\lambda w$ (homogeneity of degree 0)
+		\item[(iii)] If in addition $\succsim$ is locally non-satiated, then Walras' Law holds, meaning that $p \cdot x\opt = w$
+		\item[(iv)] If in addition $\succsim$ is strictly convex (equiv. $u$ strictly concave) then $x\opt$ is unique and the Walrasian demand function $x : \reals^L_{++} \times \reals_{++} \to \reals^L_+$ is well-defined and continuous.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item[(i)] $B_{p,w}$ is nonempty and compact and $u$ is continuous, so conclusion follows from the Extreme Value Theorem.
+		
+		\item[(ii)] Observe that $p \cdot x \le w \Longleftrightarrow \lambda p \cdot x \le \lambda w$, so the constraint set is the same in both problems.
+		
+		\item[(iii)] Suppose not: $p \cdot x\opt < w$. Choose $\varepsilon > 0$ such that $p \cdot y < w$ for all $y \in B_\varepsilon(x\opt)$. By local non-satiation, there exists $y \in B_\varepsilon(x\opt)$ such that $y \succ x\opt$. This is a contradiction.
+		
+		\item[(iv)] Suppose not: let $\hat{x}$ be a distinct solution. Fix $\alpha \in (0,1)$. By strict convexity of preferences, $\alpha \hat{x} + (1-\alpha)x\opt \succ x\opt$. By convexity of the budget set, $\alpha \hat{x} + (1-\alpha)x\opt$ is affordable, contradicting that $x\opt$ is a global maximum. Continuity of $x$ is annoying but proven elsewhere.
+	\end{itemize}
+\end{proof}
 
+\begin{proposition}\label{prop:necessary_mrs}
+	\red{(Necessary Conditions)} Suppose that
+	\begin{itemize}
+		\item[(i)] The consumer's preferences on $\reals^L_+$ can be represented by a twice continuously differentiable utility function $u$.
+		
+		\item[(ii)] The preferences are strictly monotone.
+		
+		\item[(iii)] $p \gg 0$ and $w \gg 0$.
+	\end{itemize}
+	If $x\opt$ is an interior solution to the consumer's problem (\ie $x\opt \gg 0$), then
+	\[
+	\text{MRS}_{ij}(x\opt) \coloneqq \frac{\frac{\partial u(x\opt)}{\partial x_i}}{\frac{\partial u(x\opt)}{\partial x_j}} = \frac{p_i}{p_j}
+	\]
+\end{proposition}
+\begin{proof}
+	Strict monotonicity implies that $p \cdot x\opt = w$ and $\frac{\partial u(x\opt)}{\partial x_j} > 0$. We know that $x\opt$ solves the consumer's problem, and the constraint qualification holds. By the Karush-Kuhn-Tucker Theorem, there exists $\lambda > 0$ such that $\nabla u(x\opt) = \lambda p$. Conclusion follows.
+\end{proof}
 
+\begin{proposition}\label{prop:sufficient_unique}
+	\red{(Sufficient Conditions)} Suppose in addition to hypotheses (i) to (iii) of Proposition~\ref{prop:necessary_mrs}, we have 
+	\begin{itemize}
+		\item[(iv)] $\succsim$ are strictly convex. 
+	\end{itemize}
+	If $x\opt$ satisfies $x\opt \gg 0$ and $p \cdot x\opt = w$, and there exists $\lambda > 0$ such that $\nabla u(x\opt) = \lambda p$, then $x\opt$ is the unique solution to the consumer's problem.
+\end{proposition}
+\begin{proof}
+	Omitted, but covered in detail in Part 6: Static Optimization of Tak's lecture notes.
+\end{proof}
 
-
-
-
-
-
-
-
-
-
-
-
-
+\paragraph{Some Math Remarks.} These last few sections make a number of extremely strong assumptions on the shape and size of $X$. These assumptions are largely not necessary, and can trivially be relaxed as far as assuming that $X$ is a metric space. They can be relaxed significantly further than that, with difficulty. If you are interested in what that entails, I can happily talk for hours about it. If you're not a masochist, you can ignore this entire note and assume we are in non-negative Euclidean space always. - Gabe
 
 \newpage
 \section{Consumer Theory (Kircher)}\label{sec:kircher}
@@ -339,9 +502,15 @@ We will almost always make the following assumptions on $x$:
 \section{Information Theory (Battaglini)}\label{sec:battaglini}
 
 \newpage
-\section{Exercises}\label{sec:exercises}
+\section{Exercises and Examples}\label{sec:exercises}
 
+\subsection{Choice (Easley)}
 
+\subsubsection{Easley Homework}
+
+\subsubsection{TA Section Examples}
+
+\subsubsection{Outside Questions}
 
 
 
