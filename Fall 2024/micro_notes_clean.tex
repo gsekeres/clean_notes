@@ -154,10 +154,156 @@ We will now formalize the above.
 	\end{itemize}
 \end{proposition}
 \begin{proof}
-	(ii) and (iii) are equivalent by Proposition~\ref{prop:alpha_beta_hwarp}. (i) $\Longrightarrow$ (ii) is given by Propositions~\ref{prop:rational_alpha} and \ref{prop:rational_beta}. Finally, (iii) $\Longrightarrow$ (i) is given below, in the proof of Proposition~XXX
+	(ii) and (iii) are equivalent by Proposition~\ref{prop:alpha_beta_hwarp}. (i) $\Longrightarrow$ (ii) is given by Propositions~\ref{prop:rational_alpha} and \ref{prop:rational_beta}. Finally, (iii) $\Longrightarrow$ (i) is given below, in the proof of Proposition~\ref{prop:warp_rationality}.
 \end{proof}
 
 \subsection{Observed Choice}
+
+Recall the formal definition of choice correspondences above. We will now add some more structure to that definition.
+
+\begin{definition}
+	For $\mathcal{B}$ a collection of subsets of $X$, $(\mathcal{B},C)$ is called a \blue{choice structure} if $C(B) \subseteq B$ and $C(B) = \emptyset \Longleftrightarrow B = \emptyset$ for all $B \in \mathcal{B}$.
+\end{definition}
+
+\begin{definition}
+	The choice structure $(\mathcal{B},C)$ satisfies the \blue{weak axiom of revealed preference} (\blue{WARP}) if for all $A,B \in \mathcal{B}$ where $x$ and $y$ are in both $A$ and $B$, $x \in C(A)$, and $y\in C(B)$, then $x \in C(B)$ and $y \in C(A)$.\footnote{Note the difference in wording from before -- we cannot have as a condition that $x,y \in A \cap B$ as $A \cap B$ is not necessarily in $\mathcal{B}$.}
+\end{definition}
+\begin{remark}
+	When $\mathcal{B} = \mathcal{P}(X)$, WARP is the same as HWARP.
+\end{remark}
+\begin{definition}
+	Given a choice structure $(\mathcal{B},C)$, the \blue{revealed preference relation} $\succsim\opt$ is defined such that $x \succsim\opt y$ if $\exists B \in \mathcal{B}$ such that $x,y \in B$ and $x \in C(B)$.
+\end{definition}
+\begin{proposition}\label{prop:warp_rationality}
+	Suppose that $X$ is finite and $\mathcal{B} = \mathcal{P}(X)$. If $(\mathcal{B},C)$ satisfies WARP then the revealed preference relation that it induces, $\succsim\opt$ is rational and $C(B) = C\opt(B,\succsim\opt)$ for all $B \in \mathcal{B}$.
+\end{proposition}
+\begin{proof}
+	If $\mathcal{B} = \mathcal{P}(X)$ and $(\mathcal{B},C)$ is a choice structure, then $C(Y)$ is defined as nonempty for every $Y = \{x,y\} \subseteq X$. This implies that $x \succsim\opt y$ or $y \succsim\opt x$ for all $x,y \in X$, so $\succsim\opt$ is complete.
+	
+	Suppose $x\succsim\opt y$ and $y \succsim\opt z$. Then there exists $A \subseteq X$ containing $x$ and $y$ such that $x \in C(A)$; and $B\subseteq X$ containing $y$ and $z$ such that $y \in C(B)$. Moreover, $\{x,y,z\} \subseteq \mathcal{B}$ and $C(\{x,y,z\})$ is nonempty. Suppose $y \in C(\{x,y,z\})$. Then by WARP, $x \in C(\{x,y,z\})$. Suppose $z \in C(\{x,y,z\})$. Then again by WARP, $y \in C(\{x,y,z\})$ and thus $x \in C(\{x,y,z\})$. In any case, $x \in C(\{x,y,z\})$ implies that $x \succsim\opt z$, so $\succsim\opt$ is transitive.
+	
+	Let $x$ be an element of $C\opt(B,\succsim\opt)$. Then $x \succsim\opt y \forall y \in B$. Since $C(B)$ is nonempty, we have that $z \in C(B)$ for some $z$. By $x \succsim\opt z$, there exists $A \in \mathcal{B}$ such that $x,z \in A$ and $x \in C(A)$. Therefore by WARP, $x \in C(B)$. Conversely, suppose $x \in C(B)$. Then $x \succsim\opt y$ for all $y \in B$, and so $x \in C\opt(B,\succsim\opt)$.
+\end{proof}
+
+\begin{remark}
+	A stronger version of Proposition~\ref{prop:warp_rationality} exists, though we do not present the proof here:
+\end{remark}
+\begin{proposition}\label{prop:warp_rationality_3}
+	Suppose that $X$ is finite and for all $Y \subseteq X$ where $|Y| \le 3$, $Y \in \mathcal{B}$. If $(\mathcal{B},C)$ satisfies WARP then the revealed preference relation that it induces, $\succsim\opt$ is rational and $C(B) = C\opt(B,\succsim\opt)$ for all $B \in \mathcal{B}$.
+\end{proposition}
+
+\begin{remark}
+	This does not hold for anything less strong than 3. Consider the following counterexample: Suppose $X = \{x,y,z,w\}$ and $\mathcal{B} = \{\{x,y\},\{y,z\},\{z,w\},\{w,x\}\}$. Let $C$ be defined by:
+	\[
+	C(\{x,y\}) = \{x,y\} \quad ;\quad C(\{y,z\}) = \{y,z\} \quad ;\quad C(\{z,w\}) = \{z,w\} \quad ;\quad C(\{w,z\}) = \{x\} 
+	\]
+	Because no pair of elements of $X$ are both in two elements of $\mathcal{B}$, WARP is vacuously satisfied. But neither $x \succsim\opt z$ or $z \succsim\opt x$, so $\succsim\opt$ is incomplete. We can also show that it is intransitive (how?). Moreover, if we extend $C$ to the family of all two-element subsets of $X$, such that everything except for $\{w,x\}$ is mapped to itself (and $C(\{w,z\}) = \{x\}$), $\succsim\opt$ is complete but remains intransitive.
+\end{remark}
+
+\subsection{Incomplete Preferences}
+
+\begin{definition}
+	$\succ$ is a \blue{strict partial order} if (i) for any $x,y \in X$, if $x \succ y$, then $y \not\succ x$, and (ii) $\succ$ is transitive.
+\end{definition}
+\begin{remark}
+	Note that we are explicitly not defining $\sim$ as $x \sim y$ if $x \not\succ y$ and $y \not\succ x$. The two elements could be incomparable, we do not assume completeness here.
+\end{remark}
+
+\begin{proposition}\label{prop:partial_order}
+	Define choice by
+	\[
+	C\opt(A,\succ) \coloneqq \{x \in A : \forall y \in A, y\not\succ x\}
+	\]
+	where $\succ$ is a strict partial order. Then $C$ satisfies Sen's $\alpha$ but not Sen's $\beta$.
+\end{proposition}
+\begin{proof}
+	
+	\begin{itemize}
+		\item[(i)] Suppose $x \in A \subseteq B$ and $x \in C(B,\succ)$. Then there does not exist $y \in B$ such that $y \succ x$. It follows that no such $y$ exists in $A \subseteq B$ either, so $x \in C(A,\succ)$.
+		
+		\item[(ii)] Suppose that $x,y \in C(A,\succ)$, $A \subseteq B$, $y \in C(B,\succ)$, and there is some $z \succ x$ in $B$ such that $y$ and $z$ are incomparable. Then the hypotheses of Sen's $\beta$ are satisfied, but $x \not\in C(B,\succ)$.
+	\end{itemize}
+\end{proof}
+
+\subsection{WARP and the Slutsky Matrix}
+
+We will make the following assumptions throughout:
+
+\begin{assumption}
+	We have (i) $L$ commodities, $x \coloneqq (x_1,\dots,x_L) \in \reals^L_+$; (ii) prices $p \coloneqq (p_1,\dots,p_L) \in \reals^L_{++}$; (iii) wealth $w > 0$; and (iv) budget set $B_{p,w} \coloneqq \{x \in \reals^L_+ : p\cdot x \le w\}$.
+\end{assumption}
+
+\begin{definition}
+	We define the \blue{Walrasian demand function} (also sometimes called the \blue{Marshallian demand function}) by $x : \reals^L_{++} \times \reals_{++} \to \reals^L_+$, where $x(p,w)$ is the consumer's choice at prices $p$ and wealth $w$. Note that $(p,w)$ may not uniquely specify a value. In that case, we have the \blue{Walrasian (Marshallian) demand correspondence}, $X: \reals^L_{++} \times \reals_{++} \rightrightarrows \reals^L_+$.
+\end{definition}
+
+\begin{assumption}
+We will almost always make the following assumptions on $x$:
+\begin{itemize}
+	\item[(i)] $x(p,w)$ is homogeneous of degree 0, meaning that
+	\[
+	x(\alpha p ,\alpha w) = x(p,w) \text{ for all } (p,w) \in \reals^L_{++} \times \reals_{++} \text{ and } \alpha > 0
+	\]
+	\item[(ii)] $x(p,w)$ satisfies Walras' Law: $p \cdot x(p,w) = w$ for all $(p,w) \in \reals^L_{++} \times \reals_{++}$
+\end{itemize}
+\end{assumption}
+\begin{proposition}\label{prop:walras_law_choice_structure}
+	Let $\mathcal{B}^W \coloneqq \{B_{p,w} : (p,w) \in \reals^L_{++} \times \reals_{++}\}$ and $C_x(B_{p,w}) \coloneqq \{x(p,w)\}$, and let $x$ be homogeneous of degree 0 and satisfy Walras' Law. Then $(\mathcal{B}^W,C_x)$ is a choice structure.
+\end{proposition}
+\begin{proof}
+	We want to show that $C_x(B_{p,w})$ is a uniquely-defined nonempty subset of $B_{p,w}$ for all $B_{p,w} \in \mathcal{B}^W$. That $C_x(B_{p,w})$ is nonempty follows from the definition of $x$ as a function (or correspondence). Homogeneity of degree 0 implies that for $B_{p,w} = B_{\alpha p,\alpha w}$, $C_x(B_{p,w}) = C_x(B_{\alpha p,\alpha w})$. Walras' Law implies that $C_x(B_{p,w}) \subseteq B_{p,w}$.
+\end{proof}
+
+\begin{definition}
+	In the context of consumer choice, $x(p,w)$ satisfies the \blue{weak axiom of revealed preferences} (\blue{WARP}) if the following holds: If $(p,w),(p',w') \in \reals^L_{++} \times \reals_{++}$ are such that $p' \cdot x(p,w) \le w'$ and $x(p',w') \ne x(p,w)$, then $p\cdot x(p',w') > w$.
+\end{definition}
+\begin{remark}
+	Basically, if the consumer ever chooses $x'$ when $x$ is available, then there's no way that both $x$ and $x'$ could be available and $x$ would be chosen.
+\end{remark}
+\begin{definition}
+	A \blue{Slutsky compensated price change} is a price change from $p$ to $p'$ accompanied by a change in wealth from $w$ to $w'$ that makes the old bundle just affordable. That is, such that $p' \cdot x(p,w) = w'$.
+\end{definition}
+
+\begin{proposition}
+	\red{(Law of Compensated Demand)} Suppose that consumer demand $x(p,w)$ is homogeneous of degree 0 and satisfies Walras' Law. Then $x(p,w)$ satisfies WARP if and only if for any compensated price change from $(p,w)$ to $(p',w') \coloneqq (p',p' \cdot x(p,w))$ we have
+	\[
+	(p' - p)\cdot (x(p',w') - x(p,w)) \le 0
+	\] 
+	with strict inequality if $x(p',w') \ne x(p,w)$.
+\end{proposition}
+\begin{proof}
+	By WARP, $p \cdot x(p',w') \ge p \cdot x(p,w) = w$, with strict inequality if and only if $x(p,w) \ne x(p',w')$. By Walras' Law, we have that $p'\cdot x(p',w') = p'\cdot x(p,w) = w'$. Subtracting, we get
+	\[
+	(p - p') \cdot x(p',w') \ge (p - p')\cdot x(p,w) \Longrightarrow (p' - p) \cdot (x(p',w') - x(p,w)) \le 0
+	\]
+	Conversely, say that $(p' - p) \cdot (x(p',w') - x(p,w)) \le 0$. Then we have that
+	\[
+	p' \cdot x(p',w') - p' \cdot x(p,w) - p \cdot (x(p',w') - x(p,w)) \le 0 \Longrightarrow p \cdot x(p',w') > w
+	\]
+	since $p' \cdot x(p',w') < p' \cdot x(p,w)$. The case of strict inequality is analogous.
+\end{proof}
+
+\begin{proposition}\label{prop:law_of_demand}
+	Let $x : \reals^L_+ \times \reals_+ \to \reals^L_+$ be continuously differentiable. Then
+	\[
+	\frac{\partial x_j(p,w)}{\partial p_j} + x_j(p,w) \frac{\partial x_j(p,w)}{\partial w} \le 0
+	\]
+\end{proposition}
+\begin{proof}
+	Assume that $p$ changes solely in $p_j$, by $\Delta p_j$, and let $\Delta w$ be the compensating change in wealth, as above. Let $\Delta x \coloneqq x(p',w') - x(p,w)$. Then by the law of compensated demand,
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

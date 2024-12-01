@@ -12,13 +12,22 @@ Please let me know what section you would like to contribute to! I will deal wit
 
 # Current structure:
 
-- Easley (choice): Gabe
-- Kircher (consumer): __
-- Harris (producer): __
-- Blume (uncertainty): __
-- Barseghyan (uncertainty 2): __
-- Battaglini (information / game theory): __
-- Exercises: Gabe will add, along with solutions
+- Section 1: Easley (choice): Gabe
+    - Status: Done
+- Section 2: Kircher (consumer): __
+    - Status: Not started
+- Section 3: Harris (producer): __
+    - Status: Not started
+- Section 4: Blume (uncertainty): __
+    - Status: Not started
+- Section 5: Barseghyan (uncertainty 2): __
+    - Status: Not started
+- Section 6: Battaglini (information / game theory): __
+    - Status: Not started
+- Section 7: Exercises: Gabe will add, along with solutions. 
+    - Status: In progress. 
+    - Done: Section 1
+    - Not started: 2, 3, 4, 5, 6
 
 # Other sources I'm using: 
 
