@@ -19,7 +19,7 @@ I will occasionally make reference to the Stanford ECON 202 notes, created by \h
 
 \paragraph{Notation.} A large part of this project is an attempt to unify the notation used by our separate professors. I default to the notation used in the Easley notes, then to MWG, and then use my own judgement. New definitions will have a word highlighted in \blue{blue}, and theorems will be named in \red{red}. 
 
-\paragraph{Structure.} The course (and these notes) are organized as follows. Prof. Easley taught an introduction to choice theory, Section~\ref{sec:easley}. Prof. Kircher taught consumer theory, Section~\ref{sec:kircher}. Prof. Harris taught producer theory, and some concepts of market failures, Section~\ref{sec:harris}. Prof. Blume introduced the theory of choice under uncertainty, Section~\ref{sec:blume}, and Prof. Barseghyan continued with theoretical applications for uncertainty and expected utility maximization, Section~\ref{sec:barseghyan}. Finally, Prof. Battaglini taught on information theory, Section~\ref{sec:battaglini}.
+\paragraph{Structure.} The course (and these notes) are organized as follows. Prof. Easley taught an introduction to choice theory, Section~\ref{sec:easley}. Prof. Kircher taught consumer theory, Section~\ref{sec:kircher}. Prof. Harris taught producer theory, and some concepts of market failures, Section~\ref{sec:harris}. Prof. Blume introduced the theory of choice under uncertainty, Section~\ref{sec:blume}, and Prof. Barseghyan continued with theoretical applications for uncertainty and expected utility maximization, Section~\ref{sec:barseghyan}. Prof. Battaglini taught on information theory, Section~\ref{sec:battaglini}. We also include here exercises with solutions, divided into the various sections and sources. This is Section~\ref{sec:exercises}.
 
 
 \newpage
@@ -77,6 +77,100 @@ We will now formalize the above.
 	Let the \blue{power set} of $X$, denoted $\mathcal{P}(X)$, be the set of all subsets of $X$. Note that since $X$ is finite, $\mathcal{P}(X)$ is finite.
 \end{definition}
 
+\begin{definition}
+	(Formal) A correspondence $C\opt : \mathcal{P}(X) \rightrightarrows X$ is a \blue{choice correspondence} for some (not necessarily complete; not necessarily transitive) preference relation $\succsim$ if $C\opt(B) \subseteq B$ for all $B \subseteq X$.
+\end{definition}
+\begin{remark}
+	This definition is from the Stanford notes -- I find it more intuitive than defining it the other way, but it requires divorcing the choice structure from the preference relation. Some intuition that's helpful for me: Easley's definition starts with the preference relation and then defines the choice correspondence, while Segal's definition starts with the choice correspondence and then applies it to a preference relation. They will (as we will see below) often be equivalent, but it's a subtle distinction. I will denote an arbitrary choice correspondence by $C\opt(\cdot)$ and one connected with a preference relation $\succsim$ by $C\opt(\cdot, \succsim)$.
+\end{remark}
+
+\begin{proposition}\label{prop:rational_choice_nonempty}
+	If $\succsim$ is a rational preference relation on $X$, then
+	\[
+	C\opt : \mathcal{P}(X) \setminus \emptyset \to \mathcal{P}(X) \setminus \emptyset 
+	\]
+	In words, the associated choice correspondence to a rational preference relation is nonempty for nonempty inputs.
+\end{proposition}
+\begin{remark}
+	The Easley notes define power sets slightly differently. This is unnecessary and (I feel) less intuitive.
+\end{remark}
+\begin{proof}
+	Proof by induction on $n = |B|$. Suppose $|B| = 1$, so $B = \{x\}$ for some $x \in X$. Then by completeness, $x \succsim x$, and $C\opt(B,\succsim) = \{x\} \in \mathcal{P}(X) \setminus \emptyset$. Suppose next that for any $Y$ where $|Y| = n$, $C\opt(Y,\succsim)$ is nonempty. Take some arbitrary $B$, where $|B| = n + 1$. Define $B'\coloneqq B \setminus \{x\}$, and let $x'$ be an element of $C\opt(B',\succsim)$, which is nonempty by the inductive hypothesis. By completeness, either $x \succ x'$, $x' \succ x$, or $x \sim x'$. Case by case, we would have that $C\opt(B,\succsim) \in \curll\{x\},C\opt(B',\succsim),C\opt(B',\succsim) \cup \{x\}\curlr \subseteq \mathcal{P}(X)$, by transitivity.
+\end{proof}
+
+\begin{definition}
+	$C\opt$ satisfies \blue{Sen's $\alpha$}, also known as \blue{independence of irrelevant alternatives}, if $x \in A \subseteq B$ and $x \in C\opt(B,\succsim)$ implies that $x \in C\opt(A,\succsim)$.
+\end{definition}
+\begin{remark}
+	The classical example of a preference relation that violates Sen's $\alpha$ is `choosing the second-cheapest wine.' It should be fairly clear to see why this violates Sen's $\alpha$. Is it a rational preference relation?
+\end{remark}
+
+\begin{proposition}\label{prop:rational_alpha}
+	If $\succsim$ is a rational preference relation, then $C\opt(\cdot,\succsim)$ satisfies Sen's $\alpha$.
+\end{proposition}
+\begin{proof}
+	The result is trivially true if $A = B$. Suppose that $A \subset B$. Let $x \in C\opt(B,\succsim)$. Then $x \succsim y$ for all $y \in B$. In particular, if $y \in A \subseteq B$, then $x \succsim y$. Thus, $x \in C\opt(A,\succsim)$.
+\end{proof}
+
+\begin{definition}
+	$C\opt$ satisfies \blue{Sen's $\beta$}, also known as \blue{expansion consistency}, if $x,y \in C\opt(A,\succsim)$, $A \subseteq B$, and $y \in C\opt(B,\succsim)$ implies that $x \in C\opt(B,\succsim)$.
+\end{definition}
+
+\begin{remark}
+	I couldn't find a classical example violating Sen's $\beta$, but a simple one is as follows: assume that the waiter offers you French or Italian wine. You are indifferent between them, but then they remember that they also have California wine. You say 	`in that case, I'll have the French wine'. Again, this directly violate's Sen's $\beta$, but is it rational? Why or why not?
+\end{remark}
+
+\begin{proposition}\label{prop:rational_beta}
+	If $\succsim$ is a rational preference relation, then $C\opt(\cdot,\succsim)$ satisfies Sen's $\beta$.
+\end{proposition}
+\begin{proof}
+	Let $x,y \in C\opt(A,\succsim)$, $A \subseteq B$, and $y \in C\opt(B,\succsim)$. Since $x \in C\opt(A,\succsim)$, we have $x \succsim y$ since $y \in A$. Since $y \in C\opt(B,\succsim)$, we have $y\succsim z$ for all $z \in B$. By transitivity, $x \succsim y$ and $y \succsim z$ implies that $x \succsim z$ for all $z \in B$, so $x\in C\opt(B,\succsim)$. 
+\end{proof}
+
+\begin{definition}
+	$C\opt$ satisfies \blue{Houthaker's weak axiom of revealed preference} (often called either \blue{HWARP} or \blue{HARP}) if for all $A,B \in \mathcal{P}(X)$ if $x,y \in A \cap B$, $x \in C\opt(A,\succsim)$ and $y \in C\opt(B,\succsim)$, then $x \in C\opt(B,\succsim)$ and $y \in C\opt(A,\succsim)$.
+\end{definition}
+
+\begin{proposition}\label{prop:alpha_beta_hwarp}
+	$C\opt : \mathcal{P} \rightrightarrows X$ satisfies Sen's $\alpha$ and $\beta$ if and only if it satisfies Houthaker's weak axiom of revealed preference.
+\end{proposition}
+\begin{proof}
+	
+	\begin{itemize}
+		\item[(i)] ($\alpha + \beta \Longrightarrow $ HWARP) Suppose $x,y \in A \cap B \subseteq \mathcal{P}(X)$, $x \in C\opt(A,\succsim)$, and $y \in C\opt(B,\succsim)$. By Sen's $\alpha$, both $x$ and $y$ are in $C\opt(A \cap B,\succsim)$. Then by Sen's $\beta$, $x \in C\opt(B,\succsim)$ and $y \in C\opt(A,\succsim)$.
+		
+		\item[(ii)] (HWARP $\Longrightarrow \beta$) Say $x,y \in C\opt(A,\succsim)$, $A \subseteq B$ and $y \in C\opt(B,\succsim)$. Because $A = A \cap B$, $x,y \in C\opt(A \cap B,\succsim)$. Applying HWARP, we have that $x \in C\opt(B,\succsim)$.
+		
+		\item[(iii)] (HWARP $\Longrightarrow \alpha$) Say $x \in A \subseteq B$ and $x \in C\opt(B,\succsim)$. Suppose $x \not\in C\opt(A,\succsim)$. Then by Proposition~\ref{prop:rational_choice_nonempty}, there exists $y \in C\opt(A,\succsim)$. Note that $x,y \in A = A \cap B$, $x \in C\opt(B,\succsim)$ and $y \in C\opt(A,\succsim)$. By HWARP, $x \in C\opt(A,\succsim)$, which is a contradiction.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}\label{prop:hwarp_alpha_beta_equiv}
+	The following are equivalent for $C\opt(\cdot,\succsim)$, where $C\opt: \mathcal{P}(X) \to \mathcal{P}(X)$
+	\begin{itemize}
+		\item[(i)] $\succsim$ is rational
+		\item[(ii)] $C\opt$ satisfies Sen's $\alpha$ and $\beta$
+		\item[(iii)] $C\opt$ satisfies HWARP
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	(ii) and (iii) are equivalent by Proposition~\ref{prop:alpha_beta_hwarp}. (i) $\Longrightarrow$ (ii) is given by Propositions~\ref{prop:rational_alpha} and \ref{prop:rational_beta}. Finally, (iii) $\Longrightarrow$ (i) is given below, in the proof of Proposition~XXX
+\end{proof}
+
+\subsection{Observed Choice}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -98,7 +192,8 @@ We will now formalize the above.
 \newpage
 \section{Information Theory (Battaglini)}\label{sec:battaglini}
 
-
+\newpage
+\section{Exercises}\label{sec:exercises}
 
 
 
