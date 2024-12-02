@@ -695,41 +695,129 @@ We will almost always make the following assumptions on $x$:
 \end{proof}
 
 
-
-
-
-
-
 \subsection{Duality (Additional)}
 
+\begin{remark}
+	Prof. Kircher didn't directly go over this, and I didn't find the way the TAs presented it particularly intuitive. Here, I will present a few results (without proof) and explain, as best I can, the intuition behind the relationships between profit maximization. These results are drawn from the Easley notes, the Stanford ECON 202 notes, and specifically \href{https://www.ellietyger.com/}{Ellie Tyger's} excellent TA sections.
+\end{remark}
 
+In general, the topline result we will be working with is the following:
 
+\begin{proposition}
+	Assume $\succsim$ is continuous and locally non-satiated. Then
+	\begin{itemize}
+		\item[(i)] $H(p,V(p,w)) = X(p,w)$
+		
+		\item[(ii)] $X(p,e(p,\bar{u})) = H(p,\bar{u})$
+		
+		\item[(iii)] $e(p,V(p,w)) = w$
+		
+		\item[(iv)] $V(p,e(p,\bar{u})) = \bar{u}$
+	\end{itemize}
+\end{proposition}
 
+With some additional assumptions, we can get even stronger results:
 
+\begin{proposition}
+	\red{(Shephard's Lemma)} In addition to assuming continuity and local non-satiation, assume that $\succsim$ are strictly convex and that $e$ is continuously differentiable. Then for $p \gg 0$ and for all $i \in \{1,\dots,L\}$,
+	\[
+	h_i(p,\bar{u}) = \frac{\partial e(p,\bar{u}}{\partial p_i}
+	\]
+\end{proposition}
 
+\begin{proposition}
+	\red{(Roy's Identity)} In addition to assuming continuity and local non-satiation, assume that $\succsim$ are strictly convex and that $e$ and $V$ are continuously differentiable. Then for $p \gg 0$ and for all $i \in \{1,\dots,L\}$,
+	\[
+	x_i(p,w) = -\frac{\frac{\partial V(p,w)}{\partial p_i}}{\frac{\partial V(p,w)}{\partial w}}
+	\]
+\end{proposition}
 
+\begin{proposition}
+	\red{(The Slutsky Equation)} Suppose that $e$ and $V$ are twice continuously differentiable. Fix $p$ and $w$, and let $u\opt \coloneqq V(p,w)$. Then
+	\[
+	\frac{\partial x_i(p,w)}{\partial p_j} = \underbrace{\frac{\partial h_i(p,u\opt)}{\partial p_j}}_{\textnormal{Substitution Effect}} - \underbrace{x_j(p,w) \frac{\partial x_i(p,w)}{\partial w}}_{\textnormal{Income Effect}}
+	\]
+\end{proposition}
 
+We can think of the properties of the utility maximization and expenditure minimization problem by comparing the effects of different, equivalent assumptions, in Table~\ref{tab:ump_emp_problem}.
 
+\begin{table}[H]\label{tab:ump_emp_problem}
+	\centering
+	\begin{tabular}{|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{5cm}|}
+	\hline
+	\textbf{Assumptions} & \textbf{Properties of UMP} & \textbf{Properties of EMP} \\
+	\hline
+	$u$ represents continuous preferences, feasible set is non-empty & $X(p,w) \neq \emptyset$ for $p \gg 0, w > 0$ & $H(p,\bar{u}) \neq \emptyset$ for all $p \gg 0, \bar{u} \geq u(0)$ \\
+	\hline
+	$u$ represents convex preferences & $X(p,w)$ is convex-valued & $H(p,\bar{u})$ is convex-valued \\
+	\hline
+	$u$ represents strictly convex and continuous preferences & $X(p,w)$ is single-valued for $p \gg 0$ & $H(p,\bar{u})$ is single-valued \\
+	\hline
+	- & $V(p,w)$ and $x(p,w)$ are homogeneous of deg 0 & $e(p,\bar{u})$ is  homogeneous of deg 1 in $p$, $H(p,\bar{u})$ is  homogeneous of deg 0 in $p$ \\
+	\hline
+	- & $V(p,w)$ is nondecreasing in $p$ and nondecreasing in $w$ & $e(p,\bar{u})$ is nondecreasing in $p$ and $\bar{u}$ \\
+	\hline
+	UMP: locally non-satiated $\succeq$ on $X = \mathbb{R}^L_{+}$ \newline EMP: $u$ represents continuous $\succeq$ & $p \cdot x = w$ for $x \in X(p,w)$ (Walras's Law) & $u(x) = \bar{u}$ for all $x \in H(p,\bar{u}), w \geq u(0)$ \\
+	\hline
+	UMP: locally non-satiated $\succeq$ on $X = \mathbb{R}^L_{+}$ \newline EMP: $u$ represents continuous $\succeq$ & $V(p,w)$ is strictly increasing in $w$ & $e(p,\bar{u})$ is strictly increasing in $\bar{u}$ for $p \gg 0, \bar{u} \geq u(0)$ \\
+	\hline
+	\end{tabular}
+	\caption{Properties of Utility Maximization and Expenditure Minimization Problems}
+\end{table}
 
+We can also examine the technical assumptions and which of the theorems we can obtain from them, in Table~\ref{tab:assumptions_lemmas_ump_emp}.
 
+\begin{table}[H]\label{tab:assumptions_lemmas_ump_emp}
+	\footnotesize
+	\centering
+	\begin{tabular}{|>{\centering\arraybackslash}m{3.75cm}|>{\centering\arraybackslash}m{3.75cm}|>{\centering\arraybackslash}m{3.75cm}| >{\centering\arraybackslash}m{3.75cm}|}
+	\hline
+	\textbf{Technical Assumption} & $e(p,\bar{u}) = p \cdot H(p,\bar{u})$ differentiable & $H(p,\bar{u})$ continuously differentiable in $p$ & None\\
+	\hline
+	\textbf{First Order Condition} & \textbf{Shephard's Lemma}: $\nabla_p e(p,\bar{u}) = H(p,\bar{u})$  & \textbf{Slutsky Matrix Properties}: $D_p H(p,u)$ is symmetric and $D_p H(p,u)p = 0$ & \textbf{Compensated Consumer Surplus Formula}: For all smooth $\rho : [0,1] \to \reals^L_+$ where $\rho(0) = p$ and $\rho(1) = p'$, $e(p',\bar{u}) - e(p,\bar{u}) = \int_0^1 H(\rho(t),\bar{u})\rho'(t)dt$  \\
+	\hline
+	\textbf{Second Order Condition} & \textbf{Concavity}: $e(p,\bar{u})$ is concave & \textbf{Slutsky Matrix}: $D_pH(p,u)$ is negative semidefinite & \textbf{Law of Compensated Demand}: $(p' - p) \cdot (H(p',\bar{u}) - H(p,\bar{u})) \le 0$ \\
+	\hline
+	\end{tabular}
+	\caption{Technical Assumptions and Results}
+\end{table}
 
+The most important thing to remember is the relationships between these separate objects, which are illustrated in Figure~\ref{fig:ump_emp_relationships}.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.5]
+		\node at (0,10) {$X(p,w)$};
+		\node at (0,0) {$H(p,\bar{u})$};
+		\node at (10,0) {$e(p,\bar{u})$};
+		\node at (10,10) {$V(p,w)$};
+		
+		\draw[<->, very thick] (0.5,0.75) to[out=70,in=-70] (0.5,9.25);
+		\draw[<->, dotted, very thick] (-0.5,0.75) to[out=110,in=-110] (-0.5,9.25);
+		
+		\draw[<->,very thick] (10,0.75)--(10,9.25);
+		
+		\draw[->,very thick] (1.75,-0.75) to[out=-20,in=200](8.5,-0.75);
+		\draw[<-,very thick] (1.75,0.75) to[out=20,in=-200](8.5,0.75);
+		
+		\draw[->,very thick] (1.75,9.25) to[out=-20,in=200](8.5,9.25);
+		\draw[<-,very thick] (1.75,10.75) to[out=20,in=-200](8.5,10.75);
+		
+		\node at (5,2) {\scriptsize Shephard: $H = \nabla_p e$};
+		\node at (5,-2) {\scriptsize Adding-up: $e = p \cdot H$};
+		\node[right] at (10,5.35) {\scriptsize $V(p,e) = \bar{u}$};
+		\node[right] at (10,4.65) {\scriptsize $e(p,V) = w$};
+		
+		\node[left] at (-1.5,5) {\scriptsize Slutsky: $\frac{\partial x_i}{\partial p_j} + \frac{\partial x_i}{\partial w} x_j = \frac{\partial h_i}{\partial p_j}$};
+		\node[right] at (1.5,5.35) {\scriptsize $X = H(p,V)$};
+		\node[right] at (1.5,4.65) {\scriptsize $H = X(p,e)$};
+		
+		\node at (5,12) {\scriptsize Roy: $x = \frac{-\nabla_p V}{\partial V / \partial w}$};
+		\node at (5,8) {\scriptsize $V = u(X)$};
+	\end{tikzpicture}
+	\caption{Relationships Between UMP and EMP}
+	\label{fig:ump_emp_relationships}
+\end{figure}
 
 \newpage
 \section{Producer Theory (Harris)}\label{sec:harris}
@@ -742,6 +830,231 @@ We will almost always make the following assumptions on $x$:
 
 \newpage
 \section{Information Theory (Battaglini)}\label{sec:battaglini}
+
+\subsection{Asymmetric Information}
+
+\begin{definition}
+	We say that we have \blue{complete information} if all agents know all of the relevant information. We say that information is \blue{incomplete} otherwise. We have two types of incomplete information:
+	\begin{itemize}
+		\item[(i)] \blue{Symmetric incomplete information}: some variables are unknown, but no privileged information
+		\item[(ii)] \blue{Asymmetric incomplete information}: some players have more information than others
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	We have two broad categories of asymmetric information problems: (i) \blue{adverse selection}, when the asymmetric information concerns the characteristics of the agents (think insurance, lending, selling, etc); and (ii) \blue{moral hazard} when the information concerns the action of some character (think work relations, also insurance, also lending, etc).
+\end{remark}
+
+\begin{model}
+	\red{(Lemons)} (from \href{https://www.jstor.org/stable/1879431}{Akerlof (1970)}). Consider a labor market in which a worker produces $\theta$ units. $\theta$ has distribution $F(\theta)$ in $[\underline{\theta},\overline{\theta}]$, with $0 < \underline{\theta} < \overline{\theta} < \infty$. Firms hire workers to produce the good and sell it in a competitive market at price $p = 1$. The number of workers is $N$, and firms are risk-neutral. Workers have a reservation value for their time $r(\theta)$, which can be thought of as unemployment insurance, or the value of going to school, or whatever. Employed workers receive a wage, which may or may not depend on $\theta$.
+\end{model}
+
+\paragraph{Complete Information.} In a competitive equilibrium with complete information, all workers with $r(\theta) < \theta$ are employed. $w(\theta) = \theta$ for all employed workers, and $w(\theta) < \theta$ for the unemployed. Note that this market outcome is Pareto optimal: it is not possible to make any worker strictly better off without making some agent strictly worse off. Aggregate surplus in this model is:
+\[
+W\opt = \int_{\underline{\theta}}^{\overline{\theta}} N \barl \ones_{\theta} \cdot \theta + (1 - \ones_\theta) r(\theta)\barr dF(\theta)
+\]
+where $\ones_\theta = 1$ if $r(\theta) < \theta$ and 0 otherwise.
+
+\paragraph{Asymmetric Information.} Since worker types are unobservable, there will only be one market here, with price $w$. Supply in this market is $\Theta(w)\coloneqq \{\theta : r(\theta) < w\}$, so $S(w) = F(r^{-1}(w))$. For simplicity, let's assume that indifferent workers will choose to work. Demand is:
+\[
+D(w) = \begin{cases} 0 & \expect \theta < w \\ [0,\infty] & \expect \theta = w \\ \infty & \expect \theta > w \end{cases}
+\]
+It is clear that $S(w) = D(w)$ only when $\expect \theta = w$. At the same time, $\expect\theta$ must be consistent with supply, so we must have that $w = \expect\barl\theta : r(\theta) \le w\barr$. This condition is called \blue{rational expectations}.
+
+\begin{definition}
+	Ina. competitive market model with unobservable worker's productivity, a \blue{competitive equilibrium} is a wage rate $w\opt$ and a set of workers $\Theta\opt$ such that
+	\[
+	\Theta\opt = \{\theta : r(w) \le w\} \quad \text{ and } \quad w\opt = \expect\barl \theta : \theta \in \Theta\opt\barr 
+	\]
+\end{definition}
+
+\begin{remark}
+	The rational expectation requirement is well-defined only if $\Theta\opt$ is non-empty. If $\Theta\opt$ is an empty set, we need to specify off-path beliefs, since the firms expect no supply of labor. For now, we have the following, which is as good as anything else:
+\end{remark}
+\begin{assumption}
+	If $\Theta\opt = \emptyset$, then $w\opt = \expect \theta$, the unconditional expectation.
+\end{assumption}
+
+\begin{remark}
+	In general, with imperfect information, a competitive equilibrium is Pareto inefficient. 
+\end{remark}
+
+\begin{example}
+	To see this point, assume $r(\theta) = r$ for some constant. The Pareto optimal allocation requires that all workers with $\theta > r$ to work, and all types with $\theta < r$ to not work. But this is impossibly in a competitive equilibrium: if $w > r$, everyone works, and if $w < r$, nobody works. If $w = r$, the types are indifferent, but there's no reason they should sort the way we want. The problem is that firms are unable to distinguish types, so there's no way to sort the workers.
+\end{example}
+
+
+\begin{example}
+	(Adverse Selection and Market Unraveling) We now consider the more realistic case where $r(\theta)$ is increasing in $\theta$. For simplicity, we assume that $r(\theta) \le \theta$ for all $\theta$, so it is efficient to have full employment. Further, we assume that $r(\theta)$ is \emph{strictly} increasing in $\theta$. Now we have that $\expect[\theta : r(\theta) \le w]$ is continuous in $w$, as long as $F$ has a density $f$, and is increasing in $w$.
+	
+	Note some implications: (i) $\expect[\theta : r(\theta) \le r(\underline{\theta})] = \underline{\theta} \ge r(\underline{\theta})$, and (ii) $\expect[\theta : r(\theta) \le r(\overline{\theta})] = \expect \theta < \overline{\theta}$. Thus, we have Figure~\ref{fig:lemon_one_equilibrium}, where $\expect[\theta : r(\theta) \le w]$ is above the $45^\circ$ line at $w = r(\underline{\theta})$, and below at $w = r(\overline{\theta})$. 
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=0.5]
+    		\draw[very thick,<->] (10.5,0)--(0,0)--(0,10.5);
+    		\draw[] (0,0)--(10,10);
+ 			\node[below] at (10.5,10) {$45^\circ$};   		
+    		\draw[dashed] (0,9)--(9,9)--(9,0);
+    		\node[left] at (0,9) {$\overline{\theta}$};
+    		\node[below] at (9,0) {$\overline{\theta}$};
+    		\node[below] at (1.5,0) {$r(\underline{\theta})$};
+			\node[below] at (3,0) {$\underline{\theta}$};
+			\node[below] at (4.5,0) {$w\opt$};
+			\node[below] at (7,0) {$r(\overline{\theta})$};
+			\node[left] at (0,6) {$\expect[\theta]$};
+			\node[left] at (0,4.5) {$w\opt$};
+			\node[left] at (0,3) {$\underline{\theta}$};
+			
+			\draw[dashed] (0,3)--(3,3)--(3,0);
+			\draw[dashed] (0,4.5)--(4.5,4.5)--(4.5,0);
+			\draw[dashed] (1.5,3)--(1.5,0);
+			\draw[dashed] (0,6)--(9,6);
+			\draw[dashed] (7,6)--(7,0);
+			
+			\draw[thick] (1.5,3) to[out=45, in=190] (4.5,4.5) to[out=10,in=225] (7,6) -- (9,6);
+			
+			\fill[black] (1.5,3) circle (5pt);
+			\fill[black] (4.5,4.5) circle (5pt);
+			\fill[black] (7,6) circle (5pt);
+			
+			\node[right] at (9,6) {\scriptsize $\expect[\theta : r(\theta) \le w]$};
+		\end{tikzpicture}
+		\caption{Single Equilibrium}
+		\label{fig:lemon_one_equilibrium}
+	\end{figure}
+	
+	We must have at least one $w\opt \in (\underline{\theta},\overline{\theta})$ such that $w\opt = \expect[\theta : r(\theta) \le w\opt]$, by Kakutani's Fixed Point Theorem. 
+	
+	This characterization immediately shows that the equilibrium is inefficient. It would be optimal to have all types employed, but only types $\theta \le r^{-1}(w\opt) < \overline{\theta}$ are employed here. 
+\end{example}
+
+\begin{remark}
+	We may have multiple equilibria. See Figure~\ref{fig:lemon_multiple_equilibria} for an illustration. If we have multiple equilibria, they can be Pareto ranked -- recall that all profits are zero, but workers do better as $w\opt$ increases.
+\end{remark}
+
+\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=0.5]
+    		\draw[very thick,<->] (10.5,0)--(0,0)--(0,10.5);
+    		\draw[] (0,0)--(10,10);
+ 			\node[below] at (10.5,10) {$45^\circ$};   		
+    		\draw[dashed] (0,9)--(9,9)--(9,0);
+    		\node[left] at (0,9) {$\overline{\theta}$};
+    		\node[below] at (9,0) {$\overline{\theta}$};
+    		\node[below] at (1.5,0) {$r(\underline{\theta})$};
+			\node[below] at (7,0) {$r(\overline{\theta})$};
+			\node[left] at (0,6) {$\expect[\theta]$};
+			\node[left] at (0,4.5) {$w\opt$};
+			\node[left] at (0,3) {$\underline{\theta}$};
+			\node[below] at (3.45,0) {$w\opt_1$};
+			\node[below] at (4.5,0) {$w\opt_2$};
+			\node[below] at (5.5,0) {$w\opt_3$};
+			
+			\draw[dashed] (0,3)--(1.5,3);
+
+			\draw[dashed] (1.5,3)--(1.5,0);
+			\draw[dashed] (0,6)--(9,6);
+			\draw[dashed] (7,6)--(7,0);
+			\draw[dashed] (3.45,3.45)--(3.45,0);
+			\draw[dashed] (4.5,4.5)--(4.5,0);
+			\draw[dashed] (5.5,5.5)--(5.5,0);
+			
+			\draw[thick] (1.5,3) to[out=20, in=-100] (4.5,4.5) to[out=70,in=200] (7,6) -- (9,6);
+			
+			\fill[black] (1.5,3) circle (5pt);
+			\fill[black] (4.5,4.5) circle (5pt);
+			\fill[black] (7,6) circle (5pt);
+			\fill[black] (3.45,3.45) circle (5pt);
+			\fill[black] (5.5,5.5) circle (5pt);
+			
+			\node[right] at (9,6) {\scriptsize $\expect[\theta : r(\theta) \le w]$};
+		\end{tikzpicture}
+		\caption{Multiple Equilibria}
+		\label{fig:lemon_multiple_equilibria}
+	\end{figure}
+
+\begin{remark}
+	The classic point made by Akerlof is that the market may totally collapse. See the following example.
+\end{remark}
+
+\begin{example}
+	Assume that $r(\theta) = \alpha \theta$ for some $\alpha < 1$, and that $\theta \sim U[0,2]$. We have that
+	\[
+	\expect[\theta : r(\theta) \le w] = \expect[\theta : \alpha \theta \le w] = \expect\barl\theta : \theta \le \frac{w}{\alpha}\barr = \frac{w}{2\alpha}
+	\]
+	In this case, when $\alpha > \frac{1}{2}$, the market collapses to zero. See Figure~\ref{fig:lemon_collapse}.
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[scale = 0.5]
+			\draw[<->,very thick] (10.5,0)--(0,0)--(0,10.5);
+			
+			\draw[dashed] (0,0)--(10,10);
+			\draw[thick] (0,0)--(10,5);
+			\node[below] at (10,0) {$w$};
+			\node[left] at (0,10) {$\expect[\theta]$};
+			\node[below] at (10.5,10) {$45^\circ$};
+			\node[below] at (10.5,5) {$\frac{w}{2\alpha}$};
+			\node[below] at (0,0) {$w\opt$};
+		\end{tikzpicture}
+		\caption{Collapse In the Market for Lemons}
+		\label{fig:lemon_collapse}
+	\end{figure}
+\end{example}
+
+\begin{question}
+	Could this be fixed with public intervention? A case is possible where there are multiple equilibria. In this case, the government could shift the equilibrium to the maximum equilibrium wage. 
+	
+	Could the government do better than that? If they could see the types, but that's implausible.
+\end{question}
+\begin{definition}
+	A \blue{Constrained Pareto Optimum} is a Pareto Optimum achievable by a planner with no informational advantage. 
+\end{definition}
+Is there a constrained Pareto optimum that is better than the competitive equilibrium? The answer is no.
+
+\begin{example}
+	The planner chooses $w_e$ and $w_u$ (employed and unemployed). Given this, all workers of type $\theta \le \hat{\theta}$ will work, where $w_u + r(\hat{\theta}) = w_e$. So the government can only choose $\hat{\theta}$, $w_e$, and $w_u$ such that the budget balance is satisfied:
+	\[
+	w_e F(\hat{\theta}) + w_u [ 1 - F(\hat{\theta})] \le \int \theta dF(\theta)
+	\]
+	Substituting, we get that
+	\begin{align*}
+		w_u(\hat{\theta}) &= \int \theta dF(\theta) - r(\hat{\theta})F(\hat{\theta}) \\
+		w_e(\hat{\theta}) &= \int \theta dF(\theta) - r(\hat{\theta})[1-F(\hat{\theta})]
+	\end{align*}
+	meaning that
+	\begin{align*}
+		w_u(\hat{\theta}) &=F(\hat{\theta}) \barl \expect [\theta : \theta \le \hat{\theta}] - r(\hat{\theta})\barr \\
+		w_e(\hat{\theta}) &= F(\hat{\theta}) \barl \expect [\theta : \theta \le \hat{\theta}] - r(\hat{\theta})\barr + r(\hat{\theta})
+	\end{align*}
+	Let $\theta\opt$ be the highest type employed in the highest competitive equilibrium, so:
+	\[
+	r(\theta\opt) \expect[\theta : \theta \le \theta\opt] = w\opt
+	\]
+	If the government selects $\hat{\theta} = \theta\opt$, we have $w_e(\hat{\theta}) = w\opt$, and $w_u(\hat{\theta}) = 0$. So the outcome is the competitive equilibrium. There are two other possibilities: $\hat{\theta} > \theta\opt$ and $\hat{\theta} < \theta\opt$. If $\hat{\theta} < \theta\opt$, we have that
+	\[
+	w_e(\hat{\theta}) = F(\hat{\theta}) \barl \expect [\theta : \theta \le \hat{\theta}] - r(\hat{\theta})\barr + r(\hat{\theta})
+	\]
+	\[
+	\qquad\quad< F(\hat{\theta}) \barl \expect [\theta : \theta \le \hat{\theta}] - r(\theta\opt)\barr + r(\theta\opt)
+	\]
+	since $r(\theta\opt) > r(\hat{\theta})$. We also have that
+	\begin{align*}
+		w_e(\hat{\theta}) - r(\theta\opt) &\le F(\hat{\theta})\barl \expect[\theta : \theta \le \hat{\theta}] - r(\theta\opt)\barr \\
+		&= F(\hat{\theta})\barl \expect[\theta : \theta \le \hat{\theta}] -\expect[\theta : \theta \le \theta\opt]\barr < 0
+	\end{align*}
+	It follows directly that $w_e(\hat{\theta}) < r(\theta\opt) = w\opt$. Low types were working in the competitive equilibrium for a higher wage, and they are now worse off.
+	
+	The other case assumes that $\hat{\theta} > \theta\opt$. We must have that $\expect[\theta : r(\theta) \le w] < w$ for all $w \ge w\opt$, otherwise $w\opt$ would not be the highest competitive equilibrium. Since $w\opt = r(\theta\opt)$ and $r(\theta)$ is increasing, $r(\hat{\theta}) > r(\theta\opt) = w\opt$, so
+	\[
+	\expect\barl \theta : r(\theta) \le r(\hat{\theta})\barr < r(\hat{\theta})
+	\]
+	for $\hat{\theta} \ge \theta\opt$. So $w_u(\hat{\theta}) = F(\hat{\theta}) \barl \expect[\theta : \theta \le \hat{\theta}] - r(\hat{\theta})\barr \le 0$, implying that the high types that remain unemployed are worse off now.
+\end{example}
+
+\begin{example}
+	One way the market might bypass the information asymmetry is by allowing workers to signal their type. Assume here that there are two types, $0 < \theta_L < \theta_H$, with $\prob\{\theta_H\} = \lambda$. We now assume that workers can get some education $e$. To make the point more striking, education is unproductive. 
+\end{example}
 
 \newpage
 \section{Exercises and Examples}\label{sec:exercises}

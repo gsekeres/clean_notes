@@ -15,19 +15,20 @@ Please let me know what section you would like to contribute to! I will deal wit
 - Section 1: Easley (choice): Gabe
     - Status: Done
 - Section 2: Kircher (consumer): Gabe
-    - Status: In progress
+    - Status: Done
 - Section 3: Harris (producer): __
     - Status: Not started
 - Section 4: Blume (uncertainty): __
     - Status: Not started
 - Section 5: Barseghyan (uncertainty 2): __
     - Status: Not started
-- Section 6: Battaglini (information / game theory): __
-    - Status: Not started
-- Section 7: Exercises: Gabe will add, along with solutions. 
+- Section 6: Battaglini (information / game theory): Gabe
+    - Status: In progress, Day 1 done
+- Section 7: Exercises: Everyone
     - Status: In progress. 
-    - Done: Section 1
-    - Not started: 2, 3, 4, 5, 6
+    - TA Sections: Omar working on, has sent 4-6
+    - Course HWs: Not started, Gabe will add
+    - Outside Exercises: Gabe will add if time
 
 # Other sources I'm using: 
 
