@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+\usepackage[]{amssymb} %gives us the character \varnothing
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{derivative}
+\usepackage{booktabs}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{comment}
+\usepackage{fancyhdr}
+\usepackage{breqn}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\graphicspath{ {./images/} }
+
+\title{ECON 6090-Microeconomic Theory. TA Section 5}
+\author{Omar Andujar}
+\date{\today}
+%This information doesn't actually show up on your document unless you use the maketitle command below
+
+\begin{document}
+\raggedright
+\pagestyle{fancy}
+\fancyhf{}
+%\fancyhead[R]{Omar Andujar}
+%\fancyhead[L]{Homework 5}
+%\fancyfoot[L]{\hrule Some of the problems were discussed with }
+
+\maketitle %This command prints the title based on the information entered above
+
+\section*{In Section notes}
+Welfare:
+Say we have a price and wealth change from $(p,w)$ to $(p',w')$. The compensating variation (CV) and equivalent variation (EV) are defined as follows,
+\[CV = e(p',u') - e(p(',u)\]
+\[EV = e(p,u') - e(p,u)\]
+Where $u = v(p,w)$ and $u' = v(p',w')$.\\
+The equivalent variation can be thought of as the dollar amount that the consumer would be indifferent about accepting in lieu of the price change, that is, it is the change in her wealth that would be equivalent to the price change in terms of its welfare impact (so it is negative if the price change would make the consumer worse off).\\
+\bigskip
+The compensating variation, on the other hand, measures the net revenue of a planner who must compensate the consumer for the price change after it occurs, bringing her back to her original utility level $u$. (Hence, the compensatating variation is negative if the planner would have to pay the consumer a positive level of compensation because the price change makes her worse off.)\\
+\bigskip
+Special case: Only price of good 1 changes (by $t$) while other prices and wealth remain unchanged.
+\[CV = e(p',u') - e(p',u)\]
+Since $e(p',u')=e(p,u)=w$ and $h_1(p,u) = \frac{\partial e(p,u)}{\partial p_1}$,
+\[CV=e(p,u) - e(p',u)\]
+\[=\int_{p_1'}^{p_1} h_1(t,p_{-1},u) dt\]
+Where $p_{-1} = (p_2,p_3,...,p_n)$ ahd $h_1$ is the hicksian demand for good 1.\\
+Following the same logic we get,
+\[EV = \int_{p_1'}^{p_1} h_1(t,p_{-1},u') dt\]
+\subsection*{Proposition}
+Let $x_1$ be a normal good, i.e. $\frac{\partial x_1}{\partial w} \geq 0$, if only $p_1$ changes, then $EV \geq CV$.\\
+
+\subsubsection*{Proof}
+Assume without loss of generality (WLOG) that \(p_1' > p_1\).  
+To show \(EV \geq CV\), it suffices to prove:
+\[
+h_1(t, p_{-1}, u') \leq h_1(t, p_{-1}, u) \quad \text{for all } t.
+\]
+Recall that \(u = v(p, w) \geq u' = v(p', w')\). By the properties of the Hicksian demand function:
+\[
+h_1(p, u) = x_1(p, e(p, u)).
+\]
+
+Differentiating \(h_1(p, u)\) with respect to \(u\):
+\[
+\frac{\partial h_1(p, u)}{\partial u} = \frac{\partial x_1(p, e(p, u))}{\partial w} \cdot \frac{\partial e(p, u)}{\partial u}.
+\]
+
+Since:
+\begin{enumerate}
+    \item \(\frac{\partial x_1(p, e(p, u))}{\partial w} \geq 0\) (normal good assumption)
+    \item \(\frac{\partial e(p, u)}{\partial u} > 0\) (monotonicity of expenditure with respect to utility)
+\end{enumerate}
+\[
+\frac{\partial h_1(p, u)}{\partial u} \geq 0.
+\]
+Thus, \(h_1(p, u)\) is increasing in \(u\). Since \(u \geq u'\), it follows that:
+\[
+h_1(t, p_{-1}, u') \leq h_1(t, p_{-1}, u) \quad \text{for all } t.
+\]
+Therefore, integrating over \([p_1, p_1']\):
+\[
+\int_{p_1}^{p_1'} h_1(t, p_{-1}, u') \, dt \leq \int_{p_1}^{p_1'} h_1(t, p_{-1}, u) \, dt
+\]
+\[
+-\int_{p_1'}^{p_1} h_1(t, p_{-1}, u') \, dt \leq -\int_{p_1'}^{p_1} h_1(t, p_{-1}, u) \, dt
+\]
+\[
+\int_{p_1'}^{p_1} h_1(t, p_{-1}, u') \, dt \geq \int_{p_1'}^{p_1} h_1(t, p_{-1}, u) \, dt
+\]
+which implies:
+\[
+EV \geq CV.
+\]
+
+\subsection*{Remark}
+If $\frac{\partial x_i}{\partial w} = 0$, then CV=EV when $p_i$ changes.\\
+Example: Quasi-linear utility, $u(x_1,x_2) = x_1 +f(x_2)$.
+
+
+\end{document}
+

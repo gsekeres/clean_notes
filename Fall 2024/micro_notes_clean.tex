@@ -21,6 +21,8 @@ We occasionally make reference to the Stanford ECON 202 notes, created by \href{
 
 \paragraph{Structure.} The course (and these notes) are organized as follows. Prof. Easley taught an introduction to choice theory, Section~\ref{sec:easley}. Prof. Kircher taught consumer theory, Section~\ref{sec:kircher}. Prof. Harris taught producer theory, and some concepts of market failures, Section~\ref{sec:harris}. Prof. Blume introduced the theory of choice under uncertainty, Section~\ref{sec:blume}, and Prof. Barseghyan continued with theoretical applications for uncertainty and expected utility maximization, Section~\ref{sec:barseghyan}. Prof. Battaglini taught on information theory, Section~\ref{sec:battaglini}. We also include here exercises with solutions, divided into the various sections and sources. This is Section~\ref{sec:exercises}.
 
+\paragraph{Contributions.} Gabe wrote Section~\ref{sec:easley}, and XXX. Omar wrote the section exercises and solutions in Section~\ref{sec:exercises}, and YYY.
+
 
 \newpage
 \section{Choice (Easley)}\label{sec:easley}
@@ -229,7 +231,7 @@ Recall the formal definition of choice correspondences above. We will now add so
 
 We will make the following assumptions throughout:
 
-\begin{assumption}
+\begin{assumption}\label{ass:consumer_struc}
 	We have (i) $L$ commodities, $x \coloneqq (x_1,\dots,x_L) \in \reals^L_+$; (ii) prices $p \coloneqq (p_1,\dots,p_L) \in \reals^L_{++}$; (iii) wealth $w > 0$; and (iv) budget set $B_{p,w} \coloneqq \{x \in \reals^L_+ : p\cdot x \le w\}$.
 \end{assumption}
 
@@ -237,7 +239,7 @@ We will make the following assumptions throughout:
 	We define the \blue{Walrasian demand function} (also sometimes called the \blue{Marshallian demand function}) by $x : \reals^L_{++} \times \reals_{++} \to \reals^L_+$, where $x(p,w)$ is the consumer's choice at prices $p$ and wealth $w$. Note that $(p,w)$ may not uniquely specify a value. In that case, we have the \blue{Walrasian (Marshallian) demand correspondence}, $X: \reals^L_{++} \times \reals_{++} \rightrightarrows \reals^L_+$.
 \end{definition}
 
-\begin{assumption}
+\begin{assumption}\label{ass:demand_assumptions}
 We will almost always make the following assumptions on $x$:
 \begin{itemize}
 	\item[(i)] $x(p,w)$ is homogeneous of degree 0, meaning that
@@ -434,7 +436,7 @@ We will almost always make the following assumptions on $x$:
 	\]
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:properties_of_x}
 	\red{(Properties of Walrasian Demand Correspondence)} Let $u$ be a continuous utility function representing $\succsim$ on $\reals^L_+$.
 	\begin{itemize}
 		\item[(i)] If $p \in \reals^L_{++}$ and $w \in \reals_{++}$, then there exists an $x\opt \in \reals^L_{++}$ that solves the consumer's problem
@@ -489,6 +491,246 @@ We will almost always make the following assumptions on $x$:
 \newpage
 \section{Consumer Theory (Kircher)}\label{sec:kircher}
 
+\subsection{Utility Maximization}
+
+\begin{remark}
+	We will carry forward the assumptions on model structure (Assumptions~\ref{ass:consumer_struc}) made above. We will also generally carry forward Assumptions~\ref{ass:demand_assumptions}, but not as strongly.
+\end{remark}
+
+\begin{definition}
+	The \blue{indirect utility function}, $V: \reals^L_{++} \times \reals_{++} \to \reals$ is defined by
+	\[
+	V(p,w) \coloneqq \max_{x \in \reals^L_+} u(x) \st p\cdot x \le w
+	\]
+\end{definition}
+\begin{remark}
+	If $x(p,w)$ is a solution to the consumer's problem, then $V(p,w) = u(x(p,w))$.
+\end{remark}
+\begin{assumption}\label{ass:consumer_pref_assumptions}
+	We assume here that $\succsim$ are locally non-satiated, that $u$ is continuous, and that $p \gg 0$ and $w > 0$.
+\end{assumption}
+
+\begin{proposition}
+	$V$ has the following properties:
+	\begin{itemize}
+		\item[(i)] Continuous
+		\item[(ii)] Nonincreasing in $p_i$ for $i \in \{1,\dots,L\}$
+		\item[(iii)] Strictly increasing in $w$
+		\item[(iv)] Quasiconvex, meaning that $\{(p,w) : V(p,w) \le k\}$ is a convex set $\forall k \in \reals$
+		\item[(v)] Homogeneous of degree 0
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	
+	\begin{itemize}
+		\item[(i)] In the case where the solution $x$ is unique, $V = u \circ x$. We assumed continuity of $u$ above, and continuity of $x$ follows from Proposition~\ref{prop:properties_of_x}, as long as $u$ is continuous. A full proof, when $x$ is a correspondence, is omitted but follows from Berge's Theorem.
+		\item[(ii)] Fix $i$ and suppose that $p_i' \ge p_i$. Then $B_{p',w} \subseteq B_{p,w}$, so $V(p',w) \le V(p,w)$.
+		\item[(iii)] Suppose $w' > w$. Then $p \cdot x(p,w) < w'$, and by local non-satiation there exists $x' \succ x$ such that $p \cdot x' < w'$. Thus, $V(p,w') \ge u(x') > u(x(p,w)) = V(p,w)$.
+		\item[(iv)] Fix some $\alpha \in [0,1]$ and some $(p,w),(p',w') \in \reals^L_{++} \times \reals_{++}$, and suppose that
+		\[
+		x \in B(\alpha p + (1-\alpha)p',\alpha w + (1-\alpha)w')
+		\]
+		Then we have that
+		\[
+		\alpha (p \cdot x - w) + (1-\alpha) (p' \cdot x - w') \le 0 \Longrightarrow x \in B_{p,w} \cup B_{p',w'}
+		\]
+		Meaning that
+		\[
+		B(\alpha p + (1-\alpha)p',\alpha w + (1-\alpha)w') \subseteq  B_{p,w} \cup B_{p',w'}
+		\]
+		Which implies that
+		\[
+		V(\alpha p + (1-\alpha)p',\alpha w + (1-\alpha)w') \le \max\{V(p,w),V(p',w')\}
+		\]
+		So $V$ is quasiconvex.
+		\item[(v)] This follows directly from $x$ being homogeneous of degree 0 (Proposition~\ref{prop:properties_of_x}).
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+	If $u$ and $x$ are continuously differentiable, then $V$ is continuously differentiable and
+	\[
+	\frac{\partial V}{\partial w} = \lambda
+	\]
+	where $\lambda$ is the Lagrange multiplier in $\mathcal{L}(\lambda,x) = u(x) + \lambda(w-p\cdot x)$.
+\end{proposition}
+\begin{proof}
+	This follows directly from the Envelope Theorem (see Tak's notes for a rigorous definition):
+	\[
+	\frac{\partial V}{\partial w} = \frac{\partial u}{\partial w} + \lambda
+	\]
+	and since $u$ is not a function of $w$, the result follows. A more direct proof could also use the chain rule:
+	\[
+	\frac{\partial V}{\partial w} = \sum_{i=1}^L \frac{\partial u}{\partial x_i}\frac{\partial x_i}{\partial w} = \lambda \sum_{i=1}^L p_i \frac{\partial x_i}{\partial w} = \lambda
+	\]
+	where the last equality uses Walras' Law, differentiating both sides with respect to $w$.
+\end{proof}
+\begin{remark}
+	We now have some economic intuition for the Lagrange multiplier: it is the marginal utility attained from relaxing the budget constraint by one unit, or the increase in utility from providing the consumer with one more unit of wealth.
+\end{remark}
+
+
+\subsection{Expenditure Minimization}
+
+\begin{definition}
+	The \blue{expenditure minimization problem} is the optimization problem
+	\[
+	\min_{x \in \reals^L_+} p \cdot x \st u(x) \ge \bar{u}
+	\]
+\end{definition}
+\begin{definition}
+	The associated value function, called the \blue{expenditure function}, is defined by
+	\[
+	e(p,\bar{u}) \coloneqq \min_{x \in \reals^L_+} p \cdot x \st u(x) \ge \bar{u}
+	\]
+\end{definition}
+
+\begin{definition}
+	The \blue{Hicksian demand correspondence}, $H: \reals_{++}^L \times \reals \rightrightarrows \reals_+^L$ gives solutions to the expenditure minimization problem:
+	\[
+	H(p,\bar{u}) \coloneqq  \argmin_{x \in \reals^L_+} p \cdot x \st u(x) \ge \bar{u}
+	\]
+	If $H(p,\bar{u})$ is singleton-valued for all $p$ and $\bar{u}$, then we have the \blue{Hicksian demand function} $h: \reals_{++}^L \times \reals \to \reals_+^L$, defined analogously.
+\end{definition}
+
+\begin{proposition}\label{prop:hicksian_properties}
+	\red{(Properties of Hicksian Demand Correspondence)} Assume that preferences are continuous. Then:
+	\begin{itemize}
+		\item[(i)] If $u(0) \le \bar{u} \le \sup_{x \in \reals^L_+} u(x)$, where the right hand side is possibly infinite, then there exists $x\opt \in \reals^L_+$ that solves the expenditure minimization problem.
+		\item[(ii)] If $\lambda > 0$, then this $x\opt$ also solves the consumer's problem for $\lambda p$ and $\lambda w$ (homogeneity of degree 0).
+		\item[(iii)] If $x\opt$ solves the expenditure minimization problem, then $u(x\opt) = \bar{u}$.
+		\item[(iv)] If in addition, $\succsim$ is strictly convex then $x\opt$ is unique and the Hicksian demand function $h: \reals_{++}^L \times \reals \to \reals_+^L$ is well-defined and continuous.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	
+	\begin{itemize}
+		\item[(i)] By the continuity of $u$ and the Intermediate Value Theorem, there exists $x^0 \in \reals^L_+$ such that $u(x^0) = \bar{u}$. We can then restrict the constraint set without changing the solution to $\{x \in \reals^L_+ : u(x) \ge \bar{u} \text{ and } p \cdot x \le p \cdot x^0\}$. This set is nonempty and compact, so conclusion follows from the Extreme Value Theorem.
+		\item[(ii)] This follows directly from the fact that $p \cdot x\opt \ge p \cdot x \Longleftrightarrow \lambda p \cdot x\opt \ge \lambda p \cdot x$.
+		\item[(iii)] Suppose FSOC that $u(x\opt) > \bar{u}$. Then by continuity there exists $x \ne x\opt$ such that $x \le x\opt$ and $\bar{u} \le u(x) < u(x\opt)$. Since $p \in \reals^L_{++}$, this implies that $x$ is in the constraint set and attains a lower cost than $x\opt$, contradicting the fact that $x\opt$ is a global minimum.
+		\item[(iv)] Suppose FSOC that there exist $x\opt_1$ and $x\opt_2$ both (distinct) global optima, implying that $p \cdot x\opt_1 = p \cdot x\opt_2$. By linearity, this means that taking some $\alpha \in (0,1)$, we have that $p \cdot (\alpha x\opt_1 + (1-\alpha)x\opt_2) = p\cdot x\opt_1$, but by strict convexity we have that $u(\alpha x\opt_1 + (1-\alpha)x\opt_2) > u(x\opt_1) \ge \bar{u}$, contradicting (iii). Continuity and existence follow from Berge's Theorem.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}\label{prop:expend_properties}
+	\red{(Properties of $e$)} 
+	
+	\begin{itemize}
+		\item[(i)] Continuous
+		\item[(ii)] Nondecreasing in $p_i$ for $i \in \{1,\dots,L\}$
+		\item[(iii)] Strictly increasing in $\bar{u}$
+		\item[(iv)] Homogeneous of degree 1 in $p$
+		\item[(v)] Concave in $p$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	
+	\begin{itemize}
+		\item[(i)] Follows directly from Berge's Theorem
+		\item[(ii)] Let $p' \ge p$ and $x' \in H(p',\bar{u})$. Then $e(p',\bar{u}) = p' \cdot x' \ge p \cdot x' = e(p,\bar{u})$
+		\item[(iii)] Same as the proof of (iv) in Proposition~\ref{prop:hicksian_properties} above. 
+		\item[(iv)] Follows directly from $H$ being homogeneous of degree 0
+		\item[(v)] Let $p'' \coloneqq \alpha p + (1-\alpha)p'$ for some $\alpha \in [0,1]$, $p,p' \in \reals^L_{++}$, and $x'' \in H(p'',\bar{u})$. Then
+		\[
+		e(p'',\bar{u}) = p'' \cdot x'' = \alpha p \cdot x'' + (1-\alpha) p' \cdot x'' \ge \alpha e(p,\bar{u}) + (1-\alpha)e(p',\bar{u})
+		\]
+	\end{itemize}
+\end{proof}
+
+\subsection{Welfare}
+
+\begin{remark}
+	We will carry Assumptions~\ref{ass:consumer_pref_assumptions} through this section.
+\end{remark}
+
+\begin{remark}
+	Consider a change in price and income from $(p^0,w^0)$ to $(p^1,w^1)$. We want to know what effect this has on the consumer's welfare. It might be useful to compare $V(p^0,w^0)$ to $V(p^1,w^1)$, but $V$ is dependent on the choice of $u$, which is unique only up to positive affine transformation.
+\end{remark}
+
+\begin{remark}
+	Note that for fixed $p'$, $e(p',V(p,w))$ is a valid indirect utility function, as it is strictly increasing in $V$. Moreover, it is invariant under positive affine transformation of $u$, meaning that if $V$ and $V'$ are indirect utility functions derived from utility functions $u$ and $u'$ representing the same preference relation, then $e(p',V(p,w)) = e(p',V'(p,w))$.
+\end{remark}
+
+\begin{definition}
+	A \blue{money metric indirect utility function} is an indirect utility function of the form $e(p',V(p,w))$ for some fixed $p'$.
+\end{definition}
+
+\begin{remark}
+	Which $p'$ should we choose? Henceforth, we consider only a change in prices, fixing wealth at $w$. Let prices change from $p^0$ to $p^1$. Let $u^0 \coloneqq V(p^0,w)$ and $u^1 \coloneqq V(p^1,w)$. 
+\end{remark}
+
+\begin{definition}
+	The \blue{compensating variation} is the amount of money $CV$ such that the consumer is indifferent between having $w$ at the old prices and having $w - CV$ at the new prices. Formally,
+	\[
+	CV(p^0,p^1,w) \coloneqq e(p^1,u^1) - e(p^1,u^0) = w - e(p^1,u^0)
+	\]
+\end{definition}
+\begin{definition}
+	The \blue{equivalent variation} is the amount of money $EV$ such that the consumer is indifferent between having $w$ at the new prices and $w + EV$ at the old prices
+	\[
+	EV(p^0,p^1,w) \coloneqq e(p^0,u^1) - e(p^0,u^0) = e(p^0,u^1) - w
+	\]
+\end{definition}
+
+\begin{remark}
+	Note that each are positive when the price changes make the consumer better off and negative when the price changes make the consumer worse off.
+\end{remark}
+
+\begin{proposition}\label{prop:ev_cv}
+	Suppose the price of only one good changes. WLOG, let that good have index 1. Then
+	\[
+	EV(p^0,p^1,w) = \int_{p_1^1}^{p_1^0} h_1(p_1,p_{-1},u^1)dp_1
+	\]
+	and
+	\[
+	CV(p^0,p^1,w) = \int_{p_1^1}^{p_1^0} h_1(p_1,p_{-1},u^1)dp_1
+	\]
+\end{proposition}
+\begin{proof}
+	We assume that $h_1$ is well-defined and integrable with respect to $p_1$ (this can be proven, but we assume it for simplicity). Then we have that
+	\begin{align*}
+		EV(p^0,p^1,w) &= e(p^0,u^1) - e(p^0,u^0) = \int_{p_1^1}^{p_1^0} h_1(p_1,p_{-1},u^1)dp_1 \\
+		CV(p^0,p^1,w) &= e(p^1,u^1) - e(p^1,u^0) = \int_{p_1^1}^{p_1^0} h_1(p_1,p_{-1},u^1)dp_1
+	\end{align*}
+\end{proof}
+
+
+
+
+
+
+
+\subsection{Duality (Additional)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \newpage
 \section{Producer Theory (Harris)}\label{sec:harris}
 
@@ -512,14 +754,45 @@ We will almost always make the following assumptions on $x$:
 
 \subsubsection{Outside Questions}
 
+\subsection{Consumer (Kircher)}
 
+\subsubsection{Kircher Homework}
 
+\subsubsection{TA Section Examples}
 
+\subsubsection{Outside Questions}
 
+\subsection{Producer (Harris)}
 
+\subsubsection{Harris Homework}
 
+\subsubsection{TA Section Examples}
 
+\subsubsection{Outside Questions}
 
+\subsection{Uncertainty (Blume)}
+
+\subsubsection{Blume Homework}
+
+\subsubsection{TA Section Examples}
+
+\subsubsection{Outside Questions}
+
+\subsection{Uncertainty (Barseghyan)}
+
+\subsubsection{Barseghyan Homework}
+
+\subsubsection{TA Section Examples}
+
+\subsubsection{Outside Questions}
+
+\subsection{Information (Battaglini)}
+
+\subsubsection{Battaglini Homework}
+
+\subsubsection{TA Section Examples}
+
+\subsubsection{Outside Questions}
 
 
 
