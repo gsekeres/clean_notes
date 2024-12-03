@@ -19,8 +19,8 @@ Please let me know what section you would like to contribute to! I will deal wit
     - Status: Done
 - Section 3: Harris (producer): Gabe
     - Status: Done
-- Section 4: Blume (uncertainty): __
-    - Status: Not started
+- Section 4: Blume (uncertainty): Gabe
+    - Status: Done
 - Section 5: Barseghyan (uncertainty 2): __
     - Status: Not started
 - Section 6: Battaglini (information / game theory): Gabe

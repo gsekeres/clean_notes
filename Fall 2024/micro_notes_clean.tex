@@ -13,7 +13,7 @@
 
 We are creating this set of unified notes for ECON 6090: Microeconomics I, as taught at Cornell University in the Fall 2024 semester. Due to unforeseen departmental circumstances, this course was taught by six different professors (\href{https://easley.economics.cornell.edu/}{David Easley}, \href{https://philippkircher.com/}{Philipp Kircher}, \href{https://adamharris.phd/}{Adam Harris}, \href{https://sites.santafe.edu/~leb/}{Larry Blume}, \href{https://barseghyan.economics.cornell.edu/}{Levon Barseghyan}, and \href{https://www.mbattaglini.com/}{Marco Battaglini}). This structure necessarily created some confusion in notation and material, so these notes function as my attempt to create a universe of the material we learned.
 
-We rely heavily on the notes created from Prof. Easley's course, which were originally compiled by \href{https://julienneves.com/}{Julien Manuel Neves} and subsequently updated by \href{https://ruqing-xu.github.io/}{Ruqing Xu} and \href{https://economics.cornell.edu/patrick-ferguson}{Patrick Ferguson}, as well as the excellent TA Sections curated by \href{https://economics.cornell.edu/yuxuan-ma}{Yuxuan Ma} and \href{https://dyson.cornell.edu/programs/graduate/graduate-student-directory/}{Feiyu Wang}. We additionally rely on notes and slides provided by Prof. Harris, slides provided by Prof. Blume, slides from \href{https://blogs.cornell.edu/odonoghue/}{Ted O'Donoghue} provided by Prof. Barseghyan, and notes provided by Prof. Battaglini. These notes are supplemented with the canonical \href{https://global.oup.com/academic/product/microeconomic-theory-9780195073409?cc=us&lang=en&}{Microeconomic Theory} textbook by \href{https://www.upf.edu/web/andreu-mas-colell}{Andreu Mas-Colell}, \href{https://mitsloan.mit.edu/faculty/directory/michael-whinston}{Michael Whinston}, and \href{https://www.hbs.edu/faculty/Pages/profile.aspx?facId=6466}{Jerry Green} (hereafter, MWG); a classic analysis textbook, \href{https://store.doverpublications.com/products/9780486477664}{Foundations of Mathematical Analysis} by \href{https://condor.depaul.edu/~rjohnson/}{Richard Johnsonbaugh} and \href{https://www.mathgenealogy.org/id.php?id=12494}{W.E. Pfaffenberger}; and the excellent Mathematics notes provided by \href{https://www.takumahabu.com/Economics}{Takuma Habu}. All mistakes are our own.
+We rely heavily on the notes created from Prof. Easley's course, which were originally compiled by \href{https://julienneves.com/}{Julien Manuel Neves} and subsequently updated by \href{https://ruqing-xu.github.io/}{Ruqing Xu} and \href{https://economics.cornell.edu/patrick-ferguson}{Patrick Ferguson}, as well as the excellent TA Sections curated by \href{https://economics.cornell.edu/yuxuan-ma}{Yuxuan Ma} and \href{https://dyson.cornell.edu/programs/graduate/graduate-student-directory/}{Feiyu Wang}. We additionally rely on notes and slides provided by Prof. Harris, slides provided by Prof. Blume, slides from \href{https://blogs.cornell.edu/odonoghue/}{Ted O'Donoghue} provided by Prof. Barseghyan, and notes provided by Prof. Battaglini. These notes are supplemented with the canonical \href{https://global.oup.com/academic/product/microeconomic-theory-9780195073409?cc=us&lang=en&}{Microeconomic Theory} textbook by \href{https://www.upf.edu/web/andreu-mas-colell}{Andreu Mas-Colell}, \href{https://mitsloan.mit.edu/faculty/directory/michael-whinston}{Michael Whinston}, and \href{https://www.hbs.edu/faculty/Pages/profile.aspx?facId=6466}{Jerry Green} (hereafter, MWG); \href{https://www.semanticscholar.org/paper/Utility-theory-for-decision-making-Fishburn/905a24a912171436e0abd3b5f1fdcb963e6f852f}{Utility Theory for Decision Making} by \href{https://en.wikipedia.org/wiki/Peter_C._Fishburn}{Peter Fishburn}; a classic analysis textbook, \href{https://store.doverpublications.com/products/9780486477664}{Foundations of Mathematical Analysis} by \href{https://condor.depaul.edu/~rjohnson/}{Richard Johnsonbaugh} and \href{https://www.mathgenealogy.org/id.php?id=12494}{W.E. Pfaffenberger}; and the excellent Mathematics notes provided by \href{https://www.takumahabu.com/Economics}{Takuma Habu}. All mistakes are our own.
 
 We occasionally make reference to the Stanford ECON 202 notes, created by \href{https://www.gsb.stanford.edu/faculty-research/faculty/jonathan-levin}{Jonathan Levin}, \href{https://web.stanford.edu/~isegal/}{Ilya Segal}, \href{https://milgrom.people.stanford.edu/}{Paul Milgrom}, and \href{https://sites.google.com/site/ravijagadeesan/}{Ravi Jagadeesan}. This will mainly be if there exists intuition that we believe is helpful.
 
@@ -21,7 +21,7 @@ We occasionally make reference to the Stanford ECON 202 notes, created by \href{
 
 \paragraph{Structure.} The course (and these notes) are organized as follows. Prof. Easley taught an introduction to choice theory, Section~\ref{sec:easley}. Prof. Kircher taught consumer theory, Section~\ref{sec:kircher}. Prof. Harris taught producer theory, and some concepts of market failures, Section~\ref{sec:harris}. Prof. Blume introduced the theory of choice under uncertainty, Section~\ref{sec:blume}, and Prof. Barseghyan continued with theoretical applications for uncertainty and expected utility maximization, Section~\ref{sec:barseghyan}. Prof. Battaglini taught on information theory, Section~\ref{sec:battaglini}. We also include here exercises with solutions, divided into the various sections and sources. This is Section~\ref{sec:exercises}.
 
-\paragraph{Contributions.} Gabe wrote Section~\ref{sec:easley}, and XXX. Omar wrote the section exercises and solutions in Section~\ref{sec:exercises}, and YYY.
+\paragraph{Contributions.} Gabe wrote Section~\ref{sec:easley}, and XXX. Omar wrote the section exercises and solutions in Section~\ref{sec:exercises}, and YYY. We are deeply grateful to everyone who read over these notes and suggested edits, especially our cohortmates 
 
 
 \newpage
@@ -504,7 +504,7 @@ We will almost always make the following assumptions on $x$:
 	\]
 \end{definition}
 \begin{remark}
-	If $x(p,w)$ is a solution to the consumer's problem, then $V(p,w) = u(x(p,w))$.
+	If $x(p,w)$ is a solution to the consumer's problem, then $V(p,w) = u(x(p,w))$. Essentially, if the consumer solves the problem taking into account the constraints, then the value function is their attained utility -- it's how much they get.
 \end{remark}
 \begin{assumption}\label{ass:consumer_pref_assumptions}
 	We assume here that $\succsim$ are locally non-satiated, that $u$ is continuous, and that $p \gg 0$ and $w > 0$.
@@ -578,6 +578,11 @@ We will almost always make the following assumptions on $x$:
 	\min_{x \in \reals^L_+} p \cdot x \st u(x) \ge \bar{u}
 	\]
 \end{definition}
+
+\begin{remark}
+	$\bar{u}$ is an arbitrary utility level, set as a precondition of the problem. Later, we will see that we usually set $\bar{u}$ as the attained value from the utility maximization problem, but that's actually not necessary for everything here to hold.
+\end{remark}
+
 \begin{definition}
 	The associated value function, called the \blue{expenditure function}, is defined by
 	\[
@@ -676,6 +681,10 @@ We will almost always make the following assumptions on $x$:
 	Note that each are positive when the price changes make the consumer better off and negative when the price changes make the consumer worse off.
 \end{remark}
 
+\begin{remark}
+	It can be somewhat difficult to wrap your head around the difference between compensating and equivalent variation. Consider the following example: The government is considering implementing a price floor on wheat, and the relevant consumer likes to bake bread. The government wants the consumer to be indifferent between the price floor being implemented or not, and there are two ways to do that. First, they could implement the price floor and then give the consumer money so that they can purchase the same amount of wheat as before. That's compensating variation -- the consumer is \emph{compensated} for the price change occurring. They could also choose not to implement the price floor, but instead tax the consumer so that they can buy as much wheat under the non-price-floor prices as if the price floor was actually enacted. In both cases, the consumer is indifferent between the price floor being implemented or not (or, indifferent under very strong assumptions on preferences. This is a toy example), but the mechanism is different.
+\end{remark}
+
 \begin{proposition}\label{prop:ev_cv}
 	Suppose the price of only one good changes. WLOG, let that good have index 1. Then
 	\[
@@ -694,11 +703,17 @@ We will almost always make the following assumptions on $x$:
 	\end{align*}
 \end{proof}
 
+\begin{remark}
+	$p_{-1}$ is how we denote `all elements of $p$ except for $p_1$'. This will often be $x_{-i}$ compared to $x_i$ or similar.
+\end{remark}
+
 
 \subsection{Duality (Additional)}
 
 \begin{remark}
-	Prof. Kircher didn't directly go over this, and I didn't find the way the TAs presented it particularly intuitive. Here, I will present a few results (without proof) and explain, as best I can, the intuition behind the relationships between profit maximization. These results are drawn from the Easley notes, the Stanford ECON 202 notes, and specifically \href{https://www.ellietyger.com/}{Ellie Tyger's} excellent TA sections.
+	Prof. Kircher didn't directly go over this, and I didn't find the way the TAs presented it particularly intuitive. Here, I will present a few results (without proof) and explain, as best I can, the intuition behind the relationships between profit maximization. These results are discussed more in depth in Section~\ref{sec:harris}, but it's more intuitive to think of them here.
+	
+	These results are drawn from the Easley notes, the Stanford ECON 202 notes, and specifically \href{https://www.ellietyger.com/}{Ellie Tyger's} excellent TA sections.
 \end{remark}
 
 In general, the topline result we will be working with is the following:
@@ -735,7 +750,7 @@ With some additional assumptions, we can get even stronger results:
 \begin{proposition}
 	\red{(The Slutsky Equation)} Suppose that $e$ and $V$ are twice continuously differentiable. Fix $p$ and $w$, and let $u\opt \coloneqq V(p,w)$. Then
 	\[
-	\frac{\partial x_i(p,w)}{\partial p_j} = \underbrace{\frac{\partial h_i(p,u\opt)}{\partial p_j}}_{\textnormal{Substitution Effect}} - \underbrace{x_j(p,w) \frac{\partial x_i(p,w)}{\partial w}}_{\textnormal{Income Effect}}
+	\underbrace{\frac{\partial x_i(p,w)}{\partial p_j}}_{\textnormal{Total Effect}} = \underbrace{\frac{\partial h_i(p,u\opt)}{\partial p_j}}_{\textnormal{Substitution Effect}} - \underbrace{x_j(p,w) \frac{\partial x_i(p,w)}{\partial w}}_{\textnormal{Income Effect}}
 	\]
 \end{proposition}
 
@@ -1247,16 +1262,434 @@ and the FOC get us
 \end{align*}
 where $\varepsilon_{z,w}$ is the elasticity of input supply.
 
-
-
-
-
-
-
-
-
 \newpage
 \section{Uncertainty Theory (Blume)}\label{sec:blume}
+
+\textbf{\emph{n.b.}} Prof. Blume did not prove any of the results presented here. It clearly matters more that one understands the intuition rather than the exact proof structure. Proof sketches are added wherever possible. I have relied on \href{https://www.semanticscholar.org/paper/Utility-theory-for-decision-making-Fishburn/905a24a912171436e0abd3b5f1fdcb963e6f852f}{Fishburn (1970)} for these proof sketches.
+
+\subsection{Models of Preferences}\label{subsec:models_blume}
+
+\begin{remark}
+	There are three main preference models that we will consider here: \href{https://psycnet.apa.org/record/1947-03159-000}{von Neumann and Morgenstern (1947)}, where the objects of choice are probability distributions on outcomes; \href{https://psycnet.apa.org/record/1955-00117-000}{Savage (1954)}, where the objects of choice are outcome-valued random variables (formally, functions from states of the world to outcomes); and \href{https://pages.stern.nyu.edu/~dbackus/Exotic/1Ambiguity/AnscombeAumann\%20AMS\%2063.pdf}{Anscombe and Aumann (1963)}, where the objects of choice are functions from states of the world to probability distributions over outcomes.
+\end{remark}
+
+\begin{model}
+	\red{von Neumann--Morgenstern} We have $X$ a set of \blue{outcomes} (or prizes) and $P$ the set of probability distributions on $X$, called \blue{lotteries}. For each $p \in P$, we define the \blue{support} of $p$ as
+	\[
+	\text{supp } p = \{x \in X : p(x) > 0\}
+	\]
+	A preference relation $\succsim$ on $P$ has an \blue{expected utility representation} if there is a real-valued function $u: X \to \reals$ such that
+	\[
+	p \succsim q \Longleftrightarrow \sum_{x \in \text{supp } p} u(x)p(x) \ge \sum_{y \in \text{supp } q} u(y)q(y)
+	\]
+\end{model}
+
+\begin{remark}
+	In general, people are inconsistent on what they call $u$. Here, we refer to it as the \blue{Bernoulli Utility Function}, following MWG. Prof. Blume also referred to it as the \blue{payoff function}.
+\end{remark}
+
+\begin{remark}
+	In this model, whenever $X$ is finite, indifference curves are linear in probabilities. See Figure~\ref{fig:indifference_probability}, where indifference curves are in red.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=1]
+			\draw[thick] (0,0)--(2,3)--(4,0)--(0,0);
+			\node[above] at (2,3) {$x_3$};
+			\node[right] at (4,0) {$x_1$};
+			\node[left] at (0,0) {$x_2$};
+			
+			\draw[red] (1,1.5)--(2.5,0);
+			\draw[red] (0.5,0.75)--(1.25,0);
+			\draw[red] (1.5,2.25)--(3.75,0);
+			\draw[red] (1.75,2.625)--(3.3,1);
+			
+			\draw[->,thick] (3.3,1)--(3.8,1.6);
+		\end{tikzpicture}
+		\caption{Indifference Curves Over Probability Distributions}
+		\label{fig:indifference_probability}
+	\end{figure}
+\end{remark}
+
+
+\begin{model}
+	\red{Savage} We have $X$ a set of outcomes, $S$ a set of \blue{states of the world}, and $F$ the set of \blue{Savage acts}, where $f \in F$ is a function $f : S \to X$. A preference relation $\succsim$ on $F$ has an expected utility representation if there is a probability distribution $p$ on $S$ and a real-valued function $u: X \to \reals$ such that
+	\[
+	f \succsim g \Longleftrightarrow \sum_{s \in S} u(f(s))p(s) \ge \sum_{s \in S} u(g(s))p(s)
+	\]
+\end{model}
+
+\begin{model}
+	\red{Anscombe--Aumann} We have $X$ a set of outcomes, $S$ a set of states of the world, $P$ the set of probability distributions on $X$, and $A$ the set of \blue{Anscombe--Aumann Acts}, where $a \in A$ is a function $a: S \to P$. A preference relation $\succsim$ on $A$ has an expected utility representation if there is a probability distribution $p$ on $S$ and a real-valued function $u: X \to \reals$ such that
+	\[
+	a \succsim b \Longleftrightarrow \sum_{s \in S} \sum_{x \in X} u(x) \parl a(s) (x)\parr p(s) \ge \sum_{s \in S} \sum_{x \in X} u(x) \parl b(s) (x)\parr p(s)
+	\]
+\end{model}
+
+\subsection{von Neumann--Morgenstern}
+
+We first introduce a famous paradox:
+
+\begin{example}
+	\red{The St. Petersburg Paradox} A fair coin is tossed until tails appears. How much would you pay for a lottery ticket that paid off $2^n$ dollars if the first tails appears on the $n$th flip? The expected value of this lottery is
+	\[
+	EV = \frac{1}{2} \cdot 2 + \frac{1}{4}\cdot 4 + \cdots = 1 + 1 + \cdots = \infty
+	\]
+	However, clearly it's not reasonable to pay a massive amount of money for this lottery ticket. Why is this happening? There are a few explanations, and we'll go through them in this section.
+\end{example}
+
+We make the following assumptions on preferences:
+
+\begin{assumption}\label{ass:vnm}
+(referred to as the `Finite $X$ Axioms' by Prof. Blume)
+	\begin{itemize}
+		\item[(i)] $\succsim$ is complete and transitive
+		\item[(ii)] (Independence) For all $0 < \alpha \le 1$ and all $r \in P$,
+		\[
+		p \succsim q \Longleftrightarrow \alpha p + (1-\alpha)r \succsim \alpha 1 + (1-\alpha)r
+		\]
+		\item[(iii)] (Archimedean) If $p \succ q \succ r$, then there exists $\alpha,\beta \in (0,1)$ such that
+		\[
+		\alpha p + (1-\alpha) r \succ q \succ \beta p + (1-\beta)r
+		\]
+	\end{itemize}
+\end{assumption}
+
+\begin{theorem}\label{thm:vnm}
+	\red{(von-Neumann--Morgenstern Theorem)} If $\succsim$ satisfies Assumptions~\ref{ass:vnm}, then $\succsim$ has an expected utility representation; there is a function $u: X \to \reals$ such that
+	\[
+	p \succsim q \Longleftrightarrow \sum_{x \in X} u(x)p(x) \ge \sum_{x \in X} u(x)q(x)
+	\]
+	Furthermore, if $v: X \to \reals$ is another expected utility representation, then there are constants $\alpha > 0$ and $\beta$ such that $v(x) \equiv \alpha u(x) + \beta$.
+\end{theorem}
+\begin{proof}
+	(Very rough sketch) We will define the distance between two lotteries $p$ and $q$ as a function over a subset of a convex cone in an arbitrary metric space, which exists due to the fact that $X$ is finite. This is mathematically tricky, but actually much easier in low-dimensional Euclidean space. You can imagine what's happening by considering the positive-positive quadrant of $\reals^2$, which is a convex cone. From there, the assumptions give us that the cone is convex and compact, and the relationship we are looking for follows directly from the Extreme Value Theorem, considering the roots of the distance function. The second conclusion follows directly from the fact that affine transformations preserve convexity and extrema.
+\end{proof}
+
+\begin{definition}
+	A \blue{simple lottery} is $p:= (p_1 : x_1,p_2:x_2,\dots,p_K:x_K)$, where $x_1,\dots,x_K$ are outcomes in $\reals$ and $p_1,\dots,p_K$ are probabilities. Let $\mathcal{L}$ denote the set of simple lotteries, and let $u: X \to \reals$ and $U(p) = \sum_{k} u(x_k)p_k$. Formally, this is the expectation of the random variable $u(x)$, itself a function of the random variable $x$, where $x \sim p$.
+\end{definition}
+
+\begin{question}
+	How do we see that this is linear in lotteries? How do we mix lotteries?
+\end{question}
+
+For lotteries with common support, mixing is just the convex combination of the probabilities. But what happens when lotteries have different supports?
+
+\begin{example}
+	Consider $p \coloneqq (p_1:x_1,p_2:x_2)$ and $q\coloneqq (q_1:y_1,q_2:y_2,q_3:y_3)$. We can say that
+	\[
+	p\oplus_\alpha q = (\alpha p_1:x_1, \alpha p_2: x_2,(1-\alpha)q_1:y_1, (1-\alpha)q_2:y_2, (1-\alpha)q_3:y_3)
+	\]
+	\begin{remark}
+		This is \emph{not} a convex combination! It combines objects of different sizes. However, expected utility is still linear:
+		\begin{align*}
+			U(p \oplus_\alpha q) &= \sum_{k=1}^2 \alpha p_k u(x_k) + \sum_{k=1}^3 (1-\alpha)q_ku(y_k) \\
+			&= \alpha \sum_{k=1}^2 p_k u(x_k) +(1-\alpha) \sum_{k=1}^3 q_ku(y_k) \\
+			&= \alpha U(p) + (1-\alpha)U(q)
+		\end{align*}
+	\end{remark}
+\end{example}
+
+\begin{definition}
+	(From \href{https://www.jstor.org/stable/1905540}{Herstein and Milnor (1953)}) A \blue{mixture space} is a set of objects $\Pi$, with typical elements $\pi,\rho,\mu,\nu$ and a family of functions for $0 \le \alpha \le 1$, $\oplus_\alpha : \Pi \times \Pi \to \Pi$ such that
+	\begin{itemize}
+		\item[(i)] $\pi \oplus_1 \rho = \pi$
+		\item[(ii)] $\pi \oplus_\alpha \rho = \rho \oplus_{1-\alpha} \pi$
+		\item[(iii)] $(\pi \oplus_\beta \rho) \oplus_\alpha \rho = \pi \oplus_{\alpha\beta} \rho$
+	\end{itemize}
+	where $\beta \in [0,1]$.
+\end{definition}
+
+Some examples:
+\begin{itemize}
+	\item Convex sets with the operation of convex combinations
+	\item Simple probability distributions on convex sets
+	\item $S$ and $X$ are sets, and let $M$ denote the set of functions from $S$ to probability distributions on $X$. The $\oplus_\alpha$ are the (pointwise) convex combinations of these functions
+\end{itemize}
+
+We can update Assumptions~\ref{ass:vnm} with the mixture space definitions:
+\begin{assumption}\label{ass:vnm_mix}
+	(i) remains the same. The others:
+	
+	\begin{itemize}
+		\item[(ii)] (Independence) For all $0 < \alpha \le 1$ and all $r \in P$, $p \succsim q \Longrightarrow p \oplus_\alpha r \succsim q \oplus_\alpha r$
+		
+		\item[(iii)] (Archimedean) If $p \succ q \succ r$, then there exist $\alpha,\beta \in (0,1)$ such that $p \oplus_\alpha r \succ q \succ p \oplus_\beta r$
+	\end{itemize}
+\end{assumption}
+
+We can also update Theorem~\ref{thm:vnm} to generalize it:
+\begin{theorem}\label{thm:vnm_mix}
+	If $M$ is a mixture space and $\succsim$ satisfies Assumptions~\ref{ass:vnm_mix}, then there exists a linear function $U: M \to \reals$. Any other linear representation $V$ is a positive affine transformation of $U$.
+\end{theorem}
+
+\paragraph{Some Criticisms.} First, the Archimedean property seems quite odd. What happens if one outcome is infinitely preferred to another?
+
+\begin{example}
+	Suppose that we have outcomes $x,y,z$ occurring with probabilities $\rho_x,\rho_y,\rho_z$. Further assume that $x$ is \emph{infinitely better} than $y$ and $z$. We have the following (lexicographic, so rational) preference relation: $(\rho_x,\rho_y,\rho_z) \succ(\rho_x',\rho_y',\rho_z')$ if $\rho_x > \rho_x'$ or if $\rho_x = \rho_x'$ and $\rho_y > \rho_y'$. These preferences lead to a counterexample. Let $p = (1,0,0)$, $r = (0,3/4,1/4)$, and $r = (0,1/4,3/4)$. Then $p \succ q \succ r$. For all $\alpha \in (0,1)$, however,
+	\[
+	\alpha p + (1-\alpha)r = (\alpha, (1-\alpha)/4,3(1-\alpha)/4) \succ q
+	\]
+\end{example}
+To fix this, we will often assume that $X$ has no infinitely large or small elements.
+
+Another criticism is independence. Are preferences linear in probabilities? The following is another famous paradox:
+
+\begin{example}
+	\red{The Allais Paradox} (from \href{https://www.jstor.org/stable/1907921}{Allais (1953)}). Consider the following lotteries:
+	\[
+	A = \begin{cases}\$1\text{M} & p = 1\end{cases}\qquad B = \begin{cases} \$1\text{M} & p = 0.89 \\ \$5\text{M} & p = 0.10 \\ \$0 & p = 0.01\end{cases}
+	\]
+	\[
+	C = \begin{cases}\$1\text{M} & p = 0.11 \\ \$0 & p = 0.89\end{cases}\qquad D = \begin{cases} \$5\text{M} & p = 0.10 \\  \$0 & p = 0.90\end{cases}
+	\]
+	Most people prefer $A$ to $B$, and prefer $D$ to $C$. This violates the independence axiom.
+\end{example}
+
+This paradox can be resolved by strengthening the Archimedean assumption. This requires some topological considerations beyond this course, but admits an expected utility representation such that $u$ is now bounded and continuous.
+
+
+\begin{remark}
+	Thinking back to the St. Petersburg Paradox, we can now look at some solutions posed.
+	\begin{enumerate}
+		\item Bernoulli suggested that people tend to disregard small probabilities, rounding them to zero. This became, much later, the foundation of Prospect Theory.
+		\item Cramer suggested expected utility, the first time it was used! With some assumptions (mainly, that $u$ must be bounded), this resolves the paradox
+	\end{enumerate}
+\end{remark}
+
+\subsection{Subjective Probability}
+
+We tend to think of three regimes for where probability comes from:
+\begin{enumerate}
+	\item \blue{Frequentist}: Probabilities exist, and can in principle be measured by repeated experiments.
+	\item \blue{Logical}: Probabilities are the weight that an event happens based on evidence. It essentially generalizes truth from $\{0,1\}$ to $[0,1]$
+	\item \blue{Bayesian}: Probability is the degree of belief people have that an event will occur
+\end{enumerate}
+
+Before thinking deeply about subjective expected utility theory, we need some mathematical background. Here are presented some definitions and results, without proof.
+
+\begin{definition}
+	Suppose that $S$ is finite. Suppose that $\mathcal{S}$ is a collection of subsets of $S$ such that (i) $\emptyset \in \mathcal{S}$, (ii) if $A \in \mathcal{S}$, then $A^c \in \mathcal{S}$, and (iii) if $A,B \in \mathcal{S}$, then $A \cap B \in \mathcal{S}$. $\mathcal{S}$ is a \blue{(Boolean) algebra} of \blue{events}. When $S$ is finite, we can take $\mathcal{S} = 2^S$. When $S = \reals$, we need to take more care.
+\end{definition}
+
+\begin{definition}
+	A \blue{probability} on $\mathcal{S}$ is a function $p : \mathcal{S} \to [0,1]$ such that (i) $p(\mathcal{S}) = 1$ and (ii) if $A \cap B = \emptyset$, then $p(A \cup B) = p(A) + p(B)$.
+\end{definition}
+\begin{definition}
+	A \blue{qualitative probability} is a binary relation $\sqsubseteq$ on $\mathcal{S}$ such that
+	\begin{itemize}
+		\item[(i)] $\sqsubseteq$ is complete and transitive
+		\item[(ii)] $\mathcal{S} \sqsupset \emptyset$
+		\item[(iii)] for all $A \in \mathcal{S}$, $\emptyset \sqsubseteq A \sqsubseteq \mathcal{S}$
+		\item[(iv)] If $A,B,C \in \mathcal{S}$ and $A \cap C = B \cap C = \emptyset$, then $A \sqsubseteq B \Longleftrightarrow A \cap C \sqsubseteq B \cap C$
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	Let $\mathcal{A} = \{A_1,\dots,A_k\}$ and $\mathcal{B} = \{B_1,\dots,B_k\}$ be lists of events, allowing repetitions. The lists $\mathcal{A}$ and $\mathcal{B}$ are \blue{balanced} if for each state $s \in S$, the number of events containing $s$ in $\mathcal{A}$ equals that in $\mathcal{B}$.
+\end{definition}
+
+\begin{assumption}\label{ass:mathprob}
+	We have the following:
+	
+	\begin{itemize}
+		\item[(i)] $\succsim$ on $\mathcal{S}$ is complete
+		\item[(ii)] (Positivity) for all $A \in \mathcal{S}$, $A \succsim \emptyset$
+		\item[(iii)] (Non-triviality) $S \succ \emptyset$
+		\item[(iv)] (Finite Cancellation) For all pairs of balanced lists $\mathcal{A}$ and $\mathcal{B}$, if for all $1 \le j \le k-1$, $A_j \succsim B_j$, then $B_k \succsim A_k$.
+	\end{itemize}
+\end{assumption}
+\begin{remark}
+	Finite Cencellation implies transitivity. 
+\end{remark}
+
+\begin{theorem}
+	$\succsim$ satisfies Assumptions~\ref{ass:mathprob} if and only if there is a probability $\rho$ on $\mathcal{S}$ such that $A \succsim B \Longleftrightarrow \rho(A) \ge \rho(B)$ 
+\end{theorem}
+
+
+\subsection{The Savage Framework}
+
+Recall that we are now in the Savage framework, defined in Section~\ref{subsec:models_blume}. First, some definitions:
+
+\begin{definition}
+	For an act $h$, define $f \mid_A h$ as getting $f(s)$ for $s \in A$, otherwise getting $h(s)$. Let $xAy$ denote the bet that pays off $x$ on $A$ and $y$ otherwise.
+\end{definition}
+
+\begin{definition}
+	We say that $f \succsim g$ given $A$, denoted $f \succsim_A g$, if $f'$ and $g'$ are actions such that $f'$ agrees with $f$ on $B$, $g'$ agrees with $g$ on $B$, and $f'$ and $g'$ agree with each other outside of $A$.
+\end{definition}
+
+\begin{definition}
+	An event $A$ is \blue{null} if for all $f$ and $g$, $f \succsim_A g$.
+\end{definition}
+
+\begin{definition}
+	Sets are ordered $A \succsim B$ if there are outcomes $x \succ y$ such that $xAy \succsim xBy$.
+\end{definition}
+
+Now, we get the Savage Axioms:
+
+\begin{assumption}\label{ass:savage}
+	These are:
+	
+	\begin{itemize}
+		\item[(i)] $\succsim$ is complete and transitive
+		\item[(ii)] if $f \mid_A h \succ g \mid_A h$, then for all $k$, $f \mid_A k \succ g \mid_Ak$
+		\item[(iii)] For outcomes $x,y$ and non-null $A$, $x \succsim_A y$ if and only if $x \succsim y$
+		\item[(iv)] For outcomes $x \succ y$ and $x' \succ y'$, and sets $A,B$, $xAy \succsim xBy$ if and only if $x' A y' \succsim x' B y'$
+		\item[(v)] There exist outcomes $x \succ y$
+		\item[(vi)] If $f \succ g$, then for any consequence $x$ there is a partition of $S$ such that on each $S_i$, $f \mid_{S_i} h \succ g$ and $f \succ g \mid_{S_i} h$
+		\item[(vii)] If $f$ and $g$ are acts and $A$ is an event such that $f(s) \succsim_A g$ for every $s \in A$, then $f\succsim_A g$; and if $f \succsim_A g(s)$ for every $s \in A$, then $f \succsim_B g$
+	\end{itemize}
+\end{assumption}
+
+\begin{theorem}
+	The Savage Axioms (Assumptions~\ref{ass:savage}) imply Bayes' Rule
+\end{theorem}
+\begin{proof}
+	From the assumptions, $f \succ_A g$ if and only if for any act $h$, $f \mid_A h \succ g\mid_A h$. We have that
+	\begin{align*}
+		\expect_\mu \barl u(f\mid_A h)\barr &> \expect_\mu\barl u(g \mid_A h)\barr &&\Longleftrightarrow \\
+		\int_S u(f \mid_A h(s)) d\mu &> \int_S u(f \mid_A g(s)) d\mu &&\Longleftrightarrow \\
+		\int_A u(f(s))d\mu + \int_{A^c} u(h(s))d\mu &> \int_A u(g(s))d\mu + \int_{A^c} u(h(s))d\mu &&\Longleftrightarrow \\
+		\int_A u(f(s))d\mu &> \int_A u(g(s))d\mu &&\Longleftrightarrow \\
+		\int_A u(f(s))d\mu/\mu(A) &> \int_A u(g(s))d\mu/\mu(A) \\
+		\expect_\mu\barl u(f) \mid A\barr &> \expect_\mu\barl u(g) \mid A\barr
+	\end{align*}
+\end{proof}
+
+\subsection{Anscombe--Aumann}
+
+\begin{remark}
+	Recall that we are now in the Anscombe--Aumann framework detailed in Section~\ref{subsec:models_blume}, meaning that an expected utility representation is a function $u: X \to \reals$ and a probability distribution $\mu$ on $S$ such that
+	\[
+	f \succsim g \Longleftrightarrow \sum_S \sum_X u(x) f(s)(x) \mu(s) \ge \sum_S \sum_X u(x) g(s)(x) \mu(s) 
+	\]
+\end{remark}
+
+To go towards an expected utility representation theorem, we need some further assumptions, beyond Assumptions~\ref{ass:vnm}.
+
+\begin{assumption}\label{ass:aa}
+	In addition to Assumptions~\ref{ass:vnm}, we assume that
+	
+	\begin{itemize}
+		\item[(iv)] (non-triviality) For some $f,g \in A$, $f \succ g$
+		\item[(v)] (state independence) If for some $s \in S$, $a \in A$, and $p,q \in P$, $h\mid_{\{s\}^c}p \succ p \succ h\mid_{\{s\}^c}q$, then for all non-null states $t$, $h \mid_{\{s\}^c} p \succ h \mid_{\{s\}^c} q$
+	\end{itemize}
+\end{assumption}
+
+\begin{theorem}
+	If $\succsim$ satisfies Assumptions~\ref{ass:vnm} and Assumptions~\ref{ass:aa}, then there exists a function $u: X \to \reals$ and a probability distribution $\rho$ on $S$ such that
+	\[
+	f \succsim g \Longleftrightarrow \sum_S \sum_X u(x) f(s)(x) \rho(s) \ge \sum_S \sum_X u(x) g(s)(x) \rho(s)
+	\]
+\end{theorem}
+\begin{proof}
+	Complicated, and ommitted. Is in \href{https://www.semanticscholar.org/paper/Utility-theory-for-decision-making-Fishburn/905a24a912171436e0abd3b5f1fdcb963e6f852f}{Fishburn (1970)}.
+\end{proof}
+
+\subsection{Beyond Expected Utility}
+
+\begin{remark}
+	There are some big issues with expected utility theory in general. Here, some of them are summarized and some possible solutions are presented.
+\end{remark}
+
+Consider first a final famous paradox:
+
+\begin{example}
+	\red{The Ellsberg Paradox} (from \href{https://www.jstor.org/stable/1884324}{Ellsberg (1961)}) There is a single urn with three balls. One ball is red and the other two are either blue or green. One ball is drawn from the urn, and the bettor bets on its color. Winning bets pay \$100, losing bets pay nothing. Available bets are red, blue, not red, and not blue. 
+	
+	Typical laboratory preferences are inconsistent with probabilistic beliefs -- both red and not red are preferred to blue and not blue. This is a major issue, with several proposed solutions over the years.
+\end{example}
+
+\begin{example}
+	Weighted EU. One idea is that individuals overweight small-probability events. Imagine a weighting function $w: [0,1] \to [0,1]$ with $w(p) > p$ for small $p$ and $w(p) < p$ for large $p$. One issue: weighted expected utility will not respect FOSD. 
+\end{example}
+
+\begin{example}
+	Rank-Dependent Expected Utility. Instead of weighing probabilities, apply probability weights to the CDF:
+	\[
+	U(p) = \sum_n w_n(p)u(x_n)
+	\]
+	where $x_1 \le x_2 \le \cdots \le x_n$ and 
+	\[
+	w_n(p) = q\parl \sum_{k=1}^n p_k\parr - q\parl \sum_{k=1}^{n-1}p_k\parr
+	\]
+	where $q: [0,1] \to [0,1]$ transforms probabilities and $q(0) = 0 = 1-q(1)$. If $q$ is strictly increasing, than $\succsim$ respects FOSD.
+\end{example}
+
+\begin{example}
+	Maxmin EU. Ambiguity is the idea that individuals may be uncertain about what probability distribution they face. If, for example, you bet as if the worse case scenario were always the probability distribution for the current bet, the Ellsberg paradox would result.
+\end{example}
+
+\begin{definition}
+	\blue{Choquet Expected Utility} is expected utility where the expectation is taken with respect to a non-additive probability, also called a \blue{capacity}. Suppose $S$ is finite and $\mathcal{S} = 2^S$. A function $\mu: S \to [0,1]$ is a capacity if (i) $\mu(\emptyset) = 0$, $\mu(S) = 1$, and for all $A \subset B \in S$, $\mu(B) \ge \mu(A)$. 
+\end{definition}
+
+\begin{assumption}\label{ass:choquet}
+	We have the following assumptions for Choquet Expected Utility over Anscombe--Aumann acts:
+	\begin{itemize}
+		\item[(i)] $\succsim$ is complete and transitive
+		\item[(ii)] An Archimedean axiom
+		\item[(iii)] The independence axioms for all acts $f,g,h$ which are comonotonic
+		\item[(iv)] There are $f,g \in A$ such that $f \succ g$
+		\item[(v)] If for all $s \in S$, $f(s) \succ g(s)$, then $f \succ g$
+	\end{itemize}
+\end{assumption}
+
+\begin{theorem}
+	If $\succsim$ on $A$ satisfies Assumptions~\ref{ass:choquet}, then there is a function $u: X \to \reals$ and a capacity $\mu$ on $S$ such that
+	\[
+	f \succsim g \Longleftrightarrow \int \sum_x u(x)f(s)(x)d\mu \ge \int \sum_x u(x)g(s)(x)d\mu
+	\]
+\end{theorem}
+\begin{proof}
+	Technical, ommitted.
+\end{proof}
+
+\begin{definition}
+	A capacity $\mu$ is \blue{convex} if for all $A,B \in \mathcal{S}$,
+	\[
+	\mu(A \cup B) - \mu(A) \ge \mu(B) - \mu(A \cap B)
+	\]
+	The \blue{core} of a capacity $\mu$ is $C(\mu) \coloneqq \{\rho \in P : \rho(A) \ge \mu(A)\}$
+\end{definition}
+\begin{lemma}
+	Every convex capacity has a core.
+\end{lemma}
+\begin{example}
+	If $S = \{0,1\}$ and $\mu(0) = \mu(1) = 0.3$, then
+	\[
+	C(\mu) = \{\rho : 0.3 \le \rho(0) \le 0.7\}
+	\]
+\end{example}
+\begin{remark}
+	If $P$ is a convex set of probability distributions, then $\mu(A) = \inf_{\rho \in P}\rho(A)$ is a capacity
+\end{remark}
+
+\begin{definition}
+	Let $\succsim$ be a binary relation on $A$. Then $\succsim$ is said to be \blue{ambiguity-averse} (also called \blue{uncertainty-averse}) if $f,g \succsim h$ and $\alpha \in [0,1]$ implies that $\alpha f + (1-\alpha)g \succsim h$
+\end{definition}
+
+\begin{theorem}
+	Suppose that $\succsim$ satisfies Assumptions~\ref{ass:choquet}. Then the following are equivalent:
+	\begin{enumerate}
+		\item $\succsim$ is ambiguity-averse
+		\item $\mu$ is convex
+		\item $\int f d\mu = \inf_{\rho \in C(\mu)} \int f d\rho$
+	\end{enumerate}
+\end{theorem}
+\begin{remark}
+	This is a characterization of maxmin expected utility. Can you see how to obtain the Ellsberg Paradox from this characterization?
+\end{remark}
+
+
+
+
+
+
 
 \newpage
 \section{Uncertainty Applications (Barseghyan)}\label{sec:barseghyan}
