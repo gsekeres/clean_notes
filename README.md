@@ -5,6 +5,7 @@ Contained in here are clean versions of my notes from the first year Economics s
 # Updates
 
 - 12/01/24: Created repo, added structure for micro notes (will be collaborative). Micro notes contain through Easley's section.
+- 12/02/24: Added Kircher and Harris sections, added day 1 of Battaglini. Added work Omar sent, not yet incorporated into notes file.
 
 # For contributors
 
@@ -33,8 +34,7 @@ Please let me know what section you would like to contribute to! I will deal wit
 # Other sources I'm using: 
 
 - Easley notes
-- Slides from Harris, Blume, and Barseghyan
-- Allegedly, notes from Battaglini. He hasn't sent them yet.
+- Slides from Harris, Blume, Barseghyan, and Battaglini.
 - Tak's math notes
 - Textbooks: MWG, Johnsonbaugh and Pfaffenberger's Foundations of Mathematical Analysis
 - Stanford's first year micro notes. I can send these to whomever wants them
