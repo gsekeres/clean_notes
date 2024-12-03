@@ -721,7 +721,7 @@ With some additional assumptions, we can get even stronger results:
 \begin{proposition}
 	\red{(Shephard's Lemma)} In addition to assuming continuity and local non-satiation, assume that $\succsim$ are strictly convex and that $e$ is continuously differentiable. Then for $p \gg 0$ and for all $i \in \{1,\dots,L\}$,
 	\[
-	h_i(p,\bar{u}) = \frac{\partial e(p,\bar{u}}{\partial p_i}
+	h_i(p,\bar{u}) = \frac{\partial e(p,\bar{u})}{\partial p_i}
 	\]
 \end{proposition}
 
@@ -821,6 +821,439 @@ The most important thing to remember is the relationships between these separate
 
 \newpage
 \section{Producer Theory (Harris)}\label{sec:harris}
+
+\subsection{Classical Producer Theory}
+
+\subsubsection{Setup}
+
+We will always assume the following:
+
+\begin{assumption}
+	There are $L$ commodities, with a production plan $y \in \reals^L$. A net input is an element $i$ such that $y_i < 0$, and a net output is an element $j$ such that $y_j > 0$. We have a production possibilities set $Y \subseteq \reals^L$, and we assume that prices $p \ge 0$ that are unaffected by the activity of the firm.
+\end{assumption}
+
+We will also often assume, for simplicity (and in order to work with functions rather than correspondences):
+\begin{assumption}
+	$Y$ is nonempty, closed, and (strictly) convex, and (the \blue{free disposal property}) if $y \in Y$ and $y' \le y$, then $y' \in Y$.
+\end{assumption}
+
+\begin{definition}
+	A production plan $y \in Y$ is \blue{efficient} if there does not exist $y' \in Y$ such that $y' \ge y$ and $y_i' > y_i$ for some $i$.
+\end{definition}
+
+In the case of a single output, we partition $y$ into output $q \in \reals_+$ and inputs $z \in \reals^{L-1}_+$. This allows us to define the following:
+
+\begin{definition}
+	The \blue{production function} $f:\reals^{L-1}_+ \to \reals_+$ is defined by 
+	\[
+	f(x) = \max q \st (q,-z) \in Y
+	\]
+\end{definition}
+
+\begin{definition}
+	The \blue{input requirement set}
+	\[
+	V(q) \coloneqq \{z \in \reals_+^{L-1} : (q,-z) \in Y\}
+	\]
+	gives all of the input vectors that can be used to produce an output $q$.
+\end{definition}
+
+\begin{definition}
+	The \blue{isoquant} 
+	\[
+	Q(q) \coloneqq \{z \in \reals_+^{L-1} : z \in V(q) \text{ and } z \not\in V(q') \text{ for any } q' > q\}
+	\]
+	gives all the input vectors that can be used to produce at most $q$ units of output.
+\end{definition}
+
+\subsubsection{Cost Minimization}
+
+We will make the following assumptions through this section:
+
+\begin{assumption}
+	There are $L-1$ inputs $z$, and one output $q = f(z)$. The production function $f$ is twice continuously differentiable, and inputs have price $w \in \reals^{L-1}_+$
+\end{assumption}
+\begin{remark}
+	If any input has price zero, the firm will obviously not consider it in its decision making.
+\end{remark}
+
+\begin{definition}
+	The firm's \blue{cost minimization problem} is
+	\[
+	\min_{z \in \reals^{L-1}_+} w \cdot z \st f(z) = q
+	\]
+	The associated value function is called the \blue{cost function}
+	\[
+	C(w,q) \coloneqq \min_{z \in \reals^{L-1}_+} w \cdot z \st f(z) = q
+	\]
+\end{definition}
+
+\begin{proposition}\label{prop:cost_fn_properties}
+	\red{(Properties of the Cost Function)}
+	
+	\begin{itemize}
+		\item[(i)] $C$ is homogeneous of degree 1 in $w$
+		\item[(ii)] $C$ is concave in $w$
+		\item[(iii)] If we assume free disposal, $C$ is nondecreasing in $q$
+		\item[(iv)] If $f$ is homogeneous of degree $k$ in $z$, $C$ is homogeneous of degree $\frac{1}{k}$ in $q$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	
+	\begin{itemize}
+		\item[(i)] Increasing $w$ by $\alpha > 0$ is a monotonic transformation and does not affect the choice of $z$, but it does increase $w \cdot z$ by a factor of $\alpha$.
+		\item[(ii)] Fix $w,w' \in \reals^{L-1}_+$, and suppose $C(w,q) = w \cdot z$ and $C(w',q) = w' \cdot z'$. Take $\alpha \in [0,1]$ and let $w'' = \alpha w + (1-\alpha)w'$. Then for $z''$ a cost minimizer at $w''$, we have that
+		\[
+		C(w'',q) = w'' \cdot z'' = \alpha w \cdot z'' + (1-\alpha)w' \cdot z''
+		\]
+		We also know that $w \cdot z'' \ge C(w,q)$ and $w'\cdot z'' \ge C(w',q)$, so we have that $C(w'',q) \ge \alpha C(w,q) + (1-\alpha)C(w',q)$.
+		\item[(iii)] Suppose that $q' > q$. By free disposal, $q$ can be produced using the same input vector used to produce $q'$.
+		\item[(iv)] Homogeneity of degree $k$ of $f$ implies that 
+		\[
+		f(z) = q \Longleftrightarrow \frac{1}{q} f(z) = 1 \Longleftrightarrow f\parl \frac{z}{q^{1/k}}\parr = 1
+		\]
+		Thus, we get that
+		\begin{align*}
+			C(w,q) &= \min_{z}w \cdot z \st f\parl \frac{z}{q^{1/k}}\parr = 1 \\
+			&= q^{1/k} \min_z w \cdot \frac{z}{q^{1/k}} \st f\parl \frac{z}{q^{1/k}}\parr = 1  \\
+			&= q^{1/k} C(w,1)
+		\end{align*}
+	\end{itemize}
+\end{proof}
+
+\subsubsection{Homogeneous Functions (a brief aside)}
+
+\begin{definition}
+	A function $f: X \subseteq \reals^n \to \reals$ is \blue{homogeneous of degree $k$} if
+	\[
+	f(\alpha x) = \alpha^k f(x) \forall \alpha > 0, x \in X
+	\]
+	where $k$ is a non-negative integer.
+\end{definition}
+\begin{proposition}
+	If a function $f$ is homogeneous of degree $k$, then any of its partial derivatives are homogeneous of degree $k-1$
+\end{proposition}
+\begin{proof}
+	Let $f_i = \frac{\partial f}{\partial x_i}$. We have that
+	\[
+	f(\alpha x) = \alpha^k f(x) \Longrightarrow \alpha f_i(\alpha x) = \alpha^k f_i(x) \Longrightarrow f_i(\alpha x) = \alpha^{k-1}f_i(x)
+	\]
+\end{proof}
+
+\begin{proposition}
+	\red{(Euler's Formula)} If $f$ is homogeneous of degree $k$ and differentiable, then at any $x$
+	\[
+	\sum_{i=1}^n \frac{\partial f(x)}{\partial x_i}x_i = kf(x)
+	\]
+\end{proposition}
+\begin{proof}
+	Differentiating with respect to $\alpha$ and evaluating at $\alpha = 1$, we get that
+	\[
+	f(\alpha x) = \alpha^k f(x) \Longrightarrow \sum_{i=1}^n f_i(\alpha x) x_i = k\alpha^{k-1}f(x) \Longrightarrow \sum_{i=1}^n f_i(x)x_i = kf(x)
+	\]
+\end{proof}
+
+\begin{proposition}
+	If the production function $f$ is homogeneous of degree $k$, then
+	\[
+	\textnormal{MRTS}_{ij}(z) \coloneqq \frac{\frac{\partial f(z)}{\partial z_i}}{\frac{\partial f(z)}{\partial z_j}} = \frac{\frac{\partial f(\alpha z)}{\partial z_i}}{\frac{\partial f(\alpha z)}{\partial z_j}} \eqqcolon \textnormal{MRTS}_{ij}(\alpha z)
+	\]
+\end{proposition}
+\begin{proof}
+	\[
+	\frac{f_i(\alpha z)}{f_j(\alpha z)} = \frac{\alpha^{k-1}f_i(z)}{\alpha^{k-1}f_j( z)} = \frac{f_i(z)}{f_j(z)}
+	\]
+\end{proof}
+
+\subsubsection{Profit Maximization}
+
+\begin{definition}
+	The firm's \blue{profit maximization problem} is
+	\[
+	\max_y p \cdot y \st y \in Y
+	\]
+	The associated value function is called the \blue{profit function}:
+	\[
+	\pi(p) \coloneqq \max_y p \cdot y \st y \in Y
+	\]
+\end{definition}
+
+\begin{remark}
+	In the single output case, this becomes
+	\[
+	\pi(p,w) \coloneqq \max_y p f(z) - w \cdot z 
+	\]
+	Henceforth, we consider only the single output case.
+\end{remark}
+\begin{remark}
+	Note that profit maximization implies cost minimization.
+\end{remark}
+
+\begin{proposition}\label{prop:profit_properties}
+	\red{(Properties of the Profit Function)}
+	\begin{itemize}
+		\item[(i)] Homogeneous of degree 1
+		\item[(ii)] Nondecreasing in $p$
+		\item[(iii)] Nonincreasing in $w$
+		\item[(iv)] Convex in $(p,w)$
+		\item[(v)] Continuous
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item[(i)] $\max_z \alpha (pf(z) - w\cdot z) = \alpha \max_z pf(z) - w\cdot z$
+		\item[(ii)] $p' \ge p \Longrightarrow p' f(z) \ge p f(z) \forall z$
+		\item[(iii)] $w' \ge w \Longrightarrow w' \cdot z \ge w \cdot z$
+		\item[(iv)] Let $(p'',w'') := \alpha (p,w) + (1-\alpha)(p',w')$ and let $z,z',z''$ be the solution to the profit maximization problem with the corresponding output prices and input price vectors. Then by definition
+		\[
+		\pi(p,w) = pf(z) - w \cdot z \ge p f(z'') - w \cdot z''
+		\]
+		\[
+		\pi(p',w') = p'f(z) - w' \cdot z \ge p' f(z'') - w' \cdot z''
+		\]
+		which implies that
+		\begin{align*}
+		\alpha \pi(p,w) + (1-\alpha)\pi(p',w') &\ge \alpha (p f(z'') - w \cdot z'') + (1-\alpha) ( p' f(z'') - w' \cdot z'') \\
+		&= (\alpha p + (1-\alpha)p') f(z'') - (\alpha w + (1-\alpha)w' )\cdot z'' \\
+		&= \pi(p'',w'')
+		\end{align*}
+		\item[(v)] Follows from Berge's Theorem
+	\end{itemize}
+\end{proof}
+
+\begin{remark}
+	$\pi$ being convex in $(p,w)$ implies that $\pi$ is convex in $p$ and $w$ individually.
+\end{remark}
+
+\begin{definition}
+	The \blue{unconditional input demand function}
+	\[
+	x(p,w) \coloneqq \argmax_{z \in \reals^{L-1}_+} pf(z) - w\cdot z
+	\]
+	is the solution to the profit maximization problem. The \blue{output supply function}
+	\[
+	q(p,w) \coloneqq f(x(p,w))
+	\]
+	is the output level where the profit is being maximized.
+\end{definition}
+
+\begin{proposition}\label{prop:hotelling}
+	\red{(Hotelling's Lemma)} If $\pi$ is differentiable, then for $(p,w) \in \reals^L_{++}$,
+	\begin{align*}
+		q(p,w) &= \frac{\partial \pi(p,w)}{\partial p} \\
+		x_j(p,w) &= -\frac{\partial \pi(p,w)}{\partial w_j}
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	(Sketch) Apply the Envelope Theorem, and note that $x(p,w)$ is the profit maximizing bundle and $q(p,w)$ is the production function evaluated at that bundle.
+\end{proof}
+
+\begin{remark}
+	This condition can be relaxed from differentiability to the unconditional input demand function and output supply function being well-defined functions.
+\end{remark}
+
+\begin{definition}
+	The \blue{conditional input demand function} 
+	\[
+	z(w,q) \coloneqq \argmin_{z \in \reals^{L-1}_+} w \cdot z \st f(z) = q
+	\]
+	is the solution to the cost minimization problem.
+\end{definition}
+
+\begin{proposition}
+	\red{(Shephard's Lemma)} If $C$ is differentiable, then for $w \in \reals^{L-1}_{++}$,
+	\[
+	z_i(w,q) = \frac{\partial C(w,q)}{\partial w_i}
+	\]
+\end{proposition}
+\begin{proof}
+	(Sketch) Similarly, apply the Envelope Theorem to the cost minimization problem.
+\end{proof}
+
+\begin{proposition}
+	Suppose the profit function is twice continuously differentiable. Then:
+	\begin{itemize}
+		\item[(i)] $\frac{\partial q(p,w)}{\partial p_i} \ge 0$
+		
+		\item[(ii)] $\frac{\partial x_j(p,w)}{\partial w_j} \le 0$
+		
+		\item[(iii)] $\frac{\partial x_j(p,w)}{\partial w_i} = \frac{\partial x_i(p,w)}{\partial w_j}$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Note that the profit function being twice continuously differentiable and convex implies that its Hessian is positive semdefinite. Conclusion follows from applying Hotelling's Lemma
+\end{proof}
+
+\begin{proposition}
+	Suppose the cost function is twice continuously differentiable. Then:
+	\begin{itemize}
+		\item[(i)] $\frac{\partial z_i(w,q)}{\partial w_i} \le 0$
+		
+		\item[(ii)] $\frac{\partial z_j(w,q)}{\partial w_i} = \frac{\partial z_i(w,q)}{\partial w_j}$
+		
+		\item[(iii)] $\frac{\partial z_i(w,q)}{\partial q} = \frac{\partial MC(w,q)}{\partial w_i} = \begin{cases} > 0 & \textnormal{Normal Input} \\ < 0 & \textnormal{Inferior Input} \end{cases}$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	(i) follows from $C$ being concave in $w$. (ii) and (iii) follow from the symmetry of second derivatives of $C$.
+\end{proof}
+
+\subsubsection{Comparative Statics}
+
+\begin{remark}
+	For a full treatment, including a few producer theory examples, see Tak's notes on Comparative Statics.
+\end{remark}
+
+\begin{assumption}
+	Two inputs $(x_1,x_2)$, one output $q = f(x)$. $f \in C^2$ and the Hessian $H_f$ is negative definite. $f(0,x_2) = f(x_1,0) = 0$, so both inputs are necessary. Inada conditions on $x_1,x_2$, output price $p > 0$, input prices $w \gg 0$.
+\end{assumption}
+
+Consider the profit maximization problem
+\[
+\max_{x \in \reals^2_{++}} pf(x) - wx
+\]
+
+\begin{exercise}
+	Prove that $\partial x_1(p,w) / \partial w_1 < 0$. Taking FOC, we get
+	\[
+	pf_1(x) - w_1 = 0 \quad \text{ and }\quad pf_2(x) - w_2 = 0
+	\]
+	We have that the Hessian of $x$, $H_x$, is 
+	\[
+	H_x = p \matrixc{f_{11} & f_{12} \\ f_{21} & f_{22}} = pH_f
+	\]
+	Since $H_f$ is negative definite, this matrix is invertible. By the Implicit Function Theorem, FOCs implicitly define $x(p,w) = (x_1(p,w), x_2(p,w))$, and we can rewrite them as
+	\[
+	pf_1(x(p,w)) - w_1 = 0 \quad \text{ and } \quad pf_2(x(p,w)) - w_2 = 0
+	\]
+	Taking derivatives with respect to $w_1$, we get
+	\[
+	pf_{11} \frac{\partial x_1}{\partial w_1} + p f_{12} \frac{\partial x_2}{\partial w_1} = 1
+	\]
+	\[
+	pf_{21} \frac{\partial x_1}{\partial w_1} + p f_{22} \frac{\partial x_2}{\partial w_1} = 0
+	\]
+	which gives us
+	\[
+	p \matrixc{f_{11} & f_{12} \\ f_{21} & f_{22}} \matrixc{\partial x_1 / \partial w_1 \\ \partial x_2 / \partial w_1} = \matrixc{1 \\ 0}
+	\]
+	We get that
+	\begin{align*}
+	\matrixc{\partial x_1 / \partial w_1 \\ \partial x_2 / \partial w_1} &= \frac{1}{p} \frac{1}{f_{11}f_{22} - f_{12} f_{21}} \matrixc{f_{22} & -f_{12} \\ -f_{21} & f_{11}} \matrixc{1 \\ 0} \\
+	&= \frac{1}{p} \frac{1}{f_{11}f_{22} - f_{12} f_{21}} \matrixc{f_{22} \\ -f_{21}}
+	\end{align*}
+	Note that $f_{11}f_{22} - f_{12}f_{21} > 0$, because $H_f$ is negative definite, and that $f_{22} < 0$, which means that $\frac{\partial x_1}{\partial w_1} < 0$.
+\end{exercise}
+
+\begin{question}
+	Why is it worth studying cost minimization and profit maximization separately? There are some settings where profit maximization might be unreasonable:
+	\begin{itemize}
+		\item Dynamics. For example, if there is learning by doing, this gives a firm incentives to choose $q > q(p,w)$ today in order to decrease tomorrow's costs
+		\item Managerial utility maximization. If a larger firm gives more prestige, might have $q > q(p,w)$
+	\end{itemize}
+\end{question}
+
+
+
+\subsection{Non-Price-Taking Firms}
+
+In our assumptions, we said that firms were unaffected by the firm's activity. This leads to the simple problem we've been working in:
+\[
+\max_{z \in \reals^{L-1}} pf(z) - wz
+\]
+If their output has market power, then we have
+\[
+\max_{z \in \reals^{L-1}} p(f(z))f(z) - wz
+\]
+And we assume that $p'(q) < 0 \forall q$. They could also have input market power:
+\[
+\max_{z \in \reals^{L-1}} pf(z) - w(z)z
+\]
+where we assume that $\frac{\partial w_i(z)}{\partial z_i} > 0$ and $\frac{\partial w_i(z)}{\partial z_j} = 0 \forall i \ne j$. 
+
+
+These problems imply that:
+\begin{center}
+	\begin{tabular}{| c | c | c | c | }
+		\hline
+		 Statistic & No MP & Output MP & Input MP \\
+		 \hline
+		 FOCs & $p \nabla f(z) = w$ & $[p(f(z)) + p'(f(z))f(z)] \nabla f(z) = w$ & $p f_i(z) = w_i'(z_i)z_i + w_i(z_i)$\\
+		 \hline
+		 MRTS & $\frac{f_i(z)}{f_{i'}(z)} = \frac{w_i}{w_{i'}}$ & $\frac{f_i(z)}{f_{i'}(z)} = \frac{w_i}{w_{i'}}$ & $\frac{f_i(z)}{f_{i'}(z)} = \frac{w_i'(z_i)z_i + w_i(z_i)}{w_{i'}'(z_{i'})z_{i'} + w_{i'}(z_{i'})}$\\
+		 \hline
+	\end{tabular}
+\end{center}
+
+We have that profit maximization implies cost minimization in each world, with slight differences. We have that with no market power,
+\begin{align*}
+	\pi(p,w) &\equiv \max_{z \in \reals^{L-1}} pf(z) - w \cdot z \\
+	&= \max_q \barl \max_{z \in \reals^{L-1}} pq - w \cdot z \st f(z) = q \barr \\
+	&= \max_q p\cdot q - \barl \min_{z \in \reals^{L-1}} w \cdot z \st f(z) = q \barr \\
+	&=  \max_q p\cdot q - C(w,q)
+\end{align*}
+With output market power, this becomes
+\begin{align*}
+	\pi(p,w) &\equiv \max_{z \in \reals^{L-1}} p(f(z))f(z) - w \cdot z \\
+	&= \max_q \barl \max_{z \in \reals^{L-1}} p(q)q - w \cdot z \st f(z) = q \barr \\
+	&= \max_q p(q)\cdot q - \barl \min_{z \in \reals^{L-1}} w \cdot z \st f(z) = q \barr \\
+	&=  \max_q p(q)\cdot q - C(w,q)
+\end{align*}
+With input market power, we have
+\begin{align*}
+	\pi(p,w) &\equiv \max_{z \in \reals^{L-1}} pf(z) - w(z) \cdot z \\
+	&= \max_q \barl \max_{z \in \reals^{L-1}} pq - w(z) \cdot z \st f(z) = q \barr \\
+	&= \max_q p\cdot q - \barl \min_{z \in \reals^{L-1}} w(z) \cdot z \st f(z) = q \barr \\
+	&=  \max_q p\cdot q - C(q)
+\end{align*}
+
+Under perfect competition, there is no profit -- the FOCs imply that
+\[
+p = \frac{\partial }{\partial q} C(w,q) \text{ \ie, price is marginal cost}
+\]
+With output market power, we have that
+\[
+p(q^m) + p'(q^m)q^m = \frac{\partial }{\partial q} C(w,q^m)
+\]
+which implies that
+\[
+p(q^m) = \frac{\partial }{\partial q} C(w,q^m) - \underbrace{p'(q^m)}_{<0}q^m > \frac{\partial}{\partial q} C(w,q^m)
+\]
+so there is positive profit. This with quantity choice. We can equivalently look at the price choice problem. We have
+\[
+\max_p p D(p) - c(w,D(p)) \Longrightarrow [p^m D'(p^m) + D(p^m)] = \frac{\partial}{\partial q} C(w,D(p^m)) D'(p^m)
+\]
+which implies that
+\begin{align*}
+	p^m - \frac{\partial}{\partial q}C(w,q^m) &= -\frac{D(p^m)}{D'(p^m)} \\
+	p^m &= \parl \frac{\varepsilon}{1 + \varepsilon}\parr \frac{\partial}{\partial q} C(w,D(p^m))
+\end{align*}
+where $\varepsilon$ is the negative inverse of the Lerner index.
+
+With input market power (supposing for simplicity that there is only one input), we have
+\[
+\max_z pf(z) - w(z)z
+\]
+Since $w(z)$ is increasing, we can write its inverse $z(w)$, and get
+\[
+\max_w pf(z(w)) - w z(w)
+\]
+and the FOC get us
+\begin{align*}
+	p f'(z(w)) z'(w) &= z'(w) w  + z(w) \\
+	p \frac{f'(z(w))}{w} &= \frac{z(w)}{z'(w)w} + 1 \\
+	p \frac{f'(z(w))}{w} &= \frac{1}{\varepsilon_{z,w}} + 1 = \frac{1 + \varepsilon_{z,w}}{\varepsilon_{z,w}} \\
+	w &= \parl \frac{\varepsilon_{z,w}}{1 + \varepsilon_{z,w}} \parr p f'(z(w)) < p f'(z(w))
+\end{align*}
+where $\varepsilon_{z,w}$ is the elasticity of input supply.
+
+
+
+
+
+
+
+
 
 \newpage
 \section{Uncertainty Theory (Blume)}\label{sec:blume}
