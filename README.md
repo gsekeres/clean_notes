@@ -16,8 +16,8 @@ Please let me know what section you would like to contribute to! I will deal wit
     - Status: Done
 - Section 2: Kircher (consumer): Gabe
     - Status: Done
-- Section 3: Harris (producer): __
-    - Status: Not started
+- Section 3: Harris (producer): Gabe
+    - Status: Done
 - Section 4: Blume (uncertainty): __
     - Status: Not started
 - Section 5: Barseghyan (uncertainty 2): __
