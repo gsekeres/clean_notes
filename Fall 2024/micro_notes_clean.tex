@@ -17,11 +17,13 @@ We rely heavily on the notes created from Prof. Easley's course, which were orig
 
 We occasionally make reference to the Stanford ECON 202 notes, created by \href{https://www.gsb.stanford.edu/faculty-research/faculty/jonathan-levin}{Jonathan Levin}, \href{https://web.stanford.edu/~isegal/}{Ilya Segal}, \href{https://milgrom.people.stanford.edu/}{Paul Milgrom}, and \href{https://sites.google.com/site/ravijagadeesan/}{Ravi Jagadeesan}. This will mainly be if there exists intuition that we believe is helpful.
 
+Thanks to our cohort for helping with this project, especially Robert Betancourt, Addie Sutton, and XXX.
+
 \paragraph{Notation.} A large part of this project is an attempt to unify the notation used by our separate professors. We default to the notation used in the Easley notes, then to MWG, and then use our own judgement. New definitions will have a word highlighted in \blue{blue}, and certain (named) theorems will be denoted in \red{red}. 
 
 \paragraph{Structure.} The course (and these notes) are organized as follows. Prof. Easley taught an introduction to choice theory, Section~\ref{sec:easley}. Prof. Kircher taught consumer theory, Section~\ref{sec:kircher}. Prof. Harris taught producer theory, and some concepts of market failures, Section~\ref{sec:harris}. Prof. Blume introduced the theory of choice under uncertainty, Section~\ref{sec:blume}, and Prof. Barseghyan continued with theoretical applications for uncertainty and expected utility maximization, Section~\ref{sec:barseghyan}. Prof. Battaglini taught on information theory, Section~\ref{sec:battaglini}. We also include here exercises with solutions, divided into the various sections and sources. This is Section~\ref{sec:exercises}.
 
-\paragraph{Contributions.} Gabe wrote Section~\ref{sec:easley}, and XXX. Omar wrote the section exercises and solutions in Section~\ref{sec:exercises}, and YYY. We are deeply grateful to everyone who read over these notes and suggested edits, especially our cohortmates 
+
 
 
 \newpage
@@ -1929,26 +1931,1663 @@ Is there a constrained Pareto optimum that is better than the competitive equili
 
 \subsubsection{Easley Homework}
 
+\paragraph{Problems}
+
+\begin{enumerate}
+	\item Economists have observed that the default setting in retirement plans seems to affect employees' choices about retirement savings. Using the language from class here is how the observations occur. In each scenario presented to the employee, there are two alternatives: a default percentage of the employee's salary to be deducted and placed in a retirement plan and another percentage of the employee's salary to be deducted and placed in a retirement plan if the employee objects to the default option. So the employee can choose ``not object'' and get the default percentage deducted or ``object'' and get the other percentage deducted. In the following, each scenario is described by a pair consisting of object or not object and the percentage deducted in each case. In scenario I, the alternatives are: ``not object'' and 5 percent; and, ``object'' and 0 percent. In scenario II, the alternatives are: ``object'' and 5 percent; and, ``not object'' and 0 percent.
+	\begin{enumerate}
+		\item Many people choose the default (the alternative with not objecting) in both scenarios. This is often said to be inconsistent with rational choice. Setup a model of a rational decision maker and show that these choices are inconsistent with rational choice in your model.
+		\item In this part of the question, we want to ask if the conclusion in part (a), that the choices are inconsistent with rational choice, necessarily follows from the description of the decision problem as it is presented to the employee. To ask this question you need to describe a set of items, X, that is being considered by the employee and ask if there is a rational preference relation on X that could yield these choices. There are two possible answers. First, there does not exist an X and a rational preference relation on X consistent with these choices. Second, there does exist such an X and a rational preference relation on X consistent with these choices. If you believe that the first is true then prove it; if you believe that the second is true provide an example and show that it works.
+		\item In this part of the question we want to ask what happens if additional scenarios are introduced. In scenario III, the alternatives are: do not object and 10 percent; and, object and 5 percent. In scenario IV, the alternatives are: do not object and 10 percent; and object and 20 percent. In scenario V, the alternatives are: do not object and 0 percent; and object and 20 percent. The employee's choices are observed to be: In III---object and 5 percent; In IV---do not object and 10 percent; and, In V---object and 20 percent. Is there a set of alternatives, X, and a rational preference relation on X that could yield all of the choices we observe in the five scenarios? Again, there are two possible answers. First, there does not exist an X and a rational preference relation on X consistent with these choices. Second, there does exist such an X and a rational preference relation on X consistent with these choices. If you believe that the first is true then prove it; if you believe that the second is true provide an example and show that it works.
+	\end{enumerate}
+	\item A consumer has preference relation $\succsim$ on $\reals_+$ of the form $x \succsim y$ if and only if $x \ge 2y$. Is $\succsim$ a rational preference relation? Explain briefly.
+	\item Let $X$ be a finite set of alternatives. Suppose $\succsim$ is a rational preference relation on $X$ and let $C\opt(\cdot,\succsim)$ be the choice function on $X$. Suppose that there are alternatives $x,y \in X$ such that $y \succ x$.
+	\begin{enumerate}
+		\item Compare $C\opt(B,\succsim)$ and $C\opt(B \setminus \{x\},\succsim)$ for a set of alternatives $B$ containing both $x$ and $y$.
+		\item Compare $C\opt(B,\succsim)$ and $C\opt(B \setminus \{x\},\succsim)$ for a set of alternatives $B$ containing $x$ but not $y$.
+	\end{enumerate}
+	\item Let $X = \{a,b,c\}$ be a set of alternatives and suppose that $(\mathcal{B},C(\cdot))$ is a choice structure for which $\mathcal{B}$ is all non-empty subsets of $X$. Suppose that the choice structure satisfies WARP. You know that $C(\{a,b,c\}) = \{a\}$ but have no other information about $C(\cdot)$. What can you say about $C(A)$ for the remaining $A \in \mathcal{B}$?
+	\item Let $X$ be a finite, nonempty set and let $\mathcal{B}$ be all non-empty subsets of $X$, i.e. $\mathcal{B}=\mathcal{P}(X)$. Prove that any choice structure $(\mathcal{B},C(\cdot))$, with $\mathcal{B}=\mathcal{P}(X)$, that satisfies WARP satisfies Sen’s $\beta$.
+	\item A consumer has preferences $\succsim$ on $\reals^n_+$ that can be represented by a quasi-concave utility function $u: \reals^n_+ \to \reals_+$. You have been asked to describe the effect of a small tax on good one on the consumer’s demand for good one. To do this you plan to start by solving the consumer’s maximization problem. However, you don’t like solving maximization problems with quasi- concave objective functions and so you plan to use a monotonic transformation $f: \reals_+ \to \reals_+$ of the utility function to replace $u:\reals^n_+ \to \reals_+$ by $v(x) = f(u(x))$ in the maximization problem. Is this valid? Will it give you the same demand as you would have found with the original utility function? Explain.
+	\item A consumer purchases goods $x \in \reals^L_+$ with $L \ge 2$ at prices $p$ using wealth $w$. Let $x\opt$ be the consumer's chosen bundle of goods. You know that this consumer's choices satisfy Walras' Law and WARP. Local authorities plan to use a tax on good 1 to discourage the consumption of good 1. Local authorities do not want the consumer to be harmed by this tax so they plan to give the consumer a subsidy that is just enough to make $x\opt$ affordable at the new prices $p = (p_1 + t,p_2,\dots,p_L)$, where $t$ is the tax on good 1. The consumer treats this subsidy as a fixed number $R$ that increases wealth to $w + R$.
+	\begin{enumerate}
+		\item What happens to the amount of good 1 the consumer purchases? Explain briefly.
+		\item What would happen to the amount of good 1 the consumer purchases if there was no subsidy, i.e. $R=0$? Explain briefly.
+	\end{enumerate}
+	\item A consumer has preference relation $\succsim$ on $[0,1]$ that is represented by the utility function $U(x) = x^2 - x$. Is this consumer's preference relation convex? Explain briefly.
+	\item In year 0, a consumer has wealth $w^0 = 1,000$, prices are $(p^0_1,p^0_2) = (10,10)$ and the consumer chooses $(x^0_1,x^0_2) = (50,50)$. In year 1, the consumer has wealth $w^1 = 1,250$ and prices are $(p^1_1,p^1_2) = (15,9)$. For what range of choices of $x_2$ can you conclude that the consumer's choices are inconsistent with the weak axiom? You can assume that the consumer's choices satisfy Walras' Law.
+	\item One of your colleagues is interested in comparing the welfare of two people who live in locations where there are different prices for goods and where the two individuals have different wealths. Your colleague believes that these two people have common preferences. Specifically, he assumes that there are two consumers, 1 and 2, with rational and locally non-satiated preferences $\succsim$ over consumption goods in $\reals^L_+$. The prices and wealths for consumers 1 and 2 are $(p^1,w^1)$ and $(p^2,w^2)$ respectively. Each consumer selects a bundle of goods in their budget set that is best according to their preferences. Let these bundles be $x^1$ and $x^2$.
+	\begin{itemize}
+		\item[(i)] Your colleague asks you to suggest how to interpret data that he might find about prices, wealths and choices. Specifically, he asks for each case below whether you can say that consumer 1 is better off than consumer 2 or consumer 2 is better off than consumer 1
+		\begin{itemize}
+			\item[a.] $p^1x^2 < w^1$ and $p^2x^1 > w^1$
+			\item[b.] $p^1x^2 > w^1$ and $p^2x^1 > w^1$
+			\item[c.] $p^1x^2 < w^1$ and $p^2x^1 < w^1$
+		\end{itemize}
+		For each of these cases, what can you say about who is better off? Explain briefly.
+		
+		\item[(ii)] Another colleague argues that this entire project (inferring who is better off from these choices) is flawed. This colleague makes the following argument:
+		\begin{itemize}
+			\item[a.] These two people choose where to live
+			\item[b.] Suppose that they each were free to choose either location (there is no cost associated with this choice) and that all attributes of the locations that these people care about are reflected in the consumption goods
+			\item[c.] Thus, each person prefers (at least weakly) the location they are in to the other location
+			\item[d.] Then as they made different location choices either they have different preferences or at least one of them is indifferent between the locations
+			\item[e.] Thus, the assumption of common preferences is flawed, and if they don't have common preferences nothing, other than the fact that each consumer prefers their own consumption bundle to the one chosen by the other consumer, can be inferred from the choices over consumption bundles given locations.
+		\end{itemize}
+		Briefly evaluate this argument.
+	\end{itemize}
+\end{enumerate}
+
+\paragraph{Solutions.} (From Gabe's solutions, where he worked with Sara Yoo, except for Problem 7b which are from the given solutions.)
+
+\begin{enumerate}
+\item Objecting and rational choice
+
+\begin{itemize}
+	\item[(a)] Consider a decision-maker $i$, deciding between alternatives $x^i_5$ and $x^i_0$, which represent the plans that have five percent and zero percent deducted respectively. Define $\succ$ such that $x \succ y$ if $i$ would choose $x$ if given the option. In this model, we have that $x^i_5 \succ x^i_0$ in Scenario I, which from our definition of preference relations implies that $x^i_5 \succsim x^i_0$, and $x^i_0 \not\succsim x^i_5$. However, we have in Scenario II that $x^i_0 \succ x^i_5$, which implies that $x^i_0 \succsim x^i_5$. However, this is a contradiction of the preferences implied earlier, so this decision-maker is not rational.
+	
+	(Note that this model assumes that the decision-maker cannot be indifferent between the two options. This fits the empirical results, as it appears that the majority of people prefer not objecting. However, this may be a stronger assumption than is warranted.)
+	
+	\item[(b)] Consider the following set of objects:
+	\[
+		X = \{ (x_0,o), (x_0,n), (x_5,o), (x_5,n)\}
+	\]
+	where $o$ denotes objecting and $n$ denotes not objecting. Define the following preference relation over these alternatives, which mirrors the Lexicographic preference relation:
+	\[
+	x \succeq x' \text{ if } x_2 = n \text{ and } x'_2 = 0, \text{ or } x_2 = x'_2 \text{ and } x_1 \ge x'_1	\]
+
+	where we (arbitrarily) assume that $x_0 > x_5$. This rationalizes the choices made by the decision-maker, where $(x_0,n) \succeq (x_5,o)$ and $(x_5,n) \succeq (x_0,o)$. This preference relation is additionally complete and transitive over $X$ -- indeed, all relationships are strict and ordered, so we have
+	\[
+	(x_0,n) \succ (x_5,n) \succ (x_0,o) \succ (x_5,o)
+	\]	
+	
+	\item[(c)] These preferences are not rationalizable, as the observed preferences violate transitivity. Taking the new set of objects, and making no assumptions about the form of the revealed preference relation:
+	\[
+	X = \{ (x_0,o), (x_0,n), (x_5,o), (x_5,n), (x_{10},o), (x_{10},n), (x_{20},o),(x_{20},n)\}
+	\]
+	our observed preferences are, in scenario order:
+	\begin{align*}
+		(x_5,n) &\succ (x_0,o) \\
+		(x_0,n) &\succ (x_5,o) \\
+		(x_{5},o) &\succ (x_{10},n) \\
+		(x_{10},n) &\succ (x_{20},o) \\
+		(x_{20},o) &\succ (x_0,n)
+	\end{align*}
+	We can construct the following chain:
+	\[
+	(x_{5},o) \succ (x_{10},n)\succ (x_{20},o)\succ (x_0,n)\succ (x_5,o)
+	\]
+	which is a contradiction of transitivity. Since the revealed preferences are not transitive, they are not rationalizable.
+\end{itemize}
+
+
+
+\item $\succeq$ is not a rational preference relation. Consider $x = 2$, and $y = 3$. $x \not\succeq y$, as $2 \not\ge 6$, but $y \not\succeq x$, as $3 \not\ge 4$. Thus, $\succeq$ is not complete, and so is not rational.
+
+\item We will examine $C^\star(\cdot, \succeq)$.
+\begin{itemize}
+	\item[(a)] For $B \ni x,y$, $C^\star(B,\succeq) = C^\star(B \setminus \{x\},\succeq)$. To see why, note that the only possible difference between them would require $x \in C^\star(B,\succeq)$. However, from the definition of choice functions, that would require $x \succeq z \forall z \in B$, but $y \in B$ and $y \succ x \Rightarrow x \not\succeq y$. Thus, $x \not\in C^\star(B,\succeq)$, so $C^\star(B,\succeq) = C^\star(B \setminus \{x\},\succeq)$.
+	
+	\item[(b)] For $B \ni x$ where $y \not\in B$, it may be the case that $C^\star(B,\succeq) \ne C^\star(B \setminus \{x\},\succeq)$. That would require that $x \succeq z \forall z \in B$, which would mean that $x \in C^\star(B,\succeq)$ and $x \not\in C^\star(B\setminus \{x\},\succeq)$. However, if $\exists z \in B \st z \succ x$, it will be the case that $C^\star(B,\succeq) = C^\star(B \setminus \{x\},\succeq)$.
+\end{itemize}
+
+\item $X = \{a,b,c\}$, and $(B,C(\cdot))$ is a choice structure where $B = \mathcal{P}(X)$, and $C(\{a,b,c\}) = \{a\}$. We can say that if $a \in A$, $C(A) = \{a\}$. This is because the fact that $a \in C(\{a,b,c\})$, and $b,c \not\in C(\{a,b,c\})$ together imply that $a \succ b$ and $a \succ c$. Thus, for $A \in \{ \{a\},\{a,b\},\{a,c\},\{a,b,c\}\}$, $C(A) = \{a\}$. Also, trivially, $C(\{b\}) = \{b\}$, and $C(\{c\}) = \{c\}$, from the definition of the choice correspondence that $C(X) \subseteq X$ and $C(X) \ne \emptyset \forall X$. We can say nothing about $C(A)$ when $A = \{b,c\}$, as we have no information about whether $b \succeq c$ or $c \succeq b$.
+
+\item (WARP $\Rightarrow$ Sen's $\beta$)
+
+\begin{proof}
+	We have that $(\beta, C(\cdot))$ satisfies WARP. Take some $x,y \in A \subset B$, and assume that $x,y \in C(A)$ and $y \in C(B)$. These are the necessary conditions for Sen's $\beta$. By WARP, since $x,y \in A \cap B$, $x \in C(A)$, and $y \in C(B)$, $x \in C(B)$. Thus, since $x \in C(B)$ whenever $x,y \in A \subset B$, $x,y \in C(A)$, and $y \in C(B)$, $(\beta,C(\cdot))$ satisfies Sen's $\beta$.
+\end{proof} 
+
+\item From Proposition 2.16, we have that for strictly increasing $f$, if there exists $u$ such that $x \succsim y \Leftrightarrow u(x) \ge u(y)$, then $x \succsim y \Leftrightarrow f(u(x)) \ge f(u(y))$. Thus, this is a valid transformation -- if a bundle $x \in \reals^n_+$ is preferred to $y \in \reals^n_+$, so $x \succsim y$, then $v(x) \ge v(y)$, where $v(x) = f(u(x))$. This transformation will give the same demand as with the original utility function, in terms of bundles of items demanded. To see this, consider that the maximization problem is equivalent to finding an ideal bundle, $x^\star \in \argmax_{x \in \reals^n_+} u(x) \equiv \argmax_{x \in \reals^n_+} v(x)$. Since the set of maximizers of each function are the same, as $u(x) \ge u(y) \Leftrightarrow v(x) \ge v(y)$, the demand will be the same.
+
+\item (Compensating Demand)
+
+\begin{itemize}
+	\item[(a)] First, note that by assumption the consumer's demand $x(p,w)$ is homogeneous of degree 0. Thus, the conditions of the law of compensated demand hold, and since the consumer's demand satisfies Walras' law, we have that for their new bundle of goods $x'$
+	\[
+	(p' - p ) \cdot (x' - x^\star) \le 0 \Longrightarrow t(x_1' - x_1^\star) \le 0
+	\]
+	Thus, since the tax is strictly positive, $x_1' \le x_1^\star$, so their consumption of good 1 weakly decreases.
+	
+	\item[(b)] If $R = 0$, we do not have a compensated price change, so we can no longer affirm what will happen with the amount of good 1 the consumer purchases, since it will depend on the type of good it is. For instance, if it is a Giffen good, an increase in its price would generate an increase in its consumed amount
+\end{itemize}
+
+\item These preferences are convex. By Proposition 2.32, a utility function representing a preference relation $\succeq$ is quasiconcave if and only if $\succeq$ is convex. Taking the derivatives of $u$, we get that $u'(x) = 1 - 2x$, and $u''(x) = -2$. Since $u''(x) < 0 \forall x \in [0,1]$, $u$ is strictly concave, and by implication quasiconcave, and thus the preferences $\succeq$ that it represents are convex.
+
+\item Note first that since $15 \cdot 50 + 9 \cdot 50 = 1,200 < 1,250$, the bundle $x^0$ is available in the consumer in year 1. Thus, their chosen bundle in year 1 must not have been available to them in year 0. Otherwise, their preferences would violate WARP. In other words, the bundles that violate WARP satisfy:
+\[
+15 x_1 + 9 x_2 \le 1,250 \qquad \text{ and }\qquad 10x_1 + 10x_2 \le 1,000
+\]
+Assuming that Walras' Law holds, we have that any amount not spent on $x_2$ is spent on $x_1$, so these equations should hold with equality. Solving them, we get that the minimum number of $x^1_2$ that would not violate WARP is 41.67. If they choose a bundle that contains less $x_2$, it would have been attainable under the year 0 prices, so the choice of $(50,50)$ in year 0 would violate WARP. 
+
+\item (Identifying whether consumers are better off)
+
+\begin{itemize}
+	\item[(i)] We consider the three cases:
+	\begin{itemize}
+		\item[(a)] $p_1x_2 < w_1$ and $p_2 x_1 > w_2$: In this case, we can say that consumer 1 is better off than consumer 2. Specifically, we can see that the bundle $x_2$ is attainable under $(p_1,w_1)$. Since $x_2$ is attainable, it must be that $x_1 \succeq x_2$.
+		
+		\item[(b)] $p_1x_2 > w_1$ and $p_2 x_1 > w_2$: In this case, we cannot say whether either consumer is better off, as neither of their bundles are attainable to the other. 
+		
+		\item[(c)] $p_1x_2 < w_1$ and $p_2 x_1 < w_2$: These choices are inconsistent with rationality. To see why, note that $\exists \varepsilon_1 > 0 \st B_{\varepsilon_1}(x_2)$ is entirely contained in the feasible set. By local non-satiation, we have that $\exists x' \in B_{\varepsilon_1} \st x' \succ x_2$. However, since consumer 1 chooses $x_1$, we have that $x_1 \succsim x' \succ x_2 \Rightarrow x_1 \succ x_2$. This implies that consumer 2's choice of $x_2$ violates rationality of their common preferences, as $x_2 \not\succsim x_1$ and $x_1$ is feasible. The same argument applies in reverse, so the choices violate rationality.
+	\end{itemize}
+	\item[(ii)] This argument makes sense. If we consider the location as another element of their preferences, it would violate WARP for consumer 2 to choose to live in their current location instead of (costlessly) moving to consumer 1's location and being able to attain their better bundle. This argument, and the fact that moving is costless, entirely undermines the assumption that their preferences are identical. 
+\end{itemize}
+\end{enumerate}
+
 \subsubsection{TA Section Examples}
 
 \subsubsection{Outside Questions}
 
+The following are from Stanford ECON 202 Problem Set 1. Questions written by Ilya Segal, answers by Gabe along with Shiqi Yang. Answers not necessarily correct.
+
+
+\paragraph{Problem 1:} Prove the following statements about preference relations:
+
+\begin{itemize}
+    \item[(a)] If $\succsim$ is transitive, then $\succ$ is also transitive.
+
+    \item[(b)] If $\succsim$ is transitive, then $\sim$ is also transitive.
+
+    \item[(c)] If $\succsim$ is complete and transitive, then $\succsim$ is \emph{negatively transitive}: if $x \succsim y$ then for any $z$ either $x \succsim z$ or $z \succsim y$ or both.
+\end{itemize}
+
+\medskip
+
+    \begin{itemize}
+        \item[(a)] \begin{proof} Take some $x,y,z \in X$ such that $x \succ y$ and $y \succ z$. Since $\succ$ implies $\succsim$, we have that $x \succsim y$ and $y \succsim z$, and since $\succsim$ is transitive, $x \succsim z$. To show that $x \succ z$, it suffices to demonstrate that $z \not\succsim x$. Towards a contradiction, assume that $z \succsim x$. Then we would have that $x \succsim y$, $y \succsim z$, and $z \succsim x$. This holds only when $x \sim y \sim z$. However, we assumed earlier that $x \succ y$, meaning that $x \not\sim y$. This is a contradiction, so $z \not\succsim x$. Since $x \succsim z$, we have that $x \succ z$, and since $x \succ y$ and $y \succ z$ $\Rightarrow$ $x \succ z$, $\succ$ is transitive. \end{proof}
+
+        \item[(b)] \begin{proof} Take some $x,y,z \in X$ such that $x \sim y$ and $y \sim z$. Since $\sim$ implies $\succsim$, we have that $x \succsim y$ and $y \succsim z$, and since $\succsim$ is transitive, $x \succsim z$. To show that $x \sim z$, it suffices to demonstrate that $z \succsim x$. From the definition of $\sim$, we have that $z \succsim y$ and $y \succsim x$. Since $\succsim$ is transitive, $z \succsim x$. Thus, we have that $x \succsim z$ and $z \succsim x$, so $x \sim z$, and since $x \sim y \text{ and } y \sim z \Rightarrow x \sim z$, $\sim$ is transitive. \end{proof}
+
+        \item[(c)] \begin{proof} Take some $z$. Since $\succsim$ is complete, either $y \succsim z$ or $z \succsim y$ or both. If $y \succsim z$, then we have that $x \succsim y$ and $y \succsim z$, which means that $x \succsim z$ because $\succsim$ is transitive. Thus, if $x \succsim y$, either $x \succsim z$ or $z \succsim y$ or both for all $z$. \end{proof}
+    \end{itemize}
+
+\paragraph{Problem 2:} (Kreps) Two friends, Larry and Moe, wish to go on vacation together. Individually, they are standard preference maximizers -- their preferences $\succsim_{Larry}$ and $\succsim_{Moe}$ are complete and transitive. They attempt to form a joint preference relation, as follows:
+\[
+x \succsim^* y \text{ if } x \succsim_{Larry} y \text{ or } x \succsim_{Moe} y
+\]
+That is, they jointly prefer $x$ to $y$ if \emph{either} Larry or Moe prefer $x$ to $y$. 
+
+Prove that $\succsim^*$ is complete. Show by example that it may not be transitive.
+
+\begin{proof}
+    Take some $x,y \in X$. Since $\succsim_{Larry}$ and $\succsim_{Moe}$ are both complete, they will each have preferences over $x$ and $y$. Consider three cases. First, if $x \succsim_{Larry} y$ and $x \succsim_{Moe} y$, then $x \succsim^* y$. Next, if $y \succsim_{Larry} x$ and $y \succsim_{Moe} x$, then $y \succsim^* x$. Finally, if $x \succsim_{Larry} y$ and $y \succsim_{Moe} x$ (or \emph{vice versa}), then $x \succsim^* y$ and $y \succsim^* x$. Thus, $\succsim^*$ is complete, because for arbitrary $x,y \in X$, either $x \succsim^* y$ or $y \succsim^* x$ or both. Note that if either $x \sim_{Larry} y$ or $x \sim_{Moe} y$, then $x \sim^* y$, though that case is captured by the above.
+\end{proof}
+
+
+    Take as an example the case where $z \succsim_{Larry} x \succsim_{Larry} y$ and $y \succsim_{Moe} z \succsim_{Moe} x$. Further, assume that $x \not\succsim_{Larry} z$ and $x \not\succsim_{Moe} z$, so those preferences are strict (\ie, $z \succ_{Larry} x$ and $z \succ_{Moe} x$). We have that $x \succsim_{Larry} y$, so $x \succsim^* y$ and we have that $y \succsim_{Moe} z$, so $y \succsim^* z$. However, we also have that $z \succ_{Larry} x$ and $z \succ_{Moe} x$, meaning that $z \succsim^* x$ and $x \not\succsim^* z$, so $z \succ^* x$. Since $x \succsim^* y$ and $y \succsim^* z \not\Rightarrow x \succsim^* z$, in this case $\succsim^*$ is not transitive.
+
+\paragraph{Problem 3:} A ``problem'' with Proposition 2 in the notes is that it assumes we have the entire choice rule $C$. If we are trying to test the preference-based model of choice, we will typically have less data than all of $C$ in two respects. First, for sets $A \subseteq X$ where $C(A)$ contains more than one element, we are likely to see only one element of $C(A)$. Second, we will typically see $C(A)$ for some, but not all, subsets $A \subseteq X$
+
+\begin{itemize}
+    \item[(a)] Show that the first problem is virtually unresolvable. Assume that when we see $x \in A$ being chosen from $A$, this doesn't preclude $y \in A$ being just as good as $x$. Prove that in this case, no data we see will \emph{ever} contradict the preference-based model. (This is a trick question -- if you see the trick, it takes about two lines to answer.)
+
+    \item[(b)] Suppose that we observe $C(A)$ for some, but not all, subsets $A \subseteq X$. That is, we observe a choice rule $C: \mathcal{A} \to \mathcal{B}$, where $\mathcal{A} \subset \mathcal{B}$ is the set of feasible sets the agent is offered. Show that these partial data may satisfy Houthakker's axiom of revealed preference and still be inconsistent with the standard preference-based model.
+
+    \item[(c)] Say that the choice rule $C: \mathcal{A} \to \mathcal{B}$ satisfies the \textbf{General Axiom of Revealed Preference} (GARP) if, for any sequence $A_1,\dots,A_n$ and $x_i \in A_i$ for each $i$, $x_{i+1} \in C(A_i)$ for all $i = 1,\dots,n-1$, and $x_1 \in C(A_n)$ imply that $x_i \in C(A_i)$ for all $i$. (That is, it rules out revealed preference cycles except for revealed indifference.) Show that if the set $X$ of choices is finite, a nonempty-valued choice function $C: \mathcal{A} \to \mathcal{B}$ is rationalizable by a complete transitive preference if and only if it satisfies GARP. (Note: the ``if'' part is hard.)
+\end{itemize}
+
+\medskip
+
+\begin{itemize}
+    \item[(a)] \begin{proof} Note first that proving that a set of preferences violates transitivity requires proving that at least one preference is strict, in order to rule out transitive indifference. Under these conditions, if $x \succ y$, then $C(\{x,y\}) = x$, but it is impossible to rule out that $y \succsim x$. Thus, no data will ever contradict the preference-based model. \end{proof}
+
+    \item[(b)] Take some $x,y,z \in X$ such that $x \succ y$, $y \succ z$, and $z \succ x$. Also assume that $\mathcal{A} = \{x,y\}$, so we only observe $C(A) = x$ and no other choices. HARP is vacuously true, but the preferences as stated clearly violate transitivity.  
+
+    \item[(c)] 
+    \begin{proof}
+        $(\Longrightarrow)$ We have that a nonempty-valued choice function $C : \mathcal{A} \to \mathcal{B}$ is rationalizable by a complete transitive preference. Towards a contradiction, assume that GARP is not satisfied, so there exists a sequence $A_1,\dots,A_n$, $x_i \in A_i$ for each $i$, $x_{i+1} \in C(A_i)$ for all $i = 1,\dots,n-1$, and $x_1 \in C(A_n)$ but there is some $x_i \not\in C(A_i)$. Since $x_{i+1} \in C(A_i)$, $x_{i+1} \succ x_i$. However, note that $x_i \in C(A_{i-1})$, so $x_i \succsim x_{i-1}$, and $x_{i-1} \in C(A_{i-2})$, so $x_{i-1} \succsim x_{i-2}$, and so on. Since $x_1 \in C(A_n)$, $x_1 \succsim x_n$. Thus, we have
+        \[
+        x_i \succsim x_{i-1} \succsim \cdots \succsim x_1 \succsim x_n \succsim x_{n-1} \succsim \cdots \succsim x_{i+1}
+        \]
+        Since transitivity extends to all $n$-cycles, and $x_{i+1} \succ x_i$ (which implies that $x_i \not\succsim x_{i+1}$, this violates transitivity. This contradicts the earlier assumption that $C$ is rationalizable by a complete transitive preference, so GARP must be satisfied.
+
+        \medskip
+
+        $(\Longleftarrow)$ We have that $C: \mathcal{A} \to \mathcal{B}$ satisfies GARP, so for any sequence $A_1,\dots,A_n$ and $x_i \in A_i$ for each $i$, $x_{i+1} \in C(A_i)$ for all $i = 1,\dots,n-1$, and $x_1 \in C(A_n)$ imply that $x_i \in C(A_i)$ for all $i$. We will demonstrate that it is rationalizable by a complete transitive preference. 
+
+        Define $x \succsim^r y$ if $x \in C(A)$ and $y \in A$. Say that a sequence $x_1,\dots,x_n$ is a chain if $x_{i+1} \succsim^r x_i$ for all $i$. Say that a cycle is a chain where $x_1 = x_n$. Note that a cycle can be contained in a chain. Also note that $\succsim^r$ is not complete (if the only $A$ where $x,y \in A$ is such that $x,y \not\in C(A)$, we can say nothing about their relationship) nor necessarily transitive (we cannot say whether $x \succsim^r z$ if there is no $A$ such that $z \in A$ and $x \in C(A)$, no matter if $x \succsim^r y$ and $y \succsim^r z$). 
+
+        Define $x \succsim^t y$ if either $x \succsim^r y$ or there exists a chain containing both $x$ and $y$ where $x \succsim^r \cdots \succsim^r y$. Note that if $x$ and $y$ are in a cycle, then $x \sim^t y$.
+        
+        Define a cycle $C$ as a complete cycle if there exists no $y \not\in C$ where $x \succsim^t y$ or $y \succsim^t x$ for any $x \in C$. Note that all elements which are not comparable to any other elements are singleton complete cycles.
+
+        Begin with a sequence $A = A_1,\dots,A_n$ where $x_i \in A_i$ and $x_{i+1} \in C(A_i)$ for each $i$, so it is a chain $C$. We say that this chain can be extended downward if $\exists$ $A_0$ such that $x_1 \in C(A_0)$ and $x_0 \in A_0$ for some $x_0 \ne x_1$. We say that this chain can be extended upward if $\exists$ $A_{n+1}$ where $x_{n+1} \in C(A_n)$ for some $x_{n+1} \in A_{n+1}$. All chains which cannot be extended we call maximal chains. We call a chain $C$ a complete chain if that chain is maximal and if $x_i \in C$ is also in a cycle, all other elements $x_{i+1},\dots$ of the cycle are also in the chain.
+
+        Note that all elements of $X$ are also elements of either a complete chain or a complete cycle. Next, we will demonstrate that the elements can be ordered by a utility function, so they can be compared. Define a length function $l$ such that for a complete chain $C = x_1,\dots,x_n$, $l(c) = n - 1 - n_c + N_c$, where $n$ is the number of elements in the chain, $n_c$ is the number of elements of the chain which are also in a cycle, and $N_c$ is the number of cycles in the chain. Note that $l(C) = 0$ whenever $C$ is a complete cycle. This definition is only possible because GARP ensures that there are no revealed preference cycles except for revealed indifference -- if there existed $x \succ y \succ z \succ x$, there would exist non-cyclical chains of infinite length. Since we assumed GARP held, $l$ has finite range.
+
+        Construct a utility function as follows. All elements which are part of a complete chain have minimal utility (they are assigned utility of $-\infty$). Define the set of complete maximal chains $\mathcal{C} = \{C_1,\dots,C_n\}$. This will be a finite set because $X$ is finite, so the length function $l: \mathcal{C} \to \integers_+$ attains a maximum over it. Take all the chains for which $l$ is maximized, and assign their maximal elements utility of 0 (an element $x$ of a complete chain $C$ is maximal if $x \succsim^t y$ for all $y \in C$). Then remove all of those elements from the chains and find the new chains over which $l$ attains a maximum. Assign their maximal elements utility of $-1$, and continue this process until all elements of all complete chains are assigned. (The process will end because $X$ is finite.)
+
+        We have now assigned a utility to every element of $X$, and the process guarantees we have not assigned two utilities to the same element. Let $\succsim^\star$ be the preference relation generated by this utility relation, so $x \succsim^\star y$ if the utility assigned to $x$ is greater than or equal to the utility assigned to $y$. It remains to show that $\succsim^\star$ is complete and transitive, and that it generates the choice rule $C$ we began with.
+
+        First, as stated above each element is assigned a utility, so the completeness of $\ge$ on $\reals$ ensures that $\succsim^\star$ is complete. The same argument applies to transitivity, where since $\ge$ is transitive on $\reals$, $x \succsim^\star y$ and $y \succsim^\star z$ imply that $u(x) \ge u(y)$ and $u(y) \ge u(z)$, so $u(x) \ge u(z)$ and $x \succsim^\star z$.
+
+        Finally, we will show that $C_{\succsim^\star}$, the choice rule generated by $\succsim^\star$, is equivalent to $C$, our initial choice rule. It suffices to show that $C_{\succsim^\star}(A) \subseteq C(A)$ and that $C_{\succsim^\star}(A) \supseteq C(A)$.
+
+        $(\subseteq)$ Suppose that $x \in C_{\succsim^\star}(A)$. Then for each $y \in A$, $u(x) \ge u(y)$. Towards a contradiction, assume that $x \not\in C(A)$. Then there must exist $y \in A$ such that $y \succsim^r x$. By construction, $u(y) \ge u(x)$ because there exists at least one chain where $y \succsim^r x$. This implies that $y \succsim^\star x$, meaning that $u(y) \ge u(x)$. However, this implies that $u(y) = u(x)$, which can only be the case when $x$ and $y$ are in a cycle, so by GARP, $x \in C(A)$. This is a contradiction of the assumption that $x \not\in C(A)$, so $x$ must be in $C(A)$.
+
+        $(\supseteq)$ Suppose that $x \in C(A)$, and $y \in A$. Then it must be true that $x \succsim^r y$, and by construction $u(x) \ge u(y)$ because there exists at least one chain where $x \succsim^r y$. Since $u(x) \ge u(y)$, $x \succsim^\star y$ and $x \in C_{\succsim^\star}(A)$. 
+
+        
+    \end{proof}
+
+\end{itemize}
+\paragraph{Problem 4:} Is the lexicographic preference relation (a) complete, (b) transitive, (c) strictly monotone, (d) convex, (e) continuous?
+
+\medskip
+
+\begin{itemize}
+    \item[(a)] The lexicographic preference relation is complete.
+
+    \begin{proof}
+        Consider $x,y \in X = [0,1]^2$, where $x = (x_1,x_2)$ and $y = (y_1,y_2)$. Since the real numbers are an ordered field, we know that for $a,b \in \reals$, either $a > b$, $b > a$, or $a = b$. Thus, either $x_1 > y_1$, in which case $x \succ y$, $y_1 > x_1$, in which case $y \succ x$, or $x_1 = y_1$. In this final case, either $x_2 > y_2$, in which case $x \succ y$, $y_2 > x_2$, in which case $y \succ x$, or $x_2 = y_2$, in which case $y \sim x$. Thus, the lexicographic preference relation is complete, because $\succ$ and $\sim$ each individually imply $\succsim$.
+    \end{proof}
+
+    \item[(b)] The lexicographic preference relation is transitive.
+
+    \begin{proof}
+        Consider $x,y,z \in X = [0,1]^2$ such that $x \succsim y$ and $y \succsim z$. Consider first the case where those relations are both indifferent, so $x \sim y$ and $y \sim z$. From the definition of the lexicographic preference relation, that means that $x_1 = y_1$ and $x_2 = y_2$, as well as $y_1 = z_1$ and $y_2 = z_2$. Since equality is transitive over $\reals$, that means that $x_1 = z_1$ and $x_2 = z_2$, so $x \sim z \Rightarrow x \succsim z$. Next, consider the case where one of those relations is strict. Without loss of generality, assume that $x \succ y$. This implies that either $x_1 > y_1$ or $x_1 = y_1$ and $x_2 > y_2$. We also have that $y_1 \ge z_1$, so if $x_1 > y_1$, $x_1 > z_1$ and $x \succ z$. If $x_1 = y_1$, then either $y_1 > z_1$ (which implies that $x_1 > z_1 \Rightarrow x \succ z$) or $y_1 = z_1$ and $y_2 \ge z_2$. Since $x_2 > y_2$, $x_2 > z_2$ by transitivity of the reals and $x \succ z$. Thus, since $\succ$ and $\sim$ each individually imply $\succsim$, whenever $x \succsim y$ and $y \succsim z$, $x \succsim z$ and lexicographic preference relation is transitive.
+    \end{proof}
+
+    \item[(c)] The lexicographic preference relation is strictly monotone.
+
+    \begin{proof}
+        Take $x,y \in X$ such that $x \gg y$. This means that $x_1 > y_1$, so $x \succ y$.
+    \end{proof}
+
+    \item[(d)] The lexicographic preference relation is convex.
+
+    \begin{proof}
+        Take $x,x',y \in X$ such that $x \succsim y$ and $x' \succsim y$. This means that $x_1 \ge y_1$ and $x'_1 \ge y_1$. Thus, $tx_1 + (1-t)x'_1 \ge y_1$ for all $t \in (0,1)$, because the affine combination of two real numbers will be greater than the smaller of the two (unless they are equal), which is itself at least as large as $y_1$. If the combination is strictly greater, than $tx + (1-t)x' \succ y$. If it is equal, then both $x_1$ and $x_1'$ must be equal to $y_1$. Since $x \succsim y$ and $x' \succsim y$, that means that $x_2 \ge y_2$ and $x'_2 \ge y_2$, and by the same logic $tx_2 + (1-t)x'_2 \ge y_2$ for all $t \in (0,1)$. If that is a strict difference, then $tx + (1-t)x' \succ y$. If they are equal, then both $x_2$ and $x'_2$ must be equal to $y_2$, and $tx + (1-t)x' \sim y$. Since $\succ$ and $\sim$ each individually imply $\succsim$, $x \succsim y$ and $x' \succsim y$ implies that  $tx + (1-t)x' \succsim y$ for all $t \in (0,1)$, and the lexicographic preference relation is convex.
+    \end{proof}
+
+    \item[(e)] The lexicographic preference relation is not continuous.
+
+    \smallskip
+    
+    Take as a counterexample the sequences $x^n = (0.5 + \frac{1}{n},0)$ and $y^n = (0.5 - \frac{1}{n},1)$, for $n = 2,\dots$. By inspection, $x^n \to x = (0.5,0)$ and $y^n \to y = (0.5,1)$. The first term of each element of $x^n$, $x^n_1$, is strictly greater than $0.5$, and the first term of each element of $y^n$, $y^n_1$, is strictly less than $0.5$, since $\frac{1}{n} > 0$. This means that $x^n_1 > y^n_1$ for all $n$, so $x^n \succ y^n$ for all $n$. However, $x_1 = y_1 = 0.5$, and since $y_2 = 1 > x_2 = 0$, $y \succ x$. This contradicts the definition of continuity, so the lexicographic preference relation is not continuous.
+
+    \bigskip
+
+    \textbf{Shorter Answer:} Yes, yes, yes, yes, no.
+
+    
+\end{itemize}
+\paragraph{Problem 5:} Prove that if $u : X \to \reals$ is a continuous utility function representing $\succsim$, then $\succsim$ is continuous.
+
+\medskip
+
+\begin{proof}
+    Recall the definition of a continuous real-valued function: such a function is continuous if for any sequence $x^n$ where $x^n \to c$, $f(x^n) \to f(c)$. Also recall that if $u$ represents $\succsim$, then $x \succsim y \Longleftrightarrow u(x) \ge u(y)$. Take sequences $x^n \to x$ and $y^n \to y$, where $x^n \succsim y^n$ for all $n$. We know from above that $u(x^n) \ge u(y^n)$ for all $n$, and $u(x^n) \to u(x)$ as well as $u(y^n) \to u(y)$. We will demonstrate that $u(x) \ge u(y)$, which suffices to show that $x \succsim y$ and that $\succsim$ is continuous.
+
+    Towards a contradiction, assume that $u(y) > u(x)$. For some $\varepsilon > 0$, $u(y) = u(x) + \varepsilon$. Take $\delta = \varepsilon / 3$. From the definition of the limit of a sequence, there exists $N_x$ such that $\forall \; n > N_x$, $u(x^n) \in (u(x) - \delta,u(x) + \delta)$, and there exists $N_y$ such that $\forall \; n > N_y$, $u(y^n) \in (u(y) - \delta,u(y) + \delta)$. However, since $u(y) = u(x) + \varepsilon$, $u(y) - \delta > u(y) - \varepsilon / 2 = u(x) + \varepsilon / 2 > u(x) + \delta$. This means that the two sets are disjoint, where the $\delta$-ball around $u(y)$ lies above the $\delta$-ball around $u(x)$. This implies that, for all $n > \max\{N_x,N_y\}$, $u(y^n) > u(x^n)$. This is a contradiction, since that means that $y^n \succ x^n$ for some $n$, contradicting the assumption that $x^n \succsim y^n$ for all $n$. Thus, $u(x) \ge u(y)$, meaning that $x \succsim y$, and $\succsim$ is continuous.
+\end{proof}
+
+\paragraph{Problem 6:} A preference relation $\succsim$ on $\reals^n_+$ is called \emph{homothetic} if for all $x,y \in \reals^n_+$ and all $\lambda > 0$, $x \succsim y$ if and only if $\lambda x \succsim \lambda y$. Show that a continuous strictly monotone preference relation on $\reals^n_+$ is homothetic if and only if it can be represented by a utility function $u : \reals^n_+ \to \reals_+$ with the property $u(\lambda x) = \lambda u(x)$ for all $x \in \reals^n_+$ and all $\lambda > 0$. (This property is known as \emph{homogeneity of degree one}.)
+
+\medskip
+
+\begin{proof} 
+    ($\Longleftarrow$) We have that a continuous strictly monotone preference relation can be represented by a utility function $u : \reals^n_+ \to \reals_+$ with the property $u(\lambda x) = \lambda u(x)$ for all $x \in \reals^n_+$ and all $\lambda > 0$. That means that $x \succsim y \Longleftrightarrow u(x) \ge u(y)$. Take some $x,y \in \reals^n_+$ such that $x \succsim y$, which implies that $u(x) \ge u(y)$. Fix some $\lambda > 0$. Multiplying by $\lambda$ and using homogeneity of degree one, we get that $\lambda u(x) \ge \lambda u(y) \Longrightarrow u(\lambda x) \ge u(\lambda y) \Longrightarrow \lambda x \succsim \lambda y$, so $x \succsim y \Longrightarrow \lambda x \succsim \lambda y$. Going the other direction, take some $x,y \in \reals^n_+$ such that $\lambda x \succsim \lambda y$, which implies that $u(\lambda x) \ge u(\lambda y)$. Using homogeneity, we have that $\lambda u(x) \ge \lambda u(y)$, and dividing out the $\lambda$, we have $u(x) \ge u(y)$, which implies that $x \succsim y$. Thus, we have that $x \succsim y \Longleftrightarrow \lambda x \succsim \lambda y$, and $\succsim$ is homothetic.
+    
+    \medskip
+
+    ($\Longrightarrow$) Take a homothetic preference relation $\succsim$ on $\reals^n_+$, so for all $x,y \in \reals^n_+$ and all $\lambda > 0$, $x \succsim y \Longleftrightarrow \lambda x \succsim \lambda y$. An extension of this property is that $x \sim y \Longleftrightarrow \lambda x \sim \lambda y$. (This holds because $y \succsim x \Longleftrightarrow \lambda y \succsim \lambda x$.) Note that we are assuming that $\succsim$ is complete and transitive, as Ilya said in office hours.\footnote{This direction of the proof does not work if we cannot assume transitivity, because any utility representation would violate the inherent transitivity of $\ge$ over the reals, and it does not work without completeness because there would have to be undefined elements in the domain of $u$.} As such, we assume that $\succsim$ is transitive. Define $e = (1,1,\dots,1)$. From the proof of Proposition 4, for all $x$ there exists a certain $\alpha_x \in \reals_+$ such that $\alpha_x e \sim x$. Define $u(y) = \{ \alpha : \alpha e \sim y\}$. From the proof of Proposition 4, this set will be a singleton for all $y \in \reals^n_+$, so $u$ is well-defined, and $u(x) = \alpha_x$. Since $\succsim$ is homothetic, $\lambda \alpha_x e \sim \lambda x$. This means that $u(\lambda x) = \lambda \alpha_x = \lambda u(x)$, so $u$ is homogeneous of degree one.
+
+\end{proof}
+
+\paragraph{Problem 7:} Suppose the agent lives for $T$ periods, and he chooses a consumption stream $(x_1,\dots,x_T) \in X_1 \times \dots \times X_T$. Suppose that the agent's preferences over consumption streams do not change over time (this is known as ``time-consistency''), and that they are represented by a utility function $u : X_1 \times \dots \times X_T \to \reals$. Derive a necessary and sufficient condition on $u$ for the agent's preferences over future consumption $(x_t,\dots,x_T) \in X_t \times \dots \times X_T$ at any time $t = 2,\dots,T$ to be independent of past consumption $(x_1,\dots,x_{t-1}) \in X_1 \times \dots \times X_{t-1}$. Give examples of utility functions that do and do not satisfy this condition.
+
+\medskip
+
+\textbf{Solution:} To define a necessary and sufficient condition such that preferences over future consumption are independent of past consumption at any time, we will apply Proposition 6 for all $t = 2,\dots,T-1$. Assume that preferences over future consumption at $t = 2$ are independent of past consumption, so $(x_2,\dots,x_T)$ are independent of $x_1$. By Proposition 6, there must exist functions $v_1 : X_2 \times \cdots \times X_T \to \reals$ and $U_1 : \reals \times X_1 \to \reals$ such that $U_1$ is increasing in its first argument and $u(x_1,\dots,x_T) = U_1(v_1(x_2,\dots,x_T),x_1)$. 
+
+Fix some $x_1$. We have that $(x_1,x_2,\dots,x_T) \succsim (x_1,x'_2,\dots,x'_T)$ if and only if $u(x_1,x_2,\dots,x_T) \ge u(x_1,x'_2,\dots,x'_T)$, which is equivalent to the statement $U_1(v_1(x_2,\dots,x_T),x_1) \ge U_1(v_1(x'_2,\dots,x'_T),x_1)$. Since $U_1$ is increasing in its first argument, $(x_1,x_2,\dots,x_T) \succsim (x_1,x'_2,\dots,x'_T)$ if and only if $v_1(x_2,\dots,x_T) \ge v_1(x'_2,\dots,x'_T)$, so $v_1$ represents preferences over $(x_2,\dots,x_T)$ which are independent of $x_1$.
+
+Now consider preferences over $(x_3,\dots,x_T)$. Since those preferences are independent of $x_2$, from the logic above there exist functions $v_2 : X_3 \times \cdots \times X_T \to \reals$ and $U_2 : \reals \times X_2 \to \reals$ such that $U_2$ is increasing in its first argument and $u(x_1,\dots,x_T) = U_1(U_2(v_2(x_3,\dots,x_T),x_2)x_1)$.
+
+We will continue this argument for all $t = 3,\dots,T-1$. We arrive at the following condition: there must exist functions $U_t : \reals^2 \to \reals$ for each $t = 2,\dots,T-1$ and $v_{T-1} : X_T \to \reals$ such that
+\[
+u(x_1,\dots,x_T) = U_1(U_2(U_3(\dots U_{T-1}(v_{T-1}(x_T),x_{T-1}) \dots,x_3)x_2)x_1)
+\]
+for all $x \in \reals^n_+$, where each $U_t$ is increasing in its first argument.
+
+By Proposition 6, this condition is necessary to show that preferences on $(x_t,\dots,x_T)$ do not depend on $(x_1,\dots,x_{t-1})$ at any time $t = 2,\dots,T$. To demonstrate that it is sufficient, assume that there exist functions $U_t : \reals^2 \to \reals$ for all $t = 2,\dots,T-1$ and $v_{T-1} : \reals \to \reals$ such that each $U_t$ is increasing in its first argument and
+\[
+u(x_1,\dots,x_T) = U_1(U_2(U_3(\dots U_{T-1}(v_{T-1}(x_T),x_{T-1}) \dots,x_3)x_2)x_1)
+\]
+For each period $1 < t < T$, define $\Tilde{v}_t : \reals^{T-t+1} \to \reals$, where
+\[
+\Tilde{v}_t(x_t,\dots,x_T) = U_{t}(U_{t+1}(U_{t+2}(\dots U_{T-1}(v_{T-1}(x_T),x_{T-1}) \dots,x_{t+2})x_{t+1})x_t)
+\]
+Also define $\Tilde{U}_t : \reals^t \to \reals$, where
+\[
+\Tilde{U}_t(v_t(x_t,\dots,x_T), x_1,\dots,x_{t-1}) = U_1(U_2(U_3(\dots U_{T-1}(\Tilde{v}_{t}(x_t,\dots,x_T),x_{t}) \dots,x_3)x_2)x_1)
+\]
+From above, we have that $u(x_1,\dots,x_T) = \Tilde{U}_t(v_t(x_t,\dots,x_T), x_1,\dots,x_{t-1})$, and since the implied first argument of $\Tilde{U}_t$ is $U_{t+1}$ which is increasing in its first argument means that $\Tilde{U}_t$ is increasing in its first argument, by Proposition 6, preferences over future consumption do not depend on past consumption.
+
+Thus, we have derived a necessary and sufficient condition that preferences over future consumption do not depend on past consumption at any time $t = 2,\dots,T$.
+
+\medskip
+
+As an example of a utility function which does satisfy this condition, consider a linear utility function that is a sum over all consumption, so $u(x_1,\dots,x_T) = \sum_{i=1}^T x_i$. For a utility function which does not satisfy this condition, consider a utility function which depends on the difference between consumption in period $i$ and period $i-1$, so $u(x_1,\dots,x_T) = \sum_{i=1}^T (x_i - x_{i-1})$, fixing $x_0 = 0$. 
+
+\newpage
 \subsection{Consumer (Kircher)}
 
 \subsubsection{Kircher Homework}
 
+\paragraph{Problems}
+
+\begin{enumerate}
+	\item Study Berge’s Maximum Theorem, and make a short video (no longer than 2 minutes) in which you explain its basic insight and intuition in your own words using a single graph that you share on screen
+	\item Imagine a worker who chooses how much to work ($t$) and how much to consume ($x$), where each of them is a non-negative scalar. The worker earns a wage normalized to 1 per hour worked, but only has $w$ hours available. The consumers utility function of work and consumption is given by $u(x,t) = \parl x^{1/2} + (w-t)\parr^2$. Assume that the hours budget $w$ and the price of the consumption good $p$ are the only free variables in the model (i.e., no changes in the wage rate).
+	\begin{enumerate}
+		\item Write the workers problem in a more conventional way by writing his utility function in terms of consumption $x$ and leisure $l$, given a budget constraint.
+		\item Find the worker’s Walrasian demand functions for goods $x$ and $l$.
+		\item Find the worker’s indirect utility function using the utility function given in the statement of this problem.
+		\item Suppose that time endowment $w$ and price $p$ are such that the worker chooses some strictly positive level of leisure. Find the worker’s Hicksian demand function for good $x$ for price and utility levels consistent with strictly positive purchases of leisure.
+	\end{enumerate}
+	\item Consider a consumer with an expenditure function $e(p,u)$ that is multiplicatively separable in the sense that $e(p,u)=g(u)r(p)$ for some strictly increasing function $g(u)$ and strictly increasing function $r(p)$.
+	\begin{enumerate}
+		\item Find this consumer's Walrasian demand function.
+		\item Exploit Walras' Law to show that $r(p) = \sum_{i=1}^L p_i \frac{\partial r(p)}{\partial p_i}$. Do you need to make any assumptions on $g(u)$ to arrive at this equality?
+		\item Now suppose there is a finite number $M$ of consumers in the economy that all share this expenditure function but that might not have the same budget. Does the distribution of budgets matter for aggregate demand? (If not, it means that you created a representative agent economy)
+	\end{enumerate}
+	\item Consider a consumer that makes choices how much to buy of two different products given a budget constraint. You happen to know that the expenditure function of the consumer it is of form $e(p,U) = Up^\alpha_1 p_2^\beta$
+	\begin{enumerate}
+		\item What restrictions (if any) on the parameters $\alpha$ and $\beta$ are required to ensure that $e(.)$ constitutes a valid expenditure function. Assume that the restriction(s) are/is satisfied.
+		\item Find the indirect utility function, the Hicksian demand functions, and the uncompensated demands. Carefully list the correct arguments for each function.
+		\item Use an alternative approach — i.e. different to what you did in b) — to calculate the uncompensated demand functions.
+		\item Assume the consumer has $\alpha = \beta = 1/2$, and a budget of 512. Assume environmental legislation increases prices from $p_1 = p_2 = 1$ to $p_1 = p_2 = 16$. One way to think about how to assess the loss of welfare for this consumer due to the price increase is to ask how much money would one have to give this consumer to be equally well off. There are two ways of doing this.
+		\begin{enumerate}
+			\item What is the compensating variation for this consumer? What is the equivalent variation for this consumer?
+			\item If compensating variation and equivalent variation differ, explain why one is higher than the other in an intuitive way. Which one would you think is more reasonable if one intended to pay this consumer for his consent to agree to the price increase?
+		\end{enumerate}
+	\end{enumerate}
+	\item Evaluate the following (explain your answer):
+	\begin{enumerate}
+		\item Consider utility function $u(x) = 2\ln(x_1) + 2\ln(x_2)$ and associated expenditure function $e(u,p_1,p_2)$. Now consider the utility function $u\opt(x) = x_1x_2$ with associated expenditure function $e\opt$. Claim to evaluate: $e(u,p_1,p_2) = e\opt(u\opt,p_1,p_2)$ if $u\opt = \exp(u / 2)$.
+		\item Consider a consumer with continuous and locally non-satiated preferences and income $w$ who consumes strictly positive amounts of all goods at a given price vector $p\gg 0$. Now the price of good $i$ increases from $p_i$ to $p'_i$, while all other prices stay the same. Assume his income increases by $(p_i' - p_i)x_i(p,w)$. Claim to evaluate: this consumer always purchases less of good $i$ under the new prices compared to the old prices, and obtains a higher utility under the new prices.
+		\item A consumer who will live for $T \ge 2$ periods has utility function $\sum \beta^t u(c_t)$ for consumption path $c = (c_1,\dots,c_T)$. Assume that $0 < \beta < 1$, $u'(c) > 0$ and $u''(c) < 0$ for all $c \ge 0$, and $\lim_{c\to0}u'(c) = \infty$. Consumption in each period must be non-negative and total consumption can be no more than wealth $w > 0$, i.e. $\sum c_t \le w$. Claim to evaluate: Optimal consumption $c_t\opt$ can increase under some utility functions.
+	\end{enumerate}
+	\item Find an (interesting?) research paper in industrial organization, labor economics, health economics, or some other area of economics that relies on the insights from consumer theory that we discussed in class. Which insights in particular are they using?
+\end{enumerate}
+
+\paragraph{Solutions.} (Gabe's solutions, completed with Sara Yoo and Omar Andujar. Corrected original answers to 2c and 5b after TA feedback)
+\begin{enumerate}
+	\item I'm not posting a video here LMAO
+	\item We have a consumer whose utility function is $u(x,t) = \parl x^{\frac{1}{2}} + (w - t)\parr^2$
+	\begin{enumerate}
+		\item We have that the consumer is solving
+		\[
+		\max_{x,l \in \reals_{+}} u(x,l) = \parl x^{\frac{1}{2}} + l\parr^2
+		\]
+		subject to
+		\[
+		px \le w - l \equiv px + l \le w
+		\]
+		\ie, they are maximizing consumption and leisure subject to consumption not exceeding their wage for the total hours worked.
+		\item Our Lagrangian is
+		\[
+		\mathcal{L} = \parl x^{\frac{1}{2}} + l\parr^2 + \lambda(w - l - px)
+		\]
+		For the first order conditions, we get
+		\[
+		\frac{\partial \mathcal{L}}{\partial x} = \frac{x^{1/2} + l}{x^{1/2}} - p\lambda = 0 \Longrightarrow \lambda = \frac{x^{1/2} + l}{p\cdot x^{1/2}}
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial l} = 2x^{1/2} + 2l - \lambda = 0 \Longrightarrow \lambda = 2x^{1/2} + 2l
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial \lambda} = w - l - px = 0 \Longrightarrow  px+ l = w
+		\]
+		Setting them equal and solving, we get that
+		\[
+		\frac{x^{1/2} + l}{p\cdot x^{1/2}} = 2x^{1/2} + 2l \Longrightarrow 2px^{1/2}(x^{1/2} + l) = x^{1/2} + l
+		\]
+		so we get that the Walrasian demand for $x$ is
+		\[
+		x^\star = \frac{1}{4p^2}
+		\]
+		and inputting into the budget constraint, we get
+		\[
+		\frac{p}{4p^2} + l = w \Longrightarrow l^\star = w - \frac{1}{4p}
+		\]
+		Note that this might create a corner solution -- if $w < \frac{1}{4p}$, then the consumer always work. Formally, our Walrasian demand functions are
+		\[
+		x^\star(p,w) = \begin{cases} \frac{1}{4p^2} & w \ge \frac{1}{4p} \\ w & \text{otherwise} \end{cases}
+		\]
+		and
+		\[
+		l^\star(p,w) = \begin{cases} w - \frac{1}{4p} & w \ge \frac{1}{4p} \\ 0 & \text{otherwise} \end{cases}
+		\]
+		\item Going back to the originally stated utility function, the indirect utility function is defined by
+		\[
+		V(p,w) \coloneqq \max_{x,t \in \reals_+} \parl x^{\frac{1}{2}} + (w - t)\parr^2
+		\]
+		subject to
+		\[
+		px \le t
+		\]
+		We first solve for the Walrasian demand functions. Our Lagrangian is
+		\[
+		\mathcal{L} = \parl x^{\frac{1}{2}} + (w - t)\parr^2 + \lambda (t - px)
+		\]
+		and our first order conditions are
+		\[
+		\frac{\partial \mathcal{L}}{\partial x} = \frac{x^{1/2} + w - t}{x^{1/2}} - p\lambda = 0 \Longrightarrow \lambda = \frac{x^{1/2} + w - t}{px^{1/2}}
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial t} = -2\parl x^{1/2} + w - t\parr + \lambda = 0 \Longrightarrow \lambda = 2\parl x^{1/2} + w - t\parr
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial \lambda} = t - px = 0 \Longrightarrow t = px
+		\]
+		Which implies that
+		\[
+		2\parl x^{1/2} + w - t\parr = \frac{x^{1/2} + w - t}{px^{1/2}} \Longrightarrow  x^\star = \frac{1}{4p^2}
+		\]
+		and
+		\[
+		t^\star = px^\star = \frac{1}{4p}
+		\]
+		which is the same as above, a confirmation that this formulation also works. As above, we have admitted a corner, where the worker will not take any time off if $\frac{1}{4p} > w$. Formally, our Walrasian Demand is
+		\[
+		x^\star(p,w) = \begin{cases} \frac{1}{4p^2} & w \ge \frac{1}{4p} \\ w & \text{otherwise} \end{cases}
+		\]
+		and
+		\[
+		t^\star(p,w) = \begin{cases} \frac{1}{4p} & w \ge \frac{1}{4p} \\ w & \text{otherwise} \end{cases}
+		\]
+		
+		From the definition of the indirect value function, we have that in the interesting case,
+		\[
+		V(p,w) = u(x^\star,t^\star) = \parl \parl \frac{1}{4p^2}\parr^{\frac{1}{2}} + \parl w - \frac{1}{4p}\parr \parr^2 = \parl \frac{1}{2p} + w - \frac{1}{4p} \parr^2 = \parl \frac{1}{4p} + w\parr^2
+		\]
+		so our final attained value function is
+		\[
+		V(p,w) = \begin{cases} \parl \frac{1}{4p} + w\parr^2 & w \ge \frac{1}{4p} \\ w & \text{otherwise}\end{cases} 
+		\]
+		\item For leisure to be strictly positive, we will assume that $w \ge \frac{1}{4p}$. We can find the expenditure function by inverting the value function, since $e(p,V(p,w)) = w$. We get that
+		\[
+		\bar{u} = \parl \frac{1}{4p} + e(p,\bar{u})\parr^2 \Longrightarrow e(p,\bar{u}) = \sqrt{\bar{u}} - \frac{1}{4p}
+		\]
+		From Shephard's Lemma, since $u'' = -\frac{1}{x^{3/2}} < 0$, the implied preferences $\succsim$ are strictly convex, we have that
+		\[
+		h_x(p,\bar{u}) = \frac{\partial e(p,\bar{u})}{\partial p} = \frac{1}{4p^2}
+		\]
+	\end{enumerate}
+	
+	\item We have that $e(p,u) = g(u)r(p)$ for some strictly increasing $g,r$
+	\begin{enumerate}
+		\item From Shephard's Lemma, we have that $h_i(p,u) = g(u) \frac{\partial r(p)}{\partial p_i}$. Since $e$ is two strictly increasing functions multiplied, we can say that $h_i(p,V(p,w)) = x_i(p,w)$ which means that $x_i(p,w) = g(V(p,w)) \frac{\partial r(p)}{\partial p_i}$. It remains to find a form for $g(V(p,w))$. From the expenditure function we have that $e(p,V(p,w)) = w$, so $g(V(p,w)) r(p) = w$ which implies that $V(p,w) = g^{-1}(w / r(p))$, where $g^{-1}$ exists because $g$ is strictly increasing. Thus, we have that $x^\star_i(p,w) = \frac{w}{r(p)} \frac{\partial r(p)}{\partial p_i}$.
+		
+		\item If Walras' Law holds, we have that $p\cdot x = w$, which implies that
+		\[
+		\sum_{i=1}^L p_i x_i(p,w) = w \Longrightarrow \sum_{i=1}^L p_i \frac{w}{r(p)}  \frac{\partial r(p)}{\partial p_i} = w 
+		\]
+		Which means that
+		\[
+		\sum_{i=1}^L p_i \frac{\partial r(p)}{\partial p_i} = r(p)
+		\]
+		We don't need to make any assumptions on $g(u)$ for this to hold, as it was eliminated before considering Walras' Law. For Walras' Law to hold, we need local non-satiation of the utility function itself.
+		
+		\item The distribution of budgets does not matter for aggregate demand! Because $\sum_{i=1}^I x^i(p,w^i) = \sum_{i=1}^I \frac{w^i}{r(p)} r'(p) = \frac{\sum_{i=1}^I w^i}{r(p)	} r'(p) = x(p,\sum_{i=1}^I w^i)$, we can construct a representative agent with total wealth who has the same preferences as all of the agents.
+		\end{enumerate}
+	
+	\item We know that the expenditure function of the consumer is $e(p,U) = Up_1^\alpha p_2^\beta$
+	\begin{enumerate}
+		\item We need to know that the expenditure function is (i) continuous, (ii) nondecreasing in each $p_i$, (iii) strictly increasing in $U$, (iv) homogeneous of degree 1 in $p$, and (v) concave in $p$. Parts (i) and (iii) are satisfied immediately. For $e$ to be nondecraesing in each $p_i$, it must be the case that $\alpha, \beta \ge 0$. For them to be homogeneous of degree 1 in $p$, it must be the case that $e(\lambda p, U) = \lambda e(p,U)$, which requires that
+		\[
+		e(\lambda p , U) = \lambda^{\alpha + \beta} e(p,U)
+		\]
+		be equal to $\lambda e(p,U)$, meaning that $\alpha + \beta = 1$. Finally, $e$ must be concave in $p$, meaning that $e''(p,U) < 0$. This is satisfied as long as $\alpha, \beta \le 1$. 
+		
+		Thus, we must have that $\alpha,\beta \in [0,1]$ and $\alpha + \beta = 1$.
+		\item From Shephard's Lemma, we have that the Hicksian demand functions are
+		\[
+		h_1(p,U) = \frac{\partial e(p,U)}{\partial p_1} = \alpha U p_1^{\alpha - 1} p_2^\beta
+		\]
+		and
+		\[
+		h_2(p,U) = \frac{\partial e(p,U)}{\partial p_2} = \beta U p_1^{\alpha} p_2^{\beta-1}
+		\]
+		To find the indirect utility function, we will use the identity that $e(p,V(p,w)) = w$, so we have that
+		\[
+		w = V(p,w) p_1^\alpha p_2^\beta \Longrightarrow V(p,w) = wp_1^{-\alpha}p_2^{-\beta}
+		\]
+		Finally, the uncompensated demand is found using Roy's Identity, where we have that
+		\[
+		x_1(p,w) = -\frac{\frac{\partial V(p,w)}{\partial p_1}}{\frac{\partial V(p,w)}{\partial w}} = -\frac{-\alpha w p_1^{-\alpha - 1}p_2^{-\beta}}{p_1^{-\alpha} p_2^{-\beta}} = \frac{\alpha w}{p_1}
+		\]
+		and
+		\[
+		x_2(p,w) = -\frac{\frac{\partial V(p,w)}{\partial p_2}}{\frac{\partial V(p,w)}{\partial w}} = -\frac{-\beta w p_1^{-\alpha}p_2^{-\beta-1}}{p_1^{-\alpha} p_2^{-\beta}} = \frac{\beta w}{p_2}
+		\]
+		\item From Corollary 2.57, we have that $h_i(p,V(p,w)) = x_i(p,w)$. From there, we have that
+		\[
+		x_1(p,w) = h_1(p,V(p,w)) = \alpha V(p,w) p_1^{\alpha - 1}p_2^{\beta} = \alpha w p_1^{-1} p_2^0 = \frac{\alpha w}{p_1}
+		\]
+		and
+		\[
+		x_2(p,w) = h_2(p,V(p,w)) = \beta V(p,w) p_1^{\alpha}p_2^{\beta-1} = \beta w p_2^{-1} p_1^0 = \frac{\beta w}{p_2}
+		\]
+		\item We have that $\alpha = \beta = \frac{1}{2}$, $w = 512$, and an increase in prices from $p = (1,1)$ to $p' = (16,16)$.
+		\begin{enumerate}
+			\item We have that the utility attained under the original prices is
+			\[
+			V(p,w) = 512 \cdot 1^{-\alpha} \cdot 1^{-\beta} = 512
+			\]
+			and that the utility attained under the new prices is
+			\[
+			V(p',w) = 512 \cdot 16^{-\alpha} \cdot 16^{-\beta} = \frac{512}{16} = 32
+			\]
+			We have that the compensating variation is
+			\[
+			CV(p,p',w) = w - e(p',V(p,w)) = 512 - 512 \cdot 16^{\alpha} \cdot 16^{\beta} = -7,680
+			\]
+			and that the equivalent variation is
+			\[
+			EV(p,p',w) = e(p,V(p',w)) - w = 32 \cdot 1^\alpha 1^\alpha - 512 = -480
+			\]
+			\item The absolute value of the compensating variation is significantly higher than the absolute value of the equivalent variation, because the amount required to pay the consumer so that they will be able to afford their old consumption under the new prices is a lot higher than the amount their attained utility actually changes under the new prices. 
+			
+			It seems more reasonable to pay the consumer their compensating variation. The equivalent variation is the amount they would take from the consumer \emph{instead} of changing prices, but in order for the consumer to agree to the price change, they would need to pay him the compensating variation.
+		\end{enumerate}
+	\end{enumerate}
+	
+	\item Evaluate the following claims:
+	\begin{enumerate}
+		\item We have that $u(x) = 2\ln(x_1) + 2\ln(x_2) = 2\ln(x_1x_2)$ and $u^\star(x) = x_1x_2$. We have that the first expenditure function is
+		\[
+		e(u,p_1,p_2) \coloneqq \min_{x \in \reals_+} p_1x_1 + p_2x_2 \quad \st 2\ln(x_1x_2) \ge u
+		\]
+		and the second expenditure function is
+		\[
+		e(u^\star,p_1,p_2) \coloneqq \min_{x\in\reals_+} p_1x_1 + p_2x_2 \quad \st x_1x_2 \ge u^\star
+		\]
+		If $u^\star = \exp(u / 2)$, we have that the conditions here become
+		\[
+		x_1x_2 \ge \exp\parl \frac{u}{2}\parr \Longrightarrow 2\ln(x_1x_2) \ge u
+		\]
+		So since the optimizing function and the feasible set are the same, we have that
+		\[
+		e(u,p_1,p_2) = e(u^\star,p_1,p_2)
+		\]
+		\item We have that the price of good $i$ changes from $p_i$ to $p_i' > p_i$, and that the consumer's wealth increases from $w$ to $w' = w + (p_i' - p_i)x^\star_i(p,w)$. First, note that the consumer will always attain weakly higher utility under the new prices and wealth. Considering their old optimal bundle $x^\star$, because of local non-satiation we have that $p \cdot x^\star = w$. This means that, since no other prices changed, 
+		\[
+		p' \cdot x^\star = p \cdot x^\star + (p'_i - p_i)x^\star_i(p,w) = w + (p'_i - p_i)x^\star_i(p,w) = w'
+		\]
+		Since the old bundle is attainable under the new prices and wealth, the consumer will always attain weakly higher utility, as $u(x^\star) \le \max_{x \in \Gamma(X)} u(x)$ by definition. 
+		
+		Since this is a compensated price change, they will choose weakly less of good $i$ after the price change. Unless they choose the exact same bundle this will be a strict inequality.
+		
+		\item This claim is false. To see why, we will solve the consumer's maximization problem. The KKT conditions hold, so we can solve it from the first order conditions. The Lagrangian is
+		\[
+		\mathcal{L} = \sum_{t=1}^T \beta^t u(c_t) + \lambda \parl w - \sum_{t=1}^T c_t\parr 
+		\]
+		the first order conditions for arbitrary $t$, $t+1$ are:
+		\[
+		\frac{\partial \mathcal{L}}{\partial c_t} = \beta^t u'(c_t) - \lambda  = 0 \Longrightarrow \lambda = \beta^t u'(c_t)
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial c_{t+1}} = \beta^{t+1} u'(c_{t+1}) - \lambda = 0 \Longrightarrow \lambda = \beta^{t+1} u'(c_{t+1})
+		\]
+		These combine to get the Euler Equation
+		\[
+		u'(c_t) = \beta u'(c_{t+1})
+		\]
+		Since this applies for all $t$, and assuming arbitrary utility functions, we can say that the ratio of optimal consumption in period $t$ and period $t+1$ is constant for all utility functions. Since we also have that $\sum_{t=1}^T c_t = w$, it must be that optimal consumption does not depend on the utility function at all.
+	\end{enumerate}
+\end{enumerate}
+
 \subsubsection{TA Section Examples}
 
 \subsubsection{Outside Questions}
 
+The following are from Stanford ECON202 Problem Set 3. Questions written by Ilya Segal, answers by Gabe along with Asia-Kim Francavilla and Monia Tomasella. Answers not necessarily correct.
+
+\paragraph{Problem 1:} For each of the following utility functions, draw the indifference curves, compute the Marshallian demand, Hicksian demand, indirect utility function and expenditure function:
+\begin{itemize}
+    \item[(a)] $u(x,y) = x^\alpha y^{1-\alpha}$ (Cobb-Douglas utility function)
+
+    \item[(b)] $u(x,y) = \max\{a x,ay\} + \min\{x,y\} $, where $0 \le a \le 1$.
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)]  The indifference curves are:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale = 0.5]
+            \draw[<->,very thick] (0,10)--(0,0)--(10,0);
+            \draw [blue] plot [smooth, tension=0.5] coordinates { (0.4,10) (1,4) (2,2) (4,1) (10,0.4) };
+            \draw [red] plot [smooth, tension=0.5] coordinates { (0.9,10) (1.5,6) (2,4.5) (3,3) (4.5,2) (6,1.5) (10,0.9) };
+            \draw [green] plot [smooth, tension=0.5] coordinates { (1.6,10) (2,8) (4,4) (8,2) (10,1.6) };
+            \draw [magenta] plot [smooth, tension=0.5] coordinates { (2.5,10) (3.5,7) (5,5) (7,3.5) (10,2.5) };
+
+            \node [left] at (-0.1,10) {10};
+            \node [below] at (10,-0.1) {10};
+            \draw[very thick] (0,10)--(-0.1,10);
+            \draw[very thick] (10,0)--(10,-0.1);
+        \end{tikzpicture}
+        \caption{Indifference Curves for $u(x,y) = x^\alpha y^{1-\alpha}$ at $u = \{\textcolor{blue}{2},\textcolor{red}{3},\textcolor{green}{4},\textcolor{magenta}{5}\}$ and $\alpha = 0.5$}
+        \label{fig:prob1a}
+    \end{figure}
+    
+    
+    First, note that if a bundle $(x,y)$ maximizes $u(x,y)$, it would also maximize $\ln u(x,y)$, so we will deal with the second problem. We have that $\ln u(x,y) = \alpha \ln x + (1 - \alpha) \ln y$. The Lagrangian is
+    \[
+    \mathcal{L} = \alpha \ln x + (1 - \alpha) \ln y + \lambda (w - p_xx - p_yy)
+    \]
+    The first order conditions are
+    \[
+    \mathcal{L}_x = \frac{\alpha}{x} - p_x \lambda = 0 \Rightarrow p_x = \frac{\alpha}{\lambda x} \Rightarrow x = \frac{\alpha}{p_x \lambda}
+    \]
+    \[
+    \mathcal{L}_y = \frac{1-\alpha}{y} - p_y \lambda = 0 \Rightarrow p_y = \frac{1-\alpha}{\lambda y} \Rightarrow y = \frac{1-\alpha}{p_y \lambda}
+    \]
+    Substituting into the budget constraint, we get
+    \[
+    \frac{\alpha}{\lambda x} x + \frac{1-\alpha}{\lambda y} y = \frac{\alpha}{\lambda} + \frac{1-\alpha}{\lambda} = \frac{1}{\lambda} = w \Rightarrow \lambda = \frac{1}{w}
+    \]
+    Plugging this result back in, we get the Marshallian demand functions
+    \[
+    \boxed{x^*(p,w) = \frac{w\alpha}{p_x} \;\;\;;\;\;\; y^*(p,w) = \frac{w(1-\alpha)}{p_y}}  
+    \]
+    Substituting these into the utility function will give us the indirect utility function
+    \[
+    \boxed{v(p,w) = u(x^*(p,w),y^*(p,w)) = w\left(\frac{\alpha}{p_x} \right)^\alpha \left(\frac{1-\alpha}{p_y} \right)^{1-\alpha}}
+    \]
+    To find the expenditure function, we substitute into the indirect utility function
+    \[
+    \overline{u} = e(p,\overline{u})\left(\frac{\alpha}{p_x} \right)^\alpha \left(\frac{1-\alpha}{p_y} \right)^{1-\alpha}
+    \]
+    and get
+    \[
+    \boxed{e(p,\overline{u}) = \overline{u} \left(\frac{p_x}{\alpha} \right)^{\alpha} \left(\frac{p_y}{1-\alpha} \right)^{1-\alpha}}
+    \]
+    Finally, by Shephard's Lemma we know that $\nabla_p e = h$. By taking the partial derivatives, we get that
+    \[
+    \boxed{h_x(p,\overline{u}) = \alpha \overline{u} \left(\frac{p_x}{\alpha} \right)^{\alpha-1} \left(\frac{p_y}{1-\alpha} \right)^{1-\alpha}}
+    \]
+    \[
+    \boxed{h_y(p,\overline{u}) = (1-\alpha) \overline{u} \left(\frac{p_x}{\alpha} \right)^{\alpha} \left(\frac{p_y}{1-\alpha} \right)^{-\alpha}}
+    \]
+    
+
+    \item[(b)] The indifference curves are:
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale = 0.5]
+            \draw[<->,very thick] (0,10.5)--(0,0)--(10.5,0);
+            \draw [blue] (0,4)--(4/3,4/3)--(4,0);
+            \draw [red] (0,6)--(2,2)--(6,0);
+            \draw [green] (0,8)--(8/3,8/3)--(8,0);
+            \draw [magenta] (0,10)--(10/3,10/3)--(10,0);
+            \node [left] at (-0.1,10) {10};
+            \node [below] at (10,-0.1) {10};
+            \draw[very thick] (0,10)--(-0.1,10);
+            \draw[very thick] (10,0)--(10,-0.1);
+        \end{tikzpicture}
+        \caption{Indifference Curves for $u(x,y) = \max\{a x,ay\} + \min\{x,y\}$ at $u = \{\textcolor{blue}{2},\textcolor{red}{3},\textcolor{green}{4},\textcolor{magenta}{5}\}$ and $a = 0.5$}
+        \label{fig:prob1a}
+    \end{figure}
+    
+    
+    
+    Without loss of generality, assume that $p_x \le p_y$. Note that $u(x,y) = u(y,x)$ for all $x,y$, which means that $h_x(p,\overline{u}) \ge h_y(p,\overline{u})$. To see why, consider that if $x < y$ and $u(x,y) \ge \overline{u}$, then $u(y,x) \ge \overline{u}$, but since $p_xx+p_yy > p_xy + p_yx$, the expenditure function would not be minimized. Thus, $h_x(p,\overline{u}) \ge h_y(p,\overline{u})$. This means that the expenditure minimization problem will be
+    \[
+    \begin{array}{ll}
+        \min_{x,y \ge 0 ; x \ge y} & p_xx + p_yy \\
+        \text{subject to} & ax + y \ge \overline{u}
+    \end{array}
+    \]
+    Since the objective and constraint are both linear, we will always have a corner solution:
+
+    If $a > \frac{p_x}{p_y}$, the optimal solution will have $y = 0$, so $h_x(p,\overline{u}) = \frac{\overline{u}}{p_x}$, $h_y(p,\overline{u}) = 0$, and $e(p,\overline{u}) = \overline{u}\frac{p_x}{a}$. Additionally, $x^*(p,w) = \frac{w}{p_x}$ and $y^*(p,w) = 0$, meaning that $v(p,w) = \frac{aw}{p_x}$.
+
+    If $a < \frac{p_x}{p_y}$, the optimal solution will have $x = y$, so $h_x(p,\overline{u}) = h_y(p,\overline{u}) = \frac{\overline{u}}{a+1}$, and $e(p,\overline{u}) = \overline{u}\frac{p_x + p_y}{a+1}$. Additionally, $x^*(p,w) = \frac{w}{p_x + p_y} = y^*(p,w)$, so $v(p,w) = \frac{w(a+1)}{p_x + p_y}$.
+
+    If $a = \frac{p_x}{p_y}$, any solution where $x \ge y \ge 0$ will be optimal as long as $ax + y = \overline{u}$. This means that $h(p,\overline{u}) = \{(x,y) : x \ge y \ge 0 \text{ and } ax + y = \overline{u}\}$, and $e(p,\overline{u}) = \overline{u}\frac{p_x + p_y}{a+1} = \overline{u}\frac{p_x}{a}$. Additionally, $(x^*(p,w),y^*(p,w)) = \{(x,y) : x \ge y \ge 0 \text{ and } ax + y = \frac{aw}{p_x}\}$, so $v(p,w) = \frac{aw}{p_x}$.
+
+    All of these results of course hold in the other direction if $p_x > p_y$.
+    
+\end{itemize}
+
+\paragraph{Problem 2:} Consider an expenditure function of the following form:
+\[
+e(p,u) = \exp\left(\sum_l \alpha_l \log p_l + u\prod_l p_l^{\beta_l}  \right)
+\]
+\begin{itemize}
+    \item[(a)] What conditions must parameters $\alpha_1,\dots,\alpha_n$, $\beta_1,\dots,\beta_n$ satisfy for this expenditure function to be rationalizable?
+\end{itemize}
+
+
+\noindent From now on, assume the restrictions in (a) are satisfied
+
+
+\begin{itemize}
+    \item[(b)] Derive the consumer's Hicksian and Marshallian demand functions. 
+
+    \item[(c)] Check whether the different goods are substitutes or complements, and whether they are gross substitutes or gross complements. Interpret.
+
+    \item[(d)] What utility function rationalizes this expenditure function? [Hint: for an inner bound on an indifference curve you can combine the Hicksian demands for the different goods in a way that eliminates the prices.]
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] For this expenditure function to be rationalizable, it suffices to show that it meets three conditions: nondecreasing in $p$, homogeneous of degree 1 in $p$, and concave in $p$. We will address these conditions in order.
+
+    \smallskip
+
+    For $e(p,u)$ to be nondecreasing in $p$, the partial derivative $\partial e(p,u) / \partial p_i$ must be non-negative for each $p_i$. Taking the derivative, we get
+    \[
+    \frac{\partial e(p,u)}{\partial p_i} = \left(\frac{\alpha_i}{p_i} + u\beta_i p_i^{\beta_i - 1} \prod_{l\ne i} p_l^{\beta_l} \right) e(p,u)
+    \]
+    As the expenditure function is positive, for this to be true for all $i,p,u$ it must be the case that $\beta_i \ge 0$ and $\alpha_i \ge 0$ for all $i$.
+
+    \smallskip
+
+    For $e(p,u)$ to be homogeneous of degree 1 in $p$, it must be the case that $e(\lambda p,u) = \lambda e(p,u)$. Expanded, this is
+    \begin{align*}
+        e(\lambda p,u) &= \exp\left(\sum_l \alpha_l \log \lambda p_l + u\prod_l (\lambda p_l)^{\beta_l}  \right) \\
+        &= \lambda^{\sum_l \alpha_l} \exp\left(\sum_l \alpha_l \log p_l + \lambda^{\sum_l \beta_l} u\prod_l p_l^{\beta_l}  \right)
+    \end{align*}
+    which equals $\lambda e(p,u)$ only when $\sum_l \alpha_l = 1$ and $\sum_l \beta_l = 0$. Since $\beta_l \ge 0$ for all $l$, $\beta_l = 0$ for all $l$. This means that the expenditure function simplifies to
+    \[
+    e(p,u) = \exp\left(\sum_l \alpha_l \log p_l + u \right) = e^u \prod_l p_l^{\alpha_l}
+    \]
+
+    \smallskip
+
+    Our final condition is that $e(p,u)$ is concave. It suffices to show that $\partial^2 e(p,u) / \partial p_i^2 \le 0$ for all $p_i$, which is equivalent to the elements of the diagonal of the Slutsky matrix being non-positive. We have
+    \[
+    \frac{\partial^2 e(p,u)}{\partial p_i^2} = e^u \alpha_i (\alpha_i - 1) p_i^{\alpha_i - 2} \prod_{l \ne i} p_l^{\alpha_l}
+    \]
+    All of the terms are nonnegative by assumption except for $\alpha_i - 1$. Since $\alpha_i \ge 0$ for all $i$, for $e(p,u)$ to be concave, it must be the case that $\alpha_i \in [0,1]$ for all $i$.
+
+    \smallskip
+
+    Thus, the conditions for the expenditure function to be rationalizable are that $\beta_i = 0$ for all $i$, that $\alpha_i \in [0,1]$ for all $i$, and that $\sum_i \alpha_i = 1$.
+
+    \item[(b)] Since the restrictions are satisfied, we will use the more simple form for the expenditure function. Using Shephard's Lemma, we find that the Hicksian demand functions are
+    \[
+    h_i(p,u) = \nabla_{p_i} e(p,u) = e^u \alpha_i p_i^{\alpha_i - 1} \prod_{l \ne i} p_l^{\alpha_l} = \frac{e^u \alpha_i}{p_i} \prod_{l} p_l^{\alpha_l}
+    \]
+    To find Marshallian demand, we use the identity that $h_i(p,u) = x_i(p,e(p,u))$. Note that $h_i(p,u) = \frac{\alpha_i}{p_i} e(p,u)$. Thus, $x_i(p,w) = \frac{\alpha_i w}{p_i}$.
+
+    \item[(c)] To find whether two goods are substitutes of complements, we take the partial of the Hicksian demand for one good with respect to the price of the other:
+    \[
+    \frac{\partial h_i(p,u)}{\partial p_j} = e^u \frac{\alpha_i \alpha_j}{p_ip_j} \prod_{l} p_l^{\alpha_l}
+    \]
+    Since all terms are non-negative, two different goods are substitutes.
+
+    \smallskip
+
+    To find whether two goods are gross substitutes or gross complements, we take the partial of the Marshallian demand for one good with respect to the price of the other:
+    \[
+    \frac{\partial x_i(p,w)}{\partial p_j} = 0
+    \]
+    Since the total effect is 0, the goods are neither strict gross complements nor strict gross substitutes. This means that when the price of one good increases, the consumer will substitute away from that good to others, but this substitution will be offset by a wealth effect, so the total effect on demand will be nothing.
+
+    \item[(d)] Note first that the Marshallian demand function looks exactly the same as the Marhsallian demand developed from a Cobb-Douglas utility function in Problem 1. A reasonable choice of utility function is
+    \[
+    u(x) = \sum_l \alpha_l (\ln x_l + \ln \alpha_l)
+    \]
+    To check that this utility function rationalizes the expenditure function, we will use it to derive Hicksian demand. Our expenditure minimization problem is
+    \[
+    \min_{\sum_l \alpha_l (\ln x_l + \ln \alpha_l) \ge \overline{u}} \sum_i p_ix_i
+    \]
+    The first order conditions imply that $-\lambda = \frac{p_ix_i}{\alpha_i}$. Fixing $i = 1$, note that we can now write $x_i = \frac{p_1x_1\alpha_i}{\alpha_1 p_i}$, and solve for the Hicksian demand:
+    \begin{align*}
+        \overline{u} &= \sum_l \alpha_l (\ln \frac{p_1x_1\alpha_i}{\alpha_1 p_i} + \ln \alpha_l) \\
+        \Longrightarrow e^{\overline{u}} &= \frac{x_1p_1}{\alpha_1} \prod_l p_l^{\alpha_l} \\
+        \Longrightarrow h_1(p,\overline{u}) &= \frac{e^{\overline{u}}\alpha_1}{p_1}\prod_l p_l^{\alpha_l}
+    \end{align*}
+    Since that is the Hicksian demand found above, the utility function that rationalizes the expenditure function is
+    \[
+    u(x) = \sum_l \alpha_l (\ln x_l + \ln \alpha_l)
+    \]
+\end{itemize}
+
+\paragraph{Problem 3:} Let the consumption set be $\reals \times \reals_+^{n-1}$, and suppose that preferences are strictly convex and quasi-linear in the first good (``numeraire''). (Note that negative consumption of numeraire is allowed.) Fix the numeraire's price $p_1 = 1$.
+
+\begin{itemize}
+    \item[(a)] Show that the Marshallian demand functions for goods $2,\dots,n$ are independent of wealth. 
+
+    \item[(b)] Show that the Hicksian demand functions for goods $2,\dots,n$ are independent of target utility.
+
+    \item[(c)] What does this imply about the relationship between Marshallian and Hicksian demand for goods $2,\dots,n$?
+
+    \item[(d)] Argue that the consumer's preferences over $(p,w)$ can be represented by an indirect utility function that is quasilinear in $w$. What is the form of the corresponding expenditure function?
+
+    \item[(e)] Compare (i) compensating variation, (ii) equivalent variation, and (iii) consumer surplus calculated from Marshallian demand to each other.
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] Recall that if a consumer is maximizing a quasilinear utility function, there exists a utility representation $U$ such that $U(x) = x_1 + u(x_2,\dots,x_n)$. Note that since utility is increasing in $x_1$, the budget constraint will hold with equality by Walras' Law. Solving for $x_1$ in the budget constraint, we get $x_1 = w - p_2x_2 - \dots - p_nx_n$. The consumer's utility maximization problem
+    \[
+    \max_{x_1 + p_2x_2 + \dots + p_nx_n = w} U(x)
+    \]
+    Is equivalent to the unconstrained problem
+    \[
+    \max_{x_2,\dots,x_n} w + u(x_2,\dots,x_n) - p_2x_2 - \dots - p_nx_n
+    \]
+    Which is equivalent to
+    \[
+    w + \max_{x_2,\dots,x_n} u(x_2,\dots,x_n) - p_2x_2 - \dots - p_nx_n
+    \]
+    Since the solutions to this problem, which are the Marshallian demand functions, are independent of wealth, the Marshallian demand functions for goods $2,\dots,n$ are independent of wealth.
+    
+
+    \item[(b)] From the definition of the indirect utility function and part (a), we know that 
+    \[
+    v(p,w) = w + \max_{x_2,\dots,x_n} u(x_2,\dots,x_n) - p_2x_2 - \dots - p_nx_n
+    \]
+    To find the expenditure function, we set $v(p,e(p,\overline{u})) = \overline{u}$
+    \[
+    \overline{u} = e(p,\overline{u}) + \max_{x_2,\dots,x_n} u(x_2,\dots,x_n) - p_2x_2 - \dots - p_nx_n
+    \]
+    Thus, the expenditure function is
+    \[
+    e(p,\overline{u}) = \overline{u} - \max_{x_2,\dots,x_n} u(x_2,\dots,x_n) - p_2x_2 - \dots - p_nx_n
+    \]
+    From Shephard's Lemma, the Hicksian demand is
+    \[
+    h_i(p,u) = \nabla_{p_i} e(p,u) = -\frac{\partial}{\partial p_i}\left(\max_{x_2,\dots,x_n} u(x_2,\dots,x_n) - p_2x_2 - \dots - p_nx_n\right)
+    \]
+    Thus, Hicksian demand is independent of target utility.
+
+    \item[(c)] Since Marshallian demand is independent of wealth, the Slutsky Equation is
+    \[
+    \frac{\partial x_i(p,w)}{\partial p_j} = \frac{\partial h_i(p,\overline{u})}{\partial p_j}
+    \]
+    Since $x_i(p,0) = 0$, $h_i(p,v(p,0)) = 0$. Since the two forms of demand have the same starting condition and the same slope at every point, we can say that $x_i(p,w) = h_i(p,\overline{u})$ for all $i \ge 2$.
+
+    \item[(d)] Define a function
+    \[
+    \psi(p) = \max_{x_2,\dots,x_n} u(x_2,\dots,x_n) - p_2x_2 - \dots - p_nx_n
+    \]
+    We have already shown in part (b) that
+    \[
+    v(p,w) = w + \psi(p)
+    \]
+    and
+    \[
+    e(p,\overline{u}) = \overline{u} - \psi(p)
+    \]
+    The functions are quasilinear in $w$ and $\overline{u}$ by inspection.
+
+    \item[(e)] From the definitions of compensating and equivalent variation, it is clear to see that
+    \[
+    CV = e(p,u) - e(p',u) = \psi(p') - \psi(p) = e(p,u') - e(p',u') = EV
+    \]
+    Since the Marshallian consumer surplus is bounded by compensating variation and equivalent variation, it is equal to both, and the three quantities are equal.
+
+    
+\end{itemize}
+
+\paragraph{Problem 4:} Suppose that instead of a fixed wealth, the consumer starts with a bundle of goods $z$ (not necessarily her optimal bundle) and can buy and sell goods at prices $p$. Suppose that all goods are regular. Explain why (or give an example of how) the consumer's demand for good 1 might be higher at prices $p' = (p_1',p_2,\dots,p_n)$ than at prices $p$, with $p_1' > p_1$. What is required for this to happen?
+
+\textbf{Solutions:} Assume that the consumer starts with a positive amount of good 1. Since good 1 is regular, an increase in the price of good 1 while holding wealth constant will decrease demand for good 1. However, since she starts with a positive amount of good 1, the increasing price of good 1 is effectively increasing her wealth, since $w = p\cdot z$ in this example, and $p' \cdot z > p \cdot z$. She will increase her demand for good 1 if good 1 is normal as well as regular, and if the wealth effect is greater in magnitude than the substitution effect. 
+
+\medskip
+
+For an example, consider $u(x_1,x_2) = \min\{x_1,x_2\}$, $z = (3,0)$, $p = (1,1)$, and $p' = (2,1)$. Her demand under $p$ will be $(1.5,1.5)$, and her demand under $p'$ will be $(2,2)$.
+
+
+\paragraph{Problem 5:} A consumer in a three-good world faces prices $p_1 = p_2 = p_3 = 1$. She buys $x_1 = x_2 = x_3 = 2$. Prices change, and next year she faces prices $p_1 = p_3 = 4$ and $p_2 = 2$. She buys $x_1 = 1$, $x_2 = 2$, and $x_3 = 10$.
+
+\begin{itemize}
+    \item[(a)] Construct the Paasche and Laspeyres price indices for this consumer.
+
+    \item[(b)] What can you say about the change in this consumer's welfare?
+\end{itemize}
+\medskip
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] The Paasche index is
+    \[
+    \frac{p' \cdot x'}{p \cdot x'} = \frac{4 + 4 + 40}{1 + 2 + 10} = \frac{48}{13} \approx 3.69
+    \]
+    The Laspeyres index is
+    \[
+    \frac{p' \cdot x}{p \cdot x} = \frac{8 + 4 + 8}{2 + 2 + 2} = \frac{20}{6}  \approx 3.33
+    \]
+
+    \item[(b)] We can see that the consumer spent 48 in the second year, so her wealth must be at least 48. Since the first year's consumption bundle costs 20, it must have been feasible, yet she chose to consume the second year's bundle. This indicates that $u(x') > u(x)$, which means that her welfare increased despite the price indices both indicating that it would require a wealth increase to keep her utility the same. This indicates that her wealth increased from year 1 to year 2, and that increase made her better off despite the price increases.
+\end{itemize}
+
+\paragraph{Problem 6:} Suppose there are $m$ consumers, and that the indirect utility function of each consumer $i = 1,\dots,m$ takes the form
+\[
+v_i(p,w_i) = a_i(p) + b(p)w_i
+\]
+for some differentiable functions $a_i(\cdot) \; (i = 1,\dots,m)$ and $b(\cdot)$.
+
+\begin{itemize}
+    \item[(a)] Show that this form of indirect utility function obtains (for some utility representation of preferences) when either (i) all consumers have quasilinear preferences or (ii) all consumers have identical homothetic preferences.
+
+    \item[(b)] Show that the consumers' aggregate demand
+    \[
+    X(p,w_1,\dots,w_m) = \sum_{i=1}^m x_i(p,w_i)
+    \]
+    can be written as $X(p,W)$, where $W = \sum_{i=1}^m w_i$ is the aggregate wealth.
+
+    \item[(c)] Show, moreover, that $X(p,W)$ can arise as the Marshallian demand function of a single utility-maximizing consumer (interpreted as the ``positive representative consumer''). [Hint: show that the demand can be derived from an expenditure function that is rationalizable.]
+
+    \item[(d)] Show that a change in prices makes the ``representative consumer'' better off if and only if there exists an accompanying redistribution of the aggregate wealth that would make each consumer $i = 1,\dots,m$ better off. (Thus we also have a ``normative representative consumer.'')
+\end{itemize}
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] First, assume that all consumers have quasilinear preferences. Normalize $p_1 = 1$. From Problem 3, we know that our value function becomes
+    \[
+    v^i(p,w_i) = \max_{x_{-1} \ge 0} w_i - p_{-1}\cdot x_{-1} + u(x_{-1})
+    \]
+    where $x_{-1} = (x_2,\dots,x_n)$. Since demand does not depend on $w_i$, we can define $x_{-1}^*(p)$ as the demand for all non-numeraire goods. Because Walras' Law holds, our budget constraint is an equality constraint, so we have $x^*(p,w) = w - p_{-1} \cdot x^*_{-1}(p)$. Finally, our value function becomes $v^i(p,w_i) = w_i - p_{-1}\cdot x^*_{-1}(p) + u(x_{-1}^*(p))$. This matches the form above, where $b(p) = 1$ and $a_i(p) = - p_{-1}\cdot x^*_{-1}(p) + u(x_{-1}^*(p))$.
+
+    \smallskip
+
+    Next, assume that all consumers have identical homothetic preferences. From the first problem set, there exists $u(x)$ that is homogeneous of degree 1. Using that function, which is identical across all consumers, the value function is
+    \begin{align*}
+        v^i(p,w_i) &= \max_{x ; x\cdot p \le w_i} u(x) \\
+                &= \max_{z ; z\cdot p \le 1} u(w_iz) \text{  for } z = \frac{x}{w_i} \\
+                &= w_i \max_{z ; z\cdot p \le 1} u(z) \\
+                &= w_i v(p,1)
+    \end{align*}
+    Thus, setting $a_i(p) = 0$ and $b(p) = v(p,1)$, we have a solution.
+
+    \item[(b)] From Roy's Identity, we have that $\nabla v^i(p,w_i) = x^i(p,w_i)$. Using that, we get
+    \begin{align*}
+        X(p,w_1,\dots,w_n) &= \sum_{i=1}^m x^i(p,w_i) \\
+        &= \nabla \sum_{i=1}^m v^i(p,w_i) \\
+        &= \nabla \sum_{i=1}^m a^i(p) + b(p)w_i \\
+        &= W\nabla b(p) + \sum_{i=1}^m \nabla a^i(p) \\
+        &= X(p,W)
+    \end{align*}
+
+    \item[(c)] We begin by calculating the individual expenditure functions using the identity $v(p,e) = \overline{u}$:
+    \[
+    v^i(p,e^i(p,u^i)) = u^i = a^i(p) + b(p)e^i(p,u^i) \Longrightarrow e^i(p,u^i) = \frac{u^i - a^i(p)}{b(p)}
+    \]
+    We then aggregate, defining $a(p) = \sum_i a^i(p)$ and $U = \sum_i u^i$, and get
+    \[
+    e(p,U) = \frac{U - a(p)}{b(p)}
+    \]
+    To find the aggregate Marshallian demand, we first find the aggregate indirect utility function
+    \[
+    W = \frac{v(p,W) - a(p)}{b(p)} \Longrightarrow v(p,W) = a(p) + Wb(p)
+    \]
+    Finally, using Roy's Identity we can identify the representative consumer's aggregate demand
+    \[
+    X(p,W) = -\frac{-\nabla_p v(p,W)}{\partial v(p,W) / \partial W} = -\frac{\nabla_p a(p) + W\nabla_p b(p)}{b(p)} 
+    \]
+    \[
+    X(p,W) = \sum_i -\frac{\nabla_p a_i(p) + w_i\nabla_p b(p)}{b(p)}
+    \]
+    This represents the Marshallian demand for a rational representative consumer.
+
+    \item[(d)] 
+
+    \begin{proof}
+        $(\Rightarrow)$: Assume that we have a price change $p \to p'$ which makes the representative agent better off, meaning that $v(p',W) > v(p,W)$, and we have a possible wealth redistribution $w \to w'$. For each agent to be better off, we need
+        \[
+        v_i(p',w_i') = a_i(p') + b(p')w'_i \ge a_i(p) + b(p)w_i = v_i(p',w_i)
+        \]
+        This means the redistribution must be
+        \[
+        w'_i \ge \frac{a_i(p) - a_i(p') + b(p)w_i}{b(p')}
+        \]
+        Assume that this holds with equality, meaning that each agent is compensated so that they are the same as before the price change. To find if this is feasible, using the fact that the representative consumer is better off, we find
+        \[
+        \sum_i w_i' = \frac{v(p,W) - a_i(p')}{b(p')} \le \frac{v(p',W) - a_i(p')}{b(p')} = \sum_i w_i = W
+        \]
+        Thus, since a redistribution making each agent better off is feasible, a change in prices which makes the representative consumer better off implies that there exists an accompanying redistribution of the aggregate wealth that makes each consumer better off.
+
+        \medskip
+
+        $(\Leftarrow)$: Assume that we have a price change $p \to p'$ and an accompanying wealth redistribution $w_i \to w_i'$ such that each agent is better off. That implies that 
+        \[
+        v_i(p',w_i') = a_i(p') + b(p')w_i' \ge a_i(p) + b(p)w_i = v_i(p,w_i)
+        \]
+        Summing as in part (c), and recalling that $\sum_i w_i = \sum_i w'_i = W$, since we are redistributing, we get
+        \[
+        v(p',W) = a(p') + b(p')W \ge a(p) + b(p)W = v(p,W)
+        \]
+        Since $v(p',W) \ge v(p,W)$, the representative agent is better off.
+    \end{proof}
+
+    
+\end{itemize}
+
+
+\newpage
 \subsection{Producer (Harris)}
 
 \subsubsection{Harris Homework}
 
+\paragraph{Problems.}
+
+\begin{enumerate}
+	\item Consider the production possibilities set
+	\[
+	Y = \curll (q,-z) \in \reals^2_+ \times \reals^2_- : z_1^\alpha z_2^\beta \ge \frac{q_1^2 + q_2^2}{2} \curlr
+	\]
+	where $\alpha,\beta > 0$.
+	\begin{enumerate}
+		\item Find the conditional input demand function $z(w_1,w_2,q_1,q_2)$.
+		\item What is the marginal rate of transformation between output 1 and output 2? That is, given $w_1, w_2, q_1, q_2$, what is the proportional decrease in $q_1$ required to marginally increase $q_2$ while holding cost constant?
+	\end{enumerate}
+	\item Consider a single-output firm with technology that can transform inputs $z \in \reals^3_+$ into output according to the production function
+	\[
+	f(z) = z_1^\frac{1}{2} z_2^\frac{1}{4} z_3^\frac{1}{8}
+	\]
+	\begin{enumerate}
+		\item This production function is homogeneous degree $\alpha$. Find $\alpha$. What does this imply about the firm’s cost function? Is the firm’s marginal cost of production increasing or decreasing in $q$?
+		\item Derive the conditional input demand function $z(w, q)$.
+		\item Derive an expression for the firm’s marginal cost of production, i.e., the derivative of the cost function with respect to $q$.
+	\end{enumerate}
+	\item Consider a single- output firm which takes as input a continuum of inputs rather than a discrete set of inputs. We now denote the quantity input of commodity $j$ as $z(j)$ (rather than $z_j$ as we did in the discrete-inputs cases). The production function is
+	\[
+	f(z) = \barl \int_0^1 a(j) z(j)^{\frac{\sigma-1}{\sigma}} dj \barr^{\frac{\sigma}{\sigma-1}} 
+	\]
+	where $a(j)$ is a continuous function integrable on $[0, 1]$ that reflects the relative productivities of the various inputs.
+	\begin{enumerate}
+		\item Derive the conditional input demand function $z(j, w, q)$. The price for input $j$ is given by $w(j)$, where $w$ is a continuous function integrable on $[0, 1]$.
+		\item How is the conditional input demand for input $j$ affected by $a(j)$, the productivity of input $j$?
+		\item N0w suppose that the firm has market power in input markets. If the firm uses $z(j)$ units of input $j$, the per-unit input price is $w(j,z(j)) = \frac{1}{2} z(j)$. Find the cost-minimizing choice of inputs to produce $q = 1$ units of output.
+	\end{enumerate}
+	\item Consider a single-output firm with technology that can transform inputs $z \in \reals^N_+$ into output according to the production function
+	\[
+	f(z) = 2\sqrt{\min\{z_1,2z_2,3z_3,\dots,Nz_N}
+	\]
+	\begin{enumerate}
+		\item Derive the unconditional input demand function.
+		\item ow suppose that the firm has market power in the output market. If the firm produces quantity $q$, the per-unit price is $P(q) = q^{-\varepsilon}$ where $\varepsilon \in (1,\infty)$. Derive the firm's choice of inputs $z_1,\dots,z_N$.
+	\end{enumerate}
+	\item De Loecker, Eeckhout, and Unger (QJE, 2020) is an influential paper on measuring market power. The approach described in this paper takes the cost minimization problem as a starting point. Read the first 11 pages of this article (through the end of Section II.B) paying particular attention to Sections II.A and II.B.
+	\begin{enumerate}
+		\item In going from equation (6) to (7), the authors assert that ``The La- grange multiplier $\lambda$ is a direct measure of marginal cost.'' Give a justification for this assertion.
+		\item The authors’ starting point in Section II.B is the cost minimiza- tion problem. However, the output price (the key component of the markup) does not feature in the CMP (recall that the only arguments of the cost function and conditional input demand function are $w$ and $q$). Given this, why can the authors claim that this starting point leads to some insight about markups? Wouldn’t it be more natural to use the profit maximization problem as a starting point?
+	\end{enumerate}
+\end{enumerate}
+
+\paragraph{Solutions.} (Gabe's solutions, collaborated with Sara Yoo)
+
+\begin{enumerate}
+	\item Production possibilities set
+	\begin{enumerate}
+		\item We have that the cost minimization problem is
+		\[
+		\min_{z\in \reals^2_+} w_1z_1 + w_2z_2 \st z_1^\alpha z_2^\beta \ge \frac{q_1^2 + q_2^2}{2}
+		\]
+		Which has the Lagrangian
+		\[
+		\mathcal{L} = w_1 z_1 + w_2 z_2 + \lambda \parl  \frac{q_1^2 + q_2^2}{2} -  z_1^\alpha z_2^\beta\parr
+		\]
+		Taking first order conditions, we get
+		\[
+		\frac{\partial \mathcal{L}}{\partial z_1} = w_1 - \lambda \alpha z_2^\beta z_1^{\alpha - 1} = 0 \Longrightarrow \lambda = \frac{w_1}{\alpha z_2^\beta z_1^{\alpha - 1}} 
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial z_2} = w_2 - \lambda \beta z_1^\alpha z_2^{\beta - 1} = 0 \Longrightarrow \lambda = \frac{w_2}{\beta z_1^\alpha z_2^{\beta - 1}}
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial \lambda} = \frac{q_1^2 + q_2^2}{2} -  z_1^\alpha z_2^\beta = 0 \Longrightarrow \frac{q_1^2 + q_2^2}{2} =  z_1^\alpha z_2^\beta
+		\]
+		Combining, we get that
+		\[
+		\frac{w_1}{\alpha z_2^\beta z_1^{\alpha - 1}} = \frac{w_2}{\beta z_1^\alpha z_2^{\beta - 1}} \Longrightarrow \frac{w_1 z_1}{\alpha} = \frac{w_2 z_2}{\beta} \Longrightarrow z_1 = \frac{w_2\alpha}{w_1\beta} z_2
+		\]
+		Substituting into the constraint, we get that
+		\begin{align*}
+			\parl \frac{w_2\alpha}{w_1\beta} z_2 \parr^\alpha z_2^\beta &= \frac{q_1^2 + q_2^2}{2} \\
+			z_2^{\alpha + \beta} &= \parl \frac{w_1\beta}{w_2\alpha}\parr^{\alpha} \frac{q_1^2 + q_2^2}{2} \\
+			z_2\opt(w_1,w_2,q_1,q_2) &= \parl \frac{w_1\beta}{w_2\alpha}\parr^{\frac{\alpha}{\alpha + \beta}} \parl\frac{q_1^2 + q_2^2}{2}\parr^{\frac{1}{\alpha + \beta}}
+		\end{align*}
+		Substituting back into the equation for $z_1$, we get that
+		\begin{align*}
+			z_1 &=  \frac{w_2\alpha}{w_1\beta} \parl \frac{w_1\beta}{w_2\alpha}\parr^{\frac{\alpha}{\alpha + \beta}} \parl\frac{q_1^2 + q_2^2}{2}\parr^{\frac{1}{\alpha + \beta}} \\
+			z_1\opt(w_1,w_2,q_1,q_2) &= \parl \frac{w_2\alpha}{w_1\beta} \parr^{\frac{\beta}{\alpha + \beta}}\parl\frac{q_1^2 + q_2^2}{2}\parr^{\frac{1}{\alpha + \beta}}
+		\end{align*}
+		\item We can find the Marginal Rate of Transformation by implicitly differentiating the border of the production possibilities set. More specifically, since we have that price must remain constant, we have that
+		\[
+		0 = 2q_1 \partial q_1 + 2q_2 \partial q_2 \Longrightarrow MRT_{q_1,q_2} = \frac{\partial q_1}{\partial q_2} = -\frac{q_2}{q_1}
+		\]
+	\end{enumerate}
+	\item Cost minimization
+	\begin{enumerate}
+		\item We have that the production function is homogeneous of degree $\alpha$, meaning that $f(\beta z) = \beta^\alpha f(z)$. We have that
+		\[
+		f(\beta z) = \parl \beta z_1\parr^{\frac{1}{2}} \parl \beta z_2\parr^{\frac{1}{4}} \parl \beta z_3\parr^{\frac{1}{8}} = \beta^{\frac{7}{8}} z_1^{\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}} = \beta^{\frac{7}{8}} f(z)
+		\]
+		so $\alpha = \frac{7}{8}$. This implies that the firm's cost function is homogeneous of degree $\frac{8}{7}$ in $q$, which implies that the firm faces increasing marginal cost of production in $q$.
+		\item We have that the cost minimization problem is
+		\[
+		\min_{z \in \reals^3_+} w \cdot z \st z_1^{\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}} \ge q
+		\]
+		which admits the Lagrangian
+		\[
+		\mathcal{L} =  w \cdot z + \lambda \parl q - z_1^{\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}} \parr
+		\]
+		Our first order conditions are
+		\[
+		\frac{\partial \mathcal{L}}{\partial z_1} = w_1 - \frac{\lambda}{2} z_1^{-\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}} = 0 \Longrightarrow \lambda = \frac{2w_1 }{ z_1^{-\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}}}
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial z_2} = w_2 - \frac{\lambda}{4} z_1^{\frac{1}{2}} z_2^{-\frac{3}{4}} z_3^{\frac{1}{8}} = 0 \Longrightarrow \lambda = \frac{4w_2 }{z_1^{\frac{1}{2}} z_2^{-\frac{3}{4}} z_3^{\frac{1}{8}}}
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial z_3} = w_3 - \frac{\lambda}{8} z_1^{\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{-\frac{7}{8}} = 0 \Longrightarrow \lambda = \frac{8w_3 }{z_1^{\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{-\frac{7}{8}}}
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial \lambda} =  q - z_1^{\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}} = 0 \Longrightarrow  q = z_1^{\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}}
+		\]
+		Equating the first two conditions, we get that
+		\[
+		\frac{2w_1 }{ z_1^{-\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}}} = \frac{4w_2 }{z_1^{\frac{1}{2}} z_2^{-\frac{3}{4}} z_3^{\frac{1}{8}}} \Longrightarrow z_1w_1 = 2w_2 z_2 \Longrightarrow z_2 = \frac{w_1}{2w_2}z_1
+		\]
+		Equating the first and third conditions, we get that
+		\[
+		\frac{2w_1 }{ z_1^{-\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{\frac{1}{8}}} = \frac{8w_3 }{z_1^{\frac{1}{2}} z_2^{\frac{1}{4}} z_3^{-\frac{7}{8}}} \Longrightarrow z_1w_1 = 4w_3 z_3 \Longrightarrow z_3 = \frac{w_1}{4w_3} z_1
+		\]
+		Combining into the constraint, we get that
+		\[
+		q = z_1^{\frac{1}{2}} \parl \frac{w_1}{2w_2}z_1\parr^{\frac{1}{4}} \parl \frac{w_1}{4w_3} z_1\parr^{\frac{1}{8}} \Longrightarrow z_1^{\frac{7}{8}}= q \parl \frac{2w_2}{w_1} \parr^\frac{1}{4}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{8} 
+		\]
+		Which implies that
+		\[
+		z_1\opt(w,q) = q^\frac{8}{7} \parl \frac{2w_2}{w_1} \parr^\frac{2}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7}
+		\]
+		Substituting back, we get that
+		\[
+		z_2 = \frac{w_1}{2w_2} q^\frac{8}{7} \parl \frac{2w_2}{w_1} \parr^\frac{2}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7}
+		\]
+		and
+		\[
+		z_3 = \frac{w_1}{4w_3} q^\frac{8}{7} \parl \frac{2w_2}{w_1} \parr^\frac{2}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7}
+		\]
+		which imply that
+		\[
+		z_2\opt(w,q) =  q^\frac{8}{7} \parl \frac{w_1}{2w_2} \parr^\frac{5}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7}
+		\]
+		\[
+		z_3\opt(w,q) =  q^\frac{8}{7} \parl \frac{2w_2}{w_1} \parr^\frac{2}{7} \parl \frac{w_1}{4w_3} \parr^\frac{6}{7}
+		\]
+		\item We have that the cost function of the firm is $C(w,q) = w_1 z_1\opt + w_2 z_2\opt + w_3z_3\opt$, so substituting:
+		\[
+		C(w,q) = w_1  q^\frac{8}{7} \parl \frac{2w_2}{w_1} \parr^\frac{2}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7} + w_2 q^\frac{8}{7} \parl \frac{w_1}{2w_2} \parr^\frac{5}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7} + w_3 q^\frac{8}{7} \parl \frac{2w_2}{w_1} \parr^\frac{2}{7} \parl \frac{w_1}{4w_3} \parr^\frac{6}{7}
+		\]
+		which equals
+		\[
+		C(w,q) = q^\frac{8}{7} \barl w_1  \parl \frac{2w_2}{w_1} \parr^\frac{2}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7} + w_2 \parl \frac{w_1}{2w_2} \parr^\frac{5}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7} + w_3  \parl \frac{2w_2}{w_1} \parr^\frac{2}{7} \parl \frac{w_1}{4w_3} \parr^\frac{6}{7}\barr
+		\]
+		so we have that the marginal cost of production is
+		\[
+		\frac{\partial C(w,q)}{\partial q} = \frac{8}{7} q^\frac{1}{7} \barl w_1  \parl \frac{2w_2}{w_1} \parr^\frac{2}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7} + w_2 \parl \frac{w_1}{2w_2} \parr^\frac{5}{7}  \parl \frac{4w_3}{w_1} \parr^\frac{1}{7} + w_3  \parl \frac{2w_2}{w_1} \parr^\frac{2}{7} \parl \frac{w_1}{4w_3} \parr^\frac{6}{7}\barr
+		\]
+	\end{enumerate}
+	\item Cost minimization with a continuum of inputs
+	\begin{enumerate}
+		\item We have that the continuous cost minimization problem is
+		\[
+		\min_{z(j)} \int_0^1 w(j)z(j)dj \st q = \barl \int_0^1 a(j) z(j)^\frac{\sigma-1}{\sigma} dj \barr^\frac{\sigma}{\sigma-1}
+		\]
+		which admits the Lagrangian
+		\[
+		\mathcal{L} = \int_0^1 w(j)z(j)dj + \lambda \parl q - \barl \int_0^1 a(j) z(j)^\frac{\sigma-1}{\sigma} dj \barr^\frac{\sigma}{\sigma-1} \parr
+		\]
+		The first order condition with respect to some $z(j)$ is
+		\[
+		\frac{\partial \mathcal{L}}{\partial z(j)} = w(j) - \lambda \frac{\sigma}{\sigma - 1} \parl \int_0^1 a(i) z(i)^\frac{\sigma - 1}{\sigma}di \parr^\frac{1}{\sigma - 1} \frac{\sigma - 1}{\sigma} a(j) z(j)^{-\frac{1}{\sigma}} = 0
+		\]
+		and using the fact that $q = \barl \int_0^1 a(j) z(j)^\frac{\sigma-1}{\sigma} dj \barr^\frac{\sigma}{\sigma-1}$ in equilibrium, we get that this simplifies to
+		\[
+		w(j) - \lambda a(j)z(j)^{-\frac{1}{\sigma}} q^\frac{1}{\sigma} = 0 \Longrightarrow z(j) = \parl \frac{\lambda a(j) q^\frac{1}{\sigma}}{w(j)} \parr^\sigma
+		\]
+		We can find $\lambda$ by substituting back into the budget constraint:
+		\[
+		q = \barl\int_0^1 a(j) \parl \frac{\lambda a(j) q^\frac{1}{\sigma}}{w(j)} \parr^{\sigma-1} dj\barr^\frac{\sigma}{\sigma-1} \Longrightarrow q = \barl \lambda^{\sigma - 1}q^\frac{\sigma-1}{\sigma} \int_0^1 a(j)^\sigma w(j)^{1-\sigma} dj \barr^\frac{\sigma}{\sigma - 1}
+		\]
+		and we get that
+		\[
+		\lambda\opt = \barl \int_0^1 a(j)^\sigma w(j)^{1-\sigma} dj  \barr^{-\frac{1}{\sigma - 1}}
+		\]
+		Thus, we have that
+		\[
+		z\opt(j,w,q) = \parl \frac{a(j)}{w(j)} \parr^\sigma q \cdot \barl \int_0^1 a(i)^\sigma w(i)^{1-\sigma} di  \barr^{-\frac{\sigma}{\sigma - 1}}
+		\]
+		\item The conditional input demand for input $j$ is increasing in the productivity of input $j$, as long as $\sigma \in (0,1)$:
+		\begin{align*}
+		\frac{\partial z\opt(j,w,q)}{\partial a(j)} &= \sigma a(j)^{\sigma - 1}w(j)^{-\sigma} q \barl \int_0^1 a(i)^\sigma w(i)^{1-\sigma} di  \barr^{-\frac{\sigma}{\sigma - 1}} \\
+		 &+ \frac{\sigma}{1-\sigma} \parl \frac{a(j)}{w(j)} \parr^{2\sigma-1} q \cdot \barl \int_0^1 a(i)^\sigma w(i)^{1-\sigma} di  \barr^{\frac{1-2\sigma}{1-\sigma}} > 0
+		\end{align*}
+		\item We have that the new cost minimization problem is
+		\[
+		\min_{z(j)} \int_0^1 \frac{1}{2}z(j)^2 dj \st 1 = \barl \int_0^1 a(j) z(j)^\frac{\sigma-1}{\sigma} dj \barr^\frac{\sigma}{\sigma-1}
+		\]
+		which admits the Lagrangian
+		\[
+		\mathcal{L} = \int_0^1 \frac{1}{2}z(j)^2 dj + \lambda \parl 1 - \barl \int_0^1 a(j) z(j)^\frac{\sigma-1}{\sigma} dj \barr^\frac{\sigma}{\sigma-1}\parr
+		\]
+		The first order condition with respect to some $z(j)$ is
+		\[
+		\frac{\partial \mathcal{L}}{\partial z(j)} = z(j) - \lambda \frac{\sigma}{\sigma - 1} \parl \int_0^1 a(i) z(i)^\frac{\sigma - 1}{\sigma}di \parr^\frac{1}{\sigma - 1} \frac{\sigma - 1}{\sigma} a(j) z(j)^{-\frac{1}{\sigma}} = 0
+		\]
+		and again using the fact that $q = 1 = \barl \int_0^1 a(j) z(j)^\frac{\sigma-1}{\sigma} dj \barr^\frac{\sigma}{\sigma-1}$ in equilibrium, we get that
+		\[
+		z(j) - \lambda a(j)z(j)^{-\frac{1}{\sigma}} q^\frac{1}{\sigma} = 0 \Longrightarrow z(j) = \parl \lambda a(j)\parr^{\frac{\sigma}{\sigma + 1}}
+		\]
+		We substitute back into the budget constraint to get $\lambda$:
+		\[
+		1 = \barl \int_0^1 a(j) \parl \lambda a(j) \parr^\frac{\sigma-1}{\sigma+1} dj \barr^\frac{\sigma}{\sigma-1} \Longrightarrow \lambda^\frac{\sigma + 1}{\sigma} = \barl \int_0^1 a(j)^{\frac{2\sigma}{\sigma + 1}}dj\barr^\frac{\sigma}{\sigma -1} \Longrightarrow \lambda\opt = \barl \int_0^1 a(j)^{\frac{2\sigma}{\sigma + 1}}dj\barr^\frac{\sigma^2}{\sigma^2 -1}
+		\]
+		so we get that
+		\[
+		z\opt(j,w,1) = a(j)^\frac{\sigma}{\sigma+1} \barl \int_0^1 a(i)^{\frac{2\sigma}{\sigma + 1}}di\barr^\frac{\sigma^3}{(\sigma^2 -1)(\sigma+1)}
+		\]
+	\end{enumerate}
+	
+	\item Profit maximization with a non-smooth production function
+	\begin{enumerate}
+		\item We have that the profit maximization problem is
+		\[
+		\max_{z \in \reals_+^N} 2p \sqrt{\min\{z_1,2z_2,3z_3,\dots,Nz_N\}} - w \cdot z
+		\]
+		Note that the goods in this case are (transformations of) perfect complements. Define a variable as follows: $\zeta_i = i \cdot z_i$, which admits the maximization problem
+		\[
+		\max_{\zeta \in \reals_+^N} 2p \sqrt{\min\{\zeta_1,\zeta_2,\dots,\zeta_N\}} - \sum_{i=1}^N \zeta_i \frac{w_i}{i}
+		\] 
+		Since the inputs are now truly perfect complements, we can say that $\zeta_1 = \zeta_2 = \cdots = \zeta_N = \zeta$, and the maximization problem becomes
+		\[
+		\max_{\zeta\in \reals_+} 2p \sqrt{\zeta} - \zeta \sum_{i=1}^N \frac{w_i}{i}
+		\]
+		The first order conditions are
+		\[
+		\frac{p}{\sqrt{\zeta}} - \sum_{i=1}^N \frac{w_i}{i} = 0 \Longrightarrow \zeta\opt = \frac{p^2}{\parl \sum_{i=1}^N \frac{w_i}{i}\parr^2}
+		\]
+		Converting back into our original variables, we get that the unconditional input demand function for input $i$ is:
+		\[
+		z_i\opt(p,w) = \frac{p^2}{i\parl \sum_{i=1}^N \frac{w_i}{i}\parr^2}
+		\]
+		\item We now assume that the firm has output market power, so $P(q) = q^{-\varepsilon}$. Our new maximization problem is
+		\[
+		\max_{z \in \reals^N_+} f(z)^{-\varepsilon} f(z) - w \cdot z \equiv \max_{z \in \reals^N_+} f(z)^{1 - \varepsilon}- w \cdot z
+		\]
+		Using the same change of variable as in part (a), and recalling that goods are still perfect complements, we get that with $\zeta_i = i z_i$, the maximization problem is
+		\[
+		\max_{\zeta \in \reals_+^N} \parl 2 \sqrt{\min\{\zeta_1,\zeta_2,\dots,\zeta_N\}}\parr^{1-\varepsilon} - \sum_{i=1}^N \zeta_i \frac{w_i}{i} \equiv \max_{\zeta\in \reals_+} \parl2 \sqrt{\zeta}\parr^{1-\varepsilon} - \zeta \sum_{i=1}^N \frac{w_i}{i}
+		\]
+		The first order conditions are
+		\[
+		2^{-\varepsilon} (1 - \varepsilon) \zeta^{-\frac{(\varepsilon + 1)}{2}} - \sum_{i=1}^N \frac{w_i}{i} = 0 \Longrightarrow \zeta\opt = \parl \frac{1 - \varepsilon}{2^\varepsilon \sum_{i=1}^N \frac{w_i}{i}} \parr^\frac{2}{\varepsilon + 1}
+		\]
+		So we get the unconditional input demand function given input prices $w$ is
+		\[
+		z_i\opt (w) = \frac{1}{i} \parl \frac{1 - \varepsilon}{2^\varepsilon \sum_{i=1}^N \frac{w_i}{i}} \parr^\frac{2}{\varepsilon + 1}
+		\]
+	\end{enumerate}
+	\item Producer theory in action (De Loecker, Eeckhout, and Unger 2020)
+	\begin{enumerate}
+		\item When the authors assert that ``The Lagrange multiplier $\lambda$ is a direct measure of marginal cost,'' they are using the implicit structure of the cost minimization problem. Formally, we have that the Lagrangian in the cost minimization problem is
+		\[
+		\mathcal{L} = w \cdot z - \lambda (q - f(z))
+		\]
+		Since the objective is minimized, the Lagrange multiplier measures how much the minimum (cost) increases for an increase in the output level. This is precisely the definition of marginal cost -- when output increases by 1 unit, total cost (from the cost function) will increase by $\lambda$ units.
+		\item The authors start with the cost minimization problem despite it not featuring price because they are not assuming that firms are price-takers. If they were, and firms were in perfect competition, then it would make a lot more sense to work under the profit maximization problem. However, since they are assuming that firms have output market power, they would need to estimate a demand function. By working with the cost minimization problem, they can simply estimate the cost function and then calculate the markup from the output price, which is public information. They are assuming that firms are profit maximizing, but since the profit maximization problem implies the cost minimization problem, they can reach the cost function by solving the cost minimization problem and then divide the price (observable) by the cost function (calculated) to get the value of the markup. In this way, they sidestep the (extremely hard, often intractable) problem of calculating the demand function.
+	\end{enumerate}
+\end{enumerate}
+
 \subsubsection{TA Section Examples}
 
 \subsubsection{Outside Questions}
 
+The following are from Stanford ECON202 Problem Set 2. Questions written by Ilya Se- gal, answers by Gabe along with Asia-Kim Francavilla, Monia Tomasella, and Juan David Torres.
+
+\begin{remark}
+	The Stanford course was structured somewhat oddly -- we actually did Producer Theory first, and focused a lot on Topkis Theorem and Robust Monotone Comparative Statics. I'm not sure how much of this relates to what we did in 6090, but here it is.
+\end{remark}
+
+\paragraph{Problem 1:} 
+
+\begin{itemize}
+    \item[(a)] If production set $Y$ has nondecreasing returns to scale and has the shutdown property, what can you say about the possible values of $\pi(p)$ at a given price vector $p$?
+
+    \item[(b)] If we strengthen (a) to require \emph{constant} returns to scale, what can you say about the shape of the set $Y^*(p)$?
+
+    \item[(c)] If we instead strengthen (a) to require \emph{strictly increasing} returns to scale (\ie, $y \in Y$ and $\alpha \ge 1 \Rightarrow \alpha y$ is in the interior of $Y$), what can you say about the shape of the set $Y^*(p)$?
+
+    \item[(d)] What do you conclude about the possible existence of price-taking profit-maximizing firms with the the production set described in part (b)? What about the production set in part (c)? What do you expect such firms to do in reality?
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] If the production set has nondecreasing returns to scale and a shutdown property, we can say that at a certain $p$, $\pi(p)$ is either 0 or $+\infty$. This is stated in Remark 1 in the notes. To show this, first assume that there exists some $y \in Y$ such that $p \cdot y > 0$. Since the production set has nondecreasing returns to scale, $\alpha y \in Y$ for all $\alpha > 1$. As $\alpha \to \infty$, $p \cdot( \alpha y) = \alpha (p \cdot y) \to \infty$, so $\pi(p) = +\infty$. If $p \cdot y \le 0$ for all $y$, then $\pi(p) = 0$, because the firm can achieve no more profit than shutting down. Thus, for any $p$, $\pi(p)$ equals either 0 or $+\infty$.
+
+    \item[(b)] If the production set has constant returns to scale and a shutdown property, the shape of the set $Y^*(p)$ can be any of three cases, depending on $p$. From part (a), we know that $\pi(p) \in \{0,\infty\}$. If $\pi(p) = +\infty$, then $Y^*(p) = \emptyset$, because there is no $y \in Y \subset \reals^n$ for which $p\cdot y = +\infty$. If $\pi(p) = 0$, there are two cases. Either $p \cdot y < 0$ for all $y \in Y$, in which case $Y^*(p) = \{0\}$. This is true because the maximal point will be precisely at the shutdown point, as all other feasible production plans lead to negative profits. The second case is when there exists some $y \in Y$ such that $p \cdot y = 0$. In this case, $p \cdot \alpha y = \alpha (p \cdot y) = 0$ for all $\alpha > 0$, which points we know are feasible because of constant returns to scale. Thus, $Y^*(p) = \{y : p \cdot y = 0\}$. Note that the shutdown point 0 is also included in this case.
+
+    \item[(c)] If the production set has strictly increasing returns to scale, then the set $Y^*(p)$ is either $\{0\}$ or $\emptyset$. As in part (b), if $\pi(p) = +\infty$, $Y^*(p) = \emptyset$. Also as in part (b), if $p \cdot y < 0$ for all $y \in Y$, $y^*(p) = \{0\}$. Unlike part (b), however, there is no other case. To see why, assume that there exists some $y \in Y \setminus \{0\}$ such that $p \cdot y = 0$. Then $p \cdot (\alpha y) = 0$ for some large $\alpha > 1$. However, since $\alpha y$ is in the interior of the production set, there exists $\varepsilon > 0$ such that $\alpha y + \varepsilon p \in Y$. Then $p \cdot (\alpha y + \varepsilon p) = \alpha p \cdot y + \varepsilon \|p\|^2 = \varepsilon \|p\|^2 > 0$, so since $\alpha y + \varepsilon p$ is such that $p\cdot (\alpha y + \varepsilon p) > 0$, $\pi(p) = \infty$, and we are in the first case where $Y^*(p) = \emptyset$.
+
+    \item[(d)] With constant returns to scale, a firm with features as in part (b) would be indifferent between different levels of production -- they would either be indifferent between shutting down and producing bundles at zero profit, or indifferent between producing more and more output, or they would prefer shutting down to anything else. In reality, I would expect firms in the first and third cases to shut down, and I would expect firms in the second case to produce as much as possible, until they become price-setters, which this model does not cover.
+
+    With increasing returns to scale, a firm with features as in part (c) would either shut down or produce more and more. The first case seems reasonable, but the second runs into the same property where they would eventually stop being price-takers.
+\end{itemize}
+
+\paragraph{Problem 2:} Suppose that production set $Y$ is closed and that at some price vector $p$, $\pi(p) < +\infty$ (\ie, the profits are bounded). Does this imply that $Y^*(p) \ne \emptyset$ (\ie, a profit-maximizing plan exists)?
+
+\textbf{Solution:} No. Consider the production set $Y = \{(y_1,y_2) \in (-\infty,1) \times \reals : y_2 \le \frac{1}{y_1 - 1} + 1\}$, with the price vector $(0,1)$. Since the first good (the input) is costless, the firm only cares about how much of the second good (the output) they can produce. As $y_1 \to -\infty$, $y_2 \to 1$, so $\pi(p) = 1 < +\infty$. However, there is no finite bundle which produces a profit of 1. Thus, $Y^*(p) = \emptyset$. The production set is closed because it contains its border ($\{(y_1,y_2) : y_2 = \frac{1}{y_1 - 1} + 1\}$), so this serves as a counterexample.
+
+\paragraph{Problem 3:} (MWG) Derive the profit function $\pi(p)$ and the supply correspondance $Y^*(p)$ for a single-output two-input firm with production function
+
+\begin{itemize}
+    \item[(a)] $f(z) = 2\sqrt{z_1 + z_2}$
+
+    \item[(b)] $f(z) = 2\sqrt{\min(z_1,z_2)}$
+
+    \item[(c)] $f(z) = (z_1^\rho + z_2^\rho)^{1/\rho}$ for $\rho \le 1$. (This is known as a ``Constant Elasticity of Substitution'' production function, with the elasticity of substitution $s = 1 / (1-\rho)$.)
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions}:
+
+\medskip
+
+Let $y = (q,-z_1,-z_2) \in \reals^3_+$ and $p = (p, w_1,w_2) \in \reals^3_{++}$. 
+
+\begin{itemize}
+    \item[(a)] Note first that the inputs are perfect substitutes, so if $w_1 > w_2$, $z^*_1 = 0$ and if $w_2 > w_1$, $z^*_2 = 0$. Without loss of generality, we assume that if $w_1 = w_2$, $z^*_1 = 0$. Assume first that $w_2 > w_1$. Then the firm's maximization problem is
+    \[
+    \max_{z_1 \in \reals_+} p(2\sqrt{z_1}) - w_1 z_1
+    \]
+    The first order conditions are:
+    \begin{align*}
+    \frac{p}{\sqrt{z_1}} - w_1 &= 0 \\
+    z_1^* &= \left(\frac{p}{w_1}\right)^2
+    \end{align*}
+    Thus, $q^* = f(z_1^*,0) = 2\frac{p}{w_1}$, and $\pi(p) = p q^* - w_1 z^*_1 = \frac{p^2}{w_1}$. Finally, $Y^*(p) = (2\frac{p}{w_1},-\frac{p^2}{w_1^2},0)$. Following the same logic, if $w_2 \le w_1$, $\pi(p) = \frac{p^2}{w_2}$ and $Y^*(p) = (\frac{2p}{w_2},0,-\frac{p^2}{w_2^2})$.
+
+    \item[(b)] Note first that inputs are perfect compliments, so if $z_1 > z_2$, profit could be strictly increased by setting $z_1 = z_2$, because the firm would produce the same output at decreased cost. Define $z = z_1 = z_2$, and we solve the resulting profit maximization problem:
+    \[
+    \max_{z \in \reals_+} p(2\sqrt{z}) - w_1 z - w_2 z
+    \]
+    Taking first order conditions:
+    \begin{align*}
+        0 &= \frac{p}{\sqrt{z}} - w_1 - w_2 \\
+        z^* &= \left(\frac{p}{w_1+w_2} \right)^2 = z_1^* = z_2^*
+    \end{align*}
+    Thus, $q^* = f(z_1^*,z_1^*) =  2\frac{p}{w_1+w_2}$, and $\pi(p) = p q^* - w_1 z_1^* - w_2 z_1^* = \frac{p^2}{w_1 + w_2}$. Finally, $Y^*(p) = (2\frac{p}{w_1+w_2},- \left(\frac{p}{w_1+w_2} \right)^2,- \left(\frac{p}{w_1+w_2} \right)^2)$.
+
+    \item[(c)] Note that $f$ has constant returns to scale, so by Problem 1 (b), $\pi(p) \in \{0,+\infty\}$. This means that if there exists any $z_1,z_2$ such that $p(z_1^\rho + z_2^\rho)^{1/\rho} - w_1z_1 - w_2z_2 > 0$, $\pi(p) = +\infty$ and $Y^*(p) = \emptyset$. We need to check if such vectors exist along any arbitrary curve where $(z_1^\rho + z_2^\rho)^{1/\rho}$ equals the same number. If all vectors along that curve are weakly negative, then $\pi(p)$ will equal 0. If any are positive, then $\pi(p)$ will equal $+\infty$. Since the supply function exhibits constant returns to scale, this suffices to identify conditions under which a positive profit will exist. For simplicity, choose the curve $z_1^\rho + z_2^\rho = 1$. Our maximization problem is
+    \[
+    \begin{array}{ll}
+        \text{max} & p(z_1^\rho + z_2^\rho)^{1/\rho} - w_1z_1 - w_2z_2 \\
+        \text{subject to} & z_1^\rho + z_2^\rho = 1
+    \end{array}
+    \]
+    Our Lagrangian simplifies to
+    \[
+    \mathcal{L} = p - w_1z_1 - w_2z_2 + \lambda(z_1^\rho + z_2^\rho - 1)
+    \]
+    Taking first order conditions, we get
+    \[
+    \mathcal{L}_{z_1} = -w_1 + \lambda \rho z_1^{\rho - 1} = 0 \to z_1 = \left( \frac{w_1}{\lambda \rho}\right)^{\frac{1}{\rho - 1}}
+    \]
+    \[
+    \mathcal{L}_{z_2} = -w_2 + \lambda \rho z_2^{\rho - 1} = 0 \to z_2 = \left( \frac{w_2}{\lambda \rho}\right)^{\frac{1}{\rho - 1}}
+    \]
+    Plugging into the constraint, we get
+    \[
+    \left( \frac{w_1}{\lambda \rho}\right)^{\frac{\rho}{\rho - 1}} + \left( \frac{w_2}{\lambda \rho}\right)^{\frac{\rho}{\rho - 1}} = 1 \to \lambda \rho = \left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{\rho-1}{\rho}}
+    \]
+    Plugging back into the first order conditions, we get
+    \[
+    z_1^* = \left( \frac{w_1}{\left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{\rho-1}{\rho}}}\right)^{\frac{1}{\rho - 1}} = \frac{w_1^{\frac{1}{\rho - 1}}}{\left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{1}{\rho}}}
+    \]
+    and
+    \[
+    z_2^* = \frac{w_2^{\frac{1}{\rho - 1}}}{\left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{1}{\rho}}}
+    \]
+    Now we have that the maximum value of $\pi$ on the curve $z_1^\rho + z_2^\rho = 1$ is
+    \[
+    p - w_1 \frac{w_1^{\frac{1}{\rho - 1}}}{\left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{1}{\rho}}} - w_2 \frac{w_2^{\frac{1}{\rho - 1}}}{\left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{1}{\rho}}} = p - \left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{\rho - 1}{\rho}}
+    \]
+    Thus, we can characterize the profit function and supply correspondence as:
+    \[
+    \pi(p) = \begin{dcases} 0 & p \le \left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{\rho - 1}{\rho}} \\ +\infty & p > \left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{\rho - 1}{\rho}} \end{dcases}
+    \]
+    \[
+    Y^*(p) = \begin{dcases} \{0\} &  p < \left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{\rho - 1}{\rho}} \\ \{(\alpha z_1^*,\alpha z_2^*) : \alpha \ge 0\} &  p = \left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{\rho - 1}{\rho}} \\ \emptyset & p > \left(w_1^{\frac{\rho}{\rho - 1}} + w_2^{\frac{\rho}{\rho - 1}} \right)^{\frac{\rho - 1}{\rho}}\end{dcases}
+    \]
+
+    
+\end{itemize}
+
+\paragraph{Problem 4:} Suppose that we do not observe a firm's supply choices but observe its attained profits $\pi(p)$ for all price vectors $p$ in a convex open set $P \subseteq \reals$.  Prove that a differentiable function $\pi$ can be rationalized as the firm's maximal profits on some production set if and only if it is convex and homogeneous of degree 1. (You can use any theorems from
+the lecture notes.)
+
+\begin{proof}
+    $(\Rightarrow)$: We have that a differentiable function $\pi$ can be rationalized as the firm's maximal profits on some production set, meaning that $\pi(p) = \sup_{y\in Y} p \cdot y$ for all $p \in P$. Since $P$ is convex and open and $\pi$ is differentiable, $\pi$ is convex by Proposition 3. Further, $\pi$ is homogeneous of degree 1 by Proposition 5.
+
+    \medskip
+
+    $(\Leftarrow)$: We have a differentiable function $\pi$ that is convex and homogeneous of degree 1. Since $\pi$ is convex, by Proposition 3 to show that it rationalizes the firm's maximal profits on some production set it suffices to show that Hotelling's Lemma holds. Since $\pi$ is differentiable, we can take the gradient at every $p$, and define $y(p) = \nabla \pi(p)$. By Euler's Law, since $\pi$ is homogeneous of degree 1, $\pi(p) = p \cdot \nabla \pi(p)$, which means that $\pi(p) = p \cdot y(p)$. Thus, since $\pi$ is convex and Hotelling's Lemma holds, by Proposition 3 $\pi$ can be rationalized as the firm's maximal profits on some production set.
+\end{proof}
+
+\paragraph{Problem 5:} Consider a single-output firm with production function $f$.
+
+\begin{itemize}
+    \item[(a)] Show that if $f$ has nondecreasing [nonincreasing] returns to scale, then the ``average cost function'' $c(q,w) / q$ is nonincreasing [resp. nondecreasing] in $q$.
+
+    \item[(b)] Show that if $f$ is concave, then the cost function $c(q,w)$ is convex in output $q$.
+
+    \item[(c)] Is the converse to (a) true? Is the converse to (b) true?
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] We have that $f$ has nondecreasing returns to scale, meaning that $f(\alpha z) \ge \alpha f(z)$ for all $\alpha \ge 1$. Fix some $z \in \reals^n_+$ and $\alpha \ge 1$. Also define $z' = z / \alpha$. Recall that $c(q,w) = \inf\{z \cdot w : f(z) \ge q\}$, meaning that the average cost function is $c(q,w)/q = (1/q) \inf\{z \cdot w : f(z) \ge q\}$. Now consider:
+    \begin{align*}
+    c(\alpha q , w) / (\alpha q) &= \frac{1}{\alpha q} \inf\{z \cdot w : f(z) \ge \alpha q\} \\
+    &= \frac{1}{\alpha q} \inf\{z \cdot w : f(z) \ge \alpha q\} 
+    \end{align*}
+    Note that since $f$ has nondecreasing returns to scale, $f(z) \ge \alpha f(z/\alpha)$. This means that 
+    \[
+     \frac{1}{\alpha q} \inf\{z \cdot w : f(z) \ge \alpha q\}  \le \frac{1}{\alpha q} \inf\{z \cdot w : \alpha f(z/\alpha) \ge \alpha q\} 
+    \]
+    Because the right set is smaller, meaning that the infimum is larger. Thus, we have
+    \begin{align*}
+        c(\alpha q , w) / (\alpha q) &= \frac{1}{\alpha q} \inf\{z \cdot w : f(z) \ge \alpha q\} \\
+        &\le  \frac{1}{\alpha q} \inf\{z \cdot w : \alpha f(z/\alpha) \ge \alpha q\} \\
+        &= \frac{1}{q}\inf\{\frac{z}{\alpha} \cdot w : f(\frac{z}{\alpha}) \ge q\} \\
+        &= \frac{1}{q}\inf\{z' \cdot w : f(z') \ge q\} = c(q,w) / q
+    \end{align*}
+    Therefore, $c(\alpha q , w) / (\alpha q) \le c(q,w)/q$, which means that the average cost function is nonincreasing in $q$. The exact same argument with $\alpha < 1$ and the $\le$ signs reversed demonstrates that the property holds such that whenever $f$ has nonincreasing returns to scale, the average cost function is nondecreasing in $q$.
+
+    \item[(b)] We have that $f$ is concave, meaning that for any $\theta \in [0,1]$ and $x,y$ in the domain of $f$, $f(\theta x + (1-\theta)y) \ge \theta f(x) + (1-\theta) f(y)$. Take two bundles of inputs, $z$ and $z'$. Define $f(z) = q$ and $f(z') = q'$. To show that the cost function is concave in $q$, it suffices to show that $c(\theta q + (1-\theta)q',w) \le \theta c(q,w) + (1-\theta)c(q',w)$. First, note that $c(q,w) = \inf_z\{z\cdot w : f(z) \ge q\}$. Fix some $\theta \in [0,1]$. Consider $\theta c(q,w) + (1-\theta) c(q',w)$. Using the properties of infimum and of set containment, we have
+    \begin{align*}
+    \theta c(q,w) + (1-\theta) c(q',w) &= \theta \inf\{z \cdot w : f(z) \ge q\} + (1-\theta) \inf\{z' \cdot w : f(z') \ge q'\} \\
+    &= \inf\{(\theta z + (1-\theta)z')\cdot w : f(z) \ge q \; , \; f(z') \ge q'\} \\ 
+    \text{(because $f$ is concave)} &\ge \inf\{(\theta z + (1-\theta)z')\cdot w : f(\theta z + (1-\theta) z') \ge \theta q + (1-\theta)q'\} \\
+    &= c(\theta q + (1-\theta)q',w)
+    \end{align*}
+    Thus, $c(q,w)$ is convex in $q$ whenever $f$ is concave.
+
+    \item[(c)] The converse to neither statement is true. For part (a), consider the piecewise production function 
+    \[
+    f(z_1,z_2) = \begin{dcases} z_1 + z_2 & z_1 + z_2 \le 2 \\ 2z_1 + 2z_2 & z_1 + z_2 > 2 \end{dcases}
+    \]
+    As the two goods are perfect substitutes, costs are minimized by choosing whichever of the inputs has lower cost, as in Problem 3 (a). Thus, the cost function is $c(q,w_1,w_2) = q\min\{w_1,w_2\}$, so the average cost function is $c(q,w_1,w_2)/ q = \min\{w_1,w_2\}$ which is constant in $q$ and therefore nonincreasing. However, taking $z = (2,2)$ and $\alpha = 1/2$, we have that $\alpha f(z) = (1/2)(4 + 4) = 4$, but $f(\alpha z) = 1 + 1 = 2$. Since $\alpha f(z) > f(\alpha z)$, $f$ has does not have nonincreasing returns to scale. An analogous piecewise function with a higher slope for lower $z$ and a lower slope for higher $z$ would not have nondecreasing returns to scale, so the converse is not true.
+
+    \medskip
+
+    For part (b), consider the production function $f(z_1,z_2) = \max\{z_1,z_2\}$. As above, the cost function is $c(q,w_1,w_2) = q\min\{w_1,w_2\}$, so the average cost function is $c(q,w_1,w_2)/ q = \min\{w_1,w_2\}$ which is constant in $q$ and therefore convex. However, taking as an example the points $z = (2,1)$ and $z' = (1,2)$, $f(z) = f(z') = 2$, so $\theta f(z) + (1-\theta) f(z') = 2$ for all $\theta$. However, taking $\theta = 1/2$, $f(\theta z + (1-\theta)z') = f(1.5,1.5) = 1.5 < 2$, so $f$ is not concave.
+\end{itemize}
+
+\paragraph{Problem 6:} A single-output two-input firm's cost function is given by $c(w_1,w_2,q) = (w^\delta_1 + w^\delta_2)^{1/\delta} q$.
+
+\begin{itemize}
+    \item[(a)] What values can $\delta$ take?
+
+    \item[(b)] What can you infer about the firm's conditional factor demands and production function?
+
+    \item[(c)] Answer question (b) for the cost function $c(w_1,w_2,q) = \min\{w_1,w_2\}\cdot q$ (which corresponds to the limiting case $\delta = -\infty$).
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] For the cost function to be rationalizable, it must fulfill three conditions: it must be nondecreasing in prices, homogeneous of degree one in prices, and concave in prices. We will check each condition in order.
+
+    \medskip
+
+    First, we will determine at what values of $\delta$ the cost function is nondecreasing in prices. To do so, we will take the partial derivative with respect to each price, noting that $w_1,w_2,q \in \reals_+$.
+
+    \[
+    \frac{\partial}{\partial w_1} c(w_1,w_2,q) = w_1^{\delta - 1} (w^\delta_1 + w^\delta_2)^{\frac{1-\delta}{\delta}}q
+    \]
+    \[
+    \frac{\partial}{\partial w_2} c(w_1,w_2,q) = w_2^{\delta - 1} (w^\delta_1 + w^\delta_2)^{\frac{1-\delta}{\delta}}q
+    \]
+    Since $w_1,w_2,q \in \reals_+$, these are nonnegative for any $\delta \in \reals$, meaning that the cost function is nondecreasing in price at any $\delta$.
+
+    \medskip
+
+    Next, we will determine at what values of $\delta$ the cost function is homogeneous of degree one. Fix some $\alpha > 0$.
+    \begin{align*}
+        c(\alpha w_1,\alpha w_2,q) &= ((\alpha w_1)^\delta + (\alpha w_2)^\delta)^{1/\delta} q \\
+        &= (\alpha^\delta (w_1^\delta + w_2^\delta)^{1/\delta}q \\
+        &= \alpha (w^\delta_1 + w^\delta_2)^{1/\delta} q = \alpha c(w_1,w_2,q)
+    \end{align*}
+    Since $c(\alpha w_1,\alpha w_2,q) = \alpha c(w_1,w_2,q)$ for $\alpha > 0$ at any $\delta \in \reals$, the cost function is homogeneous of degree one for any $\delta \in \reals$.
+
+    \medskip
+
+    Finally, we will check at what values of $\delta$ the cost function is concave in prices. To do so, we will find the Hessian with regard to prices and ensure that it is negative semi-definite. We used Wolfram Alpha to take the Hessian, and found that the only eigenvalues are 0 and $(\delta - 1)w_1^{\delta - 2}w_2^{\delta - 2}(w_1^2 + w_2^2)(w_1^\delta + w_2^\delta)^{\frac{1}{\delta} - 2}$. The second is $\le 0$ only when $\delta \le 1$, as all other variables are nonnegative. Thus, we have that the cost function is rationalizable only when $\delta \le 1$.
+
+    \item[(b)] We can find the firm's conditional factor demands by taking the gradient with respect to the cost of each input (as in part (a)). We get that
+    \[
+    z^*(q,w) = (w_1^{\delta - 1} (w^\delta_1 + w^\delta_2)^{\frac{1-\delta}{\delta}}q,w_2^{\delta - 1} (w^\delta_1 + w^\delta_2)^{\frac{1-\delta}{\delta}}q)
+    \]
+    To find the production function, we will eliminate the input prices from the conditional factor demand equations
+    \[
+    \frac{z_1}{z_2} = \frac{w_1^{\delta - 1} (w^\delta_1 + w^\delta_2)^{\frac{1-\delta}{\delta}}q}{w_2^{\delta - 1} (w^\delta_1 + w^\delta_2)^{\frac{1-\delta}{\delta}}q} = \left(\frac{w_1}{w_2}\right)^{\delta - 1}
+    \]
+    This means that
+    \[
+    \frac{w_1}{w_2} = \left(\frac{z_1}{z_2} \right)^{\frac{1}{\delta - 1}}
+    \]
+    Reformulating our earlier expression for $z_2$ (again using Wolfram Alpha), we get
+    \[
+    z_2 = \left[\left(\frac{w_1}{w_2}\right)^\delta + 1 \right]^{\frac{1-\delta}{\delta}}q
+    \]
+    Replacing, we get
+    \[
+    z_2 = \left(z_1^\frac{\delta}{\delta - 1} + z_2^\frac{\delta}{\delta - 1} \right)^\frac{1-\delta}{\delta}z_2 q \rightarrow q = \left(z_1^\frac{\delta}{\delta - 1} + z_2^\frac{\delta}{\delta - 1} \right)^\frac{\delta-1}{\delta}
+    \]
+    Thus, our production function is
+    \[
+    f(z_1,z_2) =  \left(z_1^\frac{\delta}{\delta - 1} + z_2^\frac{\delta}{\delta - 1} \right)^\frac{\delta-1}{\delta}
+    \]
+
+    \item[(c)] First consider the case when $w_1 > w_2$. In that case, $\nabla_{w_1} c(w_1,w_2,q) = 0$ and $\nabla_{w_2} c(w_1,w_2,q) = q$, so $z^*(q,w_1,w_2) = (0,q)$. In the case when $w_2 > w_1$, $\nabla_{w_1} c(w_1,w_2,q) = q$ and $\nabla_{w_2} c(w_1,w_2,q) = 0$, so $z^*(q,w_1,w_2) = (q,0)$. In the case where $w_1 = w_2$, the conditional factor demand is indeterminate, because the cost function is not differentiable. One possible solution would be $z^*(q,w_1,w_2) = (q/2,q/2)$, which would minimize costs with the production function discussed below. However, with other production functions other conditional factor demands would themselves minimize costs.
+
+    To find the production function, we take the limit as $\delta \to -\infty$. Since $\frac{\delta}{\delta - 1} \to 1$ as $\delta \to \infty$, $f(z_1,z_2) = z_1 + z_2$. This production function does correspond to the conditions described above. However, this is not the only possible production function, because the identified conditional factor demands can still appear for other production functions. For example, when $f(z_1,z_2) = \max\{z_1,z_2\}$, it is still optimal to only use the cheaper input. Thus, the production function is also indeterminate.
+\end{itemize}
+
+\paragraph{Problem 7:} For a single-output firm with the shutdown property, we observe that at the output prices $p_1,\dots,p_K$ the firm chooses outputs $q_1,\dots,q_K$ respectively.  (The firm's input choices are not observed, but we know that all input prices stay the same for all observations.) Order the
+observations so that $0 < p_1 < \dots < p_K$.
+
+\begin{itemize}
+    \item[(a)] What conditions on the observations are necessary and sufficient for the observations to be consistent with profit-maximizing choices by a price-taking firm?
+
+\end{itemize}
+
+
+\noindent From now on, assume that the firm is indeed a profit-maximizing price-taking firm.
+
+
+\begin{itemize}
+    \item[(b)] What bounds on the change in the firm's profits as output price increases from $p_k$ to $p_{k+1}$ are implied by the observations?
+
+    \item[(c)] What bounds on the firm's profits achieved at price $p_K$ are implied by the observations?
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] From Proposition 7, for the observations to be consistent with profit-maximizing choices by a price-taking firm, showing that the Producer Surplus Formula and the Law of Supply suffices. Note that since we do not observe profit, the Producer Surplus Formula holds vacuously, as it is never violated by any observations. Thus, the Law of Supply is both necessary and sufficient. For the Law of Supply to hold, it must be the case that for all $p,p' \in P$, $(p - p')\cdot (y(p') - y(p)) \ge 0$. Since input prices are the same across all observations, this simplifies to the condition that $(p_i - p_j)\cdot(q_i - q_j) \ge 0$.
+
+    \item[(b)] Since the producer surplus formula must hold, meaning that $p,p' \in P$, $\pi(p') - \pi(p) = \int_\rho y(p)dp$. Since only the price of the output good is changing, we have $\pi(p_{k+1}) - \pi(p_k) = \int_{p_k}^{p_{k+1}} q(p)dp$. Note that we ignore the prices of inputs, as they do not change. By the law of supply, $q_k \le q(p) \le q_{k+1}$ for all $p \in [p_k,p_{k+1}]$. Thus, we have that $\pi(p_{k+1}) - \pi(p_k) \in [q_k(p_{k+1}-p_k),q_{k+1}(p_{k+1}-p_k)]$.
+
+    \item[(c)] Note first that the minimum possible value for $\pi(p_1)$ is 0, as the firm has the shutdown property. Note also that the maximum possible value for $\pi(p_1)$ is $p_1 \cdot q_1$, when input prices are 0. To find the bounds on the profits at price $p_K$, we simply induct from $p_1$, using the bounds from part (b). We get
+    \[
+    \pi_{min}(p_K) = 0 + \sum_{k=1}^{K-1}q_k(p_{k+1}-p_k)
+    \]
+    \[
+    \pi_{max}(p_K) = p_1q_1 + \sum_{k=1}^{K-1}q_{k+1}(p_{k+1}-p_k)
+    \]
+    Thus,
+    \[
+    \pi(p_K) \in \left[\sum_{k=1}^{K-1}q_k(p_{k+1}-p_k),p_1q_1 + \sum_{k=1}^{K-1}q_{k+1}(p_{k+1}-p_k)\right]
+    \]
+\end{itemize}
+
+\paragraph{Problem 8:} Consider a profit-maximizing price-taking single-output firm with two inputs: labor ($l$) and capital ($k$). This question asks you to use monotone comparative statics techniques to establish sufficient conditions for the firm's output to be nonincreasing in the price of the labor input (wage) $w$.
+
+\begin{itemize}
+    \item[(a)] Show that a sufficient condition for this is that labor is a ``normal'' input, \ie, the optimal labor choice in the cost-minimization problem is nondecreasing in the target output level.
+
+    \item[(b)] Derive a sufficient condition for this in terms of the firm's production function $f$, assuming it to be sufficiently smooth. (Hint: it may be convenient to represent the isoquants of $f$ by means of the function $\overline{k}(l,q) = k \st f(k,l) = q$.)
+\end{itemize}
+
+\medskip
+
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] The firm's profit maximization problem is $\max_{q \in \reals_+} pq - c(q,w)$. We assume that $c$ is differentiable. From Shephard's Lemma, we know that $c_w(q,w) = l^*(q,w)$, and since labor is a normal input, the derivative of the firm's objective function with regard to wage (which is just $-c_w(q,w)$) is nonincreasing in output. This means that the firm has increasing differences in $(q,-w)$. By Topkis' Theorem, the optimal output $q^*(w)$ is nonincreasing in $w$.
+
+    \item[(b)] Define the isoquants of $f$ as $\overline{k}(l,q) = k \st f(k,l) = q$. By the Implicit Function Theorem
+    \[
+    -\frac{\partial \overline{k}(l,q)}{\partial l} = \frac{\partial f( \overline{k}(l,q),l) / \partial l}{\partial f( \overline{k}(l,q),l) / \partial k}
+    \]
+    Note that the right hand side is the marginal rate of technical substitution between $l$ and $k$. This means that $-\frac{\partial \overline{k}(l,q)}{\partial l}$ must be nondecreasing in $q$, which means that $-\overline{k}(l,q)$ has increasing differences in $l$ and $q$.
+
+    Note also that the firm's cost minimization problem is solved when $k^* = \overline{k}(l^*,q)$. We can rewrite the problem as
+    \[
+    l^*(q) = \argmin_{l \in \reals_+} wl + r\overline{k}(l,q) = \argmax_{l \in \reals_+} -wl - r\overline{k}(l,q)
+    \]
+    where $r$ is the cost of capital. Since $-\overline{k}(l,q)$ has increasing differences in $l$ and $q$, the objective function $-wl - r\overline{k}(l,q)$ has increasing differences in $l$ and $q$, and by Topkis' Theorem, the firm's choice of $l$ is increasing in $q$.
+\end{itemize}
+
+\newpage
 \subsection{Uncertainty (Blume)}
 
 \subsubsection{Blume Homework}
@@ -1957,6 +3596,7 @@ Is there a constrained Pareto optimum that is better than the competitive equili
 
 \subsubsection{Outside Questions}
 
+\newpage
 \subsection{Uncertainty (Barseghyan)}
 
 \subsubsection{Barseghyan Homework}
@@ -1965,6 +3605,7 @@ Is there a constrained Pareto optimum that is better than the competitive equili
 
 \subsubsection{Outside Questions}
 
+\newpage
 \subsection{Information (Battaglini)}
 
 \subsubsection{Battaglini Homework}

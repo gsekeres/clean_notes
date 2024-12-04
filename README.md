@@ -21,14 +21,14 @@ Please let me know what section you would like to contribute to! I will deal wit
     - Status: Done
 - Section 4: Blume (uncertainty): Gabe
     - Status: Done
-- Section 5: Barseghyan (uncertainty 2): __
-    - Status: Not started
+- Section 5: Barseghyan (uncertainty 2): Gabe
+    - Status: In progress
 - Section 6: Battaglini (information / game theory): Gabe
     - Status: In progress, Day 1 done
 - Section 7: Exercises: Everyone
     - Status: In progress. 
     - TA Sections: Omar working on, has sent 4-6
-    - Course HWs: Not started, Gabe will add
+    - Course HWs: Added 1. Others not started.
     - Outside Exercises: Gabe will add if time
 
 # Other sources I'm using: 
