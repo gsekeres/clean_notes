@@ -24,17 +24,9 @@ Please let me know what section you would like to contribute to! I will deal wit
 - Section 5: Barseghyan (uncertainty 2): Gabe
     - Status: In progress
 - Section 6: Battaglini (information / game theory): Gabe
-    - Status: In progress, Day 1 done
+    - Status: In progress, notes from slides done.
 - Section 7: Exercises: Everyone
     - Status: In progress. 
     - TA Sections: Omar working on, has sent 4-6
-    - Course HWs: Added 1. Others not started.
-    - Outside Exercises: Gabe will add if time
-
-# Other sources I'm using: 
-
-- Easley notes
-- Slides from Harris, Blume, Barseghyan, and Battaglini.
-- Tak's math notes
-- Textbooks: MWG, Johnsonbaugh and Pfaffenberger's Foundations of Mathematical Analysis
-- Stanford's first year micro notes. I can send these to whomever wants them
+    - Course HWs: Added 1-4. Others not started.
+    - Outside Exercises: Added Stanford Psets. 

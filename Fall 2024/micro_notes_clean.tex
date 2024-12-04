@@ -9,6 +9,10 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+
+\newpage
+
 \section*{Introduction}
 
 We are creating this set of unified notes for ECON 6090: Microeconomics I, as taught at Cornell University in the Fall 2024 semester. Due to unforeseen departmental circumstances, this course was taught by six different professors (\href{https://easley.economics.cornell.edu/}{David Easley}, \href{https://philippkircher.com/}{Philipp Kircher}, \href{https://adamharris.phd/}{Adam Harris}, \href{https://sites.santafe.edu/~leb/}{Larry Blume}, \href{https://barseghyan.economics.cornell.edu/}{Levon Barseghyan}, and \href{https://www.mbattaglini.com/}{Marco Battaglini}). This structure necessarily created some confusion in notation and material, so these notes function as my attempt to create a universe of the material we learned.
@@ -1696,6 +1700,209 @@ Consider first a final famous paradox:
 \newpage
 \section{Uncertainty Applications (Barseghyan)}\label{sec:barseghyan}
 
+\begin{remark}
+	In light of the previous section, this is a slightly odd object. In short, we left Prof. Blume's section with significantly less understanding of uncertainty than we wanted to have. Prof. Barseghyan attempted to correct this, but necessarily there was replication of material. I include the entirety of his material here, for completeness, but the most relevant new information are the examples.
+\end{remark}
+
+\begin{remark}
+	Large thanks to Robert Betancourt, whose notes I extensively used in writing this section.
+\end{remark}
+
+\subsection{Basics of (Subjective) Expected Utility Theory}
+
+The most important part of expected utility theory is the concept of states. 
+
+\begin{definition}
+	A \blue{state} (of the world) is essentially an event. However, we make some additional assumptions. States must be \blue{payoff relevant}, meaning that the realization of the state affects what the consumer gets, and states must be equipped with a probability $p \in \mathcal{P}$ such that $\sum_{i=1}^N p_i = 1$, $p_i > 0$ for payoff-relevant states $\{s_1,\dots,s_N\}$.
+\end{definition}
+
+\begin{definition}
+	The \blue{expected value} of a lottery is the straightforward expectation. With finite payoffs, we have that
+	\[
+	EV = \sum_{i=1}^N p_i x_i
+	\]
+\end{definition}
+
+\begin{question}
+	Say that the $EV$ of some lottery is \$72. How much are you willing to pay for it? Specifically, how much you are willing to pay determines if you are risk averse.
+\end{question}
+
+First, note that we take forward the above Assumptions~\ref{ass:vnm}, and reprint them here:
+
+\begin{assumption}\label{ass:vnm_5}
+	We say that $\succsim$ over lotteries $p$ and $q$ is complete and transitive, continuous, and independent.
+\end{assumption}
+
+We also will assume throughout that $X$ and the associated states are fixed.
+
+\begin{definition}
+	An \blue{expected utility representation} is a function $u$ such that
+	\[
+	p \succsim q \Longleftrightarrow \sum_{i=1}^m p_i u(x_i) \ge \sum_{j=1}^n q_j u(x_j)
+	\]
+	When $u$ is concave, we say that the consumer is \blue{risk-averse}, and when it is convex we say that the consumer is \blue{risk-loving}. $u$ is shape restricted because of patterns we see in the data, and will often depend on wealth. We define an expected utility function $U$ as
+	\[
+	U(p) = EU = \sum_{i=1}^m p_i u(x_i)
+	\]
+\end{definition}
+
+\begin{example} Comparing Lotteries.
+	Assume that the lottery is the flip of a (not necessarily fair) coin, where if heads appears you attain 0, if tails appears you attain $-T$. The probability of heads is $p_1$ and the probability of tails is $p_2$. We also have utility $u(x) = -\exp(-\gamma x)$. The amount you would be willing to pay for this lottery is the $x$ at which
+	\[
+	 -\exp(-\gamma x) = p_1 (-\exp 0) + p_2(-\exp (\gamma T)) \equiv - (p_1 + (1-p_1) \exp(\gamma T))
+	\]
+	Taking logs, we get that
+	\[
+	x = -\frac{1}{\gamma} \log \parl p_1 + (1-p_1) \exp(\gamma T)\parr = CE
+	\]
+	\begin{definition}
+		The \blue{certainty equivalent} is the amount of money in a degenerate (certain) lottery that would make that lottery equivalent to the lottery in question. 
+	\end{definition}
+\end{example}
+
+\begin{remark}
+	For a risk-averse expected utility maximizer, facing a lottery where they attain $x_1$ with probability $1/2$ and $x_2$ with probability $1/2$, their certainty equivalent is illustrated in Figure~\ref{fig:risk_averse_ce}.
+	
+	\begin{figure}[H]
+	\centering
+		\begin{tikzpicture}[scale = 0.5]
+			\draw[very thick,<->] (0,10)--(0,0)--(10,0);
+			
+			\draw[thick] (2,2) to[out=80,in=190] (9,9);
+			
+			\node[below] at (10,-0.2) {$x$};
+			\node[left] at (0,10) {$u$};
+			\node[right] at (9,9) {$u(x)$};
+			\node[below] at (4,-0.2) {$x_1$};
+			\node[below] at (8,-0.2) {$x_2$};
+			\node[below] at (5.22,-0.2) {$x_{CE}$};
+			\draw[dashed] (4,0)--(4,6.3)--(0,6.3);
+			\draw[dashed] (8,0)--(8,8.8)--(0,8.8);
+			\draw[red,dashed] (6,7.55)--(0,7.55);
+			\draw[red,dashed] (5.22,0)--(5.22,7.55);
+			\node[left] at (0,6.3) {$u_1$};
+			\node[left] at (0,8.8) {$u_2$};
+			\node[left] at (0,7.55) {\scriptsize $\frac{1}{2}u(x_1) + \frac{1}{2}u(x_2) = u(x_{CE})$};
+			\draw[red] (4,6.3)--(8,8.8);
+			
+			\fill[black] (4,6.3) circle(4pt);
+			\fill[black] (8,8.8) circle(4pt);
+			\fill[red] (6,7.55) circle(4pt);
+			\fill[red] (5.22,7.55) circle(4pt);
+		\end{tikzpicture}
+		\caption{Risk-Averse Certainty Equivalent}
+		\label{fig:risk_averse_ce}
+	\end{figure}
+\end{remark}
+
+The certainty equivalent allows you to evaluate any lottery in the world of outcomes by which the lottery is realized -- often, the dollar amount between certainty and lottery. For a risk-averse expected utility maximizer, if they have a continuous utility function, it will always be the case that by the Intermediate Value Theorem,
+\[
+u\parl \sum_{i=1}^N p_ix_i\parr \ge \sum_{i=1}^n p_i u(x_i) \Longrightarrow \exists x_{CE} \st u(x_{CE}) = \sum_{i=1}^n p_i u(x_i)
+\]
+
+\begin{remark}
+	Note that in the continuous case, we have that 
+	\[
+	\text{Expected Value} = \int_\reals x dF(x) \qquad \text{ and } \qquad\text{Expected Utility} = \int_\reals u(x) dF(x)
+	\]
+\end{remark}
+
+\begin{example}
+	Insurance. Let's assume that there are two possible losses, against which the decision maker can buy insurance. The losses are:
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline 
+			Outcome & Payoff & Probability & Price & How Much Purchased \\
+			\hline 
+			Loss 1 & $w - L_1$ & $p_1$ & $q_1$ & $\pi_1$ \\
+			\hline 
+			Loss 2 & $w - L_2$ & $p_2$ & $q_2$ & $\pi_2$ \\
+			\hline
+			No Loss & $w$ & $1 - p_1 - p_2$ & -- & -- \\
+			\hline
+		\end{tabular}
+	\end{table}
+	We have that the attained wealth in each scenario is:
+	\begin{align*}
+		\text{Loss 1} &: w - L_1 - q_1\pi_1 - q_2\pi_2 + \pi_1 \\
+		\text{Loss 2} &: w - L_2 - q_1\pi_1 - q_2\pi_2 + \pi_2 \\
+		\text{No Loss} &: w - q_1\pi_1 - q_2\pi_2 
+	\end{align*}
+	So we are solving the problem
+	\[
+	\max_{\pi_1,\pi_2} p_1 u(w - L_1 - q_1\pi_1 - q_2\pi_2 + \pi_1) + p_2 u( w - L_2 - q_1\pi_1 - q_2\pi_2 + \pi_2)
+	\]
+	\[
+	+ (1-p_1-p_2) u(w - q_1\pi_1 - q_2\pi_2 )
+	\]
+	The first order conditions are
+	\begin{align*}
+		0 &= p_1(1-q_1) u'(\cdot_1) + p_2(-q_1) u'(\cdot_2) + (1-p_1-p_2)(-q_1) u'(\cdot_3) &&(\pi_1) \\
+		0 &= p_1(-q_2) u'(\cdot_1) + p_2(1-q_2)u'(\cdot_2) + (1-p_1-p_2)(-q_2) u'(\cdot_3) &&(\pi_2)
+	\end{align*}
+	Combining, we get that
+	\[
+	\frac{p_1 u'(\cdot_1)}{p_2 u'(\cdot_2)} = \frac{q_1}{q_2}
+	\]
+\end{example}
+
+\begin{remark}
+	This result required assuming that we know all of $u$, $p$, and $w$. That's extremely strong.
+\end{remark}
+
+\begin{example}
+	Trees. You are a farmer deciding where to plant a grape tree. You can choose either the left bank of a river, the right bank of a river, or on a mountain. We will denote the returns as:
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Choice & Returns without flood & Flood Probability\\
+			\hline 
+			$L$ & $\ell = 200$ & $f_\ell$\\
+			\hline
+			$R$ & $r = 200$ & $f_r$ \\
+			\hline 
+			$M$ & $m = 50$ & 0 \\
+			\hline 
+		\end{tabular}
+	\end{table}
+\end{example}
+
+\begin{remark}
+	If $L$ and $R$ are divisible and the convex combination of their returns dominate $M$, then $M$ is useless.
+\end{remark}
+
+\begin{remark}
+	Are the floods mutually exclusive? We need to answer this question.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Some Math Definitions}
+
+
+
+
+
+
+
+
+
+
 \newpage
 \section{Information Theory (Battaglini)}\label{sec:battaglini}
 
@@ -1920,9 +2127,376 @@ Is there a constrained Pareto optimum that is better than the competitive equili
 	for $\hat{\theta} \ge \theta\opt$. So $w_u(\hat{\theta}) = F(\hat{\theta}) \barl \expect[\theta : \theta \le \hat{\theta}] - r(\hat{\theta})\barr \le 0$, implying that the high types that remain unemployed are worse off now.
 \end{example}
 
+\subsection{Separating and Pooling Equilibria}
+
 \begin{example}
 	One way the market might bypass the information asymmetry is by allowing workers to signal their type. Assume here that there are two types, $0 < \theta_L < \theta_H$, with $\prob\{\theta_H\} = \lambda$. We now assume that workers can get some education $e$. To make the point more striking, education is unproductive. 
+	
+	The cost of education is $C(e,\theta)$ with (i) the usual technological assumptions, so $C(0,\theta) = 0$, $C_e(e,\theta) > 0$, and $C_{ee}(e,\theta)> 0$; and (ii) we assume that $C_\theta(e,\theta) < 0$ and $C_{e\theta}(e,\theta) < 0$. Note that these are the Single Crossing Property we saw in Math.
+	
+	Note that now the wage depends on the observable $e$, so the wage is a function $w(e)$. Utility is now
+	\[
+	U(w,e;\theta) = w(e) - c(e,\theta)
+	\]
+	We assume that $r(\theta) = 0$, so in a competitive market with no signaling all types are employed at wage $\expect[\theta]$. A \blue{competitive equilibrium with signaling} is now a competitive equilibrium for each $e$, meaning a $\Theta(e)$, $w(e)$ such that
+	\[
+	w(e) = \expect[\theta : \theta \in \Theta(e)] \qquad \text{and} \qquad \Theta(e) = \{\theta : e \in \argmax_e U(w(e),e;\theta)\}
+	\]
+	We can plot indifference curves in the $(w,e)$ space. Indifference curves for high and low types will typically cross only once, and the indifference curves for high types are less steep, since
+	\[
+	\frac{\partial w(e)}{\partial e} = C_e(e,\theta) \qquad \text{ and } C_e(e,\theta_H) < C_e(e,\theta_L)
+	\]
+	This is illustrated in Figure~\ref{fig:indifference_educ}.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=0.5]
+			\draw[<->,very thick] (10,0)--(0,0)--(0,10);
+			\node[below] at (10,0) {$e$};
+			\node[left] at (0,10) {$w$};
+			
+			
+			\node[below] at (5,0) {$\hat{e}$};
+			\node[left] at (0,5) {$\hat{w}$};
+			\draw[dashed] (5,0)--(5,5)--(0,5);
+			\draw[very thick, red] (0,1) to[out=30,in=240] (5,5) to[out=60,in=260] (7,10);
+			\draw[very thick,blue] (0,3) to[out=10,in=210] (5,5) to[out=30,in=240] (10,9);
+			
+			\node[below] at (10,8) {$\theta_H$};
+			\node[right] at (7,9) {$\theta_L$};
+		\end{tikzpicture}
+		\caption{Indifference Curves for High and Low Types}
+		\label{fig:indifference_educ}
+	\end{figure}
+	The wage function can be represented as
+	\[
+	w(e) = \mu(e)\theta_H + (1-\mu(e))\theta_L
+	\]
+	where $\mu(e)$ is the posterior probability of observing a high type. This function is illustrated in Figure~\ref{fig:wage_fn_educ}.
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=0.5]
+			\draw[<->,very thick] (10,0)--(0,0)--(0,10);
+			\node[below] at (10,0) {$e$};
+			\node[left] at (0,10) {$w$};
+			
+			\node[left] at (0,3) {$\theta_L$};
+			\node[left] at (0,9) {$\theta_H$};
+			\draw[dashed] (0,3)--(10,3);
+			\draw[dashed] (0,9)--(10,9);
+			
+			\draw[very thick,domain=0:10,smooth] (0,4) .. controls (2,4) and (4,2) .. (5,5) .. controls (6,7) and (7,6) .. (10,8);
+			\node[below] at (10,7.5) {$w(e)$};
+		\end{tikzpicture}
+		\caption{Wage Function on Education}
+		\label{fig:wage_fn_educ}
+	\end{figure}
+	\begin{remark}
+		We haven't explicitly discussed Bayesian posterior probabilities before. These are directly derived from Bayes' Rule. Formally, in this example, we have that 
+		\[
+		\mu(e) = \prob\{\theta = \theta_H | e = 1\} = \frac{\prob\{e = 1 | \theta = \theta_H\}}{\prob\{e = 1 | \theta = \theta_H\} + \prob\{e = 1 | \theta = \theta_L\}}
+		\]
+	\end{remark}
 \end{example}
+
+\begin{definition}
+	In a \blue{separating equilibrium}, the two types choose different actions: $e\opt(\theta_H) \ne e\opt(\theta_L)$. This immediately implies two facts: (i) In a separating equilibrium, we must have that $w(e\opt(\theta_H)) = \theta_H$ and $w(e\opt(\theta_L)) = \theta_L$; and (ii) we must have that $e\opt(\theta_L) = 0$. Why is this? The low type gets no benefit from $e\opt(\theta_L)$, so by choosing $e\opt(\theta_L) = 0$, she gets the same wage and lower costs. 
+\end{definition}
+
+Starting from here, we will construct a separating equilibrium. We need that $e\opt(\theta_L) = 0$ and $e\opt(\theta_H)$ such that
+\[
+U(w(e\opt(\theta_H)),e\opt(\theta_H); \theta_H) \ge U(w(e),e;\theta_H) \forall e
+\]
+\[
+U(w(e\opt(\theta_L)),e\opt(\theta_L); \theta_L) \ge U(w(e),e;\theta_L) \forall e
+\]
+these are called our \blue{incentive compatability constraints}, and they guarantee that neither high nor low types are incentivized to deviate from what we think they should do.
+
+
+
+An example of this equilibrium is illustrated in Figure~\ref{fig:separating_eq_educ}.
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=0.5]
+			\draw[<->,very thick] (10,0)--(0,0)--(0,10);
+			\node[below] at (10,0) {$e$};
+			\node[left] at (0,10) {$w$};
+		
+		
+			\node[left] at (0,3) {\scriptsize $w\opt(e\opt(\theta_L))=\theta_L$};
+			\node[left] at (0,8) {\scriptsize $w\opt(e\opt(\theta_H))=\theta_H$};
+			% Curves
+    \draw[thick] (0,6) to[out=10, in=210] (6.5,8) to[out=30,in=210] (10,10); % Theta_H curve
+    \draw[thick] (0,3) to[out=30, in=230] (6.5,8) --(8,10); % Theta_L curve
+
+    \draw[dashed] (0,3) -- (10,3);
+    \node[below] at (6.5,0) {\scriptsize $\tilde{e}$};
+
+    % Additional curve
+    \draw[thick, dotted] (0,3) to[out=10, in=260] (6.5,8) to[out=-60,in=180] (10,5);
+    \node[below] at (10,5) {\scriptsize$w\opt(e)$};
+
+    % Dashed lines for intersections
+    \draw[dashed] (0,8) -- (10,8); % Horizontal line
+    \draw[dashed] (6.5,0) -- (6.5,8); % Theta_H horizontal intersection
+
+    % Labels for intersections
+    \node[below] at (0,0) {\scriptsize $e\opt(\theta_L)$};
+    \node[below] at (6.5,-1) {\scriptsize $e\opt(\theta_H)$};
+    \node[below] at (6.5,-0.5) {\scriptsize $\shortparallel$};
+    \node[below] at (10,10) {\scriptsize $\theta_H$};
+    \node[right] at (8,10) {\scriptsize $\theta_L$};
+    \fill[black] (6.5,8) circle(5pt);
+		\end{tikzpicture}
+		\caption{A Separating Equilibrium}
+		\label{fig:separating_eq_educ}
+	\end{figure}
+
+Note that here we have that (i) $e\opt(\theta_L) = 0$, (ii) $U(w(e\opt(\theta_L)),e\opt(\theta_L);\theta_L) = U(w(e\opt(\theta_H)),e\opt(\theta_H);\theta_L)$, and (iii) $U(w(e\opt(\theta_H)),e\opt(\theta_H);\theta_H) \ge U(w(e\opt(\theta_L)),e\opt(\theta_L);\theta_H)$. 
+
+\begin{remark}
+	We need here to specify wages for all $e$, even though only two will be chosen. This is because $w(e) = \mu(e)\theta_H + (1-\mu(e))\theta_L$, meaning that
+	\[
+	\mu(e)=\frac{w(e)-\theta_L}{\theta_H-\theta_L}
+	\]
+\end{remark}
+
+\begin{remark}
+	We can have other equilibria, but (referring back to Figure~\ref{fig:separating_eq_educ}), the educational level for the high type cannot be lower than $\tilde{e}$, otherwise we would violate the incentive compatibility constraint for the low type (they would pay to get the higher wage). The educational level of the high type cannot be higher than $e_1$, otherwise we would violate incentive compatibility for the high type (they would rather not pay and not get hired).
+\end{remark}
+
+\begin{remark}
+	The equilibria can be Pareto ranked: profits are always zero in a competitive equilibrium, and effort is a net loss, so the lower $e$ the better. 
+\end{remark}
+
+\begin{question}
+	Are the players better off with signaling? The low type is always worse off -- before signaling, he was hired at $w = \expect[\theta]$, now he is either hired at $w = 0$ or unemployed. The high type may or may not be better off -- before signaling, her utility is $w = \expect[\theta] = U(\expect[\theta],0;\theta_H)$, and with signaling her utility is $U(w(e\opt(\theta_H)),e\opt(\theta_H);\theta_H) = w(e\opt(\theta_H)) - e\opt(\theta_H)$. She may be better off or worse off depending on the expectation of $\theta$ -- which comes entirely from the Bayesian prior $\lambda$.
+\end{question}
+
+\begin{definition}
+	In a \blue{pooling equilibrium}, the two types choose the same action, so they are indistinguishable: $e\opt(\theta_H) = e\opt(\theta_L) = e\opt$. It follows that $w(e\opt) = \lambda \theta_H + (1-\lambda)\theta_L = \expect[\theta]$. 
+\end{definition}
+
+\begin{remark}
+	Again in this equilibrium, we need to define the wage for $e \ne e\opt$. We need incentive compatibility again, meaning that for any $e$:
+	\[
+	U(\expect[\theta],e\opt;\theta_H) \ge U(w(e),e;\theta_H)
+	\]
+	\[
+	U(\expect[\theta],e\opt;\theta_L) \ge U(w(e),e;\theta_L)
+	\]
+	An example of this equilibrium is illustrated in Figure~\ref{fig:pooling_eq_educ}.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale=0.5]
+			\draw[<->,very thick] (10,0)--(0,0)--(0,10);
+			\node[below] at (10,0) {$e$};
+			\node[left] at (0,10) {$w$};
+		
+		
+			\node[left] at (0,3) {\scriptsize $\theta_L$};
+			\node[left] at (0,8) {\scriptsize $\theta_H$};
+			\node[left] at (0,5) {\scriptsize $\expect[\theta]$};
+			% Curves
+    \draw[thick] (0,4) to[out=10, in=200] (4,5) to[out=20,in=240] (10,10); % Theta_H curve
+    \draw[thick] (0,3) to[out=10, in=230] (4,5) to[out=50,in=260](7,10); % Theta_L curve
+
+    \draw[dashed] (0,3) -- (10,3);
+    \node[below] at (4,0) {\scriptsize $e'$};
+
+    % Additional curve
+    \draw[thick, dotted] (0,3) to[out=5, in=260] (4,5) to[out=-60,in=180] (10,7);
+    \node[below] at (10,7) {\scriptsize$w\opt(e)$};
+
+    % Dashed lines for intersections
+    \draw[dashed] (0,8) -- (10,8); % Horizontal line
+    \draw[dashed] (0,5)--(10,5);
+    \draw[dashed] (4,0) -- (4,5); % Theta_H horizontal intersection
+
+    % Labels for intersections
+    \node[below] at (0,0) {\scriptsize $0$};
+    \node[below] at (4,-1) {\scriptsize $e\opt(\theta)$};
+    \node[below] at (4,-0.5) {\scriptsize $\shortparallel$};
+    \node[below] at (10,9.5) {\scriptsize $\theta_H$};
+    \node[right] at (7,10) {\scriptsize $\theta_L$};
+    \fill[black] (4,5) circle(5pt);
+			
+		\end{tikzpicture}
+		\caption{A Pooling Equilibrium}
+		\label{fig:pooling_eq_educ}
+	\end{figure}
+\end{remark}
+
+\begin{remark}
+	Multiple levels of effort can be sustained in a pooling equilibrium, as long as there are `punishments' for lower levels of effort. In this way, we can sustain positive effort even for low types.
+\end{remark}
+
+\begin{remark}
+	The highest level of education corresponds to $U(\expect[\theta],e_1;\theta_L) = U(\theta_L,0;\theta_L) = \theta_L$. Anything higher violates incentive compatibility. The lowest pooling equilibrium is, of course $e = 0$. 
+\end{remark}
+
+
+\subsection{Separating and Pooling Refinements}
+
+\begin{example}
+	Consider an $e'$ such that
+	\[
+	\expect[\theta] - C(e\opt,\theta_L) \ge \theta_H - C(e',\theta_L) \text{ and } \expect[\theta] - C(e\opt,\theta_H) < \theta_H - C(e',\theta_H)
+	\]
+	where $e\opt$ is a pooling equilibrium. Since a low type is worse off if believed and a high type is better off, a receiver would believe that a deviator is a high type. 
+\end{example}
+\begin{remark}
+	Such a point $e'$ \emph{always exists}. We can conclude that no pooling equilibria exist. To see why, consider that if everyone else is pooling, and you are a low type, you can deviate and be considered the only high type. By doing so, you would attain the highest salary, and do better! Thus, incentive compatibility is \emph{never} satisfied for all low types.
+\end{remark}
+
+\begin{example}
+	Consider now a separating equilibrium with $e^L = 0$, $e^H$. In such an equilibrium, in order for incentive compatibility to hold, we need that $\theta_H - C(e^H,\theta_H) \ge \theta_L$. Assume that $\theta_H - C(e^H,\theta_L) < \theta_L$. Then if the receiver sees a deviation $e' < e^H$, but still has that $\theta_H - C(e',\theta_L) < \theta_L$, knowing that a high type benefits from being believed and a low type does not, the receiver will assume that the deviator is a high type. 
+\end{example}
+
+\begin{remark}
+	Such an $e'$ exists in all cases \emph{except} when $e^L = 0$ and $\theta_H - C(e^H ,\theta_L) = \theta_L$. This is the only separating equilibrium that survives refinement. 
+\end{remark}
+
+\subsection{Screening Games}
+
+\begin{remark}
+	In the previous analysis, informed agents chose education to self-select, and to try and signal their types. If we flipped the game so it's uninformed agents trying to screen the informed agents, then we have screening.
+\end{remark}
+
+\begin{model}
+	Let's assume the same environment as before: we have two types $0 < \theta_L < \theta_H$, with $\prob\{\theta_H\} = \lambda$, and now assume that $r(\theta) = 0$. We will assume that (unproductive) tasks can be assigned to the agents. These tasks cost effort $C(t,\theta)$ with the same assumptions as before: $C(0,\theta) = 0$, $C_t(t,\theta) > 0$, $C_{tt}(t,\theta) > 0$, $C_\theta(t,\theta) < 0$, and $C_{t\theta}(t,\theta)< 0$.  
+\end{model}
+
+\begin{definition}
+	A \blue{contract} is a pair $(t,w(t))$, where $t$ is a task and $w(t)$ is the associated wage if that task is completed. 
+\end{definition}
+
+Let $\Theta(t) \coloneqq \{\theta : t \in \argmax_t u(w(t),t;\theta)\}$ be the set of all agents who complete a task $t$. 
+
+\begin{definition}
+	A family of contracts $(t,w(t))_t$ is a \blue{competitive equilibrium} if (i) $w(t) = \expect[\theta : \theta \in \Theta(t)]$, and (ii) profits are zero for all contracts $(t,w(t))$. 
+\end{definition}
+
+\begin{remark}
+	With observable types, $(t,w(t,\theta)) = (0,\theta)$. With unobservable types, we have three cases: perfectly separating equilibria, pooling equilibria, and partially separating equilibria. We will not really study the third.
+\end{remark}
+
+Our first result is that no pooling equilibrium can exist. See Figure~\ref{fig:screening_pooling}. The high type would always deviate from $(w^p,t^p)$ to $(\tilde{w},\tilde{t})$, and this necessarily follows from the single crossing assumptions.
+
+\begin{figure}[H]
+	\centering
+		\begin{tikzpicture}[scale=0.5]
+			\draw[<->,very thick] (10,0)--(0,0)--(0,10);
+			\node[below] at (10,0) {$t$};
+			\node[left] at (0,10) {$w$};
+		
+		
+			\node[left] at (0,3) {\scriptsize $\theta_L$};
+			\node[left] at (0,8) {\scriptsize $\theta_H$};
+			\node[left] at (0,5) {\scriptsize $\expect[\theta]$};
+			
+			\draw[dashed] (0,3)--(10,3);
+			\draw[dashed] (0,8)--(10,8);
+			\draw[dashed] (0,5)--(10,5);
+			
+			\draw[thick] (0,3.5) to[out=10,in=220] (4,5) to[out=40,in=250] (7,10);
+			\draw[thick] (0,4.5) to[out=10,in=190] (4,5) to[out=10,in=220] (10,9);
+			\node[below] at (10,8.8) {\scriptsize $\theta_H$};
+			\node[left] at (7,10) {\scriptsize $\theta_L$};
+			
+			\fill[black,nearly transparent] (4,5) to[out=40,in=250] (7,10) --(10,10)--(10,9) to[out=220,in=10] (4,5);
+			\fill[black] (4,5) circle(4pt);
+			\fill[black] (7,7) circle(4pt);
+			\node[above] at (7,7) {\scriptsize $(\tilde{w},\tilde{t})$};
+			\node[above] at (3.4,5) {\scriptsize $(w^p,t^p)$};
+		\end{tikzpicture}
+		\caption{A Potential Pooling Equilibrium}
+		\label{fig:screening_pooling}
+\end{figure}
+
+Our second result is that if $w_L,t_L,w_H,t_H$ are equilibrium contracts in a separating equilibrium, then $(w_L,t_L) = (\theta_L,0)$ and $(w_H,t_H) = (\theta_H,t\opt_H)$ such that
+\[
+\theta_H - C(t\opt_H,\theta_L) = \theta_L - C(0,\theta_L)
+\]
+so that the low type is indifferent between $(w_L,t_L)$ and the contract for the high type. The intuition is in Figure~\ref{fig:screening_separating}. 
+
+
+\begin{figure}[H]
+	\centering
+		\begin{tikzpicture}[scale=0.5]
+			\draw[<->,very thick] (10,0)--(0,0)--(0,10);
+			\node[below] at (10,0) {$t$};
+			\node[left] at (0,10) {$w$};
+			\node[below] at (5,0) {\scriptsize $\hat{t}_H$};
+		
+		
+			\node[left] at (0,3) {\scriptsize $\theta_L$};
+			\node[left] at (0,8) {\scriptsize $\theta_H$};
+			
+			\draw[dashed] (0,3)--(10,3);
+			\draw[dashed] (0,8)--(10,8);
+			\draw[dashed] (5,0)--(5,8);
+			
+			\draw[thick] (0,3) to[out=10,in=240] (5,8) to[out=60,in=250] (6,10);
+			\draw[thick] (0,5) to[out=10,in=200] (7,8) to[out=20,in=210] (10,9.5);
+			\node[below] at (10,8.8) {\scriptsize $\theta_H$};
+			\node[left] at (7,10) {\scriptsize $\theta_L$};
+			
+			
+			\fill[black] (5.5,7.7) circle(4pt);
+			\fill[black] (7,8) circle(4pt);
+			\fill[black] (0,3) circle(4pt);
+			\node[above] at (6,7.7) {\scriptsize $(\tilde{w},\tilde{t})$};
+			\node[below] at (7.5,8) {\scriptsize $(w_H,t_H)$};
+			\node[right] at (0,2.7) {\scriptsize $(w_L,t_L)$};
+		\end{tikzpicture}
+		\caption{A Pooling Equilibrium}
+		\label{fig:screening_separating}
+\end{figure}
+
+Our final result is that an equilibrium may not exist in pure strategies. It may instead exist in mixed strategies, but that requires a lot more work. 
+
+Similarly to signaling, the low type is worse off with screening than without. High types, however, are always better off in a separating equilibrium. The issue is that a separating equilibrium may not exist.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
 \section{Exercises and Examples}\label{sec:exercises}
@@ -3592,9 +4166,570 @@ observations so that $0 < p_1 < \dots < p_K$.
 
 \subsubsection{Blume Homework}
 
+\paragraph{Problems.}
+
+\begin{enumerate}
+	\item Suppose an investor with initial wealth $w_0$ has a payoff function of the form
+	\[
+	u(w) = -\exp (-r_a w)
+	\]
+	with $r_a > 0$. There are two investment opportunities: a risk-free asset and a risky asset whose payoff is normally distributed with mean $\mu$ and variance $\sigma^2$. The investor can allocate her wealth between the two opportunities. What share of her wealth should go into the risky asset?
+	\item Suppose that $\succeq$ satisfies the Savage axioms with state space $S$ and outcome space $X$, and suppose that it has an SEU representation with payoff function $u$ and belief distribution $\mu$. Prove that for every non-null event $A$ the preference order $\sigma_A$ has an SEU representation. What is it?
+	\item Let $M$ denote the right triangle in the plane with vertices $x = (0,1)$, $y = (0,0)$, and $z = (1,0)$. Each $m \in M$ can be written uniquely as $\alpha_mx + (1-\alpha_m)(\beta_m y + (1-\beta_m)z)$. Define the mixture operators
+	\[
+	m \otimes_\lambda n = \begin{cases} z & \text{if } m = n = z; m = z \;\&\; \lambda=1 ; \text{ or } n = z \;\&\; \lambda = 0 \\  \\ (\lambda \alpha_m + (1-\lambda)\alpha_n)x + & \text{otherwise} \\ (1 - (\lambda \alpha_m + (1-\lambda)\alpha_n))y\end{cases}
+	\]
+	\begin{enumerate}
+		\item Show that this is a mixture space.
+		\item Suppose the preference relation satisfies axioms A1-3 for mixture spaces. Describe what indifference sets must look like.
+	\end{enumerate}
+	\item Random variable $X$ is distributed with density $f(x) = x^{-6/5}/5$ and $Y$ is distributed with density $g(x) = x^{-3/2}/2$.
+	\begin{enumerate}
+		\item Which is bigger with respect to first order stochastic dominance?
+		\item Suppose a decision maker maximized expected utility with payoff function $u(x) = \sqrt{x}$. Which does he prefer?
+	\end{enumerate}
+	\item Suppose an expected utility maximizer faces a decision problem in which there are two states of nature and three choices $a_1,a_2,a_3$. Utility payoffs are described in the following table: The true probability distribution is $p = (p_1,p_2)$, where $p_s$ is the probability of state $s$.
+	\[
+	\begin{array}{c|cc}
+    & s_1 & s_2 \\
+    \hline
+    a_1 & 0 & -8 \\
+    a_2 & -10 & 0 \\
+    a_3 & -4 & -3 \\
+	\end{array}
+	\]
+	\begin{enumerate}
+		\item The DM does not know $p$, and believes that it is equally likely that $p_1 = 1/4$ and $p_1 = 3/4$. Given these \emph{a priori} beliefs about the models, what probability does she assign to the event $s_1$?
+		\item Which $a_i$ will she choose?
+		\item Before she chooses, she is told that the previous draw from the current distribution was $s_1$. Draws are independent, and her \emph{a priori} belief is, as before, that the models are equally likely. What will she choose?
+		\item Suppose instead that she is told that $s_2$ was drawn. What will she choose?
+		\item How much is it worth to her, in utility terms, to know the value of the last draw (given that her prior beliefs are that both modes are equally likely). (Hint: In part (c) you computed her expected utility if she is told $s_2$. In part (b) you computed her expected utility if she is told $s_1$. Before you are told anything, you have beliefs about how likely you are to be told $s_1$ and $s_2$. So you can compute your expected expected utility [this is not a typo; it really is ``expected expected utility''] before you are told anything. From this, you can compute the value of information—the value of knowing the value of the last draw. This notion of value of information is widely used.
+	\end{enumerate}
+	\item In the three-color Ellsberg paradox, which of Savage's axioms P1-5 (not 6 or 7) fail to hold?
+\end{enumerate}
+
+\paragraph{Solutions.} (Gabe's solutions, not yet graded by time of writing.)
+
+\begin{enumerate}
+	\item We have that $u(w) = -\exp(-r_a w)$, for $r_a > 0$. First, note that the decision maker is risk-averse, as this Bernoulli utility function is concave in $w$. Furthermore, her coefficient of absolute risk aversion is
+	\[
+	A(w) = -\frac{u''(w)}{u'(w)} = \frac{r_a^2 \exp(-r_a w)}{r_a \exp(-r_a w)} = r_a
+	\]
+	which is constant, meaning that the decision maker has constant absolute risk aversion, so we may feel free to ignore wealth effects. Saying that the agent invests $x$ in the risky asset, which has (random) gross return $\varepsilon \sim \normal(\mu,\sigma)$, and $w_0 - x$ in the risk-free asset, where the risk-free asset has a gross return of $r_f$, her wealth is
+	\[
+	w = x \varepsilon + (w_0 - x) r_f = x \mu + x (R - \mu) + (w_0 - x)r_f
+	\]
+	with first and second moments
+	\[
+	\expect[w] = x\mu + (w_0 - x)r_f \quad \text{ and } \quad \var(w) = x^2 \sigma^2
+	\]
+	Using the moment generating function for $X \sim \normal(\mu,\sigma^2)$, we get that
+	\[
+	\expect[\exp(tX)] = \exp\parl t \mu + \frac{t^2\sigma^2}{2}\parr
+	\] 
+	So her expected utility under CARA utility is
+	\[
+	\expect[u(w)] = -\exp \parl -r_a \expect[w] + \frac{r_a^2}{2}\var(w)\parr = -\exp\parl -r_ax\mu - r_ar_f(w_0 - x) + \frac{r_a^2x^2\sigma^2}{2}\parr
+	\]
+	Maximizing this function is equivalent to maximizing the exponent. The first order condition with respect to $x$ gives
+	\[
+	-r_a \mu + r_a r_f + r_a^2 x\sigma^2 = 0
+	\]
+	Thus, we have that
+	\[
+	x\opt = \frac{\mu - r_f}{r_a \sigma^2}
+	\]
+	Taking into account corners, we get that the optimal level of investment is
+	\[
+	x\opt = \begin{cases} 0 & r_f \ge \mu \\ \max\curll \frac{\mu - r_f}{r_a \sigma^2},w_0 \curlr & \text{otherwise} \end{cases}
+	\]
+	(note that this is in real dollar values -- to get the share of wealth, simply divide everything by $w_0$)
+	\item Prove that the preference order has an SEU representation.
+	
+	\begin{proof}
+		We will define the preference order $\sigma_A$ as follows:
+		\[
+		f \succeq_A g \text{ if and only if } f\mid_A \succeq g \mid_A
+		\]
+		(intuitively, $f$ is weakly preferred to $g$ conditional on $A$ if and only if the restriction of $f$ to $A$ is preferred to the restriction of $g$ to $A$ under the global preference relation)
+		
+		Since $\succeq$ has an SEU representation, the expected utility of $f$ is
+		\[
+		\expect_\mu [u \circ f] = \int_{s\in S} u(f(s)) d\mu(s)
+		\]
+		To construct the SEU representation of $\sigma_A$, we need a conditional utility function and a conditional belief distribution. The conditional utility function is over outcomes, and will coincide with $u$. Define the conditional belief distribution $\mu(\cdot \mid A)$ as follows, using the definition of conditional probabilities:
+		\[
+		\mu (B \mid A) = \frac{\mu(B \cap A)}{\mu(A)}
+		\]
+		Thus, we can show that $\sigma_A$ has an SEU representation as follows. Consider two acts $f,g \in F$. From above, we have that
+		\[
+		f \succeq_A g \Longleftrightarrow \expect_\mu[u \circ f \mid A] \ge \expect_\mu[u \circ g \mid A]
+		\]
+		Expanding, we get that
+		\[
+		f \succeq_A g \Longleftrightarrow \int_{s\in A} u(f(s)) d\mu(s \mid A) \ge \int_{s\in A} u(g(s)) d\mu(s \mid A)
+		\]
+		The SEU representation for $\sigma_A$ is
+		\[
+		\expect_\mu[u \circ f \mid A] = \int_{s\in A} u(f(s)) d\mu(s \mid A)
+		\]
+	\end{proof}
+	\item (Fake) mixture space
+	\begin{enumerate}
+		\item This is not a mixture space. Consider the following counterexample, showing that it violates the first axiom of mixture spaces:
+		
+		\begin{counterex}
+			This is not a mixture space. Consider $m = (0.5,0.5)$, which admits the unique coordinates $\alpha_m = 0.5$, $\beta_m = 0$. For arbitrary $n$, we have that $m \otimes_1 n = \alpha_m x + (1-\alpha_m )y = (0,0.5) \ne m$. 
+		\end{counterex}
+		\item It doesn't. It admits no indifference curves.
+	\end{enumerate}
+	\item Densities and FOSD.
+	\begin{enumerate}
+		\item Note first that neither of the functions are densities over the domains $(-\infty,\infty)$ or $(0,\infty)$, as they are (respectively) not well-defined over the negative real numbers and diverge on $(0,1)$. However, if we consider the domain $[1,\infty)$, we have that
+		\[
+		\int_1^\infty f(x) dx = \int_1^\infty g(x) dx = 1
+		\]
+		Thus, we will restrict them each to the domain $[1,\infty)$.
+		
+		Recall that a distribution $X$ first order stochastically dominates $Y$ if their CDFs are ordered $F_X(x) \le F_Y(x)$ for all $x$, with strict inequality holding for at least one $x$. We construct the CDFs by integrating the densities. Formally, we have that
+		\[
+		F(x) = \int_1^x f(t)dt = \parl -\frac{1}{t^{1/5}}\right|_1^x = 1 - \frac{1}{x^{1/5}}
+		\]
+		and
+		\[
+		G(x) =  \int_1^x g(t)dt = \parl -\frac{1}{t^{1/2}}\right|_1^x = 1 - \frac{1}{x^{1/2}}
+		\]
+		Since $x \in [1,\infty)$, we can say that for any $x$, $F(x) \le G(x)$. Additionally, taking $x = 2$, we have that $F(x) \approx 0.13 < 0.29 \approx G(x)$. Thus, $X$ first-order stochastically dominates $Y$.
+		\item We have that $u(x) = \sqrt{x}$. Since this function is strictly increasing, the decision maker will always prefer a lottery that first-order stochastically dominates, so they will always prefer $X$. To see why concretely, consider that the decision maker will prefer $X$ to $Y$ if
+		\[
+		\int_{1}^\infty u(x)f(x) dx > \int_1^\infty u(x)g(x) dx \Longrightarrow \int_1^\infty u(x)d(F(x)-G(x)) > 0
+		\]
+		Note that, integrating by parts, we have that for some CDF $F$,
+		\[
+		\int_1^\infty u(x) dF(x) = u(x)F(x)|_{x=1}^{x=\infty} - \int_1^\infty u(x)F(x)dx
+		\]
+		Thus, since $F(1)=G(1) = 0$ and $F(\infty) = G(\infty) = 1$, we have that
+		\[
+		\int_1^\infty u(x)d(F(x)-G(x)) = - \int_{1}^\infty u(x)(F(x)-G(x))dx = \int_{1}^\infty u(x)(G(x)-F(x))dx > 0
+		\]
+		since $G(x) \ge F(x) \forall x$.
+		\end{enumerate}
+	\item Expected Utility
+	\begin{enumerate}
+		\item If the decision maker believes that $p_1 = 1/4$ and $p_1 = 3/4$ with equal probability, her expectation is that
+		\[
+		p_1 = \frac{1}{2} \cdot \frac{1}{4} + \frac{1}{2} \cdot \frac{3}{4} = \frac{1}{2}
+		\]
+		\item Given that $\expect[p_1] = \frac{1}{2}$, we have that $\expect[a_1] = -4$, $\expect[a_2] = -5$, and $\expect[a_3] = -3.5$. She will choose $a_3$.
+		\item Define $p'$ as the decision maker's posterior belief over the probability that the probability of state 1 is $3/4$. Her prior belief is that $p' = 1/2$. Having been told that the previous draw was of $s_1$, we have that by Bayes' Rule
+		\[
+		p' = \prob\curll p_1 = \frac{3}{4} \midbar s_{-1} = s_1\curlr = \frac{\prob\{s_{-1} = s_1 \mid p_1 = 3/4\}}{\prob\{s_{-1} = s_1 \mid p_1 = 3/4\} + \prob\{s_{-1} = s_1 \mid p_1 = 1/4\}}\]\[p' = \frac{3/4}{3/4 + 1/4} = \frac{3}{4}
+		\]
+		Thus, her expectation is that
+		\[
+		\expect[p_1] = p' \frac{3}{4} + (1-p') \frac{1}{4} = \frac{9}{16} + \frac{1}{16} = \frac{5}{8}
+		\]
+		Her expected utilities from each choice are:
+		\begin{align*}
+			\expect[a_1] &= \frac{5}{8}\cdot 0 + \frac{3}{8} \cdot -8 = -3 \\
+			\expect[a_2] &= \frac{5}{8}\cdot -10 + \frac{3}{8} \cdot 0 = -6.25\\
+			\expect[a_3] &= \frac{5}{8}\cdot -4 + \frac{3}{8} \cdot -3 = -3.625
+		\end{align*}
+		Thus, she will choose $a_1$
+		\item Again define $p'$ as the posterior that the probability of state 1 is $3/4$. Again by Bayes' rule, we have that
+		\[
+		p' = \prob\curll p_1 = \frac{3}{4} \midbar s_{-1} = s_2\curlr = \frac{\prob\{s_{-1} = s_2 \mid p_1 = 3/4\}}{\prob\{s_{-1} = s_2 \mid p_1 = 3/4\} + \prob\{s_{-1} = s_2 \mid p_1 = 1/4\}}\]\[p' = \frac{1/4}{1/4 + 3/4} = \frac{1}{4}
+		\]
+		Thus, her expectation is that
+		\[
+		\expect[p_1] = p' \frac{3}{4} + (1-p') \frac{1}{4} = \frac{3}{16} + \frac{3}{16} = \frac{3}{8}
+		\]
+		Her expected utilities from each choice are
+		\begin{align*}
+			\expect[a_1] &= \frac{3}{8}\cdot 0 + \frac{5}{8} \cdot -8 = -5 \\
+			\expect[a_2] &= \frac{3}{8}\cdot -10 + \frac{5}{8} \cdot 0 = -3.75\\
+			\expect[a_3] &= \frac{3}{8}\cdot -4 + \frac{5}{8} \cdot -3 = -3.375
+		\end{align*}
+		Thus, she will choose $a_3$
+		\item From part (b), we know that the decision maker's expected utility when she has no information is $-3.5$. From part (c), we know that her expected utility when she is told $s_1$ is $-3$ and from part (d), her expected utility when she is told $s_2$ is $-3.375$. She has prior expectation that the probability of $s_1$ is $\frac{1}{2}$, so we have that her expected expected utility is
+		\[
+		\frac{1}{2} \cdot -3 + \frac{1}{2} \cdot -3.375 = -3.1875
+		\]
+		so she gains, in expectation, $-3.1875 - (-3.5) = 0.3125$ from knowing the value of the state in the previous period. 
+	\end{enumerate}
+	\item In the three-color Ellsberg paradox, we have that $R = 30$ and $B + G = 60$. We also have that, under the generally accepted results,
+	\[
+	R \succ B \quad \text{ and } \quad B + G \succ R + G
+	\]
+	Note first that we \emph{do} have complete preferences, over the acts that we have been given, despite the fact that we do not know how they rank, for example, $G$ and $B$. Since we have that the act $f$ (pay \$100 if Red, nothing if Green or Blue) is preferred to $g$ (pay \$100 if Blue, nothing if Red or Green). Define $h$ as ``pay nothing if Green'' and $k$ as ``pay \$100 if Green''. Then we have that $f \mid_A h \succ g \mid_A h$, where $A = \{$Red or Blue$\}$, but $f \mid_A k \prec g\mid_A k$. Thus, the second Savage axiom is violated. The Savage axioms three through five concern outcomes. None of them are violated, as long as we make the (reasonable) assumption that people prefer \$100 to \$0.
+	
+	So the three-color Ellsberg paradox violates Savage P2.
+\end{enumerate}
+
+
+
 \subsubsection{TA Section Examples}
 
 \subsubsection{Outside Questions}
+
+The following are from Stanford ECON202 Problem Set 4. Questions written by Ravi Jagadeesan, answers by Gabe along with Asia-Kim Francavilla and Monia Tomasella. Answers not necessarily correct.
+
+\paragraph{Problem 1:} (Kreps) This question asks you to examine the demand for imperfect insurance. Imagine a consumer with wealth $W - \Delta$, where $\Delta$ is a lottery whose support includes zero and a finite number of strictly positive amounts. Let $\pi$ be the probability that a loss is incurred, \ie that $\Delta > 0$, so $1 - \pi$ is the probability of no loss. An insurance policy is available that pays a dollar in the event of any loss -- \ie if $\Delta > 0$. The policy is not specifically tailored to reimburse the exact amount of the loss. The per-unit cost of the policy is $p$. The price is actuarily fair, so $p = \pi$. Suppose that conditional on a loss being incurred, the expected value of the loss is $B$, \ie $B = \expect[\Delta | \Delta > 0]$. We say that the consumer buys full insurance if she purchases $B$ units of insurance and covers her full \emph{expected} loss. Assuming the consumer has a differentiable concave Bernoulli utility function, for what kinds of utility functions will she buy full insurance, less than full insurance, or more than full insurance? (Give a simple example with parameters if you can't prove the general case.)
+
+\medskip
+
+\textbf{Answer:} Define $\theta$ as the number of units of insurance the consumer purchases. The consumer's maximization problem is
+\[
+\max_{\theta \ge 0} \pi \expect\left[u(W + (1-\pi)\theta - \Delta|_{\Delta > 0}) \right] + (1-\pi) u(W - \pi \theta - \Delta|_{\Delta = 0})
+\]
+Taking the first order conditions, we get
+\begin{align*}
+    \pi(1-\pi) \expect\left[u'(W + (1-\pi)\theta - \Delta|_{\Delta > 0}) \right] - \pi(1-\pi) u'(W - \pi \theta) &= 0 \\
+    \expect\left[u'(W + (1-\pi)\theta - \Delta|_{\Delta > 0}) \right] &=  u'(W - \pi \theta)
+\end{align*}
+We now split into cases. First consider the case where $u''' = 0$, so $\expect[u'(x)] = u'(\expect[x])$ (which we know from the second-order Taylor expansion). We have that
+\begin{align*}
+    u'(W + (1-\pi)\theta - \expect[\Delta|_{\Delta > 0})]) &= u'(W - \pi\theta) \\
+    W + (1-\pi)\theta - B &= W - \pi\theta \\
+    \theta &= B
+\end{align*}
+Thus, in the case where $u''' = 0$, the consumer will purchase full insurance. Next, consider the case where $u''' > 0$, so $\expect[u'(x)] > u'(\expect[x])$. This means that, using the fact that $u$ is strictly concave which implies that $u'$ is strictly decreasing,
+\begin{align*}
+    u'(W + (1-\pi)\theta - B) < \expect\left[u'(W + (1-\pi)\theta - \Delta|_{\Delta > 0}) \right] &= u'(W - \pi\theta) \\
+    W + (1-\pi)\theta - B &> W - \pi\theta \\
+    \theta &> B
+\end{align*}
+Thus, in the case where $u''' > 0$, the consumer will purchase more than full insurance. Finally, consider the case where $u''' < 0$, so $\expect[u'(x)] < u'(\expect[x])$. This means that, again using the fact that $u'$ is strictly decreasing,
+\begin{align*}
+    u'(W + (1-\pi)\theta - B) > \expect\left[u'(W + (1-\pi)\theta - \Delta|_{\Delta > 0}) \right] &= u'(W - \pi\theta) \\
+    W + (1-\pi)\theta - B &< W - \pi\theta \\
+    \theta &< B
+\end{align*}
+Thus, in the case where $u''' < 0$, the consumer will purchase less than full insurance.
+
+\paragraph{Problem 2:} Consider an agent who is a risk-averse expected-utility maximizer with a Bernoulli utility function $u$ defined and increasing for all nonnegative levels of wealth. This agent makes the following statement:
+\smallskip
+
+``I will be risk averse no matter how rich I become. In fact, at any level of initial wealth of at least \$100, if you offered me a gamble that would increase my wealth by \$100 with probability 0.51, or decrease it by \$100 with probability 0.49, I would rather not take this gamble''
+
+\begin{itemize}
+    \item[(a)] Write down the constraints imposed by this statement on the agent's Bernoulli utility function.
+
+    \item[(b)] Normalize without loss of generality $u(3000) = 0$ and $u(3100) = 1$. Use your answer to part (a) to derive an upper boud on the difference $u(3000 + 100(k+1)) - u(3000 + 100k)$ for each $k = 1,2,\dots$.
+
+    \item[(c)] The same agent is now offered the choice between
+    \begin{itemize}
+        \item[(i)] getting wealth \$3,000 for sure, and
+
+        \item[(ii)] a 50/50 coin flip in which the prize is nothing if the coun lands heads, and \$10,000,000,000,000,000,000,000,000,000 if the coin lands tails.
+    \end{itemize}
+    Use your answer to part (b) to predict the decision maker's choice between (i) and (ii).
+
+    \item[(d)] Read ``Risk Aversion and Expected-Utility Theory: A Calibration Theorem'' by M. Rabin, published in \emph{Econometrica} 68(5): 1281-92, 2000. (You can skip the appendix.) Write one paragraph explaining the general principle underlying your conclusion in part (c).
+\end{itemize}
+\medskip
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] From the statement, we know that the agent has either constant or decreasing absolute risk aversion. This means that $A(x,u)$ is a nondecreasing function of $x$ by Definition 7, so the ratio $-\frac{u''(x)}{u'(x)}$ is nondecreasing. Finally, we know explicitly that for all $x \ge 100$
+    \[
+    u(x) \ge 0.51 u(x + 100) + 0.49 u(x - 100)
+    \]
+
+    \item[(b)] From part (a), we have that $u(x) \ge 0.51 u(x + 100) + 0.49 u(x - 100)$. Rearranging, we get
+    \begin{align*}
+        0.49 u(x) + 0.51 u(x) &\ge 0.51 u(x + 100) + 0.49 u(x - 100) \\
+        0.49(u(x) - u(x-100)) &\ge 0.51(u(x+100)-u(x)) \\
+        u(x+100) - u(x) &\le \frac{49}{51} (u(x) - u(x-100))
+    \end{align*}
+    Since $u(3000) = 0$ and $u(3100) = 1$, we get that for $k = 1$,
+    \[
+    u(3200) - u(3100) \le \frac{49}{51} (1 - 0)
+    \]
+    For $k = 2$, we get that
+    \[
+    u(3300) - u(3100) \le \frac{49}{51} (u(3200) - u(3100)) \le \left(\frac{49}{51} \right)^2
+    \]
+    Following this pattern, we get that for all $k = 1,2,\dots$,
+    \[
+    u(3000 + 100(k+1)) - u(3000 + 100k) \le \left(\frac{49}{51} \right)^k
+    \]
+    
+
+    \item[(c)] First, note that the long number in (ii) is $10^{28}$. We know that $u(3000) = 0$. We will place bounds on the values for $u(10^{28})$ and $u(0)$, so that we can compare the expected utility of (i), which is 0, to the expected utility of (ii), which is $\frac{1}{2}u(10^{28}) + \frac{1}{2}u(0)$. We have that
+    \begin{align*}
+        u(10^{28}) &= u(3000) + u(3100) + \sum_{k=1}^{10^{26}-30} u(3000 + 100(k+1)) - u(3000 + 100k) \\
+        &< 1 + \sum_{k=1}^{\infty} u(3000 + 100(k+1)) - u(3000 + 100k) \\
+        &\le 1 + \sum_{k=1}^\infty \left(\frac{49}{51}\right)^k = \frac{51}{2}
+    \end{align*}
+    Next, we have that
+    \begin{align*}
+        u(3000) - u(0) &=\sum_{k=0}^{29} u(3000 - 100k) - u(3000 - 100(k+1)) \\
+        &\ge \sum_{k=0}^{29} \left(\frac{51}{49}\right)^k\\
+        &\approx 56.856 \\
+        &\Longrightarrow u(0) \le -56.856
+    \end{align*}
+    These bounds mean that the utility for lottery (ii) is 
+    \[
+    \frac{1}{2}u(10^{28}) + \frac{1}{2}u(0) \le \frac{1}{2}\frac{51}{2} + \frac{1}{2}(-56.856) = -15.678 < 0
+    \]
+    Thus, the consumer will choose lottery (i), the guaranteed wealth of \$3,000.
+
+    \item[(d)] Rabin (2000) presents a `Calibration Theorem' which serves to demonstrate some ridiculous elements of expected utility theory. In the paper, using only the assumption of an expected utility maximizer with a concave utility function, he shows that if such an agent would turn down a small bet with positive expected value at all levels of initial wealth, they would also turn down bets with \emph{any} possible gain, if the possibility of loss is even a little bit higher. Part (c) serves as a specific example of this. We have an agent who would turn down a small gamble with positive expected value at any initial wealth level, which we can show means that she would avoid a lottery which would provide a ridiculous amount of money for a relatively tiny loss. In fact, the given gamble that the agent would turn down corresponds to approximately $g = 104$ in Rabin's model. This means that the agent we are studying would choose (i) \emph{no matter what} the payoff for (ii) is -- the possibility of losing \$3,000 means that she would turn down any possible gain. This result is clearly ridiculous, and Rabin uses it to highlight that the assumption of risk aversion over small gambles, which is on its face entirely reasonable, can lead to absurd conclusions. 
+\end{itemize}
+
+\paragraph{Problem 3:} Let $S$ be a finite set of states and let $X$ be a finite set of consequences. Suppose that $|S| > 1$ and $|X| > 1$. A preference $\succ$ over Anscombe-Aumann acts is \emph{ambiguity-averse} if there exists preference $\succ'$ with a subjective expected utility representation such that:
+\begin{itemize}
+    \item for all Anscombe-Aumann acts $f$ and all lotteries $p \in \Delta X$, if $f \succ p$, then $f \succ' p$. 
+\end{itemize}
+(Here, we identify $p$ with the state-independent act $g$ defined by $g(s) = p$.)
+
+\begin{itemize}
+    \item[(a)] Let $\mathcal{P} \subseteq \Delta S$ be a closed set of priors and let $u$ be a Bernoulli utility function. Define a \emph{max-min expected utility function} over Anscombe-Aumann acts by
+    \[
+    U(f) = \min_{\pi\in\mathcal{P}} \sum_{s \in S} \pi(s) \sum_{x \in X} f(s)_x u_x
+    \]
+    Prove that the preference relation represented by $U$ is ambiguity-averse.
+
+    \item[(b)] Let $\pi \in \Delta S$ be a prior that assigns nonzero probabilities to all states, and let $u$ be a Bernoulli utility function. Define a \emph{robust control utility function} over Anscombe-Aumann acts by
+    \[
+    U(f) = \min_{\pi' \in \Delta S} \left( \sum_{s \in S} \pi'(s) \sum_{x \in X} f(s)_x u_x + R(\pi' \| \pi) \right)
+    \]
+    where
+    \[
+    R(\pi' \| \pi) = \sum_{s \in S} \pi'(s) \log \frac{\pi'(s)}{\pi(s)}
+    \]
+    Prove that the preference relation represented by $U$ is ambiguity-averse.
+
+    \item[(c)] Read Section IV (titled ``Uncertainty and Decision Theory'') in ``Nobel Lecture: Uncertainty Outside and Inside Economic Models'' by L. P. Hansen, published in \emph{Journal of Political Economy} 122(g):945-987, 2014. (You can skip Section VI.B.) Write one paragraph interpreting the issues discussed in the article using the formal concept of ambiguity aversion.
+\end{itemize}
+
+\medskip
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] Take some $\pi \in \mathcal{P}$, and denote it $\pi_0$. Consider the function 
+    \[
+    U_0(f) = \sum_{s \in S} \pi_0(s) \sum_{x \in X} f(s)_x u_x
+    \]
+    Note that we can represent $U_0$ in subjective expected utility form, because it contains only a single prior. We have
+    \[
+    U_0(f) = \sum_{s\in S} \sum_{x \in X} \pi_0(s) f(s)_x u_x
+    \]
+    This means that $U_0$ represents a preference relation which we denote $\succ'$. Further, for any $g(s) = p$, and using the separability of subjective expected utility functions over state-independent acts, we have that
+    \[
+    U_0(p) = \sum_{s\in S} \sum_{x \in X} \pi_0(s) g(s) u_x = \sum_{x \in X} pu_x = \left(\min_\pi \sum_{s\in S} \pi(s) \right) \sum_{x \in X} pu_x = U(p)
+    \]
+    From the definition of minimum, $U_0(f) = U(f)$ if and only if
+    \[
+    \pi_0 \in \argmin_{\pi \in \mathcal{P}}\sum_{s \in S} \pi(s) \sum_{x \in X} f(s)_x u_x
+    \]
+    Otherwise, $U_0(f) > U(f)$. Thus, if $U(f) > U(p)$ for some $f,p$, then $U_0(f) \ge U(f) > U(p)$. This means that if $f \succ p$, $U(f) > U(p) \Rightarrow U_0(f) \ge U(f) > U(p) = U_0(p)$, which implies that $f \succ' p$. Thus, the preference relation represented by the max-min expected utility function is ambiguity-averse.
+
+
+    \item[(b)] Note first that $R(\pi' \| \pi) \ge 0$ for all $\pi',\pi$ by Gibbs' Inequality.\footnote{For a quick proof, note that since log is a strictly concave function, by Jensen's Inequality we have that for all indices $s'$ where $\pi'(s')$ is nonzero, $\sum_{s' \in S} \pi'(s') \log \frac{\pi(s')}{\pi'(s')} \le \log \sum_{s' \in S} \pi'(s') \frac{\pi(s')}{\pi'(s')} = \log \sum \pi'(s') \le \log 1 = 0 \Rightarrow \sum_{s' \in S} \pi'(s') \log \frac{\pi(s')}{\pi'(s')} \le 0 \Rightarrow \sum_{s' \in S} \pi'(s') \log \frac{\pi'(s')}{\pi(s')} \ge 0$, and since all other values are 0, we have that $R(\pi' \| \pi) \ge 0$ for all $\pi',\pi$.} Fix $\pi_0 = \pi \in \Delta S$. Consider the function
+    \[
+    U_0(f) = \sum_{s \in S} \pi_0(s) \sum_{x \in X} f(s)_x u_x + R(\pi_0 \|\pi)
+    \]
+    Since $\pi_0 = \pi$, $R(\pi_0 \| \pi) = \sum_{s \in S} \pi_0(s) \log \frac{\pi_0(s)}{\pi(s)} = 0$, so
+    \[
+    U_0(f) = \sum_{s \in S} \pi_0(s) \sum_{x \in X} f(s)_x u_x
+    \]
+    As in part (a), $U_0$ can be represented in subjective utility form (in fact, the same form as part (a)) because it contains only a single prior. We have
+    \[
+    U_0(f) = \sum_{s\in S} \sum_{x \in X} \pi_0(s) f(s)_x u_x
+    \]
+    This means that $U_0$ represents a preference relation which we denote $\succ'$. Note that since $\pi_0 \in \Delta S$, $U(f) \le U_0(f)$ for all $f$, from the definition of minimum. It remains to demonstrate that $U(g) = U_0(g)$ for all $g$ where $g(s) = p$ constant. Take $U(g)$:
+    \begin{align*}
+    U(g) &= \min_{\pi' \in \Delta S} \left( \sum_{s \in S} \pi'(s) \sum_{x \in X} g(s) u_x + R(\pi' \| \pi) \right) \\
+    &= 1 \cdot \sum_{x \in X} pu_x + \min_{\pi' \in \Delta S} \left( R(\pi' \| \pi) \right) \\
+    &= \sum_{x \in X} pu_x + 0 \;\;\;\;\text{ from Gibbs' Inequality} \\
+    &= \left(\sum_{s \in S} \pi_0(s) \right) \sum_{x \in X} pu_x  \\
+    &= U_0(g)
+    \end{align*}
+    Thus, for any $g$ where $g(s) = p$ constant, $U(g) = U_0(g)$. Thus, if $f \succ p$, $U(f) > U(p)$. Then, we have that $U_0(f) \ge U(f) > U(p) = U_0(p)$, which means that $f \succ' p$. Thus, the preference relation represented by the robust control utility function is ambiguity-averse.
+
+    \item[(c)] Hansen (2014) discusses the generation of models through the lens of ambiguity and risk aversion. Specifically, he makes the comparison between unknown models (in our case, states) and unknown parameters (in our case, the lotteries themselves). He describes in general terms ambiguity aversion, making specific reference to the max-min expected utility function which we proved was ambiguity averse in part (a). He also notes that ambiguity aversion is a way to model what might initially look like misspecified beliefs -- we discussed this in class, referring to Ellsberg's (1961) paradox. Hansen concludes by noting that ambiguity aversion provides a tool for under- and overconfidence, the former especially prevalent in the functions described in (a) and (b), where agents assume that the worst case scenario will always happen. 
+\end{itemize}
+
+\paragraph{Problem 4:} Suppose the prize space in dollars is $\mathcal{X} = \{1,2,3,4,5\}$. 
+
+\begin{itemize}
+    \item[(a)] Suppose a risk-averse expected utility maximizer has to compare the following two gambles:
+    \[
+    p = (1/5,1/5,1/5,1/5,1/5) \;\;\;\;\;\;\; q = (2/5,0,1/5,0,2/5)
+    \]
+    Can you say unambiguously which one she would prefer?
+
+    \item[(b)] Suppose a risk-averse expected utility maximizer has to compare the following two gambles:
+    \[
+    p' = (1/5,1/5,1/5,1/5,1/5) \;\;\;\;\;\;\; q' = (2/5,0,0,1/5,2/5)
+    \]
+    Can you say unambiguously which one she would prefer?
+
+    \item[(c)] Consider a decision-maker with a utility function $u(x) = x - ax^2$, defined on $x \in [1,5]$, where $0 < a < 1/5$. How will this decision-maker rank $p$ vs. $q$ and $p'$ vs. $q'$?
+\end{itemize}
+\medskip
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] Call the CDF for $p$ $G$, and call the CDF for $q$ $F$. Both CDFs are illustrated in Figure~\ref{fig:4a}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[very thick, <->] (0,6)--(0,0)--(6,0);
+            
+            \draw[very thick, purple] (0,0)--(1,0)--(1,1);
+            \draw[very thick, purple] (2,2)--(3,2)--(3,3)--(4,3);
+            \draw[very thick, purple,->] (5,4)--(5,5)--(6,5);
+            
+            \draw[very thick, red] (1,1)--(2,1)--(2,2);
+            \draw[very thick, red] (4,3)--(4,4)--(5,4);
+
+
+            \draw[very thick, blue] (1,1)--(1,2)--(2,2);
+            \draw[very thick, blue] (4,3)--(5,3)--(5,4);
+
+            \fill[purple, nearly transparent] (1,0)--(1,1)--(2,1)--(2,2)--(3,2)--(3,3)--(5,3)--(5,5)--(6,5)--(6,0)--(1,0);
+            \fill[red, nearly transparent] (4,3)--(4,4)--(5,4)--(5,3)--(4,3);
+            \fill[blue, nearly transparent] (1,1)--(2,1)--(2,2)--(1,2)--(1,1);
+
+            \node[left] at (0,0) {0};
+            \node[below] at (0,0) {0};
+            \node[left] at (0,5) {1};
+            \node[left] at (0,2.5) {1/2};
+
+            \node[below] at (1,0) {1};
+            \node[below] at (2,0) {2};
+            \node[below] at (3,0) {3};
+            \node[below] at (4,0) {4};
+            \node[below] at (5,0) {5};   
+        \end{tikzpicture}
+        \caption{The cumulative distributions for \textcolor{blue}{\emph{p}} and \textcolor{red}{\emph{q}}. When the lines coincide, they are \textcolor{purple}{purple}.} Areas under both curves are lightly shaded in their color.
+        \label{fig:4a}
+    \end{figure}
+
+     By inspection, neither gamble first-order stochastically dominates the other, as their CDFs cross. From Proposition 7, since the two gambles have the same mean, we can use the area under their CDFs to find out whether one second-order stochastically dominates the other. We will show that
+    \[
+    \int_{-\infty}^x G(y)dy \le \int_{-\infty}^x F(y)dy
+    \]
+    Since the distributions are discrete, we simply compare the values of the integral over distinct areas
+    \[
+    \begin{tabular}{|c|c|c|}
+        \hline
+        $x$ & $\int_{-\infty}^x G(y)dy$ & $\int_{-\infty}^x F(y)dy$ \\
+        \hline
+        $<1$ & 0 & 0 \\
+        \hline
+        $<2$ & 1/5 & 2/5\\
+        \hline
+        $<3$ & 3/5 & 4/5\\
+        \hline
+        $<4$ & 6/5& 7/5\\
+        \hline
+        $<5$ & 10/5& 10/5\\
+        \hline
+    \end{tabular}
+    \]
+    This extends to all other values of $y$ by inspection. Since $\int_{-\infty}^x G(y)dy \le \int_{-\infty}^x F(y)dy$ for all $y$, $G$ second-order stochastically dominates $F$, so the agent will prefer $p$ to $q$
+
+    \item[(b)] No. We can see that, by comparing two different risk-averse expected utility functions, she may sometimes prefer one or the other. First, take the Bernoulli utility function $u(x) = \sqrt{x}$. The associated expected utility functions are
+    \[
+    U(p') = \frac{1}{5}\sqrt{1} + \frac{1}{5}\sqrt{2} + \frac{1}{5}\sqrt{3} + \frac{1}{5}\sqrt{4} + \frac{1}{5}\sqrt{5} \approx 1.68
+    \]
+    \[
+    U(q') = \frac{2}{5}\sqrt{1} + \frac{1}{5}\sqrt{4} + \frac{2}{5}\sqrt{5} \approx 1.69
+    \]
+    So with the concave Bernoulli utility function $u(x) = \sqrt{x}$, the agent would prefer $q'$ to $p'$. However, with the Bernoulli utility function $u(x) = \ln x$, the expected utility functions are
+    \[
+    U(p') = \frac{1}{5}\ln{1} + \frac{1}{5}\ln{2} + \frac{1}{5}\ln{3} + \frac{1}{5}\ln{4} + \frac{1}{5}\ln{5} \approx 0.96
+    \]
+    \[
+    U(q') = \frac{2}{5}\ln{1} + \frac{1}{5}\ln{4} + \frac{2}{5}\ln{5} \approx 0.92
+    \]
+    So with the concave Bernoulli utility function $u(x) = \ln{x}$, the agent would prefer $p'$ to $q'$. Thus, we cannot say unambiguously which one she would prefer.
+
+    \item[(c)] To find how the decision maker will rank $p$ vs $q$, we simply find a measure for the expected utility in terms of $a$:
+    \[
+    U(p) = \frac{1}{5}(1 - a) +  \frac{1}{5}(2 - 4a) +  \frac{1}{5}(3 - 9a) +  \frac{1}{5}(4 - 16a) +  \frac{1}{5}(5 - 25a) = 3 - 11a
+    \]
+    \[
+    U(q) = \frac{2}{5}(1-a) + \frac{1}{5}(3 - 9a) + \frac{2}{5}(5 - 25a) = 3 - \frac{61}{5}a < 3 - 11a
+    \]
+    Thus, the decision maker would prefer $p$ to $q$, because $\frac{61}{5} > 11$. One could also find this by noting that $u$ is strictly concave, so the decision-maker is risk-averse and so would unambiguously prefer $p$ from part (a).
+
+    \medskip
+
+    To find how the decision maker will rank $p'$ vs $q'$, we similarly find a measure for the expected utility in terms of $a$:
+    \[
+    U(p') = U(p) = 3 - 11a
+    \]
+    \[
+    U(q') = \frac{2}{5}(1 - a) + \frac{1}{5}(4 - 16a) + \frac{2}{5}(5 - 25a) = \frac{16}{5} - \frac{68}{5}a
+    \]
+    Thus, when $a = 1/13$, $U(p') = U(q')$, so $p' \sim q'$. When $a < 1/13$, $U(q') > U(p')$, so $q' \succ p'$, and when $a > 1/13$, $U(p') > U(q')$, so $p' \succ q'$.
+\end{itemize}
+
+\paragraph{Problem 5:} Consider the portfolio problem discussed in class: there is an investor with wealth $w$, who has to choose how to allocate this wealth between a riskless asset that pays gross return $r$ for sure and a risky asset whose gross return as a cdf $F$. The investor has a ``well-behaved'' (differentiable, concave, increasing) utility function. This problem asks you to consider the effect on investment of a change in the distribution of the risky asset. 
+\begin{itemize}
+    \item[(a)] Suppose that the return on the risky asset improves so that its cdf if now $G$, where $G$ first-order stochastically dominates $F$. Construct a simple example (the simpler the better) where such a change could nevertheless lead the investor to decrease the amount he invests in the risky asset.
+
+    \item[(b)] Show that if $G$ dominates $F$ in the likelihood ratio order, then the consumer will invest more in the risky asset if it has distribution $G$ than if it has distribution $F$. (Hint: try to mimic the proof in the lecture notes that less risk-averse consumers invest more in a given risky asset.)
+\end{itemize}
+
+\medskip
+\textbf{Solutions:}
+
+\begin{itemize}
+    \item[(a)] Assume that the risky asset assumes value $a$ with probability $0.5$ and $0$ with probability $0.5$. If $G$ has value $a'$ and $F$ has value $a$, where $a' > a$, that is a first-order stochastic domination by inspection. Take as an example a consumer with Bernoulli utility function $u(x) = x - \frac{1}{2} x^2$. The consumer's maximization problem, where $x$ is the amount invested in the risky asset and $w$ is initial wealth, is
+    \[
+    \max_{x \in [0,w]} \frac{1}{2} u(r(w-x)) + \frac{1}{2}u(ax + r(w-x))
+    \]
+    Taking first-order conditions, we get
+    \[
+        -\frac{1}{2}r u'(r(w-x)) + \frac{1}{2}(a-r) u'(ax + r(w-x)) = 0
+    \]
+    Solving for $x$, noting that $u'(x) = 1-x$, we get
+    \[
+    x^* = \frac{1 - rw}{a-2r}
+    \]
+    Taking the derivative with respect to $a$, we get
+    \[
+    \frac{\partial x^*}{\partial a} = \frac{rw - 1}{(a-2r)^2}
+    \]
+    With some assumptions ($rw < 1$, $a>2r$), we get that this derivative is negative, meaning that the amount invested in the risky asset will go down, even if the new cdf first-order stochastically dominates the old.
+
+    \item[(b)] 
+    \begin{proof}
+    Assume that the gross return of the risky asset is $\varepsilon$. Also denote $y = r(w-x)$. The consumer's maximization problem for cdf $F$ is
+    \[
+    \begin{array}{ll}
+        \max_{x,y \ge 0} & \expect_F\left[ u(\varepsilon x + y)\right] \\
+        \text{s.t.} & x + \frac{y}{r} = w
+    \end{array}
+    \]
+    Call the objective function $V(x,y;F)$ (analogously, for cdf $G$ it is $V(x,y;G)$). The marginal rate of substitution between $x$ and $y$ is
+    \[
+    \frac{\partial V(x,y;F) / \partial x}{\partial V(x,y;F) / \partial y} = \frac{\expect_F\left[ \varepsilon u'(\varepsilon x + y)\right]}{\expect_F\left[ u'(\varepsilon x + y)\right]} = \int \varepsilon R(\varepsilon,x,y;F) d\varepsilon
+    \]
+    where
+    \[
+    R(\varepsilon,x,y;F) = \frac{u'(\varepsilon x + y)}{\expect_F\left[ u'(\varepsilon x + y)\right]} f(\varepsilon)
+    \]
+    where $f(\varepsilon)$ is the pdf of $\varepsilon$. We view $R(\cdot,x,y;F)$ as the pdf of some random variable, as $\int R(\varepsilon,x,y;F) d\varepsilon = 1$. Define $R(\cdot,x,y;G)$ analogously. To compare the consumer's choice under the two distributions, note that
+    \[
+    \frac{R(\varepsilon,x,y;G)}{R(\varepsilon,x,y;F)} = \frac{g(\varepsilon)}{f(\varepsilon)} \frac{\expect_F\left[ u'(\varepsilon x + y)\right]}{\expect_F\left[ u'(\varepsilon x + y)\right]}
+    \]
+    Since $G$ dominates $F$ in the likelihood ratio order, $\frac{g(\varepsilon)}{f(\varepsilon)}$ is nondecreasing in $\varepsilon$, which means that $\frac{R(\varepsilon,x,y;G)}{R(\varepsilon,x,y;F)}$ is nondecreasing in $\varepsilon$. This means that $R(\varepsilon,x,y;G)$ dominates $R(\varepsilon,x,y;F)$ in the likelihood ratio order, meaning that it first order stochastically dominates it. Thus, we have that
+    \[
+    \frac{\partial V(x,y;G) / \partial x}{\partial V(x,y;G) / \partial y} = \int \varepsilon R(\varepsilon,x,y;G) d\varepsilon \ge \int \varepsilon R(\varepsilon,x,y;F) d\varepsilon = \frac{\partial V(x,y;F) / \partial x}{\partial V(x,y;F) / \partial y}
+    \]
+    This means that $V(x,y;G)$ has the Spence-Mirrlees single-crossing property, meaning that the consumer will take more risk under $G$ than under $F$.
+    \end{proof}
+\end{itemize}
+
+
 
 \newpage
 \subsection{Uncertainty (Barseghyan)}
