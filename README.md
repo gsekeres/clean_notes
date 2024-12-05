@@ -22,11 +22,11 @@ Please let me know what section you would like to contribute to! I will deal wit
 - Section 4: Blume (uncertainty): Gabe
     - Status: Done
 - Section 5: Barseghyan (uncertainty 2): Gabe
-    - Status: In progress
+    - Status: Done
 - Section 6: Battaglini (information / game theory): Gabe
     - Status: In progress, notes from slides done.
-- Section 7: Exercises: Everyone
+- Section 7: Exercises: Gabe and Omar
     - Status: In progress. 
-    - TA Sections: Omar working on, has sent 4-6
-    - Course HWs: Added 1-4. Others not started.
-    - Outside Exercises: Added Stanford Psets. 
+    - TA Sections: Omar working on, has sent 4-6.
+    - Course HWs: Added 1-5 with solutions, and 6 without solutions. 
+    - Outside Exercises: Done.

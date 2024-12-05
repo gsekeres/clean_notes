@@ -1746,6 +1746,8 @@ We also will assume throughout that $X$ and the associated states are fixed.
 	\]
 \end{definition}
 
+\subsection{Lotteries}
+
 \begin{example} Comparing Lotteries.
 	Assume that the lottery is the flip of a (not necessarily fair) coin, where if heads appears you attain 0, if tails appears you attain $-T$. The probability of heads is $p_1$ and the probability of tails is $p_2$. We also have utility $u(x) = -\exp(-\gamma x)$. The amount you would be willing to pay for this lottery is the $x$ at which
 	\[
@@ -1807,6 +1809,8 @@ u\parl \sum_{i=1}^N p_ix_i\parr \ge \sum_{i=1}^n p_i u(x_i) \Longrightarrow \exi
 	\]
 \end{remark}
 
+\subsection{Insurance}
+
 \begin{example}
 	Insurance. Let's assume that there are two possible losses, against which the decision maker can buy insurance. The losses are:
 	
@@ -1852,6 +1856,8 @@ u\parl \sum_{i=1}^N p_ix_i\parr \ge \sum_{i=1}^n p_i u(x_i) \Longrightarrow \exi
 	This result required assuming that we know all of $u$, $p$, and $w$. That's extremely strong.
 \end{remark}
 
+\subsection{Trees and Floods}
+
 \begin{example}
 	Trees. You are a farmer deciding where to plant a grape tree. You can choose either the left bank of a river, the right bank of a river, or on a mountain. We will denote the returns as:
 	
@@ -1879,6 +1885,147 @@ u\parl \sum_{i=1}^N p_ix_i\parr \ge \sum_{i=1}^n p_i u(x_i) \Longrightarrow \exi
 	Are the floods mutually exclusive? We need to answer this question.
 \end{remark}
 
+We'll say that the consumer can invest total wealth of $1$ into the various locations, denoted by $x_\ell, x_r, x_m$. Our expected utility maximization problem is
+\[
+\max_{x_\ell + x_r + x_m \le 1} \sum_{i \in \{\emptyset,\ell,r,\ell r\}} f_i u(w_i) \qquad \text{ where } w_{\emptyset} = x_mm
+\]
+Let's assume that the floods are independent. Then we have that
+\begin{align*}
+	\prob\{\text{no flood}\} &= (1-f_\ell)(1-f_r) &&\Longrightarrow w = x_\ell \ell + x_r r + x_mm \\
+	\prob\{\ell\text{ flood}\} &= f_\ell(1-f_r) &&\Longrightarrow w =  x_r r + x_mm \\
+	\prob\{r\text{ flood}\} &= (1-f_\ell)f_r &&\Longrightarrow w = x_\ell \ell + x_mm \\
+	\prob\{\ell r\text{ flood}\} &= f_\ell f_r &&\Longrightarrow w =  x_mm
+\end{align*}
+Suppose that preferences are CARA, so $u(x) = -\exp(-\gamma x)$ for some $\gamma$. Our maximization problem becomes
+\begin{align*}
+	\max_{x_\ell + x_r + x_m \le 1}& -(1-f_\ell)(1-f_r)\exp(-\gamma (x_\ell \ell + x_r r + x_mm)) \\
+	&-  f_\ell(1-f_r)\exp(-\gamma (x_r r + x_mm)) - (1-f_\ell)f_r \exp(-\gamma ( x_\ell \ell + x_mm )) \\
+	&-  f_\ell f_r \exp(-\gamma x_mm) 
+\end{align*}
+Note that since the utility function is increasing, the constraint will hold with equality. We can substitute, and the problem becomes
+\[
+-f_\ell \barl f_r \exp(-\gamma (1-x_r - x_\ell)m)  + (1-f_r)\exp(-\gamma (x_r r + (1-x_r - x_\ell)m))\barr
+\]
+\[
+-(1-f_\ell) \barl (1-f_r)\exp(-\gamma (x_\ell \ell + x_r r + (1-x_r - x_\ell)m)) + f_r \exp(-\gamma ( x_\ell \ell + (1-x_r - x_\ell)m ))\barr
+\]
+Note that this is multiplicatively separable into terms with $x_\ell$ and $x_r$. We can rewrite the problem as
+\[
+	\Big[-f_\ell \exp(\gamma x_\ell m)  -(1-f_\ell) \exp(-\gamma x_\ell (\ell - m))\Big]\Big[f_r \exp(-\gamma (1-x_r)m)  +(1-f_r)\exp(-\gamma (x_r r + (1-x_r)m)) \Big] 
+\]
+
+\begin{remark}
+	This is a fairly deep result. We can think of it as essentially, since the events are independent, ignoring whether or not the left (or right) bank will flood when considering the optimal amount to invest in the other bank. This result generalizes, and is extremely nice for the purposes of modeling. It means that we don't need to consider, for example, the probability that a random event in New York will happen or not when modeling something in California, as long as the two aren't dependent.
+\end{remark}
+
+\subsection{Miscellanea}
+
+\paragraph{Some Nice Intuition.}
+
+
+\begin{definition}
+	The \blue{equity premium} is the gain in expected value a risky asset gives over a safe asset. This doesn't \emph{need} to hold, but in a world where we generally think people are risk-averse, nobody would be interested in an asset that had both higher risk and less return than a safe asset. 
+\end{definition}
+
+\begin{remark}
+	If two events are (perfectly) correlated, then one of them is irrelevant. Prof. Barseghyan provided this intuition: If one event is whether the Kansas City Chiefs win and another is whether people drink in Kansas City, owning one implicitly means you own the other. Moreover, if someone benefits from one asset implicitly, they should bet against it to hedge. A Ford employee with stock options should, with their own money, invest in Tesla, if they assume it's a zero-sum game.
+\end{remark}
+
+
+\paragraph{Some Definitions.} 
+
+\begin{definition}
+	\blue{Loss aversion} is a behavioral result where someone will refuse a single lottery but accept multiple independent draws of the lottery. This is intuitively rational, but doesn't actually make sense in expected utility theory.
+\end{definition}
+\begin{definition}
+	\blue{Prospect Theory} is another explanation for a behavioral result. Prof. Blume talked about it a bit, but think about it as reweighting probabilities before evaluating expected utility.
+\end{definition}
+
+\paragraph{Some Formality.} (From Stanford E202 Uncertainty Notes, by Ilya Segal and Ravi Jagadeesan)
+
+\begin{remark}
+	I'm honestly not sure how much of this will be relevant, and I'm unsure if any of it is examinable. However, I appreciate rigor when it's available, so I figured I'd include this for completeness and as a reference if nothing else.
+\end{remark}
+
+\begin{definition}
+	A decision maker is \blue{(strictly) risk-averse} if for any non-degenerate lottery $F$ with expected value $E_F$, the decision maker (strictly) prefers $\delta_{E_F}$, the degenerate lottery that pays $E_F$ with probability 1, to $F$.
+\end{definition}
+
+\begin{proposition}
+	A decision maker is risk-averse if and only if her Bernoulli utility function is concave.
+\end{proposition}
+
+\begin{definition}
+	The \blue{certainty equivalent} $c(F,u)$ is the amount of dollars such that
+	\[
+	u(c(F,u)) = \int u(x)dF(x)
+	\]
+	The \blue{risk premium} of lottery $F$ for decision maker $u$ is the difference $\expect_F[X] - c(F,u)$.
+\end{definition}
+
+\begin{definition}
+	For a twice-differentiable Bernoulli utility function $u(\cdot)$, the \blue{Arrow-Pratt Coefficient of Absolute Risk Aversion} at $x$ is $A(x) = -\frac{u''(x)}{u(x)}$
+\end{definition}
+
+\begin{proposition}
+	The following are equivalent for decision makers $u$ and $v$:
+	\begin{itemize}
+		\item[(i)] $u$ is more risk averse than $v$
+		\item[(ii)] For every lottery $F$, $c(F,u) \le c(F,v)$
+		\item[(iii)] There exists an increasing concave function $g$ such that $u = g \circ v$
+		\item[(iv)] $\frac{u'(x)}{v'(x)}$ is nondecreasing in $x$
+		\item[(v)] For every $x$, $A(x,u) \ge A(x,v)$
+		\item[(vi)] Whenever $u$ weakly prefers a lottery $F$ to a certain outcome $\delta_x$, then $v$ does as well
+	\end{itemize}
+\end{proposition}
+
+\begin{definition}
+	The Bernoulli utility function $u(\cdot)$ has \blue{decreasing (constant, increasing) absolute risk aversion} if $A(x,u)$ is a decreasing (constant, increasing) function of $x$.
+\end{definition}
+
+\begin{definition}
+	For a Bernoulli utility function $u(\cdot)$, the \blue{coefficient of relative risk aversion} at $x$ is $R(x,u) = -x \frac{u''(x)}{u'(x)} \equiv xA(x,u)$. $u$ has \blue{decreasing (constant, increasing) relative risk aversion} if $R(x,u)$ is a decreasing (constant, increasing) function of $x$.
+\end{definition}
+
+\begin{definition}
+	The distribution $G$ \blue{first order stochastically dominates (FOSD)} the distribution $F$ if for every nondecreasing function $u: \reals \to \reals$, $\int u(x)dG(x) \ge \int u(x)dF(x)$. 
+\end{definition}
+\begin{proposition}
+	The distribution $G$ first order stochastically dominates the distribution $F$ if and only if for every $x$, $G(x) \le F(x)$.
+\end{proposition}
+
+\begin{definition}
+	Suppose that distributions $G$ and $F$ with common support have densities $g$ and $f$ respectively. We say that $G$ \blue{dominates $F$ in the likelihood ratio order} if $\frac{g(x)}{f(x)}$ is nondecreasing in $x$.
+\end{definition}
+\begin{definition}
+	$G$ \blue{conditionally first order stochastically dominates} $F$ if the CDFs conditional on any (positive-measure Borel) set $A \subseteq \reals$ satisfy $G(x \mid A) \le F(x \mid A)$ for all $x$
+\end{definition}
+
+\begin{proposition}
+	$G$ dominates $F$ in the likelihood ratio order if and only if $G$ conditionally first order stochastically dominates $F$.
+\end{proposition}
+
+\begin{definition}
+	Consider two distributions $G$ and $F$ with the same mean. We say that $G$ \blue{second-order stochastically dominates (SOSD)} $F$ if for every concave function $u: \reals \to \reals$, $\int u(x)dG(x) \ge \int u(x) dF(x)$.
+\end{definition}
+\begin{proposition}
+	Consider two distributions $G$ and $F$ with the same mean. $G$ second order stochastically dominates $F$ if and only if for every $x$,
+	\[
+	\int_{-\infty}^x G(y) dy \le \int_{-\infty}^x F(y)dy
+	\]
+\end{proposition}
+
+\begin{remark}
+	From \href{https://www.sciencedirect.com/science/article/abs/pii/0022053170900384}{Rothschild and Stiglitz (1970)}, there's a really nice intuition for this. We can think of adding random, mean zero noise to a distribution. This is called a `mean preserving spread' as the resulting distribution will have the same mean but will be more spread out. Any distribution first order stochastically dominates its mean preserving spreads. To see why, consider a lottery that pays \$2 or \$0 with probability $1/2$ each. Now consider a lottery that pays \$3 or \$-1 with probability $1/2$ each. The second is a mean-preserving spread of the first, but clearly a risk-averse person would prefer the first to the second. To prove this in general is a fairly straightforward application of Jensen's Inequality! It's fun.
+\end{remark}
+
+\begin{remark}
+	Another equivalent definition of SOSD, without restricting $G$ and $F$ from having the same mean is that any von Neumann-Morgenstern decision maker with nondecreasing and (not necessarily strictly) concave Bernoulli utility prefers $G$ to $F$. You can probably show fairly easily that this is equivalent to the definition in Proposition 5.5. However, can you explain why we no longer care about the means being equal? What would happen if the means were not equal?
+\end{remark}
+
+\begin{proposition}
+	If decision-maker $u$ is less risk-averse than decision maker $v$, then $u$ will optimally choose to take more risk than $v$ for any CDF $G(\cdot)$.
+\end{proposition}
 
 
 
@@ -1892,7 +2039,10 @@ u\parl \sum_{i=1}^N p_ix_i\parr \ge \sum_{i=1}^n p_i u(x_i) \Longrightarrow \exi
 
 
 
-\subsection{Some Math Definitions}
+
+
+
+
 
 
 
@@ -3119,6 +3269,198 @@ As an example of a utility function which does satisfy this condition, consider 
 
 \subsubsection{TA Section Examples}
 
+Written by Omar.
+
+\paragraph{Section 4.}
+
+Assumptions
+\begin{enumerate}
+    \item $u(.)$ represents $\succsim$ and is continuous.
+    \item $\succsim$ satisfies local non satiation. (LNS)
+    \item $\succsim$ is strictly convex.
+\end{enumerate}
+
+Expenditure minimization problem (EMP)
+\[\min_x p \cdot x \text{ such that } u(x) \geq \bar{u}\]
+Hicksian demand: $h(p,\bar{u})$
+\begin{enumerate}
+    \item If $\inf u(x) \leq \bar{u} \leq \sup u(x)$ then there exist $h^*$ that solves the EMP. (Extreme Value Theorem)
+    \item $h(p,\bar{u})$ is homogeneous of degree 0 (HoD0) in price (p).
+    \item $u(h(p,\bar{u})) = \bar{u}$. (LNS)
+    \item $h(p,\bar{u})$ is a  well-defined function and it is continuous. ($\succsim$ strictly convex $+$ Berge's Theorem of the Maximum)
+\end{enumerate}
+Expenditure function: $e(p,\bar{u})$
+\begin{enumerate}
+    \item Continuous in $(p,\bar{u})$.
+    \item Nondecreasing in p and strictly increasing in $\bar{u}$.
+    \item HoD 1 in p.
+    \item Concave in p.
+\end{enumerate}
+Roadmap
+  \begin{figure}[H]
+    \centering
+    \includegraphics{figures/mwg_chapter3_duality.png}
+    \caption{MWG chapter 3. Roadmap.}
+    \label{fig:roadmap}
+\end{figure}
+\paragraph{Exercises}
+\paragraph{(2009 Prelim 1)}
+\begin{enumerate}
+    \item 
+    \[\max_{x_1,x_2,x_3} x_1 x_2^{\frac{1}{2}} x_3^{\frac{1}{2}}\]
+    Subject to
+    \[p_1x_1 +p_2x_2 +p_3x_3 \leq w\]
+
+    \item 
+    To find the consumer's demand functions we first notice that $u(.)$ is increasing in each good, so it satisfies LNS and therefore the constraint must be binding. Since all monotonic transformations preserve the order of $\succsim$, solving the problem in $(a)$ is equivalent to,
+    \[\max_{x_1,x_2,x_3} log(x_1) + \frac{1}{2}log(x_2)+\frac{1}{2}log(x_3)\]
+    Subject to
+    \[p_1x_1 +p_2x_2 +p_3x_3 = w\]
+    Our Lagrangian is,
+    \[\mathcal{L}(x,\lambda) = log(x_1) + \frac{1}{2}log(x_2)+\frac{1}{2}log(x_3) + \lambda(w-p_1x_1 -p_2x_2 -p_3x_3)\]
+    And our first order conditions give,
+    \[\frac{\partial\mathcal{L}(x,\lambda)}{\partial x_1} = \frac{1}{x_1} - \lambda p_1 = 0\]
+    \[\frac{\partial\mathcal{L}(x,\lambda)}{\partial x_2} = \frac{1}{2x_2} - \lambda p_2 = 0\]
+    \[\frac{\partial\mathcal{L}(x,\lambda)}{\partial x_3} = \frac{1}{2x_3} - \lambda p_3 = 0\]
+    \[\frac{\partial\mathcal{L}(x,\lambda)}{\partial \lambda} = w-p_1x_1 -p_2x_2 -p_3x_3 = 0\]
+    From here we obtain,
+    \[x_2 = \frac{p_1}{p_2}\frac{x_1}{2}\]
+    \[x_3 = \frac{p_1}{p_3}\frac{x_1}{2}\]
+    Substituting in the budget constraint,
+    \[w = p_1 x_1 + \frac{p_1 x_1}{2} + \frac{p_1 x_1}{2}\]
+    Solving the system of equations we get,
+    \[\implies x_1(p,w) = \frac{w}{2p_1}\]
+    \[\implies x_2(p,w) = \frac{w}{4p_2}\]
+    \[\implies x_1(p,w) = \frac{w}{4p_3}\]
+    To confirm that these are indeed our walrasian demand functions, we can check the corner solution or compute the Hessian of $u(x)$ and see if it is negative semidefinite.\\
+    Since neither of $x_1,x_2,x_3$ equals 0, then the answer above is the Walrasian Demand.
+
+    \item 
+    With the addition of the coupon component, the problem becomes,
+        \[\max_{x_1,x_2,x_3} x_1 x_2^{\frac{1}{2}} x_3^{\frac{1}{2}}\]
+    Subject to
+    \[p_1x_1 +p_2x_2 +p_3x_3 \leq w \text{ (Budget constraint)}\]
+    \[x_1+x_2+x_3 \leq c \text{ (Coupon constraint)}\]
+
+    \item 
+    Yes, for c big enough. Assume $p = (1,1,1)$, and $c>w$, then the problem becomes 
+            \[\max_{x_1,x_2,x_3} x_1 x_2^{\frac{1}{2}} x_3^{\frac{1}{2}}\]
+    Subject to
+    \[x_1 +x_2 +x_3 \leq w \text{ (Budget constraint)}\]
+    \[x_1+x_2+x_3 < c \text{ (Coupon constraint)}\]
+    The leftover coupons will be $c-w$.
+    \item 
+    Since the budget constraint and coupon constraint are "parallel", if $c>w$, then we only need to use the budget constraint. Otherwise, if $c \leq w$, we use the coupon constraint.\\
+    For example, if $c>w$, we just need to replace $p = (1,1,1)$ in the Walrasian demand we found in $(a)$.
+\end{enumerate}
+
+\paragraph{(2023 Prelim 1)}
+
+\begin{enumerate}
+    \item The problem is
+    \[V(T) = \max_{e}B(e) \text{ subject to } \sum_{i=1}^n e_i = T\]
+    Let $T_2 > T_1$. Denote $e(T_1)$ as the maximizer under $T_1$. Then there exist $0<\epsilon<\frac{T_2-T_1}{n}$ such that $\sum_{i=1}^n (e_i+\epsilon) = T_1 + n\epsilon < T_2$. Since B is strictly increasing,
+    \[B(e+\epsilon) > B(e(T_1))\]
+    Also since $\sum_{i=1}^n (e_i+\epsilon) < T_2$,
+    \[V(T_2) \geq B(e+\epsilon) >B(e(T_1)) = V(T_1)\]
+
+    \item The problem is
+    \[V(T) = \max_{e}B(e) \text{ subject to } \sum_{i=1}^n e_i = T\]
+    Since all the conditions are met, we can use the lagrangian method to solve this problem. The lagrangian is,
+    \[\mathcal{L} = B(e) + \lambda(T-\sum_{i=1}^n e_i)\]
+    And the first order condition is,
+    \[\frac{\partial\mathcal{L}}{\partial e_i} = \frac{\partial B(e)}{\partial e_i} - \lambda = 0 \implies \frac{\partial B(e)}{\partial e_i} = \lambda^*\]
+    In optimal, by the Envelope Theorem,
+    \[\frac{dV(T)}{dT} = \frac{d\mathcal{L}(e^*(T))}{dT} = \lambda^* = \frac{\partial B(e)}{\partial e_i} \]
+
+    \item The problem is
+        \[V(T) = \max_{e}b_1(\alpha e_1) + b_2(e_2) \text{ subject to } e_1 + e_2 = T\]
+        \[\implies \max_{e_1 \geq 0} b_1(\alpha e_1) + b_2(T-e_1)\]
+    The first order condition gives,
+    \[\alpha b_1'(\alpha e_1^*(\alpha)) - b_2'(T-e_1^*(\alpha)) = 0\]
+    We want to know how does $e_1^*$ changes when a decrease from 1 to $\alpha$ happens. For this we compute the derivative with respect to $\alpha$ on the FOC,
+    \[b_1'(\alpha e_1^*(\alpha)) + \alpha b_1''(\alpha e_1^*(\alpha))(e_1^*(\alpha)+\alpha e_1^{*'}(\alpha)) + b_2''(T-e_1^*(\alpha))e_1^{*'}(\alpha) = 0\]
+    We group terms and get,
+    \[\frac{\partial e_1^*(\alpha)}{\partial \alpha} = -\frac{b_1'(\alpha e_1^*(\alpha)) + \alpha b_1''(\alpha e_1^*(\alpha))e_1^*(\alpha) }{\alpha^2 b_1''(\alpha e_1^*(\alpha)) + b_2''(T-e_1^*(\alpha))}\]
+    Since each $b_i$ is strictly increasing and strictly concave, we know $b'(.) >0$ and $b''(.)<0$. From here we obtain that the denominator of $\frac{\partial e_1^*(\alpha)}{\partial \alpha}$ must be negative, but the sign of the numerator, $b_1'(\alpha e_1^*(\alpha)) + \alpha b_1''(\alpha e_1^*(\alpha))e_1^*(\alpha)$, remains undetermined. Therefore the sign of $\frac{\partial e_1^*(\alpha)}{\partial \alpha}$ is undetermined. 
+
+    
+\end{enumerate}
+
+
+\paragraph{Section 5.}
+
+\paragraph{In Section notes}
+Welfare:
+Say we have a price and wealth change from $(p,w)$ to $(p',w')$. The compensating variation (CV) and equivalent variation (EV) are defined as follows,
+\[CV = e(p',u') - e(p(',u)\]
+\[EV = e(p,u') - e(p,u)\]
+Where $u = v(p,w)$ and $u' = v(p',w')$.\\
+The equivalent variation can be thought of as the dollar amount that the consumer would be indifferent about accepting in lieu of the price change, that is, it is the change in her wealth that would be equivalent to the price change in terms of its welfare impact (so it is negative if the price change would make the consumer worse off).\\
+\bigskip
+The compensating variation, on the other hand, measures the net revenue of a planner who must compensate the consumer for the price change after it occurs, bringing her back to her original utility level $u$. (Hence, the compensatating variation is negative if the planner would have to pay the consumer a positive level of compensation because the price change makes her worse off.)\\
+\bigskip
+Special case: Only price of good 1 changes (by $t$) while other prices and wealth remain unchanged.
+\[CV = e(p',u') - e(p',u)\]
+Since $e(p',u')=e(p,u)=w$ and $h_1(p,u) = \frac{\partial e(p,u)}{\partial p_1}$,
+\[CV=e(p,u) - e(p',u)\]
+\[=\int_{p_1'}^{p_1} h_1(t,p_{-1},u) dt\]
+Where $p_{-1} = (p_2,p_3,...,p_n)$ ahd $h_1$ is the hicksian demand for good 1.\\
+Following the same logic we get,
+\[EV = \int_{p_1'}^{p_1} h_1(t,p_{-1},u') dt\]
+\begin{proposition}
+	Let $x_1$ be a normal good, i.e. $\frac{\partial x_1}{\partial w} \geq 0$, if only $p_1$ changes, then $EV \geq CV$.
+\end{proposition}
+
+\begin{proof}
+Assume without loss of generality (WLOG) that \(p_1' > p_1\).  
+To show \(EV \geq CV\), it suffices to prove:
+\[
+h_1(t, p_{-1}, u') \leq h_1(t, p_{-1}, u) \quad \text{for all } t.
+\]
+Recall that \(u = v(p, w) \geq u' = v(p', w')\). By the properties of the Hicksian demand function:
+\[
+h_1(p, u) = x_1(p, e(p, u)).
+\]
+
+Differentiating \(h_1(p, u)\) with respect to \(u\):
+\[
+\frac{\partial h_1(p, u)}{\partial u} = \frac{\partial x_1(p, e(p, u))}{\partial w} \cdot \frac{\partial e(p, u)}{\partial u}.
+\]
+
+Since:
+\begin{enumerate}
+    \item \(\frac{\partial x_1(p, e(p, u))}{\partial w} \geq 0\) (normal good assumption)
+    \item \(\frac{\partial e(p, u)}{\partial u} > 0\) (monotonicity of expenditure with respect to utility)
+\end{enumerate}
+\[
+\frac{\partial h_1(p, u)}{\partial u} \geq 0.
+\]
+Thus, \(h_1(p, u)\) is increasing in \(u\). Since \(u \geq u'\), it follows that:
+\[
+h_1(t, p_{-1}, u') \leq h_1(t, p_{-1}, u) \quad \text{for all } t.
+\]
+Therefore, integrating over \([p_1, p_1']\):
+\[
+\int_{p_1}^{p_1'} h_1(t, p_{-1}, u') \, dt \leq \int_{p_1}^{p_1'} h_1(t, p_{-1}, u) \, dt
+\]
+\[
+-\int_{p_1'}^{p_1} h_1(t, p_{-1}, u') \, dt \leq -\int_{p_1'}^{p_1} h_1(t, p_{-1}, u) \, dt
+\]
+\[
+\int_{p_1'}^{p_1} h_1(t, p_{-1}, u') \, dt \geq \int_{p_1'}^{p_1} h_1(t, p_{-1}, u) \, dt
+\]
+which implies:
+\[
+EV \geq CV.
+\]
+\end{proof}
+
+\begin{remark}
+If $\frac{\partial x_i}{\partial w} = 0$, then CV=EV when $p_i$ changes.\\
+Example: Quasi-linear utility, $u(x_1,x_2) = x_1 +f(x_2)$.
+\end{remark}
+
 \subsubsection{Outside Questions}
 
 The following are from Stanford ECON202 Problem Set 3. Questions written by Ilya Segal, answers by Gabe along with Asia-Kim Francavilla and Monia Tomasella. Answers not necessarily correct.
@@ -3829,6 +4171,170 @@ for some differentiable functions $a_i(\cdot) \; (i = 1,\dots,m)$ and $b(\cdot)$
 \end{enumerate}
 
 \subsubsection{TA Section Examples}
+
+Written by Omar.
+
+\paragraph{In Section notes}
+
+
+Cost Minimization Problem (CMP)\\
+\[\text{cost function } c(w,q) = \min_z w \cdot z \text{ subject to } f(z) = q\]
+Conditional input demand: $z(w,q)$\\
+\bigskip
+Properties of the cost function:
+\begin{enumerate}
+    \item c(w,q) is HoD1 in w.
+    \item c(w,q) is nondecreasing in q if we assume free disposal.
+    \item c(w,q) is concave in w.
+    \item If f(z) is HoD k, then c(w,q) is HoD $\frac{1}{k}$ in $q$.
+\end{enumerate}
+Profit Maximization Problem (PMP)\\
+\[\pi(p,w) = \max_x pf(x) -wx\]
+Where $x(p,w)$ is the input demand and $y(p,w)$ is the output supply.\\
+\bigskip
+Properties:
+\begin{enumerate}
+    \item Nondecreasing in p and nonincreasing in $w_i$ for all i.
+    \item HoD 1 in $(p,w)$.
+    \item Convex in $(p,w)$.
+    \item Continuous on $\mathbb{R}_{++}^1$ x $\mathbb{R}_{++}^n$
+\end{enumerate}
+\textbf{Derivatives}
+\begin{enumerate}
+    \item $\frac{\partial \pi(p,w)}{\partial p} = f(x(p,w)) = y(p,w)$
+    \item $\frac{\partial \pi(p,w)}{\partial w_i} = -x_i(p,w)$
+    \item $\frac{\partial c(w,q)}{\partial w_i} = z_i(w,q)$
+    \item $\frac{\partial c(w,q)}{\partial q} = MC \text{(Marginal Cost)}$
+\end{enumerate}
+\paragraph{Exercises}
+
+\paragraph{Solving problems with continuum of inputs}
+The problem is,
+\[\pi(p,w) = \max_{z(j)} pf(z) - \int_{0}^1 w(j)z(j)dj\]
+Given the production function \( f(z) = \int_0^1 z(j)^\alpha \, dj \), the profit maximization problem becomes
+\[
+\pi(p, w) = \max_{z(j)} \left[ p \int_0^1 z(j)^\alpha \, dj - \int_0^1 w(j) z(j) \, dj \right].
+\]
+Simplifying,
+\[
+\pi(p, w) = \max_{z(j)} \int_0^1 \left[ p z(j)^\alpha - w(j) z(j) \right] \, dj.
+\]
+The problem is separable\footnote{For an optimization problem, separability means that the objective function can be expressed as a sum (or integral) of terms, each depending only on a single variable (or a small subset of variables). This property allows the optimization over all variables to be broken down into independent subproblems that can be solved separately for each variable.\\
+The objective function is separable because: The term \( p z(j)^\alpha - w(j) z(j) \) depends only on \( z(j) \) for a fixed \( j \). There is no interaction between \( z(j) \) and \( z(k) \) for \( j \neq k \).
+}, so the maximization for each \( z(j) \) can be solved independently,
+
+\[
+\max_{z(j)} \left[ p z(j)^\alpha - w(j) z(j) \right].
+\]
+Taking the derivative with respect to \( z(j) \) and setting it to zero (FOC),
+
+\[
+\frac{\partial}{\partial z(j)} \left[ p z(j)^\alpha - w(j) z(j) \right] = 0,
+\]
+
+\[
+p \alpha z(j)^{\alpha - 1} - w(j) = 0.
+\]
+
+Solving for \( z(j) \):
+
+\[
+z(j) = \left( \frac{w(j)}{p \alpha} \right)^{\frac{1}{\alpha - 1}} = x(j,p,w).
+\]
+To confirm a maximum, check the second derivative:
+
+\[
+\frac{\partial^2}{\partial z(j)^2} \left[ p z(j)^\alpha - w(j) z(j) \right] = p \alpha (\alpha - 1) z(j)^{\alpha - 2}.
+\]
+
+Since \( \alpha \in (0, 1) \), the term \( (\alpha - 1) < 0 \), so the second derivative is negative, confirming a maximum.\\
+\bigskip
+
+\textbf{Extra (not required):} The optimal allocation is:
+
+\[
+z^*(j) = \left( \frac{w(j)}{p \alpha} \right)^{\frac{1}{\alpha - 1}}.
+\]
+
+Substitute \( z^*(j) \) into the profit function:
+
+\[
+\pi(p, w) = \int_0^1 \left[ p \left( z^*(j) \right)^\alpha - w(j) z^*(j) \right] \, dj.
+\]
+
+Substitute \( z^*(j) \) explicitly. First, compute \( \left( z^*(j) \right)^\alpha \):
+
+\[
+\left( z^*(j) \right)^\alpha = \left( \frac{w(j)}{p \alpha} \right)^{\frac{\alpha}{\alpha - 1}}.
+\]
+
+And:
+
+\[
+w(j) z^*(j) = w(j) \left( \frac{w(j)}{p \alpha} \right)^{\frac{1}{\alpha - 1}}.
+\]
+
+Thus:
+
+\[
+\pi(p, w) = \int_0^1 \left[ p \left( \frac{w(j)}{p \alpha} \right)^{\frac{\alpha}{\alpha - 1}} - w(j) \left( \frac{w(j)}{p \alpha} \right)^{\frac{1}{\alpha - 1}} \right] \, dj.
+\]
+
+Simplify further to compute the explicit profit if \( w(j) \) is specified.
+
+\paragraph{A question from a past Q exam}
+\begin{enumerate}
+    \item The problem is
+    \[E_p[\pi(p,w)] = \max_x E_p[px_1^{\alpha}x_2^{\beta}-w_1x_1-w_2x_2]\]
+    \[=\max_x E_p[p]x_1^{\alpha}x_2^{\beta}-w_1x_1-w_2x_2\]
+    Where $E[p]= \delta p_1+(1-\delta)p_2$.\\
+    \bigskip
+    The FOCs are,
+    \[\text{ $x_1$: } \alpha E(p)x_1^{\alpha-1}x_2^{\beta} = w_1\]
+    \[\text{ $x_2$: } \beta E(p)x_1^{\alpha}x_2^{\beta-1} = w_2\]
+    Then,
+    \[x_1^* = E(p)^{\frac{1}{1-\alpha-\beta}}\alpha^{\frac{1-\beta}{1-\alpha-\beta}}\beta^{\frac{\beta}{1-\alpha-\beta}}w_1^{\frac{\beta-1}{1-\alpha-\beta}}w_2^{\frac{-\beta}{1-\alpha-\beta}}\]
+    \[x_2^* = E(p)^{\frac{1}{1-\alpha-\beta}}\alpha^{\frac{\alpha}{1-\alpha-\beta}}\beta^{\frac{1-\alpha}{1-\alpha-\beta}}w_1^{\frac{-\alpha}{1-\alpha-\beta}}w_2^{\frac{\alpha-1}{1-\alpha-\beta}}\]
+    And the optimal output is,
+    \[q(E(p),w) = f(x^*) = E(p)^{\frac{\alpha+\beta}{1-\alpha-\beta}}\alpha^{\frac{\alpha}{1-\alpha-\beta}}\beta^{\frac{\beta}{1-\alpha-\beta}}w_1^{\frac{-\alpha}{1-\alpha-\beta}}w_2^{\frac{\beta}{1-\alpha-\beta}}\]
+
+    \item 
+    In this case we replace $E(p) = p_1$ and $E(p) = p_2$ respectively, and get,
+    \[q(p_1,w) = f(x^*) = p_1^{\frac{\alpha+\beta}{1-\alpha-\beta}}\alpha^{\frac{\alpha}{1-\alpha-\beta}}\beta^{\frac{\beta}{1-\alpha-\beta}}w_1^{\frac{-\alpha}{1-\alpha-\beta}}w_2^{\frac{\beta}{1-\alpha-\beta}}\]
+    \[q(p_2,w) = f(x^*) = p_2^{\frac{\alpha+\beta}{1-\alpha-\beta}}\alpha^{\frac{\alpha}{1-\alpha-\beta}}\beta^{\frac{\beta}{1-\alpha-\beta}}w_1^{\frac{-\alpha}{1-\alpha-\beta}}w_2^{\frac{\beta}{1-\alpha-\beta}}\]
+
+    \item 
+    Let $g(w) = \alpha^{\frac{\alpha}{1-\alpha-\beta}}\beta^{\frac{\beta}{1-\alpha-\beta}}w_1^{\frac{-\alpha}{1-\alpha-\beta}}w_2^{\frac{\beta}{1-\alpha-\beta}}$, and $\alpha + \beta = \frac{1}{2}$, then,
+    \[\implies \frac{\alpha+\beta}{1-\alpha-\beta} = 1\]
+    \[\implies q(E(p),w) = E(p)\alpha^{\frac{\alpha}{1-\alpha-\beta}}\beta^{\frac{\beta}{1-\alpha-\beta}}w_1^{\frac{-\alpha}{1-\alpha-\beta}}w_2^{\frac{\beta}{1-\alpha-\beta}}\]
+    \[=(\delta p_1+(1-\delta)p_2)\alpha^{\frac{\alpha}{1-\alpha-\beta}}\beta^{\frac{\beta}{1-\alpha-\beta}}w_1^{\frac{-\alpha}{1-\alpha-\beta}}w_2^{\frac{\beta}{1-\alpha-\beta}}\]
+    \[=\delta q(p_1,w) + (1-\delta)q(p_2,w)\]
+    Therefore, the expectation of the outputs in part (b) equals the output in part (a).
+
+    \item 
+    By a) we have $E_p[\pi(p,w)] = \pi(\delta p_1+(1-\delta)p_2,w)$.\\
+    By expected b) we have $\delta q(p_1,w) + (1-\delta)q(p_2,w)$\\
+    Since the profit function is convex in $(p,w)$, it is convex in $p$, and we can apply Jensen's inequality to conclude,
+    \[(a) \leq \text{expected } (b)\]
+    \end{enumerate}
+
+\paragraph{The Cost Function}
+We are given $C(w,q)|_{q=0} = C(w,0)=0$ and Marginal Cost = $\frac{\partial C(w,q)}{\partial q} =k$.\\
+Now we take integral back on $q$,
+\[\implies C(w,q) = kq + T(w)\]
+Given our initial condition $C(w,0) = T(w) = 0$,
+\[\implies C(w,q) kq\]
+Which means that it is HoD1 in $q$. Therefore, the production function is HoD1 in $(p,w)$.\\
+Some examples are:
+\begin{enumerate}
+    \item Cobb-Douglas
+    \[f(x_1,...,x_n) = \Pi_{i=1}^nx_i^{\beta_i} \text{ where } \sum_{i=1}^n \beta_i = 1\]
+    \item Leontief
+    \[f(x_1,...,x_n) = \min\{\beta_1 x_1,...,\beta_n x_n\}\]
+    \item Constant Elasticity of Substitution (CES)
+    \[f(x_1,...,x_n) = (\sum_{i=1}^n \beta_i x_i^r)^{\frac{1}{r}}\]
+\end{enumerate}
+
 
 \subsubsection{Outside Questions}
 
@@ -4736,18 +5242,315 @@ Thus, in the case where $u''' < 0$, the consumer will purchase less than full in
 
 \subsubsection{Barseghyan Homework}
 
+\paragraph{Problems.} MWG Chapter 6C. Problems 9, 14, 15, 16, 17, 18 and 19.
+
+\begin{itemize}
+	\item[9.] The purpose of this problem is to examine the implications of uncertainty and precaution in a simple consumption-savings decision problem.
+	
+	In a two-period economy, a consumer has first-period initial wealth $w$. The consumer's utility level is given by $u(c_1,c_2) = u(c_1) + v(c_2)$, where $u(\cdot)$ and $v(\cdot)$ are concave functions and $c_1$ and $c_2$ denote consumption levels in the first and second period respectively. Denote by $x$ the amount saved by the consumer in the first period (so that $c_1 = w-x$ and $c_2 = x$), and let $x_0$ be the optimal value of $x$ in this problem.
+	
+	We now introduce uncertainty in this economy. If the consumer saves an amount $x$ in the first period his wealth in the second period is given by $x + y$, where $y$ is distributed according to $F(\cdot)$. In what follows, $\expect[\cdot]$ always denotes expectation with respect to $F(\cdot)$. Assume that the Bernoulli utility function over realized wealth levels in the two periods $(w_1,w_2)$ is $u(w_1) + v(w_2)$. Hence, the consumer now solves
+	\[
+	\max_x u(w-x) + \expect[v(x+y)]
+	\]
+	Denote the solution to this problem by $x\opt$.
+	\begin{itemize}
+		\item[(a)] Show that if $\expect[v'(x_0+y)] > v'(x_0)$, then $x\opt > x_0$.
+		\item[(b)] Define the \emph{coefficient of absolute prudence} of a utility function $v(\cdot)$ at wealth level $x$ to be $-v'''(x) / v''(x)$. Show that if the coefficient of absolute prudence of a utility function $v_1(\cdot)$ is not larger than the coefficient of absolute prudence of utility function $v_2(\cdot)$ for all levels of wealth, then $\expect[v_1'(x_0 + y)] > v_1'(x_0)$ implies $\expect[v_2'(x_0 + y)] > v_2'(x_0)$. What are the implications of this fact in the context of part (a)?
+		\item[(c)] Show that if $v'''(\cdot) > 0$ and $\expect[y] = 0$, then $\expect[v'(x+y)] > v'(x)$ for all values of $x$.
+		\item[(d)] Show that if the coefficient of absolute risk aversion of $v(\cdot)$ is decreasing in wealth, then $-v'''(x) / v''(x) > -v''(x) / v'(x)$ for all $x$, and hence $v'''(\cdot) > 0$.
+	\end{itemize}
+	\item[14.] Consider two risk-averse decision makers (i.e., two decision makers with concave Bernoulli utility functions) choosing among monetary lotteries. Define the utility function $u\opt(\cdot)$ to be strongly more risk-averse than $u(\cdot)$ if and only if there is a positive constant $k$ and a nonincreasing and concave function $v(\cdot)$ such that $u\opt(x) = ku(x) + v(x)$ for all $x$. The monetary amounts are restricted to lie in the interval $[0,r]$.
+	\begin{itemize}
+		\item[(a)] Show that if $u\opt(\cdot)$ is strongly more risk-averse than $u(\cdot)$, then $u\opt(\cdot)$ is more risk-averse than $u(\cdot)$ in the usual Arrow-Pratt sense.
+		\item[(b)] Show that if $u(\cdot)$ is bounded, then there is no $u\opt(\cdot)$ other than $u\opt(\cdot) = ku(\cdot) + c$, where $c$ is a constant, that is strongly more risk-averse than $u(\cdot)$ on the entire interval $[0,\infty)$ . 
+		\item[(c)] Using (b), argue that the concept of a strongly more risk-averse utility function is stronger (ie more restrictive) than the Arrow-Pratt concept of a more risk-averse utility function.
+	\end{itemize}
+	\item[15.] Assume that, in a world with uncertainty, there are two assets. The first is a riskless asset that pays 1 dollar. The second pays amounts $a$ and $b$ with probabilities $\pi$ and $1-\pi$, respectively. Denote the demand for the two assets by $(x_1,x_2)$. 
+	
+	Suppose that a decision maker's preferences satisfy the axioms of expected utility theory and that he is a risk averter. The decision maker's wealth is 1, and so are the prices of the assets. Therefore, the decision maker's budget constraint is given by
+	\[
+	x_1 + x_2 = 1, x_1,x_2 \in [0,1]
+	\]
+	\begin{itemize}
+		\item[(a)] Give a simple \emph{necessary} condition, involving ($a$ and $b$ only) for the demand for the riskless asset to be strictly positive.
+		\item[(b)] Give a simple \emph{necessary} condition, involving ($a$, $b$, and $\pi$ only) for the demand for the risky asset to be strictly positive.
+	\end{itemize}
+	In the next three parts, assume that the conditions obtained in (a) and (b) are satisfied.
+	\begin{itemize}
+		\item[(c)] Write down the first order conditions for utility maximization in this asset demand problem.
+		\item[(d)] Assume that $a < 1$. Show by analyzing the first order conditions that $\partial x_1 / \partial a \le 0$. 
+		\item[(e)] Which sign do you conjecture for $\partial x_1 / \partial \pi$? Give an economic interpretation.
+		\item[(f)] Can you prove your conjecture in (e) by analyzing the first order conditions?
+	\end{itemize}
+	\item[16.] An individual has Bernoulli utility function $u(\cdot)$ and initial wealth $w$. Let lottery $L$ offer a payoff of $G$ with probability $p$ and a payoff of $B$ with probability $1-p$.
+	\begin{itemize}
+		\item[(a)] If the individual owns the lottery, what is the minimum price he would sell it for?
+		\item[(b)] If he does not own it, what is the maximum price he would be willing to pay for it?
+		\item[(c)] Are buying and selling prices equal? Give an economic interpretation for your answer. Find conditions on the parameters of the problem under which buying and selling prices are equal.
+		\item[(d)] Let $G = 10$, $B = 5$, $w = 10$, and $u(x) = \sqrt{x}$. Compute the buying and selling prices for this lottery and this utility function.
+	\end{itemize}
+	\item[17.] Assume that an individual faces a two-period portfolio allocation problem. In period $t = 0,1$, his wealth $w_t$ is to be divided between a safe asset with return $R$ and a risky asset with return $x$. The initial wealth at period 0 is $w_0$. Wealth at period $t = 1,2$ depends on the portfolio $\alpha_{t-1}$ chosen at period $t-1$ and on the return $x_t$ realized in period $t$, according to
+	\[
+	w_t = ((1-\alpha_{t-1}R + \alpha_{t-1}x_t)w_{t-1}
+	\]
+	The objective of this individual is to maximize the expected utility of terminal wealth $w_2$. Assume that $x_1$ and $x_2$ are independently and identically distributed. Prove that the individual optimally sets $\alpha_0 = \alpha_1$ if his utility function exhibits constant relative risk aversion. Show that this fails to hold if his utility function exhibits constant absolute risk aversion.
+	\item[18.] Suppose that an individual has a Bernoulli utility function $u(x) = \sqrt{x}$.
+	\begin{itemize}
+		\item[(a)] Calculate the Arrow-Pratt coefficients of absolute and relative risk aversion at the level of wealth $w = 5$.
+		\item[(b)] Calculate the certainty equivalent and the probability premium for a gamble $(16,4;\frac{1}{2},\frac{1}{2})$.
+		\item[(c)] Calculate the certainty equivalent and the probability premium for a gamble $(36,16;\frac{1}{2},\frac{1}{2})$. Compare this result with the one in (b) and interpret.
+	\end{itemize}
+	\item[19.] Suppose that an individual has a Bernoulli utility function $u(x) = -e^{-\alpha x}$ where $\alpha > 0$. His (nonstochastic) initial wealth is given by $w$. There is one riskless asset abd there are $N$ risky assets. The return per unit invested on the riskless asset is $r$. The returns of the risky assets are jointly normally distributed random variables with means $\mu = (\mu_1,\dots,\mu_N)$ and variance covariance matrix $V$. Assume that there is no redundancy in the risky assets, so that $V$ is of full rank. Derive the demand function for those $N+1$ assets.
+\end{itemize}
+
+
+\paragraph{Solutions.} (Gabe's solutions. Not graded, there may exist mistakes)
+
+\begin{itemize}
+	\item[9.] The consumer solves the problem
+	\[
+	\max_x u(w - x) + \expect[v(x+y)]
+	\]
+	where $y \sim F(\cdot)$. Denote the solution to this problem as $x\opt$ and the solution to the problem where $y$ is degenerate with mean 0 as $x_0$.
+	\begin{itemize}
+		\item[(a)] Recall that in the degenerate problem, since $u$ and $v$ are concave, we have that $v'(x_0) - u'(w-x_0) = 0$. If $\expect[v'(x_0 + y)] > v'(x_0)$, we have that $\expect[v'(x_0 + y)] - u'(w - x_0) > 0$, so $x_0$ is not a maximizer of the problem. It remains to show that the true maximizer is greater than $x_0$. At $x_0$, we have that $\expect[v'(x_0 + y)] > u'(w - x_0)$. At the true maximizer $x\opt$, we have that $\expect[v'(x\opt + y)] = u'(w - x\opt)$. Conclusion follows by noting that $u$ and $v$ are concave, so $u'$ and $v'$ are decreasing in the argument. Thus, $x\opt > x_0$.
+		\item[(b)] We have that for $v_1$ and $v_2$, $-v_1'''(x)/v_1''(x) \le -v_2'''(x)/v_2''(x)$ for all $x$, and that $\expect[v_1'(x_0+y)] > v_1'(x_0)$. Note that the coefficient of absolute risk aversion of $v_i'$ is equivalent to the coefficient of absolute prudence of $v_i$. Thus, from Proposition 6.C.2 in Mas-Colell, we have that since $v'_1$ has a coefficient of absolute risk aversion that is not greater than $v'_2$, $v'_2$ has a greater certainty equivalent than $v'_1$, meaning that $\expect[v_2'(x_0 + y)] > v_2'(x_0)$. In the context of part (a), this implies that if one individual decides to invest in a risky lottery, a second individual with a not-greater coefficient of absolute prudence will also invest, and they will not invest less.
+		\item[(c)] We have that $v'''(x) > 0$ for all $x$, then $v'$ is convex, meaning that $v'$ exhibits risk-loving behavior. Since $\expect[y] = 0$, we have that $\expect[v'(x + y)] > v'(x)$ for all $x$.
+		\item[(d)] We have that the coefficient of absolute risk aversion is decreasing in wealth, meaning that
+		\[
+		\frac{\partial}{\partial w} \barl -\frac{v''(x)}{v'(x)}\barr < 0 \Longrightarrow -\frac{v'''(x)v'(x) - (v''(x))^2}{(v'(x))^2} = \frac{v''(x)}{v'(x)} \parl \frac{v''(x)}{v'(x)} - \frac{v'''(x)}{v''(x)} \parr < 0
+		\]
+		Thus, we have that $-\frac{v''(x)}{v'(x)} < - \frac{v'''(x)}{v''(x)}$.
+	\end{itemize}
+	\item[14.] We have that $u\opt(\cdot)$ is strongly more risk-averse than $u(\cdot)$ if and only if there exists a positive constant $k$ and a nonincreasing, concave function $v(\cdot)$ such that $u\opt(x) = ku(x) + v(x)$ for all $x$.
+	\begin{itemize}
+		\item[(a)] We have that the coefficient of absolute risk aversion for $u\opt$ at some $x$ is
+		\[
+		r(x,u\opt) = - \frac{ku''(x) + v''(x)}{ku'(x) + v'(x)}
+		\] 
+		we want to show that
+		\[
+		- \frac{ku''(x) + v''(x)}{ku'(x) + v'(x)} \ge -\frac{u''(x)}{u'(x)} \Longrightarrow u'(x)(ku''(x)+v''(x)) \le u''(x)(ku'(x) + v'(x))
+		\]
+		This simplifies to
+		\[
+		ku'(x)u''(x) + u'(x)v''(x) \le ku'(x)u''(x) + u''(x)v'(x) \Longrightarrow  u'(x)v''(x) \le u''(x)v'(x)
+		\]
+		Which holds as long as
+		\[
+		-\frac{v''(x)}{v'(x)} \ge -\frac{u''(x)}{u'(x)}
+		\]
+		Since, by assumption, $u$ is increasing and concave, and $v$ is non-increasing and concave, the left side is non-negative and the right side is non-positive. Conclusion follows.
+		
+		\item[(b)] Suppose FSOC that there exists $u\opt(x) = ku(x) + v(x)$, where $v$ is non-constant, non-increasing, and concave. Define $M$ such that $M = \inf \{C \in \reals : u(x) \le C \forall x\}$. Since $u$ is increasing, as $x \to \infty$, $u(x) \to M$. However, since $v$ is non-constant and non-increasing, $\exists x \in \reals$ sufficiently large such that $u\opt(x) > u\opt(x + \varepsilon)$ for some $\varepsilon > 0$. This contradicts the assumption that $u\opt$ must be increasing.
+		
+		\item[(c)] We have from (a) that strong risk aversion implies Arrow-Pratt risk aversion. It remains to show that the converse is not true. Consider the functions $u(x) = -\exp(-\alpha x)$ and $v(x) = -\exp(-\beta x)$, where $\beta > \alpha$. Both functions exhibit constant absolute risk aversion, so $v$ is more risk-averse than $u$ in the Arrow-Pratt sense. However, since they are each bounded above, by (b) $v$ is not strongly more risk-averse than $u$.
+	\end{itemize}
+	\item[15.] We have a risk-averse decision maker, investing $x_1$ in a riskless asset and $x_2$ in a risky asset that pays $a$ with probability $\pi$ and $b$ with probability $1-\pi$. They begin with $w = 1$. 
+	\begin{itemize}
+		\item[(a)] Since the decision-maker is risk-averse, they will invest strictly positive levels in the riskless asset if there is a probability of loss with respect to the risky asset. Thus, the necessary condition is that at least one of $a,b$ is strictly less than 1.
+		\item[(b)] Again, since the decision-maker is risk-averse, they will invest in the risky asset only if its expected value is greater than that of the riskless asset, \ie when $\pi a + (1-\pi)b > 1$. 
+		\item[(c)] The decision-maker is maximizing the problem
+		\[
+		\max_{x_1,x_2} \pi u(x_1 + ax_2) + (1-\pi)u(x_1 + bx_2) \st x_1,x_2 \in [0,1], x_1 + x_2 = 1
+		\]
+		The first condition falls away because we're assuming that the conditions from (a) and (b) hold, so the Lagrangian this admits is
+		\[
+		\mathcal{L} = \pi u(x_1 + ax_2) + (1-\pi)u(x_1 + bx_2) + \lambda(1 - x_1 - x_2)
+		\]
+		The first order conditions are
+		\[
+		\frac{\partial \mathcal{L}}{\partial x_1} = \pi u'(x_1 + ax_2) + (1-\pi)u'(x_1 + bx_2) - \lambda = 0
+		\]
+		\[
+		\frac{\partial \mathcal{L}}{\partial x_2} = a\pi u'(x_1 + ax_2) + b(1-\pi)u'(x_1 + bx_2) - \lambda = 0
+		\]
+		which, combining, get
+		\[
+		\pi u'(x_1 + ax_2) + (1-\pi)u'(x_1 + bx_2) = a\pi u'(x_1 + ax_2) + b(1-\pi)u'(x_1 + bx_2) 
+		\]
+		which imply
+		\[
+		\pi(1-a) u'(x_1 + ax_2) + (1-\pi)(1-b)u'(x_1 + bx_2) = 0
+		\]
+		The final first order condition is
+		\[
+		\frac{\partial \mathcal{L}}{\partial \lambda} = 1 - x_1 -x_2  = 0 \Longrightarrow x_1 + x_2 = 1
+		\]
+		\item[(d)] Using the implicit function theorem, and holding $b$ constant, define 
+		\[
+		g(x_1,a,\pi) = \pi(1-a) u'(x_1 + a(1-x_1)) + (1-\pi)(1-b)u'(x_1 + b(1-x_1))
+		\]
+		We have that
+		\[
+		\frac{\partial x_1}{\partial a} = -\frac{\frac{\partial g}{\partial a }}{\frac{\partial g}{\partial x_1}} = -\frac{-\pi u'(x_1 + a(1-x_1)) + \pi(1-a)(1-x_1)u''(x_1 +a(1-x_1))}{\pi(1-a)(1-a) u''(x_1+a(1-x_1)) + (1-\pi)(1-b)(1-b)u''(x_1 + b(1-x_1))}
+		\]
+		where all terms in the numerator and denominator are negative, so $\frac{\partial x_1}{\partial a} \le 0$.
+		\item[(e)] If we are assuming, like in (d), that $a < 1$, it follows that $b > 1$. Thus, as $\pi$ increases, the lottery gets worse, so the decision maker would invest more in the riskless asset. Thus, I conjecture that $\frac{\partial x_1}{\partial \pi} > 0$.
+		\item[(f)] From the first order conditions and the implicit function theorem, we have that
+		\[
+		\frac{\partial x_1}{\partial \pi} = -\frac{\partial g / \partial \pi}{\partial g / \partial x_1}
+		\]
+		We know that the denominator is negative, from part (d). It remains to show that the numerator is positive, and conclusion will follow. We have that
+		\[
+		\frac{\partial g}{\partial \pi} = \underbrace{(1-a)u'(x_1 + a(1-x_1))}_{> 0} - \underbrace{(1-b)u'(x_1 + b(1-x_1))}_{<0} > 0
+		\]
+	\end{itemize}
+	\item[16.] An individual has Bernoulli utility function $u(\cdot)$ and initial wealth $w$. Let lottery $L$ offer a payoff of $G$ with probability $p$ and a payoff of $B$ with probability $(1-p)$.
+	\begin{itemize}
+		\item[(a)] The individual would sell the lottery for no less than the amount that would guarantee the same expected utility -- \ie, a price $y$ such that
+		\[
+		p u(w + G) + (1-p)u(w + B) = u(w + y)
+		\]
+		\item[(b)] They would purchase the lottery for an amount $x$ such that they would have the same expected utility whether they had the lottery or not -- \ie, a price $x$ such that
+		\[
+		p u(w - x + G) + (1-p)u(w - x+B) = u(w)
+		\]
+		\item[(c)] In general, $x \ne y$, as the different levels of wealth will change how much the lottery is `worth' to the decision maker. However, if $u$ exhibits constant absolute risk aversion, then they will coincide. If $u$ exhibits CARA, then the above conditions imply that
+		\[
+		w - c_w = (w-x) - c_{w - x}
+		\]
+		where $c_w$ is the certainty equivalent of the lottery with wealth $w$ and $c_{w-x}$ is the certainty equivalent of the lottery with wealth $w-x$.
+		\item[(d)] Directly calculating (using Wolfram), we get that $y$ solves
+		\[
+		p \sqrt{20} + (1-p)\sqrt{15} = \sqrt{10 + y} \Longrightarrow y = -5\parl 4\sqrt{3} p^2 - 7p^2 - 4\sqrt{3}p + 6p - 1\parr
+		\]
+		and $x$ solves
+		\[
+		p \sqrt{20 - x} + (1-p)\sqrt{15 - x} = \sqrt{10} \Longrightarrow x = \frac{5\parl 2p^3 + 7p^2 \pm 2\sqrt{2}\sqrt{-2p^5 + 7p^4 - 8p^3 + 3p^2} - 8p+1\parr}{4p^2-4p+1}
+		\]
+	\end{itemize}
+	\item[17.] We have that an individual faces a two-period portfolio allocation problem, dividing her wealth between a risky asset with return $x$ and a safe asset with return $R$. They have initial wealth $w_0$, and in period $t \in \{1,2\}$ their wealth depends on the portfolio $\alpha_{t-1}$ chosen previously, defined by
+	\[
+	w_t = ((1-\alpha_{t-1})R + \alpha_{t-1}x_t)w_{t-1}
+	\]
+	The individual is maximizing $w_2$, where we assume that $x_1,x_2$ are i.i.d. 
+	
+	\begin{proof}
+		First, assume that $u$ has CRRA preferences. The wealth at the end of each period is 
+		\[
+		w_1 = ((1-\alpha_{0})R + \alpha_{0}x_1)w_{0} \quad \text{ and }\quad w_2 = ((1-\alpha_{1})R + \alpha_{1}x_2)w_{1}
+		\]
+		Combining, we get that
+		\[
+		w_2 = ((1-\alpha_{1})R + \alpha_{1}x_2)((1-\alpha_{0})R + \alpha_{0}x_1)w_{0}
+		\]
+		Since CRRA preferences are scale-invariant, for any $\lambda$ we have that $u(\lambda x) = \lambda^{1-\sigma} u(x)$, where $\sigma$ is the coefficient of relative risk aversion. When the consumer is maximizing the expected utility, we have that
+		\[
+		\expect[u(w_2)] = \expect\barl ((1-\alpha_{1})R + \alpha_{1}x_2)^{1-\sigma} u(w_1)\barr = \expect[u(w_1)] \cdot ((1-\alpha_{1})R + \alpha_{1}\expect[x_2])^{1-\sigma}
+		\]
+		Thus, the choice of $\alpha$ that maximizes $w_1$ will also maximize $w_2$, since $x_i$ are i.i.d., and $\alpha_0 = \alpha_1$.
+		
+		Next, assume that $u$ has CARA preferences. We know that $u$ has the form $u(x) = -\exp(-\gamma x)$, where $\gamma > 0$ is the coefficient of absolute risk aversion. Thus, 
+		\[
+		\expect[u(w_2)] = \expect\barl  u(w_1)\exp(-\gamma(((1-\alpha_{1})R + \alpha_{1}x_2))) \barr
+		\]
+		However, we cannot split the expectation here as above, since we do not know that the relevant moments for $x$ necessarily exist. Thus, the choice of $\alpha_1$ depends on $x_1$, so it will not necessarily hold that $\alpha_0 = \alpha_1$.
+	\end{proof} 
+	\item[18.] Suppose that a decision maker has utility $u(x) = \sqrt{x}$.
+	\begin{itemize}
+		\item[(a)] We have that wealth $w = 5$. The coefficient of absolute risk aversion is
+		\[
+		-\frac{u''(w)}{u'(w)} = -\frac{(-0.25)w^{-1.5}}{(0.5)w^{-0.5}} = \frac{1}{2} \frac{\sqrt{5}}{\sqrt{125}} = \frac{1}{2	}\cdot \frac{1}{5} = 0.1
+		\]
+		The coefficient of relative risk aversion is
+		\[
+		-w \frac{u''(w)}{u'(w)} = 5 \cdot \frac{1}{10} = 0.5
+		\]
+		\item[(b)] The certainty equivalent of this lottery is
+		\[
+		u^{-1}(0.5 u(16) + 0.5u(4)) = u^{-1}(2 + 1) = u^{-1}(3) = 9
+		\]
+		The probability premium is $\pi$ such that
+		\[
+		u(10) = (0.5 + \pi)u(16) + (0.5 - \pi)u(4) \Longrightarrow \sqrt{10} = 2 + 4\pi + 1 - 2\pi \Longrightarrow \pi = \frac{\sqrt{10}-3}{2}
+		\]
+		\item[(c)] The certainty equivalent of this lottery is
+		\[
+		u^{-1}(0.5 u(36) + 0.5u(16)) = u^{-1}(3 + 2) = u^{-1}(5) = 25
+		\]
+		The probability premium is $\pi$ such that
+		\[
+		u(26) = (0.5 + \pi)u(36) + (0.5 - \pi)u(16) \Rightarrow \sqrt{26} = 3 + 6\pi + 2 - 4\pi \Rightarrow \pi = \frac{\sqrt{26}-5}{2}
+		\]
+		The probability premium is higher in the first lottery, which implies that $u$ has decreasing absolute risk aversion, implied by the fact that it has constant relative risk aversion.
+	\end{itemize}
+	\item[19.] We have that an individual has utility $u(x) = -\exp(-\alpha x)$ with $\alpha > 0$, and initial wealth $w$. He invests in a riskless asset with return $r$ and $N$ jointly normally distributed random assets with means $\mu = (\mu_1,\dots,\mu_N)$ and variance $V$. We assume that $V$ is full rank.
+	
+	Denote by $x_i$ the amount invested in risky asset $i$, and by $y_i$ its return. The agent's realized wealth is
+	\[
+	w' = \parl w - \sum_{i=1}^N x_i\parr r + \sum_{i=1}^N x_i y_i
+	\]
+	By the properties of jointly normal distributions, $w' \sim \normal\parl \parl w - \sum_{i=1}^N x_i\parr r + \sum_{i=1}^N x_i \mu_i, x^{T} V x\parr$. The expected utility of this is
+	\[
+	\expect[u(w')] = \expect[-\exp(-\alpha w')]
+	\]
+	Using the properties of the moment generating function of a normal random variable, we have that
+	\[
+	\expect[u(w')] = -\exp\barl\parl \parl w - \sum_{i=1}^N x_i\parr r + \sum_{i=1}^N x_i \mu_i\parr(-\alpha) - (x^T Vx) \frac{\alpha^2}{2}\barr
+	\]
+	Monotonically transforming this by $\ln(\cdot)$, we get that expected utility is maximized when
+	\[
+	-\alpha (\mu - r) - \alpha^2 Vx = 0 \Longrightarrow x = \frac{\mu - r}{\alpha V}
+	\]
+	where the $-$ in the numerator denotes elementwise subtraction.
+\end{itemize}
+
 \subsubsection{TA Section Examples}
 
 \subsubsection{Outside Questions}
+
+See the outside questions in Section 7.4.3, on the same topics.
 
 \newpage
 \subsection{Information (Battaglini)}
 
 \subsubsection{Battaglini Homework}
 
-\subsubsection{TA Section Examples}
+\begin{enumerate}
+	\item A monopolist can produce goods in different qualities. The cost of producing a good of quality $s$ is $5s^2$. Consumers with type $\theta$ buy at most one unit and have utility function
+	\[
+	u(s \mid \theta) = \begin{cases} \theta \cdot s & \text{if the consume one unit of quality $s$} \\ 0 & \text{if they do not consume} \end{cases}
+	\]
+	The monopolist decides on the quality (or qualities) $s$ it is going to produce and price $T$. Consumers observe qualities and prices and decide which quality to buy if at all.
+	\begin{enumerate}
+		\item Characterize the first-best solution
+		\item Suppose that the seller cannot observe $\theta$, and suppose that 
+		\[
+		\theta = \begin{cases} \theta_H & \text{with probability } 1-\beta \\ \theta_L & \text{with probability } \beta \end{cases}
+		\]
+		with $\theta_H > \theta_L > 0$. Characterize the second-best solution and consumers’ informational rents.
+	\end{enumerate}
+	\item Consider a government contracts with a monopolist to construct a bridge. The government is interested in choosing a contract that minimize the cost of such construction. The overall cost is $c = \theta - e$, which is observable to both the government and the monopolist. $\theta$ is the type of the monopolist; with probability $\beta$ the monopolist is an efficient type for $\theta = 5$, and with probability $1-\beta$ the monopolist is an inefficient type for $\theta = 8$. The monopolist can exert effort to reduce costs by paying private cost $\frac{e^2}{2}$. The government pays the monopolist $t + c$ where $t$ is a transfer. The monopolist has reservation utility at $\bar{u}$. 
+	\begin{enumerate}
+		\item Suppose the government could observe both the type $\theta$ and the effort $e$ of the monopolist. Characterize the first best effort $e^{FB}$ and transfer $t^{FB}$. 
+		\item From now on, assume that the government cannot observe the type $\theta$ and effort $e$ of the monopolist. Write down the optimal contract which minimizes the cost, and is incentive compatible and individually rational.
+		\item Characterize the second-best effort $e^{SB}$ and transfer $t^{SB}$ under such contract. Show each step clearly. Are first best effort $e^{FB}$ implementable for both types?
+	\end{enumerate}
+	\item (MWG 13.C.5) Assume a single firm and a single consumer. The firm's product may be of either high or low quality and is of high quality with probability $\lambda$. The consumer cannot observe quality before purchase and is risk neutral. The consumer's valuation of a high-quality product is $v_H$; her valuation of a low-quality product is $v_L$. The costs of production for high ($H$) and low ($L$) are $c_H$ and $c_L$ respectively. The consumer desires at most one unit of the product. Finally, the firm's price is regulated and set at $p$. Assume that $v_H > p > v_L > c_H > c_L$.
+	\begin{enumerate}
+		\item Given $p$, under what conditions will the consumer buy the product?
+		\item Suppose that before the consumer decides to buy, the firm (which knows its type) can advertise. Advertising conveys no information directly, but consumers can observe the total amount of money the firm is spending on advertising, denoted by $A$. Can there be a separating perfect Bayesian equilibrium, that is, an equilibrium where the consumer rationally expects firms with different quality levels to pick different levels of advertising?
+	\end{enumerate}
+	\item (MWG 13.C.6) Consider the market for loans to finance investment projects. All investment projects require an outlay of 1 dollar. There are two types of projects: good and bad. A good project has a probability $p_G$ of yielding profits of $\Pi > 0$ and a probability $(1-p_G)$ of yielding profits of zero. For a bad project, the relative probabilities are $p_B$ and $(1-p_B)$ respectively, where $p_G > p_B$. The fraction of projects that are good is $\lambda \in (0,1)$. 
+	
+	Entrepreneurs go to banks to borrow cash to make the initial outlay (assume for now they borrow the entire amount). A loan contract specifies an amount $R$ that is supposed to be repaid to the bank. Entrepreneurs know the type of project they have, but the banks do not. In an event that a project yields profits of zero, the entrepreneur defaults on her loan and the bank receives nothing. Banks are competitive and risk-neutral. The risk-free rate of interest (the rate the banks pay to borrow funds) is $r$. Assume that
+	\[
+	p_G \Pi - (1 + r) > 0 > p_B \Pi - (1 + r)
+	\]
+	\begin{enumerate}
+		\item Find the equilibrium level of $R$ and the set of projects financed. How does this depend on $p_G,p_B,\lambda,\Pi,$ and $r$?
+		\item Now suppose that the entrepreneur can offer to contribute some fraction $x$ of the 1 dollar initial outlay from her own funds ($x \in [0,1]$). The entrepreneur is liquidity constrained, however, so that the effective cost of doing so is $(1 + \rho)x$, where $\rho > r$.
+		\begin{enumerate}
+			\item What is the entrepreneur's payoff as a function of her project type, her loan-repayment amount $R$, and her contribution $x$?
+			\item Describe the best (from a welfare perspective) separating perfect Bayesian equilibrium of a game in which the entrepreneur first makes an offer of the amount of $x$ she is willing to put into a project, banks then respond by making offers specifying the level of $R$ they would require, and finally the entrepreneur accepts a bank's offer or decides not to go forward with the project. How does the amount contributed by entrepreneurs with good projects change with small changes in $p_B,p_G,\lambda,\Pi$, and $r$?
+			\item How do the two types of entrepreneurs do in the separating equilibrium of (b)(ii) compared with the equilibrium in (a)?
+		\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
 
-\subsubsection{Outside Questions}
+\subsubsection{TA Section Examples}
 
 
 
